@@ -1,4 +1,4 @@
-type BackgroundColor = "danger" | "blue" | "green" | "yellow" | "brown" | 'none';
+type BackgroundColor = "red" | "blue" | "green" | "yellow" | "brown" | 'none';
 
 type Note = {
   title: string;
@@ -16,7 +16,7 @@ function createNote(deetz: Note): string {
 
 
   const note: string = `
-    <div id="note" class="card bg-${bgColor}">
+    <div id="note" style="background-color: ${bgColor};">
         <div class="card-body">
           <h2 id="note-title" class="card-title">${title}</h2>
           <p id="note-body" class="card-text">${body}</p>

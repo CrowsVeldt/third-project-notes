@@ -27,7 +27,6 @@
 
 ## Data Structure
 {
-    id: int, // required
     title: string, // required
     body: string, // required
     color: string, // (5 options), required

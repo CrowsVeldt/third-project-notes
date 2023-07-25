@@ -8,6 +8,6 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     title: "Note Title",
     body: "Note Body",
     targetDate: "07/25/2023",
-    color: "danger",
+    color: "blue",
   })}
 `;
