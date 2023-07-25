@@ -7,7 +7,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   ${createNote({
     title: "Note Title",
     body: "Note Body",
-    targetDate: "07/25/2023",
+    targetDate: "07/11/2023",
     color: "blue",
   })}
 `;

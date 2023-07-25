@@ -16,7 +16,7 @@ function createNote(deetz: Note): string {
 
 
   const note: string = `
-    <div id="note" style="background-color: ${bgColor};">
+    <div id="note" class="card border border-dark border-2" style="background-color: ${bgColor};">
         <div class="card-body">
           <h2 id="note-title" class="card-title">${title}</h2>
           <p id="note-body" class="card-text">${body}</p>
