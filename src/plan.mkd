@@ -15,7 +15,12 @@
 
 ## Components
 - Main Page
-- Note
+- Note: 
+    Note creation form: 
+        input type = title - text 
+                     body - text
+                     target date - date 
+                     color - dropdown
 - Search Bar
 - Settings
 
