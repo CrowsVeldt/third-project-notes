@@ -1,0 +1,31 @@
+# Notes app - TypeScript and Localhost
+
+## Tools
+- Vite
+
+## User Stories
+- I can make a new note
+- I can delete individual notes
+- I can search notes by title and body contents
+- I can sort notes by title (ABC), date (creation or target), and color
+- I can delete all notes, but need to confirm before it will happen
+- The contents persist even after reloading or closing the page
+- The app fits well and looks good on any screen size
+- There is a max size for note titles and bodies
+
+## Components
+- Main Page
+- Note
+- Search Bar
+- Settings
+
+
+## Data Structure
+{
+    id: int, // required
+    title: string, // required
+    body: string, // required
+    color: string, // (5 options), required
+    target-date: date,
+    creation-date: date // required
+}
