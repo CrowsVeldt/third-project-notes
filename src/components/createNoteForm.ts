@@ -33,7 +33,7 @@ const noteForm: () => string = (): string => {
             <option value="yellow">Yellow</option>
             <option value="brown">brown</option>
         </select>
-        <button onclick="" id="form-button">Add note</button>
+        <button onclick="createNote" id="form-button">Add note</button>
     </form>
 `;
   return form;

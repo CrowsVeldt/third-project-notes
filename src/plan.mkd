@@ -29,7 +29,8 @@
 {
     title: string, // required
     body: string, // required
-    color: string, // (5 options), required
     target-date: date,
     creation-date: date // required
+    color: string, // (5 options), required
+    id: string // hashed from Date.toString()
 }
