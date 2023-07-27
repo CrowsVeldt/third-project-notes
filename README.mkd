@@ -9,10 +9,10 @@
 - when creating note, check if it's duplicate already exists
 - refactor storage to store each note individually as opposed to in an array
 - Make notes editable
-- Check dates work in different locals
+- Check dates work in different locales
 - Make target date alway be more than current date when adding date via keyboard
 - prevent adding more than 4 digits in target date years column
-- refactor openFormButton access other values less
+- refactor openFormButton to access other elements less
 
 ## User Stories
 
@@ -21,11 +21,11 @@
 - I can delete individual notes
 - The contents persist even after reloading or closing the page
 - There is a max size for note titles and bodies
+- I can delete all notes, but need to confirm before it will happen
 
 ### Not yet
 - I can search notes by title and body contents
 - I can sort notes by title (ABC), date (creation or target), and color
-- I can delete all notes, but need to confirm before it will happen
 - The app fits well and looks good on any screen size
 
 ## Components

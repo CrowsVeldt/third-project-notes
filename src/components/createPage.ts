@@ -1,7 +1,7 @@
 import makeNoteForm from "./createNoteForm";
 import newNote from "./createNote";
 import { Note } from "../types";
-import { storageExists, storedNotes } from "../storage";
+import { storageExists, storedNotes, wipeStorage } from "../storage";
 import createPlusButton from "./openFormButton";
 
 function makeMain() {
@@ -15,24 +15,22 @@ function makeMain() {
   title.innerText = "Notes";
   head.appendChild(title);
 
-  const noteContainer = document.createElement("div");
-  noteContainer.id = "note-container";
-  noteContainer.classList.add(
-    "container",
-    "d-flex",
-    "flex-wrap",
-    "space-between"
-  );
-  noteContainer.appendChild(makeNoteForm());
-  noteContainer.appendChild(createPlusButton());
+  const wipeButton = document.createElement("button");
+  wipeButton.innerText = "Delete all notes";
+  wipeButton.addEventListener("click", () => {
+    if (
+      confirm(
+        "Are you sure you want to delete all notes? This cannot be undone."
+      )
+    ) {
+      wipeStorage();
+      wipeNoteContainer();
+      container.appendChild(makeNoteContainer());
+    }
+  });
+  head.appendChild(wipeButton);
 
-  if (storageExists()) {
-    const notes = storedNotes();
-    localStorage.clear;
-    notes.forEach((note: Note) => {
-      noteContainer.appendChild(newNote(note, true));
-    });
-  }
+  const noteContainer = makeNoteContainer();
 
   const foot = document.createElement("footer");
   foot.classList.add(
@@ -51,6 +49,32 @@ function makeMain() {
   container.appendChild(foot);
 
   return container;
+}
+
+function makeNoteContainer(): HTMLDivElement {
+  const noteContainer = document.createElement("div");
+  noteContainer.id = "note-container";
+  noteContainer.classList.add(
+    "container",
+    "d-flex",
+    "flex-wrap",
+    "space-between"
+  );
+  noteContainer.appendChild(makeNoteForm());
+  noteContainer.appendChild(createPlusButton());
+
+  if (storageExists()) {
+    const notes = storedNotes();
+    localStorage.clear;
+    notes.forEach((note: Note) => {
+      noteContainer.appendChild(newNote(note, true));
+    });
+  }
+  return noteContainer;
+}
+
+function wipeNoteContainer() {
+  document.getElementById("note-container")?.remove();
 }
 
 export default makeMain;

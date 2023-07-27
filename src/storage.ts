@@ -40,4 +40,8 @@ function removeNote(noteId: string) {
   });
 }
 
-export { storeNote, removeNote, storageExists, storedNotes };
+function wipeStorage ():void {
+  if (storageExists()) localStorage.clear()
+}
+
+export { storeNote, removeNote, storageExists, storedNotes, wipeStorage };
