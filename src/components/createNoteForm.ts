@@ -71,12 +71,15 @@ function makeNoteForm() {
       return;
     }
     document.getElementById("note-container")?.appendChild(
-      newNote({
-        title: titleInput.value,
-        body: bodyInput.value,
-        targetDate: formatDate(tDateInput.value),
-        color: cSelect.value,
-      }, false)
+      newNote(
+        {
+          title: titleInput.value,
+          body: bodyInput.value,
+          targetDate: formatDate(tDateInput.value),
+          color: cSelect.value,
+        },
+        false
+      )
     );
   });
 

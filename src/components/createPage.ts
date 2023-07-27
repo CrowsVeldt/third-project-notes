@@ -1,6 +1,6 @@
 import makeNoteForm from "./createNoteForm";
 import newNote from "./createNote";
-import { Note } from "../utils";
+import { Note } from "../types";
 import { storageExists, storedNotes } from "../storage";
 
 function makeMain() {
@@ -25,11 +25,11 @@ function makeMain() {
   noteContainer.appendChild(makeNoteForm());
 
   if (storageExists()) {
-    const notes = storedNotes()
-    localStorage.clear
+    const notes = storedNotes();
+    localStorage.clear;
     notes.forEach((note: Note) => {
-      noteContainer.appendChild(newNote(note, true))
-    })
+      noteContainer.appendChild(newNote(note, true));
+    });
   }
 
   const foot = document.createElement("footer");

@@ -1,5 +1,5 @@
 import { storeNote, removeNote } from "../storage";
-import { Note } from "../utils";
+import { Note } from "../types";
 
 function newNote(deetz: Note, old: boolean) {
   // create Hash from s
@@ -60,7 +60,7 @@ function newNote(deetz: Note, old: boolean) {
   deleteButton.innerText = "Delete";
   deleteButton.id = buttonId;
   deleteButton.addEventListener("click", () => {
-    removeNote(id)
+    removeNote(id);
     document.getElementById(id)?.remove();
   });
 

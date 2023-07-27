@@ -1,4 +1,4 @@
-import { Note } from "./utils";
+import { Note } from "./types";
 
 const storageExists = () => {
   if (localStorage.length > 0) return true;
@@ -21,28 +21,23 @@ function storeNote(note: Note) {
     console.log(notes);
     localStorage.setItem("notes", JSON.stringify(notes));
   } else {
-    const newNotes = JSON.stringify([note])
-    localStorage.setItem('notes', newNotes)
+    const newNotes = JSON.stringify([note]);
+    localStorage.setItem("notes", newNotes);
   }
 }
 
-function removeNote (noteId: string) {
-    const notes = storedNotes()
-    notes.forEach((note: Note) => {
-        if (note.id === noteId) {
-            notes.splice(notes.indexOf(note), 1)
-                if (notes.length > 0) {
-                    localStorage.setItem('notes', JSON.stringify(notes))
-                } else {
-                    localStorage.removeItem('notes')
-                }
-        }
-    })
+function removeNote(noteId: string) {
+  const notes = storedNotes();
+  notes.forEach((note: Note) => {
+    if (note.id === noteId) {
+      notes.splice(notes.indexOf(note), 1);
+      if (notes.length > 0) {
+        localStorage.setItem("notes", JSON.stringify(notes));
+      } else {
+        localStorage.removeItem("notes");
+      }
+    }
+  });
 }
 
-export {
-  storeNote,
-  removeNote,
-  storageExists,
-  storedNotes
-};
+export { storeNote, removeNote, storageExists, storedNotes };
