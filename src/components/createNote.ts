@@ -1,4 +1,4 @@
-import { storeNote } from "../storage";
+import { storeNote, removeNote } from "../storage";
 import { Note } from "../utils";
 
 function newNote(deetz: Note, old: boolean) {
@@ -60,6 +60,7 @@ function newNote(deetz: Note, old: boolean) {
   deleteButton.innerText = "Delete";
   deleteButton.id = buttonId;
   deleteButton.addEventListener("click", () => {
+    removeNote(id)
     document.getElementById(id)?.remove();
   });
 

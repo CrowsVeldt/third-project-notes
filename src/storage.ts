@@ -27,12 +27,17 @@ function storeNote(note: Note) {
 }
 
 function removeNote (noteId: string) {
-    // const notes = storedNotes()
-    // notes.forEach((note: Note) => {
-    //     if (note.id === noteId) {
-    //         notes.indexOf(note)  
-    //     }
-    // })
+    const notes = storedNotes()
+    notes.forEach((note: Note) => {
+        if (note.id === noteId) {
+            notes.splice(notes.indexOf(note), 1)
+                if (notes.length > 0) {
+                    localStorage.setItem('notes', JSON.stringify(notes))
+                } else {
+                    localStorage.removeItem('notes')
+                }
+        }
+    })
 }
 
 export {
