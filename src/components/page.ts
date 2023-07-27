@@ -1,20 +1,33 @@
-import Note from "./note";
+import { newNote } from "./note";
 
-const note = new Note('title', 'note body', '07/12/2023', 'red')
+function makeMain () {
+    const container = document.createElement('div')
+    container.id = 'main-page'
 
-const mainPage: string = `
-    <div id="main-page">
-        <header class="container-fluid text-center border">
-            <h1 id="title" class="">Notes</h1>
-        </header>
+    const head = document.createElement('header')
+    head.classList.add('container-fluid', 'text-center', 'border')
+    const title = document.createElement('h1')
+    title.id = 'title'
+    title.innerText = 'Notes'
+    head.appendChild(title)
 
-        <div id="note-container" class="container d-flex flex-wrap">
-            ${note.getNote()}
-        </div>
+    const noteContainer = document.createElement('div')
+    noteContainer.id = 'note-container'
+    noteContainer.classList.add('container', 'd-flex', 'flex-wrap')
+    // V added for testing V
+    noteContainer.appendChild(newNote('title', 'note body', '07/12/2023', 'red'))
 
-        <footer class="container-fluid border text-center position-absolute bottom-0">
-            <h2>footer</h2>
-        </footer>
-    </div>
-`;
-export default mainPage;
+    const foot = document.createElement('footer')
+    foot.classList.add('container-fluid', 'border', 'text-center', 'position-absolute', 'bottom-0')
+    const footTitle = document.createElement('h2')
+    footTitle.innerText = 'Footer'
+    foot.appendChild(footTitle)
+
+    container.appendChild(head)
+    container.appendChild(noteContainer)
+    container.appendChild(foot)
+
+    return container.outerHTML
+}
+
+export default makeMain
