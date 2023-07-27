@@ -33,7 +33,7 @@ function makeNoteForm() {
   const bodyInput = document.createElement("textarea");
   bodyInput.id = "body-input";
   bodyInput.classList.add("form-control");
-  bodyInput.maxLength = 100
+  bodyInput.maxLength = 100;
   bodyInput.required = true;
   formContainer.appendChild(bodyLabel);
   formContainer.appendChild(bodyInput);
@@ -70,16 +70,14 @@ function makeNoteForm() {
       cSelect.reportValidity();
       return;
     }
-    document
-      .getElementById("note-container")
-      ?.appendChild(
-        newNote(
-          titleInput.value,
-          bodyInput.value,
-          formatDate(tDateInput.value),
-          cSelect.value
-        )
-      );
+    document.getElementById("note-container")?.appendChild(
+      newNote({
+        title: titleInput.value,
+        body: bodyInput.value,
+        targetDate: formatDate(tDateInput.value),
+        color: cSelect.value,
+      }, false)
+    );
   });
 
   formContainer.appendChild(createButton);

@@ -6,6 +6,7 @@
 
 ## TODO
 - combine formatDate in createNote and createNoteForm?
+- when creating note, check if it's duplicate already exists
 
 ## User Stories
 - I can make a new note
