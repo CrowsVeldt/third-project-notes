@@ -9,6 +9,8 @@ type BackgroundColor = "red" | "blue" | "green" | "yellow" | "brown" | 'none';
 //   id: string
 // };
 
+function onDeleteClick (id: string) {document.getElementById(id)?.remove()}
+
 function newNote(title: string, 
                  body: string, 
                  targetDate: string, 
@@ -21,6 +23,7 @@ function newNote(title: string,
 
     const note = document.createElement('div')
     note.id = id
+    note.style.backgroundColor = color
 
     const noteTitle = document.createElement('h3')
     noteTitle.innerText = title
@@ -37,8 +40,9 @@ function newNote(title: string,
     const deleteButton = document.createElement('button')
     deleteButton.innerText = 'Delete'
     deleteButton.id = buttonId
-    function onDeleteClick () {console.log(id)}
-    deleteButton.onclick = () => onDeleteClick()
+    deleteButton.addEventListener('click', () => {
+      onDeleteClick(id)
+    })
 
     note.appendChild(noteTitle)
     note.appendChild(noteBody)
@@ -49,16 +53,4 @@ function newNote(title: string,
     return note
   }
 
-  // const deleteNote = () => document.getElementById(id)?.remove()
-
-  //   const note = `
-  //     <div id="${id}" class="note flex flex-column border border-dark rounded" style="background-color: ${color}; ">
-  //       <h3>${title}</h3>
-  //       <p>${body}</p>
-  //       <p>Created on: ${createDate}</p>
-  //       <p>Target date: ${targetDate}</p>
-  //       <button id="button-${id}" onClick="${() => deleteNote()}">Delete</button>
-  //     </div> `
-export {
-  newNote
-}
+export default newNote

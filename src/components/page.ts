@@ -1,4 +1,4 @@
-import { newNote } from "./note";
+import newNote from "./note";
 
 function makeMain () {
     const container = document.createElement('div')
@@ -27,7 +27,7 @@ function makeMain () {
     container.appendChild(noteContainer)
     container.appendChild(foot)
 
-    return container.outerHTML
+    return container
 }
 
 export default makeMain
