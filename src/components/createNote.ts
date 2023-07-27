@@ -22,18 +22,20 @@ function newNote(
   const note = document.createElement("div");
   note.id = id;
   note.style.backgroundColor = color;
+  note.classList.add('border', 'rounded', 'ms-1', 'p-2', 'd-flex', 'flex-column')
 
   const noteTitle = document.createElement("h3");
   noteTitle.innerText = title;
 
   const noteBody = document.createElement("p");
+  noteBody.classList.add('mb-auto', 'border-top', 'border-bottom')
   noteBody.innerText = body;
 
   const noteCDate = document.createElement("p");
-  noteCDate.innerText = cDate;
+  noteCDate.innerText = `Created on ${cDate}`;
 
   const noteTDate = document.createElement("p");
-  noteTDate.innerText = targetDate;
+  noteTDate.innerText = `Target date ${targetDate}`;
 
   const deleteButton = document.createElement("button");
   deleteButton.innerText = "Delete";
@@ -51,10 +53,13 @@ function newNote(
   return note;
 }
 
+// Receives number, returns number as string padded to two chars
 function padTo2Digits(num: number): string {
   return num.toString().padStart(2, "0");
 }
 
+
+// Receive date as Date, return formatted date string
 function formatDate(date: Date): string {
   return [
     padTo2Digits(date.getDate()),
