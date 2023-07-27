@@ -1,18 +1,8 @@
-# Notes app - OOP - TypeScript and Localhost
+# Notes app - OOP - TypeScript and LocalStorage
 
 ## Tools
 
 - Vite
-
-## TODO
-
-- when creating note, check if it's duplicate already exists
-- refactor storage to store each note individually as opposed to in an array
-- Make notes editable
-- Check dates work in different locales
-- Make target date alway be more than current date when adding date via keyboard
-- prevent adding more than 4 digits in target date years column
-- refactor openFormButton to access other elements less
 
 ## User Stories
 
@@ -32,12 +22,12 @@
 
 - Main Page
 - Note
-- Create Note Form
+- Add Note, Form
 - Search Bar
 - Settings
 
 ## Data schema
-
+```
 {
 title: string, // required
 body: string, // required
@@ -46,3 +36,16 @@ creation-date: date // required
 color: string, // (5 options), required
 id: string // hashed from Date.toString()
 }
+```
+
+## TODO
+
+- when creating note, check if it's duplicate already exists
+- refactor storage to store each note individually as opposed to in an array
+- Make notes editable
+- Check dates work in different locales
+- Make target date alway be more than current date when adding date via keyboard
+- prevent adding more than 4 digits in target date years column
+- refactor openFormButton to access other elements less
+
+
