@@ -1,6 +1,6 @@
 import newNote from "./createNote";
 import { BackgroundColor } from "../types";
-import { noteColors } from "../util";
+import { noteColors, formatDate } from "../util";
 
 function makeNoteForm() {
   const date = new Date();
@@ -139,10 +139,5 @@ const colorSelect = () => {
 
   return colorSelect;
 };
-
-// Receive date as string, return formatted date string
-function formatDate(date: string) {
-  return date.split("-").reverse().join("/");
-}
 
 export default makeNoteForm;

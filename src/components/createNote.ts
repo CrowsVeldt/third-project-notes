@@ -1,5 +1,6 @@
 import { storeNote, removeNote } from "../storage";
 import { Note } from "../types";
+import { formatDate } from "../util";
 
 function newNote(deetz: Note, fromStorage: boolean) {
   // create Hash from s
@@ -73,18 +74,18 @@ function newNote(deetz: Note, fromStorage: boolean) {
   return note;
 }
 
-// Receives number, returns number as string padded to two chars
-function padTo2Digits(num: number): string {
-  return num.toString().padStart(2, "0");
-}
+// // Receives number, returns number as string padded to two chars
+// function padTo2Digits(num: number): string {
+//   return num.toString().padStart(2, "0");
+// }
 
-// Receive date as Date, return formatted date string
-function formatDate(date: Date): string {
-  return [
-    padTo2Digits(date.getDate()),
-    padTo2Digits(date.getMonth() + 1),
-    date.getFullYear(),
-  ].join("/");
-}
+// // Receive date as Date, return formatted date string
+// function formatDate(date: Date): string {
+//   return [
+//     padTo2Digits(date.getDate()),
+//     padTo2Digits(date.getMonth() + 1),
+//     date.getFullYear(),
+//   ].join("/");
+// }
 
 export default newNote;

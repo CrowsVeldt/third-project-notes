@@ -6,7 +6,6 @@
 
 ## TODO
 
-- combine formatDate in createNote and createNoteForm?
 - when creating note, check if it's duplicate already exists
 - refactor storage to store each note individually as opposed to in an array
 - Make notes editable
