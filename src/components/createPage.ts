@@ -1,4 +1,4 @@
-import newNote from "./note";
+import makeNoteForm from "./createNoteForm"
 
 function makeMain () {
     const container = document.createElement('div')
@@ -14,8 +14,9 @@ function makeMain () {
     const noteContainer = document.createElement('div')
     noteContainer.id = 'note-container'
     noteContainer.classList.add('container', 'd-flex', 'flex-wrap')
-    // V added for testing V
-    noteContainer.appendChild(newNote('title', 'note body', '07/12/2023', 'red'))
+    noteContainer.appendChild(makeNoteForm())
+    // // V added for testing V
+    // noteContainer.appendChild(newNote('title', 'note body', '07/12/2023', 'red'))
 
     const foot = document.createElement('footer')
     foot.classList.add('container-fluid', 'border', 'text-center', 'position-absolute', 'bottom-0')

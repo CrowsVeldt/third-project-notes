@@ -1,6 +1,6 @@
-import createNote from "./note";
+import newNote from "./createNote";
 
-const noteForm: () => string = (): string => {
+function makeNoteForm() {
   const date = new Date();
   const minDate: string = new Date(
     date.getTime() - date.getTimezoneOffset() * 60000
@@ -8,34 +8,99 @@ const noteForm: () => string = (): string => {
     .toISOString()
     .split("T")[0];
 
-  const form = `
-    <form action="" class="add-note" id="add-note">
-        <label for="title-input" class="form-label">Title*</label>
-        <input type="text" name="title" id="title-input" class="form-control" required/>
+  const formContainer = document.createElement("form");
+  formContainer.id = "add-note-form";
 
-        <label for="body-input" class="form-label">Note body*</label>
-        <textarea name="body" id="body-input" class="border" required></textarea>
+  const titleLabel = document.createElement("label");
+  titleLabel.classList.add("form-label");
+  titleLabel.innerText = "Note title";
+  const titleInput = document.createElement("input");
 
-        <label for="target-date" class="form-label">Target date</label>
-        <input type="date" name="target-date" id="target-date" min="${minDate}"/>
+  titleInput.type = "text";
+  titleInput.id = "title-input";
+  titleInput.classList.add("form-control");
+  titleInput.required = true;
+  formContainer.appendChild(titleLabel);
+  formContainer.appendChild(titleInput);
 
-        <label for="color-select" class="form-label">Note color</label>
-        <select
-            name="color"
-            id="color-select"
-            class="form-select"
-            aria-label="Default select element"
-        >
-            <option selected>None</option>
-            <option value="red">Red</option>
-            <option value="blue">Blue</option>
-            <option value="green">Green</option>
-            <option value="yellow">Yellow</option>
-            <option value="brown">brown</option>
-        </select>
-        <button onclick="createNote" id="form-button">Add note</button>
-    </form>
-`;
-  return form;
-};
-export default noteForm;
+  const bodyLabel = document.createElement("label");
+  bodyLabel.classList.add("form-label");
+  bodyLabel.innerText = "Note body";
+
+  const bodyInput = document.createElement("textarea");
+  bodyInput.id = "body-input";
+  bodyInput.classList.add("form-control");
+  bodyInput.required = true;
+  formContainer.appendChild(bodyLabel);
+  formContainer.appendChild(bodyInput);
+
+  const tDateLabel = document.createElement("label");
+  tDateLabel.classList.add("form-label");
+  tDateLabel.innerText = "Target date";
+
+  const tDateInput = document.createElement("input");
+  tDateInput.type = "date";
+  tDateInput.min = minDate;
+  tDateInput.id = "tDate-input";
+  tDateInput.classList.add("form-control");
+  formContainer.appendChild(tDateLabel);
+  formContainer.appendChild(tDateInput);
+
+  const colorLabel = document.createElement("label");
+  colorLabel.classList.add("form-label");
+  colorLabel.innerText = "Select color";
+
+  const colorSelect = document.createElement("select");
+  colorSelect.id = "color-select";
+  colorSelect.required = true;
+  colorSelect.ariaLabel = "Default select element";
+
+  const colorOption = (color: string) => {
+    const o = document.createElement("option");
+    o.innerText = color;
+    o.value = color;
+    return o;
+  };
+
+  const optionNone = colorOption("none");
+  optionNone.selected = true;
+  const optionRed = colorOption("red");
+  const optionBlue = colorOption("blue");
+  const optionGreen = colorOption("green");
+  const optionYellow = colorOption("yellow");
+  const optionBrown = colorOption("brown");
+
+  colorSelect.appendChild(optionNone);
+  colorSelect.appendChild(optionRed);
+  colorSelect.appendChild(optionBlue);
+  colorSelect.appendChild(optionGreen);
+  colorSelect.appendChild(optionYellow);
+  colorSelect.appendChild(optionBrown);
+
+  formContainer.appendChild(colorLabel);
+  formContainer.appendChild(colorSelect);
+
+  const createButton = document.createElement("button");
+  createButton.innerText = "Add note";
+  createButton.type = "submit";
+  createButton.id = "form-button";
+  createButton.addEventListener("click", (evt) => {
+    evt.preventDefault();
+    document
+      .getElementById("note-container")
+      ?.appendChild(
+        newNote(
+          titleInput.value,
+          bodyInput.value,
+          tDateInput.value,
+          colorSelect.value
+        )
+      );
+  });
+
+  formContainer.appendChild(createButton);
+
+  return formContainer;
+}
+
+export default makeNoteForm;

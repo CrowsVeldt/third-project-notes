@@ -1,4 +1,4 @@
-type BackgroundColor = "red" | "blue" | "green" | "yellow" | "brown" | 'none';
+// type BackgroundColor = "red" | "blue" | "green" | "yellow" | "brown" | 'none';
 
 // type Note = {
 //   title: string;
@@ -14,7 +14,7 @@ function onDeleteClick (id: string) {document.getElementById(id)?.remove()}
 function newNote(title: string, 
                  body: string, 
                  targetDate: string, 
-                 color: BackgroundColor) {
+                 color: string) {
     const hashCode = (s: string) => s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0)
     const date = new Date()
     const cDate = date.toLocaleDateString("he-IL", {dateStyle: 'short'}).replaceAll('.', '/');
