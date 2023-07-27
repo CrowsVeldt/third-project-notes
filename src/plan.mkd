@@ -3,6 +3,10 @@
 ## Tools
 - Vite
 
+
+## TODO
+- combine formatDate in createNote and createNoteForm?
+
 ## User Stories
 - I can make a new note
 - I can delete individual notes
