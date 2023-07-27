@@ -1,12 +1,12 @@
-type backgroundColor = "red" | "green" | "blue" | "yellow" | "brown" | "none";
+type BackgroundColor = "red" | "green" | "blue" | "yellow" | "brown" | "none";
 
 type Note = {
   title: string;
   body: string;
-  color: backgroundColor;
+  color: BackgroundColor;
   targetDate?: string;
   id?: string;
   createDate?: string;
 };
 
-export type { Note, backgroundColor };
+export type { Note, BackgroundColor };

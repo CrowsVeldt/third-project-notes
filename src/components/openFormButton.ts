@@ -2,7 +2,7 @@ function createPlusButton () {
     const btn = document.createElement('button')
     btn.innerText = '+'
     btn.id = 'show-note-form'
-    btn.addEventListener('click', (evt) => {
+    btn.addEventListener('click', () => {
         toggleForm()
     })
     btn.style.position = 'fixed'

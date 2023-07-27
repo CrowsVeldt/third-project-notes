@@ -1,5 +1,6 @@
 import newNote from "./createNote";
-import { backgroundColor } from "../types";
+import { BackgroundColor } from "../types";
+import { noteColors } from "../util";
 
 function makeNoteForm() {
   const date = new Date();
@@ -80,7 +81,7 @@ function makeNoteForm() {
           title: titleInput.value,
           body: bodyInput.value,
           targetDate: formatDate(tDateInput.value),
-          color: cSelect.value as backgroundColor,
+          color: cSelect.value as BackgroundColor,
         },
         false
       )
@@ -119,7 +120,7 @@ function createInput(
   return inp;
 }
 
-const colorOption = (color: backgroundColor) => {
+const colorOption = (color: BackgroundColor) => {
   const o = document.createElement("option");
   o.innerText = color;
   o.value = color;
@@ -132,20 +133,9 @@ const colorSelect = () => {
   colorSelect.required = true;
   colorSelect.ariaLabel = "Default select element";
 
-  const optionNone = colorOption("none");
-  optionNone.selected = true;
-  const optionRed = colorOption("red");
-  const optionBlue = colorOption("blue");
-  const optionGreen = colorOption("green");
-  const optionYellow = colorOption("yellow");
-  const optionBrown = colorOption("brown");
-
-  colorSelect.appendChild(optionNone);
-  colorSelect.appendChild(optionRed);
-  colorSelect.appendChild(optionBlue);
-  colorSelect.appendChild(optionGreen);
-  colorSelect.appendChild(optionYellow);
-  colorSelect.appendChild(optionBrown);
+  noteColors.forEach(color => {
+    colorSelect.appendChild(colorOption(color))
+  })
 
   return colorSelect;
 };
