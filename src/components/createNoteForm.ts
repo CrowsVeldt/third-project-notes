@@ -10,23 +10,20 @@ function makeNoteForm() {
 
   const formContainer = document.createElement("form");
   formContainer.id = "add-note-form";
+  formContainer.classList.add(
+    "border",
+    "rounded",
+    "p-1",
+    "d-flex",
+    "flex-column"
+  );
 
-  const titleLabel = document.createElement("label");
-  titleLabel.classList.add("form-label");
-  titleLabel.innerText = "Note title";
-  const titleInput = document.createElement("input");
-
-  titleInput.type = "text";
-  titleInput.id = "title-input";
-  titleInput.classList.add("form-control");
-  titleInput.required = true;
+  const titleLabel = createLabel("Note title", ["form-label"]);
+  const titleInput = createInput("text", "title-input", ["form-control"], true);
   formContainer.appendChild(titleLabel);
   formContainer.appendChild(titleInput);
 
-  const bodyLabel = document.createElement("label");
-  bodyLabel.classList.add("form-label");
-  bodyLabel.innerText = "Note body";
-
+  const bodyLabel = createLabel("Note body", ["form-label"]);
   const bodyInput = document.createElement("textarea");
   bodyInput.id = "body-input";
   bodyInput.classList.add("form-control");
@@ -34,33 +31,94 @@ function makeNoteForm() {
   formContainer.appendChild(bodyLabel);
   formContainer.appendChild(bodyInput);
 
-  const tDateLabel = document.createElement("label");
-  tDateLabel.classList.add("form-label");
-  tDateLabel.innerText = "Target date";
-
-  const tDateInput = document.createElement("input");
-  tDateInput.type = "date";
-  tDateInput.min = minDate;
-  tDateInput.id = "tDate-input";
-  tDateInput.classList.add("form-control");
+  const tDateLabel = createLabel("Target date", ["form-label"]);
+  const tDateInput = createInput(
+    "date",
+    "tDate-input",
+    ["form-control"],
+    false,
+    [["min", minDate]]
+  );
   formContainer.appendChild(tDateLabel);
   formContainer.appendChild(tDateInput);
 
-  const colorLabel = document.createElement("label");
-  colorLabel.classList.add("form-label");
-  colorLabel.innerText = "Select color";
+  const colorLabel = createLabel("Select color", ["form-label"]);
+  const cSelect = colorSelect()
+  formContainer.appendChild(colorLabel);
+  formContainer.appendChild(cSelect);
 
+  const createButton = document.createElement("button");
+  createButton.innerText = "Add note";
+  createButton.type = "submit";
+  createButton.id = "form-button";
+  createButton.addEventListener("click", (evt) => {
+    evt.preventDefault();
+    if (titleInput.value === "") {
+      titleInput.reportValidity();
+      return;
+    } else if (bodyInput.value === "") {
+      bodyInput.reportValidity();
+      return;
+    } else if (cSelect.value === "") {
+      cSelect.reportValidity();
+      return;
+    }
+    document
+      .getElementById("note-container")
+      ?.appendChild(
+        newNote(
+          titleInput.value,
+          bodyInput.value,
+          formatDate(tDateInput.value),
+          cSelect.value
+        )
+      );
+  });
+
+  formContainer.appendChild(createButton);
+
+  return formContainer;
+}
+
+function createLabel(value: string, classes: string[]) {
+  const l = document.createElement("label");
+  DOMTokenList.prototype.add.apply(l.classList, classes);
+  l.innerText = value;
+  return l;
+}
+
+function createInput(
+  type: string,
+  id: string,
+  classes: string[],
+  required: boolean,
+  other?: string[][]
+) {
+  const inp = document.createElement("input");
+  inp.type = type;
+  inp.id = id;
+  DOMTokenList.prototype.add.apply(inp.classList, classes);
+  inp.required = required;
+  if (other) {
+    other.forEach((attr) => {
+      inp.setAttribute(attr[0], attr[1]);
+    });
+  }
+  return inp;
+}
+
+const colorOption = (color: string) => {
+  const o = document.createElement("option");
+  o.innerText = color;
+  o.value = color;
+  return o;
+};
+
+const colorSelect = () => {
   const colorSelect = document.createElement("select");
   colorSelect.id = "color-select";
   colorSelect.required = true;
   colorSelect.ariaLabel = "Default select element";
-
-  const colorOption = (color: string) => {
-    const o = document.createElement("option");
-    o.innerText = color;
-    o.value = color;
-    return o;
-  };
 
   const optionNone = colorOption("none");
   optionNone.selected = true;
@@ -77,30 +135,12 @@ function makeNoteForm() {
   colorSelect.appendChild(optionYellow);
   colorSelect.appendChild(optionBrown);
 
-  formContainer.appendChild(colorLabel);
-  formContainer.appendChild(colorSelect);
+  return colorSelect
+};
 
-  const createButton = document.createElement("button");
-  createButton.innerText = "Add note";
-  createButton.type = "submit";
-  createButton.id = "form-button";
-  createButton.addEventListener("click", (evt) => {
-    evt.preventDefault();
-    document
-      .getElementById("note-container")
-      ?.appendChild(
-        newNote(
-          titleInput.value,
-          bodyInput.value,
-          tDateInput.value,
-          colorSelect.value
-        )
-      );
-  });
-
-  formContainer.appendChild(createButton);
-
-  return formContainer;
+function formatDate (date: string) {
+  return date.split('-').reverse().join('/')
 }
+
 
 export default makeNoteForm;
