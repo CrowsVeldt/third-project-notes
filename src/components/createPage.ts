@@ -2,6 +2,7 @@ import makeNoteForm from "./createNoteForm";
 import newNote from "./createNote";
 import { Note } from "../types";
 import { storageExists, storedNotes } from "../storage";
+import createPlusButton from "./openFormButton";
 
 function makeMain() {
   const container = document.createElement("div");
@@ -23,6 +24,7 @@ function makeMain() {
     "space-between"
   );
   noteContainer.appendChild(makeNoteForm());
+  noteContainer.appendChild(createPlusButton());
 
   if (storageExists()) {
     const notes = storedNotes();

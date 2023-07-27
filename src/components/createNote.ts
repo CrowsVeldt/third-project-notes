@@ -17,7 +17,6 @@ function newNote(deetz: Note, fromStorage: boolean) {
         date.getTime().toString() +
           (Math.random() + 1).toString(36).substring(7)
       ).toString();
-  //const tDate = deetz.targetDate ? deetz.targetDate : ''
 
   if (!fromStorage) {
     storeNote({

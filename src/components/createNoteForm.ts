@@ -1,4 +1,5 @@
 import newNote from "./createNote";
+import { backgroundColor } from "../types";
 
 function makeNoteForm() {
   const date = new Date();
@@ -10,12 +11,15 @@ function makeNoteForm() {
 
   const formContainer = document.createElement("form");
   formContainer.id = "add-note-form";
+  formContainer.style.display = "none";
+  formContainer.style.position = "fixed";
+  formContainer.style.left = "0%";
   formContainer.classList.add(
     "border",
     "rounded",
     "p-1",
-    "d-flex",
-    "flex-column"
+    "flex-column",
+    "bg-white"
   );
 
   const titleLabel = createLabel("Note title", ["form-label"]);
@@ -76,7 +80,7 @@ function makeNoteForm() {
           title: titleInput.value,
           body: bodyInput.value,
           targetDate: formatDate(tDateInput.value),
-          color: cSelect.value,
+          color: cSelect.value as backgroundColor,
         },
         false
       )
@@ -115,7 +119,7 @@ function createInput(
   return inp;
 }
 
-const colorOption = (color: string) => {
+const colorOption = (color: backgroundColor) => {
   const o = document.createElement("option");
   o.innerText = color;
   o.value = color;

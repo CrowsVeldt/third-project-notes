@@ -9,8 +9,11 @@
 - combine formatDate in createNote and createNoteForm?
 - when creating note, check if it's duplicate already exists
 - refactor storage to store each note individually as opposed to in an array
-- minimize createNoteForm when not in focus
 - Make notes editable
+- Check dates work in different locals
+- Make target date alway be more than current date when adding date via keyboard
+- prevent adding more than 4 digits in target date years column
+- refactor openFormButton access other values less
 
 ## User Stories
 
