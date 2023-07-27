@@ -1,6 +1,6 @@
 import newNote from "./createNote";
-import { BackgroundColor } from "../types";
-import { noteColors, formatDate } from "../util";
+import { BackgroundColor } from "../utils/types";
+import { noteColors, formatDate } from "../utils/util";
 
 function makeNoteForm() {
   const date = new Date();

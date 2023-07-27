@@ -1,6 +1,6 @@
-import { storeNote, removeNote } from "../storage";
-import { Note } from "../types";
-import { formatDate } from "../util";
+import { storeNote, removeNote } from "../utils/storage";
+import { Note } from "../utils/types";
+import { formatDate } from "../utils/util";
 
 function newNote(deetz: Note, fromStorage: boolean) {
   // create Hash from s

@@ -1,7 +1,7 @@
 import makeNoteForm from "./createNoteForm";
 import newNote from "./createNote";
-import { Note } from "../types";
-import { storageExists, storedNotes, wipeStorage } from "../storage";
+import { Note } from "../utils/types";
+import { storageExists, storedNotes, wipeStorage } from "../utils/storage";
 import createPlusButton from "./openFormButton";
 
 function makeMain() {
