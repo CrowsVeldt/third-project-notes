@@ -10,6 +10,7 @@
 - when creating note, check if it's duplicate already exists
 - refactor storage to store each note individually as opposed to in an array
 - minimize createNoteForm when not in focus
+- Make notes editable
 
 ## User Stories
 

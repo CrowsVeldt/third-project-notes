@@ -1,8 +1,8 @@
 type Note = {
   title: string;
   body: string;
-  targetDate: string;
   color: string;
+  targetDate?: string;
   id?: string;
   createDate?: string;
 };

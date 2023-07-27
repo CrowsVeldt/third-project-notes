@@ -1,7 +1,7 @@
 import { storeNote, removeNote } from "../storage";
 import { Note } from "../types";
 
-function newNote(deetz: Note, old: boolean) {
+function newNote(deetz: Note, fromStorage: boolean) {
   // create Hash from s
   const hashCode = (s: string) =>
     s.split("").reduce((a, b) => {
@@ -17,8 +17,9 @@ function newNote(deetz: Note, old: boolean) {
         date.getTime().toString() +
           (Math.random() + 1).toString(36).substring(7)
       ).toString();
+  //const tDate = deetz.targetDate ? deetz.targetDate : ''
 
-  if (!old) {
+  if (!fromStorage) {
     storeNote({
       id: id,
       title: deetz.title,
@@ -54,7 +55,7 @@ function newNote(deetz: Note, old: boolean) {
   noteCDate.innerText = `Created on ${cDate}`;
 
   const noteTDate = document.createElement("p");
-  noteTDate.innerText = `Target date ${deetz.targetDate}`;
+  noteTDate.innerText = deetz.targetDate ? `Target date ${deetz.targetDate}` : ''
 
   const deleteButton = document.createElement("button");
   deleteButton.innerText = "Delete";
