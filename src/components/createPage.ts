@@ -1,4 +1,4 @@
-import { wipeStorage } from "../utils/storage";
+import { wipeStorage, storageExists } from "../utils/storage";
 import { makeNoteContainer, wipeNoteContainer } from "./noteContainer";
 
 function makeMain() {
@@ -16,6 +16,7 @@ function makeMain() {
   wipeButton.innerText = "Delete all notes";
   wipeButton.addEventListener("click", () => {
     if (
+      storageExists() &&
       confirm(
         "Are you sure you want to delete all notes? This cannot be undone."
       )

@@ -14,8 +14,8 @@
 - I can delete all notes, but need to confirm before it will happen
 
 ### Not yet
-- I can search notes by title and body contents
-- I can sort notes by title (ABC), date (creation or target), and color
+- I can search notes by title and body contents (in storage.ts)
+- I can sort notes by title (ABC), date (creation or target), and color (in noteContainer.ts)
 - The app fits well and looks good on any screen size
 
 ## Components
@@ -47,5 +47,6 @@ id: string // hashed from Date.toString()
 - Make target date alway be more than current date when adding date via keyboard
 - prevent adding more than 4 digits in target date years column
 - refactor openFormButton to access other elements less
+- move delete all button to settings menu
 
 
