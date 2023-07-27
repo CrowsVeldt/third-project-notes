@@ -13,15 +13,17 @@
 
 ## User Stories
 
-X I can make a new note
-X I can delete individual notes
+### Achieved
+- I can make a new note
+- I can delete individual notes
+- The contents persist even after reloading or closing the page
+- There is a max size for note titles and bodies
 
+### Not yet
 - I can search notes by title and body contents
 - I can sort notes by title (ABC), date (creation or target), and color
 - I can delete all notes, but need to confirm before it will happen
-  X The contents persist even after reloading or closing the page
 - The app fits well and looks good on any screen size
-  X There is a max size for note titles and bodies
 
 ## Components
 
