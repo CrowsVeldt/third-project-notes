@@ -19,7 +19,13 @@ function makeNoteForm() {
   );
 
   const titleLabel = createLabel("Note title", ["form-label"]);
-  const titleInput = createInput("text", "title-input", ["form-control"], true);
+  const titleInput = createInput(
+    "text",
+    "title-input",
+    ["form-control"],
+    true,
+    [["maxlength", "20"]]
+  );
   formContainer.appendChild(titleLabel);
   formContainer.appendChild(titleInput);
 
@@ -27,6 +33,7 @@ function makeNoteForm() {
   const bodyInput = document.createElement("textarea");
   bodyInput.id = "body-input";
   bodyInput.classList.add("form-control");
+  bodyInput.maxLength = 100
   bodyInput.required = true;
   formContainer.appendChild(bodyLabel);
   formContainer.appendChild(bodyInput);
@@ -43,7 +50,7 @@ function makeNoteForm() {
   formContainer.appendChild(tDateInput);
 
   const colorLabel = createLabel("Select color", ["form-label"]);
-  const cSelect = colorSelect()
+  const cSelect = colorSelect();
   formContainer.appendChild(colorLabel);
   formContainer.appendChild(cSelect);
 
@@ -135,12 +142,11 @@ const colorSelect = () => {
   colorSelect.appendChild(optionYellow);
   colorSelect.appendChild(optionBrown);
 
-  return colorSelect
+  return colorSelect;
 };
 
-function formatDate (date: string) {
-  return date.split('-').reverse().join('/')
+function formatDate(date: string) {
+  return date.split("-").reverse().join("/");
 }
-
 
 export default makeNoteForm;
