@@ -1,6 +1,7 @@
 import makeSearchBar from "./createSearchBar";
 import { makeNoteContainer, removeNoteContainer } from "./noteContainer";
 import { storageExists, wipeStorage } from "../utils/storage";
+import sortSelect from "./sortSelect";
 
 function makeMain(): HTMLDivElement {
   const container: HTMLDivElement = document.createElement("div");
@@ -32,6 +33,9 @@ function makeMain(): HTMLDivElement {
 
   const searchbar: HTMLDivElement = makeSearchBar();
   head.appendChild(searchbar);
+
+  const sortMethodSelect: HTMLDivElement = sortSelect()
+  head.appendChild(sortMethodSelect)
   // ^^^^^^ --------------------------------
 
   const noteContainer: HTMLDivElement = makeNoteContainer();

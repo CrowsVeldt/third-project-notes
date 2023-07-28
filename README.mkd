@@ -25,6 +25,7 @@
 - Add Note, Form
 - Search Bar
 - Settings
+- sort by select, with arrow toggle to switch between ascending and descending
 
 ## Data schema
 ```
@@ -42,11 +43,14 @@ id: string // hashed from Date.toString()
 
 - when creating note, check if it's duplicate already exists
 - refactor storage to store each note individually as opposed to in an array
+- refactor createInput, etc. to objects and use inheritance for different types
 - Make notes editable
 - Check dates work in different locales
 - Make target date alway be more than current date when adding date via keyboard
 - prevent adding more than 4 digits in target date years column
 - refactor openFormButton to access other elements less
 - move delete all button to settings menu
+- move search bar
+- add for/name/id attributes to search bar and it's label
 
 

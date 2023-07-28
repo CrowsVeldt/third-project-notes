@@ -9,4 +9,4 @@ type Note = {
   createDate?: string;
 };
 
-export type { Note, BackgroundColor };
+export type { BackgroundColor, Note };

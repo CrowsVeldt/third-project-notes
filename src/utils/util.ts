@@ -8,6 +8,13 @@ const noteColors: BackgroundColor[] = [
   "brown",
 ];
 
+const sortMethods: string[] = [
+  'Abc',
+  'Date Created',
+  'Target date',
+  'Color'
+]
+
 // Receives number, returns number as string padded to two chars
 function padTo2Digits(num: number): string {
   return num.toString().padStart(2, "0");
@@ -30,4 +37,4 @@ function formatDate(date: string | Date): string {
 
 const lowerCase: (arg0: string) => string = (n: string) => n.toLocaleLowerCase()
 
-export { noteColors, formatDate, lowerCase };
+export { noteColors, sortMethods, formatDate, lowerCase };
