@@ -1,11 +1,5 @@
 import { Note } from "./types";
 
-//  sortMethods:
-//   'Date Created',
-//   'Title',
-//   'Target date',
-//   'Color'
-
 function sortFunction(a: any, b: any) {
   if (a === b) return 0;
   if (a > b) return 1;
@@ -13,16 +7,25 @@ function sortFunction(a: any, b: any) {
 }
 
 function sortNotes(notes: Note[], method: string): Note[] {
+  const toggle = document.getElementById("box")?.classList.contains("up");
+  let met = notes;
   switch (method) {
     case "Date Created":
-      return notes.sort((a, b) => sortFunction(a.createDate, b.createDate));
+      met = notes.sort((a, b) => sortFunction(a.createDate, b.createDate));
+      break;
     case "Title":
-      return notes.sort((a, b) => sortFunction(a.title, b.title));
+      met = notes.sort((a, b) => sortFunction(a.title, b.title));
+      break;
     case "Target Date":
-      return notes.sort((a, b) => sortFunction(a.targetDate, b.targetDate));
+      met = notes.sort((a, b) => sortFunction(a.targetDate, b.targetDate));
+      break;
     default:
-      return notes.sort((a, b) => sortFunction(a.color, b.color));
+      met = notes.sort((a, b) => sortFunction(a.color, b.color));
+      break;
   }
+  if (toggle) return met.reverse();
+
+  return met;
 }
 
-export default sortNotes
+export default sortNotes;
