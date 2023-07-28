@@ -21,7 +21,7 @@ function makeNoteContainer(noteArray?: Note[]) {
       noteContainer.appendChild(newNote(note, true));
     });
   } else if (storageExists()) {
-    const notes = storedNotes();
+    const notes = storedNotes()
     if (notes) {
       localStorage.clear;
       notes.forEach((note: Note) => {

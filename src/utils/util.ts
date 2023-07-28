@@ -1,20 +1,20 @@
-import { colorObject } from "./types";
+import { SortMethod, colorObject } from "./types";
 
 const noteColors: colorObject[] = [
-  {name: 'None', value: "none"},
-  {name: 'Red', value: "salmon"},
-  {name: 'Blue', value: "lightblue"},
-  {name: 'Green', value: "lightgreen"},
-  {name: 'Yellow', value: "gold"},
-  {name: 'Brown', value: "tan"},
+  { name: "None", value: "none" },
+  { name: "Red", value: "salmon" },
+  { name: "Blue", value: "lightblue" },
+  { name: "Green", value: "lightgreen" },
+  { name: "Yellow", value: "gold" },
+  { name: "Brown", value: "tan" },
 ];
 
-const sortMethods: string[] = [
-  'Date Created',
-  'Abc',
-  'Target date',
-  'Color'
-]
+const sortMethods: SortMethod[] = [
+  { method: "Date Created" },
+  { method: "Title" },
+  { method: "Target Date" },
+  { method: "Color" },
+];
 
 // Receives number, returns number as string padded to two chars
 function padTo2Digits(num: number): string {
@@ -36,6 +36,7 @@ function formatDate(date: string | Date): string {
   }
 }
 
-const lowerCase: (arg0: string) => string = (n: string) => n.toLocaleLowerCase()
+const lowerCase: (arg0: string) => string = (n: string) =>
+  n.toLocaleLowerCase();
 
 export { noteColors, sortMethods, formatDate, lowerCase };

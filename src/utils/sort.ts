@@ -1,22 +1,28 @@
-import { Note } from "./types"
-import { sortMethods } from "./util"
+import { Note } from "./types";
 
-function sortBy (method: string): () => string {
-    // receive sortMethod: string
-    // return sortFunction for appropriate method
-    return () => ''
+//  sortMethods:
+//   'Date Created',
+//   'Title',
+//   'Target date',
+//   'Color'
+
+function sortFunction(a: any, b: any) {
+  if (a === b) return 0;
+  if (a > b) return 1;
+  return -1;
 }
 
-function sortNotes (notes: Note[], method: () => []): Note[] {
-    // receive note array and sort method
-    // use Array.sort to sort notes by method
-    // return sorted array
-
-    const sortedNotes: Note[] = notes
-    return sortedNotes
+function sortNotes(notes: Note[], method: string): Note[] {
+  switch (method) {
+    case "Date Created":
+      return notes.sort((a, b) => sortFunction(a.createDate, b.createDate));
+    case "Title":
+      return notes.sort((a, b) => sortFunction(a.title, b.title));
+    case "Target Date":
+      return notes.sort((a, b) => sortFunction(a.targetDate, b.targetDate));
+    default:
+      return notes.sort((a, b) => sortFunction(a.color, b.color));
+  }
 }
 
-export {
-    sortBy,
-    sortNotes
-}
+export { sortNotes };
