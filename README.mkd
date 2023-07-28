@@ -13,9 +13,9 @@
 - There is a max size for note titles and bodies
 - I can delete all notes, but need to confirm before it will happen
 - I can search notes by title and body contents
+- I can sort notes by title (ABC), date (creation or target), and color
 
 ### Not yet
-- I can sort notes by title (ABC), date (creation or target), and color (in noteContainer.ts)
 - The app fits well and looks good on any screen size
 
 ## Components
@@ -51,6 +51,4 @@ id: string // hashed from Date.toString()
 - refactor openFormButton to access other elements less
 - move delete all button to settings menu
 - move search bar
-- add for/name/id attributes to search bar and it's label
-
-
+- reduce redundancy in sortNotes

@@ -25,4 +25,4 @@ function sortNotes(notes: Note[], method: string): Note[] {
   }
 }
 
-export { sortNotes };
+export default sortNotes

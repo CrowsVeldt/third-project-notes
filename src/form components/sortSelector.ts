@@ -1,6 +1,9 @@
 import directionToggle from "../components/directionToggle";
 import { sortMethods } from "../utils/util";
 import { SortMethod } from "../utils/types";
+import { resetNoteContainer } from "../components/noteContainer";
+import { storedNotes } from "../utils/storage";
+import sortNotes from "../utils/sort";
 
 function sortOption(option: SortMethod): HTMLOptionElement {
   const o: HTMLOptionElement = document.createElement("option");
@@ -21,6 +24,10 @@ function sortSelect(): HTMLDivElement {
   sortSelect.id = "color-select";
   sortSelect.required = true;
   sortSelect.ariaLabel = "Default select element";
+  sortSelect.addEventListener('change', (evt) => {
+    const target = evt.target! as HTMLSelectElement
+    resetNoteContainer(sortNotes(storedNotes()!, target.value))
+  })
 
   sortMethods.forEach((method: SortMethod) => {
     sortSelect.appendChild(sortOption(method));

@@ -1,5 +1,5 @@
 import { createLabel } from "../form components/labelAndInput";
-import { makeNoteContainer, removeNoteContainer } from "./noteContainer";
+import { resetNoteContainer } from "./noteContainer";
 import { searchNotes } from "../utils/storage";
 
 function makeSearchBar(): HTMLDivElement {
@@ -10,12 +10,7 @@ function makeSearchBar(): HTMLDivElement {
   bar.type = "text";
   bar.addEventListener("input", (event: Event) => {
     const barInput: HTMLInputElement = event.target as HTMLInputElement;
-    const page: HTMLElement | null = document.getElementById("main-page");
-
-    if (page) {
-      removeNoteContainer();
-      page.append(makeNoteContainer(searchNotes(barInput.value)));
-    }
+    resetNoteContainer(searchNotes(barInput.value)!);
   });
 
   barContainer.appendChild(barLabel);
