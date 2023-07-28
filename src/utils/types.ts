@@ -1,12 +1,15 @@
-type BackgroundColor = "red" | "green" | "blue" | "yellow" | "brown" | "none";
+type colorObject = {
+  name: string
+  value: string
+}
 
 type Note = {
   title: string;
   body: string;
-  color: BackgroundColor;
+  color: string
   targetDate?: string;
   id?: string;
   createDate?: string;
 };
 
-export type { BackgroundColor, Note };
+export type { colorObject, Note };

@@ -1,16 +1,17 @@
-import { BackgroundColor } from "./types";
-const noteColors: BackgroundColor[] = [
-  "none",
-  "red",
-  "blue",
-  "green",
-  "yellow",
-  "brown",
+import { colorObject } from "./types";
+
+const noteColors: colorObject[] = [
+  {name: 'None', value: "none"},
+  {name: 'Red', value: "salmon"},
+  {name: 'Blue', value: "lightblue"},
+  {name: 'Green', value: "lightgreen"},
+  {name: 'Yellow', value: "gold"},
+  {name: 'Brown', value: "tan"},
 ];
 
 const sortMethods: string[] = [
-  'Abc',
   'Date Created',
+  'Abc',
   'Target date',
   'Color'
 ]

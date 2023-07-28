@@ -1,5 +1,5 @@
-import { BackgroundColor } from "../utils/types";
 import { noteColors } from "../utils/util";
+import { colorObject } from "../utils/types";
 
 function createLabel(value: string, classes: string[]): HTMLLabelElement {
   const l = document.createElement("label");
@@ -28,10 +28,10 @@ function createInput(
   return inp;
 }
 
-const colorOption = (color: BackgroundColor): HTMLOptionElement => {
+const colorOption = (color: colorObject): HTMLOptionElement => {
   const o = document.createElement("option");
-  o.innerText = color;
-  o.value = color;
+  o.innerText = color.name;
+  o.value = color.value;
   return o;
 };
 
