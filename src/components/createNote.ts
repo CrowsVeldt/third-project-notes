@@ -1,4 +1,4 @@
-import { storeNote, removeNote } from "../utils/storage";
+import { saveNote, deleteNote } from "../utils/storage";
 import { Note } from "../utils/types";
 import { formatDate } from "../utils/util";
 
@@ -20,7 +20,7 @@ function newNote(deetz: Note, fromStorage: boolean) {
       ).toString();
 
   if (!fromStorage) {
-    storeNote({
+    saveNote({
       id: id,
       title: deetz.title,
       body: deetz.body,
@@ -61,7 +61,7 @@ function newNote(deetz: Note, fromStorage: boolean) {
   deleteButton.innerText = "Delete";
   deleteButton.id = buttonId;
   deleteButton.addEventListener("click", () => {
-    removeNote(id);
+    deleteNote(id);
     document.getElementById(id)?.remove();
   });
 

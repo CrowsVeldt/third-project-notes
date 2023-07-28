@@ -1,5 +1,5 @@
 import { wipeStorage, storageExists } from "../utils/storage";
-import { makeNoteContainer, wipeNoteContainer } from "./noteContainer";
+import { makeNoteContainer, removeNoteContainer } from "./noteContainer";
 
 function makeMain() {
   const container = document.createElement("div");
@@ -22,7 +22,7 @@ function makeMain() {
       )
     ) {
       wipeStorage();
-      wipeNoteContainer();
+      removeNoteContainer();
       container.appendChild(makeNoteContainer());
     }
   });
