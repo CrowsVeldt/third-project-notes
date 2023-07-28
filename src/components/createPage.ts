@@ -1,18 +1,20 @@
-import { wipeStorage, storageExists } from "../utils/storage";
+import makeSearchBar from "./createSearchBar";
 import { makeNoteContainer, removeNoteContainer } from "./noteContainer";
+import { storageExists, wipeStorage } from "../utils/storage";
 
-function makeMain() {
-  const container = document.createElement("div");
+function makeMain(): HTMLDivElement {
+  const container: HTMLDivElement = document.createElement("div");
   container.id = "main-page";
 
-  const head = document.createElement("header");
+  const head: HTMLHeadElement = document.createElement("header");
   head.classList.add("container-fluid", "text-center", "border");
-  const title = document.createElement("h1");
+  const title: HTMLHeadingElement = document.createElement("h1");
   title.id = "title";
   title.innerText = "Notes";
   head.appendChild(title);
 
-  const wipeButton = document.createElement("button");
+  // VVVVVV - in header for ease of testing
+  const wipeButton: HTMLButtonElement = document.createElement("button");
   wipeButton.innerText = "Delete all notes";
   wipeButton.addEventListener("click", () => {
     if (
@@ -28,9 +30,13 @@ function makeMain() {
   });
   head.appendChild(wipeButton);
 
-  const noteContainer = makeNoteContainer();
+  const searchbar: HTMLInputElement = makeSearchBar()
+  head.appendChild(searchbar)
+  // ^^^^^^ --------------------------------
 
-  const foot = document.createElement("footer");
+  const noteContainer: HTMLDivElement = makeNoteContainer();
+
+  const foot: HTMLElement = document.createElement("footer");
   foot.classList.add(
     "container-fluid",
     "border",
@@ -38,7 +44,7 @@ function makeMain() {
     "position-absolute",
     "bottom-0"
   );
-  const footTitle = document.createElement("h2");
+  const footTitle: HTMLHeadingElement = document.createElement("h2");
   footTitle.innerText = "Footer";
   foot.appendChild(footTitle);
 
