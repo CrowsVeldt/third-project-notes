@@ -1,4 +1,4 @@
-import { createLabel } from "./labelAndInput";
+import { createLabel } from "../form components/labelAndInput";
 import { makeNoteContainer, removeNoteContainer } from "./noteContainer";
 import { searchNotes } from "../utils/storage";
 

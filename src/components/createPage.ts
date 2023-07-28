@@ -1,7 +1,7 @@
 import makeSearchBar from "./createSearchBar";
 import { makeNoteContainer, removeNoteContainer } from "./noteContainer";
 import { storageExists, wipeStorage } from "../utils/storage";
-import { sortSelect } from "./labelAndInput";
+import sortSelect from "../form components/sortSelector";
 
 function makeMain(): HTMLDivElement {
   const container: HTMLDivElement = document.createElement("div");
