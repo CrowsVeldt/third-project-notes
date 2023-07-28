@@ -4,7 +4,7 @@ import newNote from "./createNote";
 import { Note } from "../utils/types";
 import { storedNotes, storageExists } from "../utils/storage";
 
-function makeNoteContainer(noteArray?: Note[]): HTMLDivElement {
+function makeNoteContainer(noteArray?: Note[]) {
   const noteContainer = document.createElement("div");
   noteContainer.id = "note-container";
   noteContainer.classList.add(

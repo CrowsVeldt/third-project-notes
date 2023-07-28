@@ -13,7 +13,7 @@ function makeMain(): HTMLDivElement {
   title.innerText = "Notes";
   head.appendChild(title);
 
-  // VVVVVV - in header for ease of testing
+  // VVVVVV - in header for ease of testing - TODO move
   const wipeButton: HTMLButtonElement = document.createElement("button");
   wipeButton.innerText = "Delete all notes";
   wipeButton.addEventListener("click", () => {
@@ -30,8 +30,8 @@ function makeMain(): HTMLDivElement {
   });
   head.appendChild(wipeButton);
 
-  const searchbar: HTMLInputElement = makeSearchBar()
-  head.appendChild(searchbar)
+  const searchbar: HTMLInputElement = makeSearchBar();
+  head.appendChild(searchbar);
   // ^^^^^^ --------------------------------
 
   const noteContainer: HTMLDivElement = makeNoteContainer();
