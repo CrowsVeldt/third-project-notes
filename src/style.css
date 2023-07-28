@@ -8,3 +8,25 @@
 #body-input {
     width: 100%;
 }
+
+#box {
+    height: 20px;
+    width: 20px;
+    border: 1px solid black;
+    display: inline-block;
+}
+
+#box.up {
+    transform: rotate(180deg);
+}
+
+#arrow {
+    height: 10px;
+    width: 10px;
+    position: relative;
+    left: 4px;
+    top: 5px;
+    border: solid black;
+    border-width: 3px 3px 0px 0px;
+    transform: rotate(-225deg);
+}
