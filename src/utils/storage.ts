@@ -1,7 +1,3 @@
-// import {
-//   makeNoteContainer,
-//   removeNoteContainer,
-// } from "../components/noteContainer";
 import { Note } from "./types";
 
 const storageExists = (): boolean | undefined => {
