@@ -1,4 +1,5 @@
 import { Note } from "./types";
+import { lowerCase } from "./util";
 
 const storageExists = (): boolean | undefined => {
   if (localStorage.length > 0) return true;
@@ -6,7 +7,7 @@ const storageExists = (): boolean | undefined => {
 
 function storedNotes(): Note[] | undefined {
   if (storageExists()) {
-    const notes = localStorage.getItem("notes");
+    const notes: string | null = localStorage.getItem("notes");
     if (notes !== null) {
       const parsedNotes: Note[] = JSON.parse(notes);
       if (parsedNotes.length > 0) return parsedNotes;
@@ -15,7 +16,7 @@ function storedNotes(): Note[] | undefined {
 }
 
 function saveNote(note: Note): void {
-  const notes = storedNotes();
+  const notes: Note[] | undefined = storedNotes();
   if (notes) {
     notes.push(note);
     localStorage.setItem("notes", JSON.stringify(notes));
@@ -25,8 +26,8 @@ function saveNote(note: Note): void {
   }
 }
 
-function deleteNote(noteId: string) {
-  const notes = storedNotes();
+function deleteNote(noteId: string): void {
+  const notes: Note[] | undefined = storedNotes();
   if (notes) {
     notes.forEach((note: Note) => {
       if (note.id === noteId) {
@@ -46,11 +47,16 @@ function wipeStorage(): void {
 }
 
 function searchNotes(query: string): Note[] | undefined {
-  const notes = storedNotes();
+  const notes: Note[] | undefined = storedNotes();
+  const lowQuery: string = lowerCase(query);
+
   if (notes) {
     const results: Note[] = [];
     notes.forEach((note: Note) => {
-      if (note.title.includes(query) || note.body.includes(query)) {
+      if (
+        lowerCase(note.title).includes(lowQuery) ||
+        lowerCase(note.body).includes(lowQuery)
+      ) {
         results.push(note);
       }
     });

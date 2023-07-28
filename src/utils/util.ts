@@ -28,4 +28,6 @@ function formatDate(date: string | Date): string {
   }
 }
 
-export { noteColors, formatDate };
+const lowerCase: (arg0: string) => string = (n: string) => n.toLocaleLowerCase()
+
+export { noteColors, formatDate, lowerCase };

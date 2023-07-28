@@ -30,7 +30,7 @@ function makeMain(): HTMLDivElement {
   });
   head.appendChild(wipeButton);
 
-  const searchbar: HTMLInputElement = makeSearchBar();
+  const searchbar: HTMLDivElement = makeSearchBar();
   head.appendChild(searchbar);
   // ^^^^^^ --------------------------------
 
