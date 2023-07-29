@@ -15,14 +15,9 @@ function makeMain(): HTMLDivElement {
   head.appendChild(title);
 
   // VVVVVV - in header for ease of testing - TODO move
-
   head.appendChild(makeWipeButton());
-
-  const searchbar: HTMLDivElement = makeSearchBar();
-  head.appendChild(searchbar);
-
-  const sortMethodSelect: HTMLDivElement = sortSelect()
-  head.appendChild(sortMethodSelect)
+  head.appendChild(makeSearchBar());
+  head.appendChild(sortSelect())
   // ^^^^^^ --------------------------------
 
   const noteContainer: HTMLDivElement = makeNoteContainer();

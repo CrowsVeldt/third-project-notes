@@ -3,7 +3,6 @@ import { resetNoteContainer } from "./noteContainer";
 
 function makeWipeButton() {
   const wipeButton: HTMLButtonElement = document.createElement("button");
-  // const main: HTMLElement = document.getElementById('main-page')
   wipeButton.innerText = "Delete all notes";
   wipeButton.addEventListener("click", () => {
     if (
@@ -13,7 +12,7 @@ function makeWipeButton() {
       )
     ) {
       wipeStorage();
-      resetNoteContainer()
+      resetNoteContainer();
     }
   });
 

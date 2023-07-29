@@ -6,7 +6,8 @@ function sortFunction(a: any, b: any) {
   return -1;
 }
 
-function sortNotes(notes: Note[], method: string): Note[] {
+function sortNotes(notes: Note[] | undefined, method: string): Note[] | void {
+  if (!notes) return 
   const toggle = document.getElementById("box")?.classList.contains("up");
   let met = notes;
   switch (method) {
