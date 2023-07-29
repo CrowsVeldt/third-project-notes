@@ -3,7 +3,7 @@ import makeSearchBar from "./createSearchBar";
 
 function makeDisplayControl () {
     const controlContainer = document.createElement('div')
-    controlContainer.classList.add('w-100')
+    controlContainer.classList.add('container', 'd-flex', 'justify-content-between')
 
     controlContainer.appendChild(sortSelect())
     controlContainer.appendChild(makeSearchBar())
