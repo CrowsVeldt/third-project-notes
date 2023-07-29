@@ -31,7 +31,8 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
     "p-2",
     "d-flex",
     "flex-column",
-    "note"
+    "note",
+    'flex-fill'
   );
 
   const noteTitle: HTMLHeadingElement = document.createElement("h3");
@@ -52,6 +53,7 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
   const deleteButton: HTMLButtonElement = document.createElement("button");
   deleteButton.innerText = "Delete";
   deleteButton.id = buttonId;
+  deleteButton.classList.add('w-50', 'align-self-center')
   deleteButton.addEventListener("click", () => {
     deleteNote(id);
     document.getElementById(id)?.remove();

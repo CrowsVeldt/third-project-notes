@@ -58,11 +58,11 @@ function noteForm(): HTMLDivElement {
   formContainer.appendChild(colorLabel);
   formContainer.appendChild(cSelect);
 
-  const createButton: HTMLButtonElement = document.createElement("button");
-  createButton.innerText = "Add note";
-  createButton.type = "submit";
-  createButton.id = "form-button";
-  createButton.addEventListener("click", (evt) => {
+  const addButton: HTMLButtonElement = document.createElement("button");
+  addButton.innerText = "Add note";
+  addButton.type = "submit";
+  addButton.id = "form-button";
+  addButton.addEventListener("click", (evt) => {
     evt.preventDefault();
     if (titleInput.value === "") {
       titleInput.reportValidity();
@@ -87,7 +87,7 @@ function noteForm(): HTMLDivElement {
     );
   });
 
-  formContainer.appendChild(createButton);
+  formContainer.appendChild(addButton);
 
   return formContainer;
 }
