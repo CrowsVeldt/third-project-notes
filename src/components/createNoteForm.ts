@@ -1,7 +1,6 @@
 import newNote from "./createNote";
 import { createInput, createLabel } from "../form components/labelAndInput";
 import colorSelect from "../form components/colorSelector";
-//import { BackgroundColor } from "../utils/types";
 import { formatDate } from "../utils/util";
 
 function makeNoteForm() {

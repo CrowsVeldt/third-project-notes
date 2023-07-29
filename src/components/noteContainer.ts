@@ -39,7 +39,7 @@ function removeNoteContainer() {
   }
 }
 
-function resetNoteContainer(notes: Note[]) {
+function resetNoteContainer(notes: Note[] = []) {
   const page = document.getElementById("main-page");
   removeNoteContainer();
   page?.appendChild(makeNoteContainer(notes));

@@ -1,11 +1,11 @@
 import makeSearchBar from "./createSearchBar";
-import { makeNoteContainer, removeNoteContainer } from "./noteContainer";
-import { storageExists, wipeStorage } from "../utils/storage";
+import { makeNoteContainer } from "./noteContainer";
+import makeWipeButton from "./deleteAllButton";
 import sortSelect from "../form components/sortSelector";
 
 function makeMain(): HTMLDivElement {
-  const container: HTMLDivElement = document.createElement("div");
-  container.id = "main-page";
+  const mainContainer: HTMLDivElement = document.createElement("div");
+  mainContainer.id = "main-page";
 
   const head: HTMLHeadElement = document.createElement("header");
   head.classList.add("container-fluid", "text-center", "border");
@@ -15,21 +15,8 @@ function makeMain(): HTMLDivElement {
   head.appendChild(title);
 
   // VVVVVV - in header for ease of testing - TODO move
-  const wipeButton: HTMLButtonElement = document.createElement("button");
-  wipeButton.innerText = "Delete all notes";
-  wipeButton.addEventListener("click", () => {
-    if (
-      storageExists() &&
-      confirm(
-        "Are you sure you want to delete all notes? This cannot be undone."
-      )
-    ) {
-      wipeStorage();
-      removeNoteContainer();
-      container.appendChild(makeNoteContainer());
-    }
-  });
-  head.appendChild(wipeButton);
+
+  head.appendChild(makeWipeButton());
 
   const searchbar: HTMLDivElement = makeSearchBar();
   head.appendChild(searchbar);
@@ -51,11 +38,11 @@ function makeMain(): HTMLDivElement {
   footTitle.innerText = "Footer";
   foot.appendChild(footTitle);
 
-  container.appendChild(head);
-  container.appendChild(noteContainer);
-  container.appendChild(foot);
+  mainContainer.appendChild(head);
+  mainContainer.appendChild(noteContainer);
+  mainContainer.appendChild(foot);
 
-  return container;
+  return mainContainer;
 }
 
 export default makeMain;

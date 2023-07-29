@@ -51,4 +51,4 @@ id: string // hashed from Date.toString()
 - refactor openFormButton to access other elements less
 - move delete all button to settings menu
 - move search bar
-- reduce redundancy in sortNotes
+- reduce redundancy in sortNotes file
