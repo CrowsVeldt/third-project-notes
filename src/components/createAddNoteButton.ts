@@ -1,3 +1,5 @@
+import { toggleForm } from "./createNoteForm";
+
 function addNoteButton(): HTMLButtonElement {
   const btn: HTMLButtonElement = document.createElement("button");
   btn.innerText = "+";
@@ -12,8 +14,7 @@ function addNoteButton(): HTMLButtonElement {
     );
 
   btn.addEventListener("click", () => {
-    const form = document.getElementById("note-form")!;
-    form.classList.toggle("d-flex");
+    toggleForm()
   });
 
   return btn;

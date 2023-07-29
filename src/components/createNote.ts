@@ -1,6 +1,7 @@
-import { saveNote, deleteNote } from "../utils/storage";
+import { saveNote, deleteNote, getNote } from "../utils/storage";
 import { Note } from "../utils/types";
 import { formatDate, makeHash } from "../utils/util";
+import { noteForm, toggleForm } from "./createNoteForm";
 
 function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
   const date: Date = new Date();
@@ -61,6 +62,7 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
 
   const editButton: HTMLButtonElement = document.createElement('button')
   editButton.innerText = 'Edit'
+  editButton.classList.add('w-50', 'align-self-center')
 
   editButton.addEventListener('click', () => {
     editNote(id)
@@ -76,9 +78,10 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
   return note;
 }
 
-function editNote (noteId :string) {
-  const note = document.getElementById(noteId)
-  console.log(note)
+function editNote (noteId: string) {
+  const note = getNote(noteId)
+  noteForm(note as Note)
+  toggleForm()
 }
 
-export default newNote;
+export { newNote, editNote}

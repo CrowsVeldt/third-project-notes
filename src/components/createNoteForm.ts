@@ -1,10 +1,10 @@
-import newNote from "./createNote";
+import { newNote } from "./createNote";
 import { createInput, createLabel } from "../form components/labelAndInput";
 import colorSelect from "../form components/colorSelector";
 import { formatDate } from "../utils/util";
 import { Note } from "../utils/types";
 
-function noteForm(noteValues?: Note): HTMLDivElement {
+function noteForm(edit?: Note): HTMLDivElement {
   const date: Date = new Date();
   const minDate: string = new Date(
     date.getTime() - date.getTimezoneOffset() * 60000
@@ -48,6 +48,9 @@ function noteForm(noteValues?: Note): HTMLDivElement {
   const bodyInput: HTMLTextAreaElement = document.createElement("textarea");
   bodyInput.id = "body-input";
   bodyInput.classList.add("form-control");
+  // VVVVVVV -WORK IN PROGRESS-
+  bodyInput.value = edit ? edit.body : ''
+  // ^^^^^^^
   bodyInput.maxLength = 100;
   bodyInput.required = true;
   formContainer.appendChild(bodyLabel);
@@ -77,13 +80,6 @@ function noteForm(noteValues?: Note): HTMLDivElement {
   addButton.innerText = "Add note";
   addButton.type = "submit";
   addButton.id = "form-button";
-
-  if (noteValues) {
-    titleInput.value = noteValues.title;
-    bodyInput.value = noteValues.body;
-    tDateInput.value = noteValues.targetDate as string;
-    cSelect.value = noteValues.color;
-  }
 
   addButton.addEventListener("click", (evt) => {
     evt.preventDefault();
@@ -123,4 +119,9 @@ function noteForm(noteValues?: Note): HTMLDivElement {
   return formContainer;
 }
 
-export default noteForm;
+function toggleForm () {
+  const form = document.getElementById("note-form")!;
+  form.classList.toggle("d-flex");
+}
+
+export {noteForm, toggleForm}
