@@ -1,5 +1,5 @@
 function createLabel(value: string, classes: string[]): HTMLLabelElement {
-  const l = document.createElement("label");
+  const l: HTMLLabelElement = document.createElement("label");
   DOMTokenList.prototype.add.apply(l.classList, classes);
   l.innerText = value;
   return l;
@@ -12,7 +12,7 @@ function createInput(
   required: boolean,
   other?: string[][]
 ): HTMLInputElement {
-  const inp = document.createElement("input");
+  const inp: HTMLInputElement = document.createElement("input");
   inp.type = type;
   inp.id = id;
   DOMTokenList.prototype.add.apply(inp.classList, classes);

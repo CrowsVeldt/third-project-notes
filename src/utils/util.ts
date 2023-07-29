@@ -16,6 +16,19 @@ const sortMethods: SortMethod[] = [
   { method: "Color" },
 ];
 
+// Receives string, combine with random string, return hash of both
+function makeHash(s: string): string {
+  const randString: string = (Math.random() + 1).toString(36).substring(7);
+  const output: string = (s + randString)
+    .split("")
+    .reduce((a, b) => {
+      a = (a << 5) - a + b.charCodeAt(0);
+      return a & a;
+    }, 0)
+    .toString();
+  return output;
+}
+
 // Receives number, returns number as string padded to two chars
 function padTo2Digits(num: number): string {
   return num.toString().padStart(2, "0");
@@ -39,4 +52,4 @@ function formatDate(date: string | Date): string {
 const lowerCase: (arg0: string) => string = (n: string) =>
   n.toLocaleLowerCase();
 
-export { noteColors, sortMethods, formatDate, lowerCase };
+export { noteColors, sortMethods, formatDate, lowerCase, makeHash };

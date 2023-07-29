@@ -8,8 +8,8 @@ function sortFunction(a: any, b: any) {
 
 function sortNotes(notes: undefined | Note[], method: string): Note[] | void {
   if (!notes) return 
-  const toggle = document.getElementById("box")?.classList.contains("up");
-  let met = notes;
+  const toggle: boolean | undefined = document.getElementById("box")?.classList.contains("up");
+  let met: Note[] = notes;
   switch (method) {
     case "Date Created":
       met = notes.sort((a, b) => sortFunction(a.createDate, b.createDate));

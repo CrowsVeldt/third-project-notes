@@ -1,23 +1,12 @@
 import { saveNote, deleteNote } from "../utils/storage";
 import { Note } from "../utils/types";
-import { formatDate } from "../utils/util";
+import { formatDate, makeHash } from "../utils/util";
 
-function newNote(deetz: Note, fromStorage: boolean) {
-  // create Hash from s
-  const hashCode = (s: string) =>
-    s.split("").reduce((a, b) => {
-      a = (a << 5) - a + b.charCodeAt(0);
-      return a & a;
-    }, 0);
-  const date = new Date();
-  const cDate = deetz.createDate ? deetz.createDate : formatDate(date);
-  // set id to Hash of current time + random characters
-  const id = deetz.id
-    ? deetz.id
-    : hashCode(
-        date.getTime().toString() +
-          (Math.random() + 1).toString(36).substring(7)
-      ).toString();
+function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
+  const date: Date = new Date();
+  const cDate: string = deetz.createDate ? deetz.createDate : formatDate(date);
+  // if there is no id, set it to a Hash of current time + random characters
+  const id: string = deetz.id ? deetz.id : makeHash(date.getTime().toString());
 
   if (!fromStorage) {
     saveNote({
@@ -30,9 +19,9 @@ function newNote(deetz: Note, fromStorage: boolean) {
     });
   }
 
-  const buttonId = "button-" + id;
+  const buttonId: string = "button-" + id;
 
-  const note = document.createElement("div");
+  const note: HTMLDivElement = document.createElement("div");
   note.id = id;
   note.style.backgroundColor = deetz.color;
   note.classList.add(
@@ -42,23 +31,25 @@ function newNote(deetz: Note, fromStorage: boolean) {
     "p-2",
     "d-flex",
     "flex-column",
-    'note'
+    "note"
   );
 
-  const noteTitle = document.createElement("h3");
+  const noteTitle: HTMLHeadingElement = document.createElement("h3");
   noteTitle.innerText = deetz.title;
 
-  const noteBody = document.createElement("p");
+  const noteBody: HTMLParagraphElement = document.createElement("p");
   noteBody.classList.add("mb-auto", "border-top", "border-bottom");
   noteBody.innerText = deetz.body;
 
-  const noteCDate = document.createElement("p");
+  const noteCDate: HTMLParagraphElement = document.createElement("p");
   noteCDate.innerText = `Created on ${cDate}`;
 
-  const noteTDate = document.createElement("p");
-  noteTDate.innerText = deetz.targetDate ? `Target date ${deetz.targetDate}` : ''
+  const noteTDate: HTMLParagraphElement = document.createElement("p");
+  noteTDate.innerText = deetz.targetDate
+    ? `Target date ${deetz.targetDate}`
+    : "";
 
-  const deleteButton = document.createElement("button");
+  const deleteButton: HTMLButtonElement = document.createElement("button");
   deleteButton.innerText = "Delete";
   deleteButton.id = buttonId;
   deleteButton.addEventListener("click", () => {

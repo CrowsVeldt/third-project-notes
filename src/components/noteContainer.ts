@@ -5,7 +5,7 @@ import { Note } from "../utils/types";
 import { storedNotes, storageExists } from "../utils/storage";
 
 function makeNoteContainer(noteArray?: Note[]): HTMLDivElement {
-  const noteContainer = document.createElement("div");
+  const noteContainer: HTMLDivElement = document.createElement("div");
   noteContainer.id = "note-container";
   noteContainer.classList.add(
     "container",
@@ -21,7 +21,7 @@ function makeNoteContainer(noteArray?: Note[]): HTMLDivElement {
       noteContainer.appendChild(newNote(note, true));
     });
   } else if (storageExists()) {
-    const notes = storedNotes();
+    const notes: void | Note[] = storedNotes();
     if (notes) {
       localStorage.clear;
       notes.forEach((note: Note) => {
@@ -33,7 +33,7 @@ function makeNoteContainer(noteArray?: Note[]): HTMLDivElement {
 }
 
 function removeNoteContainer(): void {
-  const con = document.getElementById("note-container");
+  const con: HTMLElement | null = document.getElementById("note-container");
   if (con) {
     con.remove();
   }
@@ -41,7 +41,7 @@ function removeNoteContainer(): void {
 
 function resetNoteContainer(notes: Note[] | void = []): void {
   if (!notes) return
-  const page = document.getElementById("main-page");
+  const page: HTMLElement | null = document.getElementById("main-page");
   removeNoteContainer();
   page?.appendChild(makeNoteContainer(notes));
 }

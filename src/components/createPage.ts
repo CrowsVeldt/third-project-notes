@@ -1,6 +1,3 @@
-// import makeSearchBar from "./createSearchBar";
-// import makeWipeButton from "./createDeleteAllButton";
-// import sortSelect from "../form components/sortSelector";
 import { makeNoteContainer } from "./noteContainer";
 
 function makeHeader(): HTMLHeadElement {
@@ -10,12 +7,6 @@ function makeHeader(): HTMLHeadElement {
   title.id = "title";
   title.innerText = "Notes";
   head.appendChild(title);
-
-  // VVVVVV - in header for ease of testing - TODO move
-  // head.appendChild(makeWipeButton());
-  // head.appendChild(makeSearchBar());
-  // head.appendChild(sortSelect())
-  // ^^^^^^ --------------------------------
 
   return head;
 }

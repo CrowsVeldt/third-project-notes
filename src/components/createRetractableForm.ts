@@ -1,5 +1,5 @@
-function makeRetractableForm(idName: string) {
-  const form = document.createElement("div");
+function makeRetractableForm(idName: string): HTMLDivElement {
+  const form: HTMLDivElement = document.createElement("div");
   form.id = idName;
 
   form.classList.add(

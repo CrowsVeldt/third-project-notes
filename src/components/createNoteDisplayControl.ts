@@ -1,8 +1,8 @@
 import sortSelect from "../form components/sortSelector";
 import makeSearchBar from "./createSearchBar";
 
-function makeDisplayControl () {
-    const controlContainer = document.createElement('div')
+function makeDisplayControl (): HTMLDivElement {
+    const controlContainer: HTMLDivElement = document.createElement('div')
     controlContainer.classList.add('container', 'd-flex', 'justify-content-between')
 
     controlContainer.appendChild(sortSelect())
