@@ -1,7 +1,7 @@
 import sortSelect from "../form components/sortSelector";
 import makeSearchBar from "./createSearchBar";
 
-function makeDisplayControl (): HTMLDivElement {
+function noteContainerControl (): HTMLDivElement {
     const controlContainer: HTMLDivElement = document.createElement('div')
     controlContainer.classList.add('container', 'd-flex', 'justify-content-between')
 
@@ -11,4 +11,4 @@ function makeDisplayControl (): HTMLDivElement {
     return controlContainer
 }
 
-export default makeDisplayControl
+export default noteContainerControl

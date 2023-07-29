@@ -1,7 +1,7 @@
 import { storageExists, wipeStorage } from "../utils/storage";
 import { resetNoteContainer } from "./noteContainer";
 
-function makeWipeButton(): HTMLButtonElement {
+function wipeButton(): HTMLButtonElement {
   const wipeButton: HTMLButtonElement = document.createElement("button");
   wipeButton.innerText = "Delete all notes";
   wipeButton.addEventListener("click", () => {
@@ -19,4 +19,4 @@ function makeWipeButton(): HTMLButtonElement {
   return wipeButton;
 }
 
-export default makeWipeButton;
+export default wipeButton;

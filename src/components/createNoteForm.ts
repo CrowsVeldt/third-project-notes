@@ -5,7 +5,7 @@ import { formatDate } from "../utils/util";
 import createToggleButton from "./createFormToggleButton";
 import makeRetractableForm from "./createRetractableForm";
 
-function makeNoteForm(): HTMLDivElement {
+function noteForm(): HTMLDivElement {
   const date: Date = new Date();
   const minDate: string = new Date(
     date.getTime() - date.getTimezoneOffset() * 60000
@@ -92,4 +92,4 @@ function makeNoteForm(): HTMLDivElement {
   return formContainer;
 }
 
-export default makeNoteForm;
+export default noteForm;
