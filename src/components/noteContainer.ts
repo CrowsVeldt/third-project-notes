@@ -1,5 +1,5 @@
-import makeNoteForm from "./createNoteForm";
-import createPlusButton from "./createOpenFormButton";
+import makeNoteForm from "./createAddNoteForm";
+// import createPlusButton from "./createOpenFormButton";
 import newNote from "./createNote";
 import { Note } from "../utils/types";
 import { storedNotes, storageExists } from "../utils/storage";
@@ -14,7 +14,7 @@ function makeNoteContainer(noteArray?: Note[]): HTMLDivElement {
     "space-between"
   );
   noteContainer.appendChild(makeNoteForm());
-  noteContainer.appendChild(createPlusButton());
+  // noteContainer.appendChild(createPlusButton());
 
   if (noteArray) {
     noteArray.forEach((note: Note) => {

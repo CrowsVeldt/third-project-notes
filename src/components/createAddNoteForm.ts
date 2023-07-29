@@ -2,6 +2,7 @@ import newNote from "./createNote";
 import { createInput, createLabel } from "../form components/labelAndInput";
 import colorSelect from "../form components/colorSelector";
 import { formatDate } from "../utils/util";
+import createPlusButton from "./createOpenFormButton";
 
 function makeNoteForm() {
   const date = new Date();
@@ -13,16 +14,16 @@ function makeNoteForm() {
 
   const formContainer = document.createElement("form");
   formContainer.id = "add-note-form";
-  formContainer.style.display = "none";
-  formContainer.style.position = "fixed";
-  formContainer.style.left = "0%";
   formContainer.classList.add(
     "border",
     "rounded",
     "p-1",
+    'd-flex',
     "flex-column",
     "bg-white"
   );
+
+  formContainer.appendChild(createPlusButton())
 
   const titleLabel = createLabel("Note title", ["form-label"]);
   const titleInput = createInput(
@@ -89,7 +90,6 @@ function makeNoteForm() {
     );
   });
 
-  formContainer.appendChild(createButton);
 
   return formContainer;
 }

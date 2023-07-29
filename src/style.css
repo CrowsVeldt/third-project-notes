@@ -1,36 +1,51 @@
-#add-note {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#add-note-form {
+  transition: left 0.15s;
+  position: fixed;
+  left: 0%;
+  width: 200px;
+}
+
+#add-note-form.hidden {
+  left: -100%;
+}
+
+#toggle-note-form {
+    position: fixed;
+    left: 200px;
+    transition: left 0.15s;
+}
+
+#toggle-note-form.hidden {
+    position: fixed;
+    left: 0px;
 }
 
 #body-input {
-    width: 100%;
+  width: 100%;
 }
 
 .note {
-    width: 230px;
+  width: 230px;
 }
 
 #box {
-    height: 20px;
-    width: 20px;
-    border: 1px solid black;
-    display: inline-block;
+  height: 20px;
+  width: 20px;
+  border: 1px solid black;
+  display: inline-block;
 }
 
 #box.up {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 #arrow {
-    height: 10px;
-    width: 10px;
-    position: relative;
-    left: 4px;
-    top: 5px;
-    border: solid black;
-    border-width: 3px 3px 0px 0px;
-    transform: rotate(-225deg);
+  height: 10px;
+  width: 10px;
+  position: relative;
+  left: 4px;
+  top: 5px;
+  border: solid black;
+  border-width: 3px 3px 0px 0px;
+  transform: rotate(-225deg);
 }
