@@ -1,4 +1,4 @@
-import directionToggle from "../components/directionToggle";
+import directionToggle from "../components/createDirectionToggle";
 import { sortMethods } from "../utils/util";
 import { SortMethod } from "../utils/types";
 import { resetNoteContainer } from "../components/noteContainer";

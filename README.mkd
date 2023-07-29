@@ -53,3 +53,4 @@ id: string // hashed from Date.toString()
 - layout: move search bar
 - sort: reduce redundancy in sortNotes file
 - sort: subsort by Abc or date as appropriate
+- sort: sorting by target date should sort by year, then month, then day, 

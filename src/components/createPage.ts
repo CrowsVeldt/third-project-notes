@@ -1,5 +1,5 @@
 // import makeSearchBar from "./createSearchBar";
-// import makeWipeButton from "./deleteAllButton";
+// import makeWipeButton from "./createDeleteAllButton";
 // import sortSelect from "../form components/sortSelector";
 import { makeNoteContainer } from "./noteContainer";
 
@@ -17,13 +17,13 @@ function makeHeader(): HTMLHeadElement {
   // head.appendChild(sortSelect())
   // ^^^^^^ --------------------------------
 
-  return head
+  return head;
 }
 
 function makeMain(): HTMLDivElement {
   const mainContainer: HTMLDivElement = document.createElement("div");
   mainContainer.id = "main-page";
-  mainContainer.classList.add('flex-grow-1')
+  mainContainer.classList.add("flex-grow-1");
 
   const noteContainer: HTMLDivElement = makeNoteContainer();
   mainContainer.appendChild(noteContainer);
@@ -31,18 +31,14 @@ function makeMain(): HTMLDivElement {
   return mainContainer;
 }
 
-function makeFooter (): HTMLElement {
+function makeFooter(): HTMLElement {
   const foot: HTMLElement = document.createElement("footer");
-  foot.classList.add(
-    "container-fluid",
-    "border",
-    "text-center"
-  );
+  foot.classList.add("container-fluid", "border", "text-center");
   const footTitle: HTMLHeadingElement = document.createElement("h2");
   footTitle.innerText = "Footer";
   foot.appendChild(footTitle);
 
-  return foot
+  return foot;
 }
 
-export { makeFooter, makeHeader, makeMain }
+export { makeFooter, makeHeader, makeMain };

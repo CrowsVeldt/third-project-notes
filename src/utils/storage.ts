@@ -5,7 +5,7 @@ const storageExists = (): boolean | undefined => {
   if (localStorage.length > 0) return true;
 };
 
-function storedNotes(): Note[] | undefined {
+function storedNotes(): Note[] | void {
   if (storageExists()) {
     const notes: string | null = localStorage.getItem("notes");
     if (notes !== null) {
@@ -16,7 +16,7 @@ function storedNotes(): Note[] | undefined {
 }
 
 function saveNote(note: Note): void {
-  const notes: Note[] | undefined = storedNotes();
+  const notes: Note[] | void = storedNotes();
   if (notes) {
     notes.push(note);
     localStorage.setItem("notes", JSON.stringify(notes));
@@ -27,7 +27,7 @@ function saveNote(note: Note): void {
 }
 
 function deleteNote(noteId: string): void {
-  const notes: Note[] | undefined = storedNotes();
+  const notes: Note[] | void = storedNotes();
   if (notes) {
     notes.forEach((note: Note) => {
       if (note.id === noteId) {
@@ -47,7 +47,7 @@ function wipeStorage(): void {
 }
 
 function searchNotes(query: string): Note[] | undefined {
-  const notes: Note[] | undefined = storedNotes();
+  const notes: Note[] | void = storedNotes();
   const lowQuery: string = lowerCase(query);
 
   if (notes) {

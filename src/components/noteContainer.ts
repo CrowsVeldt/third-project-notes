@@ -1,10 +1,10 @@
 import makeNoteForm from "./createNoteForm";
-import createPlusButton from "./openFormButton";
+import createPlusButton from "./createOpenFormButton";
 import newNote from "./createNote";
 import { Note } from "../utils/types";
 import { storedNotes, storageExists } from "../utils/storage";
 
-function makeNoteContainer(noteArray?: Note[]) {
+function makeNoteContainer(noteArray?: Note[]): HTMLDivElement {
   const noteContainer = document.createElement("div");
   noteContainer.id = "note-container";
   noteContainer.classList.add(
@@ -32,14 +32,15 @@ function makeNoteContainer(noteArray?: Note[]) {
   return noteContainer;
 }
 
-function removeNoteContainer() {
+function removeNoteContainer(): void {
   const con = document.getElementById("note-container");
   if (con) {
     con.remove();
   }
 }
 
-function resetNoteContainer(notes: Note[] = []) {
+function resetNoteContainer(notes: Note[] | void = []): void {
+  if (!notes) return
   const page = document.getElementById("main-page");
   removeNoteContainer();
   page?.appendChild(makeNoteContainer(notes));
