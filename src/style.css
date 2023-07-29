@@ -1,23 +1,5 @@
-#add-note-form {
-  transition: left 0.15s;
-  position: fixed;
-  left: 0%;
-  width: 200px;
-}
-
-#add-note-form.hidden {
-  left: -100%;
-}
-
-#toggle-form-add-note-form {
-  position: fixed;
-  left: 200px;
-  transition: left 0.15s;
-}
-
-#toggle-form-add-note-form.hidden {
-  position: fixed;
-  left: 0px;
+.hidden {
+  display: none;
 }
 
 #body-input {

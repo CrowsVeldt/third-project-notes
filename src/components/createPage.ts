@@ -1,4 +1,4 @@
-import { makeNoteContainer } from "./noteContainer";
+import { noteContainer } from "./noteContainer";
 
 function makeHeader(): HTMLHeadElement {
   const head: HTMLHeadElement = document.createElement("header");
@@ -16,8 +16,8 @@ function makeMain(): HTMLDivElement {
   mainContainer.id = "main-page";
   mainContainer.classList.add("flex-grow-1");
 
-  const noteContainer: HTMLDivElement = makeNoteContainer();
-  mainContainer.appendChild(noteContainer);
+  const noteCon: HTMLDivElement = noteContainer();
+  mainContainer.appendChild(noteCon);
 
   return mainContainer;
 }

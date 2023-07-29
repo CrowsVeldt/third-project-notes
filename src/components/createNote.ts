@@ -59,13 +59,26 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
     document.getElementById(id)?.remove();
   });
 
+  const editButton: HTMLButtonElement = document.createElement('button')
+  editButton.innerText = 'Edit'
+
+  editButton.addEventListener('click', () => {
+    editNote(id)
+  })
+
   note.appendChild(noteTitle);
   note.appendChild(noteBody);
   note.appendChild(noteCDate);
   note.appendChild(noteTDate);
   note.appendChild(deleteButton);
+  note.appendChild(editButton);
 
   return note;
+}
+
+function editNote (noteId :string) {
+  const note = document.getElementById(noteId)
+  console.log(note)
 }
 
 export default newNote;

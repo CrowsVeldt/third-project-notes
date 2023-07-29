@@ -3,7 +3,7 @@ import newNote from "./createNote";
 import { Note } from "../utils/types";
 import { storedNotes, storageExists } from "../utils/storage";
 
-function makeNoteContainer(noteArray?: Note[]): HTMLDivElement {
+function noteContainer(noteArray?: Note[]): HTMLDivElement {
   const noteContainer: HTMLDivElement = document.createElement("div");
   noteContainer.id = "note-container";
   noteContainer.classList.add(
@@ -42,7 +42,7 @@ function resetNoteContainer(notes: Note[] | void = []): void {
   if (!notes) return
   const page: HTMLElement | null = document.getElementById("main-page");
   removeNoteContainer();
-  page?.appendChild(makeNoteContainer(notes));
+  page?.appendChild(noteContainer(notes));
 }
 
-export { makeNoteContainer, removeNoteContainer, resetNoteContainer };
+export { noteContainer, removeNoteContainer, resetNoteContainer };

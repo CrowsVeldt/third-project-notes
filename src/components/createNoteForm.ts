@@ -2,8 +2,6 @@ import newNote from "./createNote";
 import { createInput, createLabel } from "../form components/labelAndInput";
 import colorSelect from "../form components/colorSelector";
 import { formatDate } from "../utils/util";
-import createToggleButton from "./createFormToggleButton";
-import makeRetractableForm from "./createRetractableForm";
 
 function noteForm(): HTMLDivElement {
   const date: Date = new Date();
@@ -13,8 +11,24 @@ function noteForm(): HTMLDivElement {
     .toISOString()
     .split("T")[0];
 
-  const formContainer: HTMLDivElement = makeRetractableForm("add-note-form");
-  formContainer.appendChild(createToggleButton(formContainer));
+  const formContainer: HTMLDivElement = document.createElement("div");
+  formContainer.id = "note-form";
+  formContainer.classList.add(
+    "position-fixed",
+    "bg-light",
+    "w-75",
+    "h-75",
+    "flex-column",
+    'justify-content-between',
+    'px-2',
+    'top-25',
+    'start-50',
+    'translate-middle-x',
+    'border',
+    'border-dark',
+    'rounded',
+    'hidden'
+  );
 
   const titleLabel: HTMLLabelElement = createLabel("Note title", [
     "form-label",
@@ -64,16 +78,19 @@ function noteForm(): HTMLDivElement {
   addButton.id = "form-button";
   addButton.addEventListener("click", (evt) => {
     evt.preventDefault();
+
     if (titleInput.value === "") {
       titleInput.reportValidity();
       return;
     } else if (bodyInput.value === "") {
       bodyInput.reportValidity();
       return;
-    } else if (cSelect.value === "") {
-      cSelect.reportValidity();
-      return;
     }
+
+    if (formContainer.classList.contains('d-flex')) {
+      formContainer.classList.toggle('d-flex')
+    }
+
     document.getElementById("note-container")?.appendChild(
       newNote(
         {
@@ -85,6 +102,11 @@ function noteForm(): HTMLDivElement {
         false
       )
     );
+
+    titleInput.value = ''
+    bodyInput.value = ''
+    tDateInput.value = ''
+    cSelect.value = 'None'
   });
 
   formContainer.appendChild(addButton);
