@@ -9,6 +9,10 @@
     width: 100%;
 }
 
+.note {
+    width: 230px;
+}
+
 #box {
     height: 20px;
     width: 20px;
