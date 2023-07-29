@@ -2,8 +2,9 @@ import newNote from "./createNote";
 import { createInput, createLabel } from "../form components/labelAndInput";
 import colorSelect from "../form components/colorSelector";
 import { formatDate } from "../utils/util";
+import { Note } from "../utils/types";
 
-function noteForm(): HTMLDivElement {
+function noteForm(noteValues?: Note): HTMLDivElement {
   const date: Date = new Date();
   const minDate: string = new Date(
     date.getTime() - date.getTimezoneOffset() * 60000
@@ -76,6 +77,14 @@ function noteForm(): HTMLDivElement {
   addButton.innerText = "Add note";
   addButton.type = "submit";
   addButton.id = "form-button";
+
+  if (noteValues) {
+    titleInput.value = noteValues.title;
+    bodyInput.value = noteValues.body;
+    tDateInput.value = noteValues.targetDate as string;
+    cSelect.value = noteValues.color;
+  }
+
   addButton.addEventListener("click", (evt) => {
     evt.preventDefault();
 
