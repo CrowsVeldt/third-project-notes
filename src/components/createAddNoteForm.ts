@@ -90,6 +90,7 @@ function makeNoteForm() {
     );
   });
 
+  formContainer.appendChild(createButton);
 
   return formContainer;
 }
