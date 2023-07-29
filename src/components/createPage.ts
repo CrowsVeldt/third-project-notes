@@ -45,7 +45,6 @@ function makeMain(): HTMLDivElement {
     "container-fluid",
     "border",
     "text-center",
-    "position-absolute",
     "bottom-0"
   );
   const footTitle: HTMLHeadingElement = document.createElement("h2");
