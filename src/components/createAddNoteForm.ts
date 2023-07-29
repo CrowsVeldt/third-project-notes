@@ -20,7 +20,8 @@ function makeNoteForm() {
     "p-1",
     'd-flex',
     "flex-column",
-    "bg-white"
+    "bg-white",
+    'hidden'
   );
 
   formContainer.appendChild(createPlusButton())

@@ -1,9 +1,10 @@
 function createPlusButton () {
     const btn = document.createElement('button')
-    btn.innerText = '<'
+    btn.innerText = '>'
     btn.style.width = '50px'
     btn.style.height = '50px'
     btn.id = 'toggle-note-form'
+    btn.classList.add('hidden')
     btn.addEventListener('click', () => {
         const form = document.getElementById('add-note-form')
         form?.classList.toggle('hidden')
