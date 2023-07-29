@@ -2,32 +2,24 @@ import newNote from "./createNote";
 import { createInput, createLabel } from "../form components/labelAndInput";
 import colorSelect from "../form components/colorSelector";
 import { formatDate } from "../utils/util";
-import createPlusButton from "./createOpenFormButton";
+import createToggleButton from "./createFormToggleButton";
+import makeRetractableForm from "./createRetractableForm";
 
-function makeNoteForm() {
-  const date = new Date();
+function makeNoteForm(): HTMLDivElement {
+  const date: Date = new Date();
   const minDate: string = new Date(
     date.getTime() - date.getTimezoneOffset() * 60000
   )
     .toISOString()
     .split("T")[0];
 
-  const formContainer = document.createElement("form");
+  const formContainer: HTMLDivElement = makeRetractableForm()
   formContainer.id = "add-note-form";
-  formContainer.classList.add(
-    "border",
-    "rounded",
-    "p-1",
-    'd-flex',
-    "flex-column",
-    "bg-white",
-    'hidden'
-  );
 
-  formContainer.appendChild(createPlusButton())
+  formContainer.appendChild(createToggleButton(formContainer))
 
-  const titleLabel = createLabel("Note title", ["form-label"]);
-  const titleInput = createInput(
+  const titleLabel: HTMLLabelElement = createLabel("Note title", ["form-label"]);
+  const titleInput: HTMLInputElement = createInput(
     "text",
     "title-input",
     ["form-control"],
@@ -37,8 +29,8 @@ function makeNoteForm() {
   formContainer.appendChild(titleLabel);
   formContainer.appendChild(titleInput);
 
-  const bodyLabel = createLabel("Note body", ["form-label"]);
-  const bodyInput = document.createElement("textarea");
+  const bodyLabel: HTMLLabelElement = createLabel("Note body", ["form-label"]);
+  const bodyInput: HTMLTextAreaElement = document.createElement("textarea");
   bodyInput.id = "body-input";
   bodyInput.classList.add("form-control");
   bodyInput.maxLength = 100;
@@ -46,8 +38,8 @@ function makeNoteForm() {
   formContainer.appendChild(bodyLabel);
   formContainer.appendChild(bodyInput);
 
-  const tDateLabel = createLabel("Target date", ["form-label"]);
-  const tDateInput = createInput(
+  const tDateLabel: HTMLLabelElement = createLabel("Target date", ["form-label"]);
+  const tDateInput: HTMLInputElement = createInput(
     "date",
     "tDate-input",
     ["form-control"],
@@ -57,12 +49,12 @@ function makeNoteForm() {
   formContainer.appendChild(tDateLabel);
   formContainer.appendChild(tDateInput);
 
-  const colorLabel = createLabel("Select color", ["form-label"]);
-  const cSelect = colorSelect();
+  const colorLabel: HTMLLabelElement = createLabel("Select color", ["form-label"]);
+  const cSelect: HTMLSelectElement  = colorSelect();
   formContainer.appendChild(colorLabel);
   formContainer.appendChild(cSelect);
 
-  const createButton = document.createElement("button");
+  const createButton: HTMLButtonElement = document.createElement("button");
   createButton.innerText = "Add note";
   createButton.type = "submit";
   createButton.id = "form-button";
