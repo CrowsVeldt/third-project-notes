@@ -9,15 +9,15 @@
   left: -100%;
 }
 
-#toggle-note-form {
-    position: fixed;
-    left: 200px;
-    transition: left 0.15s;
+#toggle-form-add-note-form {
+  position: fixed;
+  left: 200px;
+  transition: left 0.15s;
 }
 
-#toggle-note-form.hidden {
-    position: fixed;
-    left: 0px;
+#toggle-form-add-note-form.hidden {
+  position: fixed;
+  left: 0px;
 }
 
 #body-input {

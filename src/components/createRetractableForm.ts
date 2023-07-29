@@ -1,5 +1,6 @@
-function makeRetractableForm() {
+function makeRetractableForm(idName: string) {
   const form = document.createElement("div");
+  form.id = idName;
 
   form.classList.add(
     "border",

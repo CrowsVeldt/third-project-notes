@@ -13,12 +13,12 @@ function makeNoteForm(): HTMLDivElement {
     .toISOString()
     .split("T")[0];
 
-  const formContainer: HTMLDivElement = makeRetractableForm()
-  formContainer.id = "add-note-form";
+  const formContainer: HTMLDivElement = makeRetractableForm("add-note-form");
+  formContainer.appendChild(createToggleButton(formContainer));
 
-  formContainer.appendChild(createToggleButton(formContainer))
-
-  const titleLabel: HTMLLabelElement = createLabel("Note title", ["form-label"]);
+  const titleLabel: HTMLLabelElement = createLabel("Note title", [
+    "form-label",
+  ]);
   const titleInput: HTMLInputElement = createInput(
     "text",
     "title-input",
@@ -38,7 +38,9 @@ function makeNoteForm(): HTMLDivElement {
   formContainer.appendChild(bodyLabel);
   formContainer.appendChild(bodyInput);
 
-  const tDateLabel: HTMLLabelElement = createLabel("Target date", ["form-label"]);
+  const tDateLabel: HTMLLabelElement = createLabel("Target date", [
+    "form-label",
+  ]);
   const tDateInput: HTMLInputElement = createInput(
     "date",
     "tDate-input",
@@ -49,8 +51,10 @@ function makeNoteForm(): HTMLDivElement {
   formContainer.appendChild(tDateLabel);
   formContainer.appendChild(tDateInput);
 
-  const colorLabel: HTMLLabelElement = createLabel("Select color", ["form-label"]);
-  const cSelect: HTMLSelectElement  = colorSelect();
+  const colorLabel: HTMLLabelElement = createLabel("Select color", [
+    "form-label",
+  ]);
+  const cSelect: HTMLSelectElement = colorSelect();
   formContainer.appendChild(colorLabel);
   formContainer.appendChild(cSelect);
 
@@ -76,7 +80,7 @@ function makeNoteForm(): HTMLDivElement {
           title: titleInput.value,
           body: bodyInput.value,
           targetDate: formatDate(tDateInput.value),
-          color: cSelect.value
+          color: cSelect.value,
         },
         false
       )

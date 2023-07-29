@@ -53,3 +53,4 @@ id: string // hashed from Date.toString()
 - sort: subsort by Abc or date as appropriate
 - sort: sorting by target date should sort by year, then month, then day, 
 - addNoteForm: keep input values when note is closed
+- refactor addNoteForm/toggleButton styles
