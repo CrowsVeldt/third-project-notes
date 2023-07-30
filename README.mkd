@@ -41,10 +41,10 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
+- - - refactor createInput, etc. to objects and use inheritance for different types?
 - notes: Make notes editable
 - UX: when user clicks outside of menus, close them
 - storage: refactor storage to store each note individually as opposed to in an array
-- refactor createInput, etc. to objects and use inheritance for different types?
 - dates: Check dates work in different locales
 - target date: Make target date alway be more than current date when adding date via keyboard
 - target date: prevent adding more than 4 digits in target date years column
@@ -52,4 +52,3 @@ id: string // hashed from Date.toString()
 - sort: reduce redundancy in sortNotes file
 - sort: subsort by Abc or date as appropriate
 - sort: sorting by target date should sort by year, then month, then day, 
-- note form: clear inputs when note is added

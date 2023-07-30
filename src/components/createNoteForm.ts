@@ -1,7 +1,7 @@
 import { newNote } from "./createNote";
 import { createInput, createLabel } from "../form components/labelAndInput";
 import colorSelect from "../form components/colorSelector";
-import { formatDate, formatMinDate } from "../utils/util";
+import { formatDate, formatMinDate, makeHash } from "../utils/util";
 // import { Note } from "../utils/types";
 
 function noteForm(): HTMLDivElement {
