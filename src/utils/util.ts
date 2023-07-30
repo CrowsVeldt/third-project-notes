@@ -49,7 +49,15 @@ function formatDate(date: string | Date): string {
   }
 }
 
+function formatMinDate (date: Date): string {
+return new Date(
+  date.getTime() - date.getTimezoneOffset() * 60000
+)
+  .toISOString()
+  .split("T")[0];
+}
+
 const lowerCase: (arg0: string) => string = (n: string) =>
   n.toLocaleLowerCase();
 
-export { noteColors, sortMethods, formatDate, lowerCase, makeHash };
+export { noteColors, sortMethods, formatDate, lowerCase, makeHash, formatMinDate };

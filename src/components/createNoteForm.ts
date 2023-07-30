@@ -1,16 +1,12 @@
 import { newNote } from "./createNote";
 import { createInput, createLabel } from "../form components/labelAndInput";
 import colorSelect from "../form components/colorSelector";
-import { formatDate } from "../utils/util";
-import { Note } from "../utils/types";
+import { formatDate, formatMinDate } from "../utils/util";
+// import { Note } from "../utils/types";
 
-function noteForm(edit?: Note): HTMLDivElement {
+function noteForm(): HTMLDivElement {
   const date: Date = new Date();
-  const minDate: string = new Date(
-    date.getTime() - date.getTimezoneOffset() * 60000
-  )
-    .toISOString()
-    .split("T")[0];
+  const minDate = formatMinDate(date)
 
   const form = formContainer('note-form', 'New Note')
 
