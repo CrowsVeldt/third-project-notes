@@ -14,7 +14,7 @@ function addNoteButton(): HTMLButtonElement {
     );
 
   btn.addEventListener("click", () => {
-    toggleForm()
+    toggleForm('note-form')
   });
 
   return btn;

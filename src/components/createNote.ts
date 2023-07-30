@@ -80,8 +80,9 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
 
 function editNote (noteId: string) {
   const note = getNote(noteId)
-  noteForm(note as Note)
-  toggleForm()
+  console.log(note)
+  // noteForm()
+  // toggleForm()
 }
 
 export { newNote, editNote}

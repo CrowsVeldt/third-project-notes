@@ -12,24 +12,7 @@ function noteForm(edit?: Note): HTMLDivElement {
     .toISOString()
     .split("T")[0];
 
-  const formContainer: HTMLDivElement = document.createElement("div");
-  formContainer.id = "note-form";
-  formContainer.classList.add(
-    "position-fixed",
-    "bg-light",
-    "w-75",
-    "h-75",
-    "flex-column",
-    'justify-content-between',
-    'px-2',
-    'top-25',
-    'start-50',
-    'translate-middle-x',
-    'border',
-    'border-dark',
-    'rounded',
-    'hidden'
-  );
+  const form = formContainer('note-form', 'New Note')
 
   const titleLabel: HTMLLabelElement = createLabel("Note title", [
     "form-label",
@@ -41,20 +24,20 @@ function noteForm(edit?: Note): HTMLDivElement {
     true,
     [["maxlength", "20"]]
   );
-  formContainer.appendChild(titleLabel);
-  formContainer.appendChild(titleInput);
+  form.appendChild(titleLabel);
+  form.appendChild(titleInput);
 
   const bodyLabel: HTMLLabelElement = createLabel("Note body", ["form-label"]);
   const bodyInput: HTMLTextAreaElement = document.createElement("textarea");
   bodyInput.id = "body-input";
   bodyInput.classList.add("form-control");
-  // VVVVVVV -WORK IN PROGRESS-
-  bodyInput.value = edit ? edit.body : ''
-  // ^^^^^^^
+  // // VVVVVVV -WORK IN PROGRESS-
+  // bodyInput.value = edit ? edit.body : ''
+  // // ^^^^^^^
   bodyInput.maxLength = 100;
   bodyInput.required = true;
-  formContainer.appendChild(bodyLabel);
-  formContainer.appendChild(bodyInput);
+  form.appendChild(bodyLabel);
+  form.appendChild(bodyInput);
 
   const tDateLabel: HTMLLabelElement = createLabel("Target date", [
     "form-label",
@@ -66,15 +49,15 @@ function noteForm(edit?: Note): HTMLDivElement {
     false,
     [["min", minDate]]
   );
-  formContainer.appendChild(tDateLabel);
-  formContainer.appendChild(tDateInput);
+  form.appendChild(tDateLabel);
+  form.appendChild(tDateInput);
 
   const colorLabel: HTMLLabelElement = createLabel("Select color", [
     "form-label",
   ]);
   const cSelect: HTMLSelectElement = colorSelect();
-  formContainer.appendChild(colorLabel);
-  formContainer.appendChild(cSelect);
+  form.appendChild(colorLabel);
+  form.appendChild(cSelect);
 
   const addButton: HTMLButtonElement = document.createElement("button");
   addButton.innerText = "Add note";
@@ -92,8 +75,8 @@ function noteForm(edit?: Note): HTMLDivElement {
       return;
     }
 
-    if (formContainer.classList.contains('d-flex')) {
-      formContainer.classList.toggle('d-flex')
+    if (form.classList.contains('d-flex')) {
+      form.classList.toggle('d-flex')
     }
 
     document.getElementById("note-container")?.appendChild(
@@ -114,13 +97,40 @@ function noteForm(edit?: Note): HTMLDivElement {
     cSelect.value = 'None'
   });
 
-  formContainer.appendChild(addButton);
+  form.appendChild(addButton);
 
-  return formContainer;
+  return form;
 }
 
-function toggleForm () {
-  const form = document.getElementById("note-form")!;
+function formContainer (id: string, title: string): HTMLDivElement {
+  const formContainer: HTMLDivElement = document.createElement("div");
+  formContainer.id = id;
+  formContainer.classList.add(
+    "position-fixed",
+    "bg-light",
+    "w-75",
+    "h-75",
+    "flex-column",
+    'justify-content-between',
+    'px-2',
+    'top-25',
+    'start-50',
+    'translate-middle-x',
+    'border',
+    'border-dark',
+    'rounded',
+    'hidden'
+  );
+
+  const formHeader: HTMLHeadingElement = document.createElement('h3')
+  formHeader.innerText = title
+  formContainer.appendChild(formHeader)
+
+  return formContainer
+}
+
+function toggleForm (id: string) {
+  const form: HTMLElement = document.getElementById(id)!;
   form.classList.toggle("d-flex");
 }
 
