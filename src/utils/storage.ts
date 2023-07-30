@@ -16,9 +16,11 @@ function storedNotes(): Note[] | void {
 }
 
 function getNote(id: string): Note | void {
-  const notes = storedNotes()!
-  const data = notes.find(el => el.id === id)
-  if (data) return data
+    const notes = storedNotes()
+    if (notes) {
+        const data = notes.find(el => el.id === id)
+        if (data) return data
+    }
 }
 
 function saveNote(note: Note): void {

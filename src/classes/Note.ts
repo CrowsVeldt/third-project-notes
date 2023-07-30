@@ -1,4 +1,4 @@
-import { getNote } from "../utils/storage";
+import { getNote, saveNote } from "../utils/storage";
 import { makeHash, formatDate } from "../utils/util";
 
 class Note {
@@ -80,9 +80,22 @@ class Note {
   }
 
   existsInStorage() {
-    // console.log(this.#id)
+     console.log(this.#id)
     if (getNote(this.#id)) return true
     return false
+  }
+
+  saveToStorage () {
+      if (!this.existsInStorage()) {
+          saveNote({
+              id: this.#id,
+              title: this.#title,
+              body: this.#body,
+              targetDate: this.#targetDate,
+              createDate: this.#createDate,
+              color: this.#color
+          })
+      }
   }
 }
 
