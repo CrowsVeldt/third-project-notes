@@ -1,7 +1,7 @@
 import { saveNote, deleteNote, getNote } from "../utils/storage";
 import { Note } from "../utils/types";
 import { formatDate, makeHash } from "../utils/util";
-import { noteForm, toggleForm } from "./createNoteForm";
+// import { noteForm, toggleForm } from "./createNoteForm";
 
 function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
   const date: Date = new Date();
@@ -33,7 +33,7 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
     "d-flex",
     "flex-column",
     "note",
-    'flex-fill'
+    "flex-fill"
   );
 
   const noteTitle: HTMLHeadingElement = document.createElement("h3");
@@ -54,19 +54,19 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
   const deleteButton: HTMLButtonElement = document.createElement("button");
   deleteButton.innerText = "Delete";
   deleteButton.id = buttonId;
-  deleteButton.classList.add('w-50', 'align-self-center')
+  deleteButton.classList.add("w-50", "align-self-center");
   deleteButton.addEventListener("click", () => {
     deleteNote(id);
     document.getElementById(id)?.remove();
   });
 
-  const editButton: HTMLButtonElement = document.createElement('button')
-  editButton.innerText = 'Edit'
-  editButton.classList.add('w-50', 'align-self-center')
+  const editButton: HTMLButtonElement = document.createElement("button");
+  editButton.innerText = "Edit";
+  editButton.classList.add("w-50", "align-self-center");
 
-  editButton.addEventListener('click', () => {
-    editNote(id)
-  })
+  editButton.addEventListener("click", () => {
+    editNote(id);
+  });
 
   note.appendChild(noteTitle);
   note.appendChild(noteBody);
@@ -78,11 +78,11 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
   return note;
 }
 
-function editNote (noteId: string) {
-  const note = getNote(noteId)
-  console.log(note)
+function editNote(noteId: string) {
+  const note = getNote(noteId);
+  console.log(note);
   // noteForm()
   // toggleForm()
 }
 
-export { newNote, editNote}
+export { newNote, editNote };

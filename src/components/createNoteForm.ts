@@ -6,9 +6,9 @@ import { formatDate, formatMinDate } from "../utils/util";
 
 function noteForm(): HTMLDivElement {
   const date: Date = new Date();
-  const minDate = formatMinDate(date)
+  const minDate = formatMinDate(date);
 
-  const form = formContainer('note-form', 'New Note')
+  const form = formContainer("note-form", "New Note");
 
   const titleLabel: HTMLLabelElement = createLabel("Note title", [
     "form-label",
@@ -71,8 +71,8 @@ function noteForm(): HTMLDivElement {
       return;
     }
 
-    if (form.classList.contains('d-flex')) {
-      form.classList.toggle('d-flex')
+    if (form.classList.contains("d-flex")) {
+      form.classList.toggle("d-flex");
     }
 
     document.getElementById("note-container")?.appendChild(
@@ -87,10 +87,10 @@ function noteForm(): HTMLDivElement {
       )
     );
 
-    titleInput.value = ''
-    bodyInput.value = ''
-    tDateInput.value = ''
-    cSelect.value = 'None'
+    titleInput.value = "";
+    bodyInput.value = "";
+    tDateInput.value = "";
+    cSelect.value = "None";
   });
 
   form.appendChild(addButton);
@@ -98,7 +98,7 @@ function noteForm(): HTMLDivElement {
   return form;
 }
 
-function formContainer (id: string, title: string): HTMLDivElement {
+function formContainer(id: string, title: string): HTMLDivElement {
   const formContainer: HTMLDivElement = document.createElement("div");
   formContainer.id = id;
   formContainer.classList.add(
@@ -107,27 +107,27 @@ function formContainer (id: string, title: string): HTMLDivElement {
     "w-75",
     "h-75",
     "flex-column",
-    'justify-content-between',
-    'px-2',
-    'top-25',
-    'start-50',
-    'translate-middle-x',
-    'border',
-    'border-dark',
-    'rounded',
-    'hidden'
+    "justify-content-between",
+    "px-2",
+    "top-25",
+    "start-50",
+    "translate-middle-x",
+    "border",
+    "border-dark",
+    "rounded",
+    "hidden"
   );
 
-  const formHeader: HTMLHeadingElement = document.createElement('h3')
-  formHeader.innerText = title
-  formContainer.appendChild(formHeader)
+  const formHeader: HTMLHeadingElement = document.createElement("h3");
+  formHeader.innerText = title;
+  formContainer.appendChild(formHeader);
 
-  return formContainer
+  return formContainer;
 }
 
-function toggleForm (id: string) {
+function toggleForm(id: string) {
   const form: HTMLElement = document.getElementById(id)!;
   form.classList.toggle("d-flex");
 }
 
-export {noteForm, toggleForm}
+export { noteForm, toggleForm };
