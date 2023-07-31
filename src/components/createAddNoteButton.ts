@@ -1,8 +1,7 @@
 import { toggleForm } from "./createNoteForm";
 import newElement from "../utils/newElement";
 
-function addNoteButton(): HTMLButtonElement {
-  const btn: HTMLButtonElement = newElement({
+  const toggleNoteFormButton : HTMLButtonElement = newElement({
     type: 'button',
     id: 'toggle-add-note',
     class: ['position-fixed', 'end-0', 'bottom-0', 'fs-1'],
@@ -16,7 +15,4 @@ function addNoteButton(): HTMLButtonElement {
     }
   }) as HTMLButtonElement
 
-  return btn;
-}
-
-export default addNoteButton;
+export default toggleNoteFormButton
