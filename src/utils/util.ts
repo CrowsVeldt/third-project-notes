@@ -64,5 +64,5 @@ export {
   formatDate,
   lowerCase,
   makeHash,
-  formatMinDate,
+  formatMinDate
 };

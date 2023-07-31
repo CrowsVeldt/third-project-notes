@@ -1,7 +1,7 @@
 import { saveNote, deleteNote, getNote } from "../utils/storage";
 import { Note } from "../utils/types";
 import { formatDate, makeHash } from "../utils/util";
-// import { noteForm, toggleForm } from "./createNoteForm";
+import newElement from "../utils/newElement";
 
 function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
   const date: Date = new Date();
@@ -22,19 +22,16 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
 
   const buttonId: string = "button-" + id;
 
-  const note: HTMLDivElement = document.createElement("div");
-  note.id = id;
-  note.style.backgroundColor = deetz.color;
-  note.classList.add(
-    "border",
-    "rounded",
-    "ms-1",
-    "p-2",
-    "d-flex",
-    "flex-column",
-    "note",
-    "flex-fill"
-  );
+const note = newElement({type: 'div', id: id, class: [
+  'border',
+  'rounded',
+  'ms-1',
+  'p-2',
+  'd-flex',
+  'flex-column',
+  'flex-fill',
+  'note'
+], props: [['style', `background-color: ${deetz.color}`]]}) as HTMLDivElement
 
   const noteTitle: HTMLHeadingElement = document.createElement("h3");
   noteTitle.innerText = deetz.title;

@@ -14,4 +14,12 @@ type Note = {
 
 type SortMethod = { method: string };
 
-export type { colorObject, Note, SortMethod };
+type elementInput = {
+  type: string;
+  id?: string;
+  class?: string[];
+  content?: string;
+  props?: string[][];
+};
+
+export type { colorObject, Note, SortMethod, elementInput };
