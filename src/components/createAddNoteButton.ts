@@ -1,21 +1,20 @@
 import { toggleForm } from "./createNoteForm";
+import newElement from "../utils/newElement";
 
 function addNoteButton(): HTMLButtonElement {
-  const btn: HTMLButtonElement = document.createElement("button");
-  btn.innerText = "+";
-  btn.style.width = "50px";
-  btn.style.height = "50px";
-  btn.id = `toggle-add-note`;
-  btn.classList.add(
-    "position-fixed", 
-    "end-0", 
-    "bottom-0",
-    'fs-1'
-    );
-
-  btn.addEventListener("click", () => {
-    toggleForm('note-form')
-  });
+  const btn: HTMLButtonElement = newElement({
+    type: 'button',
+    id: 'toggle-add-note',
+    class: ['position-fixed', 'end-0', 'bottom-0', 'fs-1'],
+    content: '+',
+    props: [['style', 'width:50px;height:50px;']],
+    eventListener: {
+      eventType: 'click', 
+      listener: () => {
+        toggleForm('note-form')
+      }
+    }
+  }) as HTMLButtonElement
 
   return btn;
 }
