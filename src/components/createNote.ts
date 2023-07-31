@@ -8,6 +8,7 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
   const cDate: string = deetz.createDate ? deetz.createDate : formatDate(date);
   // if there is no id, set it to a Hash of current time + random characters
   const id: string = deetz.id ? deetz.id : makeHash(date.getTime().toString());
+  const buttonId: string = "button-" + id;
 
   if (!fromStorage) {
     saveNote({
@@ -20,50 +21,68 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
     });
   }
 
-  const buttonId: string = "button-" + id;
+  const note: HTMLDivElement = newElement({
+    type: "div",
+    id: id,
+    class: [
+      "border",
+      "rounded",
+      "ms-1",
+      "p-2",
+      "d-flex",
+      "flex-column",
+      "flex-fill",
+      "note",
+    ],
+    props: [["style", `background-color: ${deetz.color}`]],
+  }) as HTMLDivElement;
 
-const note = newElement({type: 'div', id: id, class: [
-  'border',
-  'rounded',
-  'ms-1',
-  'p-2',
-  'd-flex',
-  'flex-column',
-  'flex-fill',
-  'note'
-], props: [['style', `background-color: ${deetz.color}`]]}) as HTMLDivElement
+  const noteTitle: HTMLHeadingElement = newElement({
+    type: "h3",
+    content: deetz.title,
+  }) as HTMLHeadingElement;
 
-  const noteTitle: HTMLHeadingElement = document.createElement("h3");
-  noteTitle.innerText = deetz.title;
+  const noteBody: HTMLParagraphElement = newElement({
+    type: "p",
+    class: ["mb-auto", "border-top", "border-bottom"],
+    content: deetz.body,
+  }) as HTMLParagraphElement;
 
-  const noteBody: HTMLParagraphElement = document.createElement("p");
-  noteBody.classList.add("mb-auto", "border-top", "border-bottom");
-  noteBody.innerText = deetz.body;
+  const noteCDate: HTMLParagraphElement = newElement({
+    type: "p",
+    content: `Created on ${cDate}`,
+  }) as HTMLParagraphElement;
 
-  const noteCDate: HTMLParagraphElement = document.createElement("p");
-  noteCDate.innerText = `Created on ${cDate}`;
+  const noteTDate: HTMLParagraphElement = newElement({
+    type: "p",
+    content: deetz.targetDate ? `Targate date ${deetz.targetDate}` : "",
+  }) as HTMLParagraphElement;
 
-  const noteTDate: HTMLParagraphElement = document.createElement("p");
-  noteTDate.innerText = deetz.targetDate
-    ? `Target date ${deetz.targetDate}`
-    : "";
+  const deleteButton: HTMLButtonElement = newElement({
+    type: 'button',
+    id: buttonId,
+    class: ['w-50', 'align-self-center'],
+    content: 'Delete',
+    eventListener: {
+      eventType: 'click',
+      listener: () => {
+        deleteNote(id)
+        document.getElementById(id)?.remove()
+      }
+    }
+  }) as HTMLButtonElement
 
-  const deleteButton: HTMLButtonElement = document.createElement("button");
-  deleteButton.innerText = "Delete";
-  deleteButton.id = buttonId;
-  deleteButton.classList.add("w-50", "align-self-center");
-  deleteButton.addEventListener("click", () => {
-    deleteNote(id);
-    document.getElementById(id)?.remove();
-  });
-
-  const editButton: HTMLButtonElement = document.createElement("button");
-  editButton.innerText = "Edit";
-  editButton.classList.add("w-50", "align-self-center");
-
-  editButton.addEventListener("click", () => {
-    editNote(id);
-  });
+  const editButton: HTMLButtonElement = newElement({
+    type: 'button',
+    class: ['w-50', 'align-self-center'],
+    content: 'Edit', 
+    eventListener: {
+      eventType: 'click',
+      listener: () => {
+        editNote(id)
+      }
+    }
+  }) as HTMLButtonElement
 
   note.appendChild(noteTitle);
   note.appendChild(noteBody);

@@ -14,6 +14,10 @@ function newElement(a: elementInput) {
     });
   }
 
+  if (a.eventListener) {
+    el.addEventListener(a.eventListener.eventType, a.eventListener.listener)
+  }
+
   el.innerHTML = a.content ? a.content : ''
 
   return el

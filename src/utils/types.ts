@@ -19,6 +19,7 @@ type elementInput = {
   id?: string;
   class?: string[];
   content?: string;
+  eventListener?: {eventType: string, listener: () => void};
   props?: string[][];
 };
 
