@@ -1,15 +1,21 @@
-function directionToggle(): HTMLDivElement {
-  const toggle: HTMLDivElement = document.createElement("div");
-  toggle.id = "box";
-  toggle.addEventListener("click", () => {
-    toggle.classList.toggle("up");
-  });
+import newElement from "../utils/newElement";
 
-  const arrow: HTMLDivElement = document.createElement("div");
-  arrow.id = "arrow";
+const directionToggle: HTMLDivElement = newElement({
+  type: 'div',
+  id: 'box',
+  eventListener: {
+    eventType: 'click',
+    listener: () => {
+      directionToggle.classList.toggle('up')
+    }
+  }
+}) as HTMLDivElement
 
-  toggle.appendChild(arrow);
-  return toggle;
-}
+const arrow: HTMLDivElement = newElement({
+  type: 'div',
+  id: 'arrow'
+}) as HTMLDivElement
+
+directionToggle.appendChild(arrow)
 
 export default directionToggle;

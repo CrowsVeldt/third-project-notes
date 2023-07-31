@@ -28,7 +28,7 @@ function sortSelect(): HTMLDivElement {
     sortSelect.appendChild(sortOption(method));
   });
 
-  const sortToggle: HTMLDivElement = directionToggle();
+  const sortToggle: HTMLDivElement = directionToggle
 
   sortSelect.addEventListener("change", () => {
     const target = document.getElementById("sort-select") as HTMLSelectElement;
