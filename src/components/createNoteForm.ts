@@ -74,7 +74,6 @@ function noteForm(): HTMLDivElement {
         if (form.classList.contains("d-flex")) {
           form.classList.toggle("d-flex");
         }
-
         addNoteToContainer({
           title: titleInput.value.replace(removeTag, ''),
           body: bodyInput.value.replace(removeTag, ''),
@@ -87,7 +86,7 @@ function noteForm(): HTMLDivElement {
         titleInput.value = "";
         bodyInput.value = "";
         tDateInput.value = "";
-        cSelect.value = "None";
+        cSelect.value = "none";
       }
     }
   }) as HTMLButtonElement
