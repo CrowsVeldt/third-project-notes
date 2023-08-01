@@ -1,8 +1,8 @@
-import { newNote } from "./createNote";
 import { createInput, createLabel } from "../form components/labelAndInput";
 import colorSelect from "../form components/colorSelector";
-import { formatDate, formatMinDate, makeHash } from "../utils/util";
-// import { Note } from "../utils/types";
+import { formatDate, formatMinDate } from "../utils/util";
+import newElement from "../utils/newElement";
+import { addNoteToContainer } from "./noteContainer";
 
 function noteForm(): HTMLDivElement {
   const date: Date = new Date();
@@ -24,14 +24,12 @@ function noteForm(): HTMLDivElement {
   form.appendChild(titleInput);
 
   const bodyLabel: HTMLLabelElement = createLabel("Note body", ["form-label"]);
-  const bodyInput: HTMLTextAreaElement = document.createElement("textarea");
-  bodyInput.id = "body-input";
-  bodyInput.classList.add("form-control");
-  // // VVVVVVV -WORK IN PROGRESS-
-  // bodyInput.value = edit ? edit.body : ''
-  // // ^^^^^^^
-  bodyInput.maxLength = 100;
-  bodyInput.required = true;
+  const bodyInput: HTMLTextAreaElement = newElement({
+    type: 'textarea',
+    id: 'body-input',
+    class: ['form-control'],
+    props: [['maxLength', '100'], ['required', 'true']]
+  }) as HTMLTextAreaElement
   form.appendChild(bodyLabel);
   form.appendChild(bodyInput);
 
@@ -55,43 +53,44 @@ function noteForm(): HTMLDivElement {
   form.appendChild(colorLabel);
   form.appendChild(cSelect);
 
-  const addButton: HTMLButtonElement = document.createElement("button");
-  addButton.innerText = "Add note";
-  addButton.type = "submit";
-  addButton.id = "form-button";
+  const addButton: HTMLButtonElement = newElement({
+    type: 'button',
+    id: 'form-button',
+    content: 'Create note',
+    props: [['type', 'submit']],
+    eventListener: {
+      eventType: 'click',
+      listener: (evt?: Event) => {
+        if (evt) evt.preventDefault()
 
-  addButton.addEventListener("click", (evt) => {
-    evt.preventDefault();
+        if (titleInput.value === "") {
+          titleInput.reportValidity();
+          return;
+        } else if (bodyInput.value === "") {
+          bodyInput.reportValidity();
+          return;
+        }
 
-    if (titleInput.value === "") {
-      titleInput.reportValidity();
-      return;
-    } else if (bodyInput.value === "") {
-      bodyInput.reportValidity();
-      return;
-    }
+        if (form.classList.contains("d-flex")) {
+          form.classList.toggle("d-flex");
+        }
 
-    if (form.classList.contains("d-flex")) {
-      form.classList.toggle("d-flex");
-    }
-
-    document.getElementById("note-container")?.appendChild(
-      newNote(
-        {
+        addNoteToContainer({
           title: titleInput.value,
           body: bodyInput.value,
           targetDate: formatDate(tDateInput.value),
-          color: cSelect.value,
+          color: cSelect.value
         },
-        false
-      )
-    );
+          false
+        )
 
-    titleInput.value = "";
-    bodyInput.value = "";
-    tDateInput.value = "";
-    cSelect.value = "None";
-  });
+        titleInput.value = "";
+        bodyInput.value = "";
+        tDateInput.value = "";
+        cSelect.value = "None";
+      }
+    }
+  }) as HTMLButtonElement
 
   form.appendChild(addButton);
 
@@ -99,29 +98,33 @@ function noteForm(): HTMLDivElement {
 }
 
 function formContainer(id: string, title: string): HTMLDivElement {
-  const formContainer: HTMLDivElement = document.createElement("div");
-  formContainer.id = id;
-  formContainer.classList.add(
-    "position-fixed",
-    "bg-light",
-    "w-75",
-    "h-75",
-    "flex-column",
-    "justify-content-between",
-    "px-2",
-    "top-25",
-    "start-50",
-    "translate-middle-x",
-    "border",
-    "border-dark",
-    "rounded",
-    "hidden"
-  );
+  const formContainer: HTMLDivElement = newElement({
+    type: 'div',
+    id: id,
+    class: [
+      "position-fixed",
+      "bg-light",
+      "w-75",
+      "h-75",
+      "flex-column",
+      "justify-content-between",
+      "px-2",
+      "top-25",
+      "start-50",
+      "translate-middle-x",
+      "border",
+      "border-dark",
+      "rounded",
+      "hidden"
+    ]
+  }) as HTMLDivElement
 
-  const formHeader: HTMLHeadingElement = document.createElement("h3");
-  formHeader.innerText = title;
+  const formHeader: HTMLHeadingElement = newElement({
+    type: 'h3',
+    content: title
+  }) as HTMLHeadingElement
+
   formContainer.appendChild(formHeader);
-
   return formContainer;
 }
 

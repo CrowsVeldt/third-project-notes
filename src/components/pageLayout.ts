@@ -1,5 +1,4 @@
 import newElement from "../utils/newElement";
-import { noteContainer } from "./noteContainer";
 
 // header
 const head: HTMLHeadingElement = newElement({
@@ -21,9 +20,6 @@ const main: HTMLDivElement = newElement({
   id: 'main-page',
   class: ['flex-grow-1']
 }) as HTMLDivElement
-
-const noteCon: HTMLDivElement = noteContainer();
-main.appendChild(noteCon);
 
 // footer
 const foot: HTMLElement = newElement({

@@ -1,7 +1,7 @@
-import directionToggle from "../components/directionToggle";
+import directionToggle from "./directionToggle";
 import { sortMethods } from "../utils/util";
 import { SortMethod } from "../utils/types";
-import { resetNoteContainer } from "../components/noteContainer";
+import { resetNoteContainer } from "./noteContainer";
 import { storedNotes } from "../utils/storage";
 import sortNotes from "../utils/sort";
 
