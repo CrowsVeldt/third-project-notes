@@ -56,6 +56,7 @@ function noteForm(): HTMLDivElement {
   const addButton: HTMLButtonElement = newElement({
     type: 'button',
     id: 'form-button',
+    class: ['form-control'],
     content: 'Create note',
     props: [['type', 'submit']],
     eventListener: {
@@ -114,12 +115,14 @@ function formContainer(id: string, title: string): HTMLDivElement {
       "border",
       "border-dark",
       "rounded",
-      "hidden"
+      "hideable",
+      "form"
     ]
   }) as HTMLDivElement
 
   const formHeader: HTMLHeadingElement = newElement({
     type: 'h3',
+    class: ['form-label'],
     content: title
   }) as HTMLHeadingElement
 

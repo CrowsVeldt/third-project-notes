@@ -96,7 +96,7 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
 
 function editNote(noteId: string) {
   const note = getNote(noteId);
-  console.log(note);
+  // console.log(note);
   // noteForm()
   // toggleForm()
 }

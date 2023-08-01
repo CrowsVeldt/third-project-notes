@@ -1,5 +1,5 @@
 import "./style.css";
-import {foot, head, main } from "./components/pageLayout";
+import { foot, head, main } from "./components/pageLayout";
 import noteDisplayControls from "./components/noteDisplayControls";
 import toggleNoteFormButton from "./components/toggleNoteFormButton";
 import { noteContainer, populateNoteContainer } from "./components/noteContainer";
@@ -17,6 +17,20 @@ main.appendChild(noteContainer)
 container.appendChild(noteForm())
 container.appendChild(toggleNoteFormButton)
 container.appendChild(foot)
+container.addEventListener('click', (evt) => {
+    const target = evt.target as HTMLElement
+    if (!target.classList.contains('form') &&
+        !target.classList.contains('form-control') &&
+        !target.classList.contains('form-label')) {
+        if (target.id !== 'toggle-add-note') {
+            const formOpen = document.getElementsByClassName('form')
+            if (formOpen[0].classList.contains('d-flex')) {
+                formOpen[0].classList.remove('d-flex')
+            };
+        }
+    }
+}
+)
 
 app.appendChild(container)
 populateNoteContainer()

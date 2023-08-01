@@ -1,10 +1,11 @@
 import { Note } from "./types";
 import { lowerCase } from "./util";
 
-// Storage layout: [
-//  [id, Note{}],
-//  [id1, Note{}]
-// ]
+/* 
+  For now notes are stored in one array, for simplicity of access. 
+  This probably causes a performance bottleneck, since accessing one
+  note requires fetching the whole array. May be worth redoing.
+*/
 
 const storageExists = (): boolean | undefined => {
   if (localStorage.length > 0) return true;
