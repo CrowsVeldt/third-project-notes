@@ -1,6 +1,6 @@
 import { createInput, createLabel } from "./labelAndInput";
 import colorSelect from "./colorSelector";
-import { formatDate, formatMinDate } from "../utils/util";
+import { formatDate, formatMinDate, removeTag } from "../utils/util";
 import newElement from "../utils/newElement";
 import { addNoteToContainer } from "./noteContainer";
 
@@ -76,8 +76,8 @@ function noteForm(): HTMLDivElement {
         }
 
         addNoteToContainer({
-          title: titleInput.value,
-          body: bodyInput.value,
+          title: titleInput.value.replace(removeTag, ''),
+          body: bodyInput.value.replace(removeTag, ''),
           targetDate: formatDate(tDateInput.value),
           color: cSelect.value
         },

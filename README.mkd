@@ -41,6 +41,7 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
+- - - IMPORTANT!!!!! validate input for code to prevent injection attacks
 - - - refactor createInput, etc. to objects and use inheritance for different types?
 - notes: Make notes editable
 - UX: when user clicks outside of menus, close them

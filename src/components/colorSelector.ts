@@ -10,7 +10,7 @@ function colorOption(color: colorObject): HTMLOptionElement {
   }) as HTMLOptionElement
 }
 
-function colorSelect (): HTMLSelectElement {
+function colorSelect(): HTMLSelectElement {
   const colorSelect = newElement({
     type: 'select',
     id: 'color-select',

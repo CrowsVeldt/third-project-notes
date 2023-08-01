@@ -23,6 +23,8 @@ function createInput(
     class: [...classes],
     props: [['type', type], ['required',required.toString()]].concat(other!)
   }) as HTMLInputElement
+
+  
   return inp;
 }
 
