@@ -1,9 +1,16 @@
+import newElement from "../utils/newElement";
+
 function createLabel(value: string, classes: string[]): HTMLLabelElement {
-  const l: HTMLLabelElement = document.createElement("label");
-  DOMTokenList.prototype.add.apply(l.classList, classes);
-  l.innerText = value;
-  return l;
+  const label: HTMLLabelElement = newElement({
+    type: 'label',
+    class: [...classes],
+    content: value
+  }) as HTMLLabelElement
+
+  return label
 }
+
+
 
 function createInput(
   type: string,
@@ -12,16 +19,12 @@ function createInput(
   required: boolean,
   other?: string[][]
 ): HTMLInputElement {
-  const inp: HTMLInputElement = document.createElement("input");
-  inp.type = type;
-  inp.id = id;
-  DOMTokenList.prototype.add.apply(inp.classList, classes);
-  inp.required = required;
-  if (other) {
-    other.forEach((attr) => {
-      inp.setAttribute(attr[0], attr[1]);
-    });
-  }
+  const inp: HTMLInputElement = newElement({
+    type: 'input',
+    id: id,
+    class: [...classes],
+    props: [['type', type], ['required',required.toString()]].concat(other!)
+  }) as HTMLInputElement
   return inp;
 }
 
