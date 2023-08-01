@@ -14,7 +14,7 @@ container.appendChild(head)
 container.appendChild(noteDisplayControls)
 container.appendChild(main)
 main.appendChild(noteContainer)
-noteContainer.appendChild(noteForm())
+container.appendChild(noteForm())
 container.appendChild(toggleNoteFormButton)
 container.appendChild(foot)
 
