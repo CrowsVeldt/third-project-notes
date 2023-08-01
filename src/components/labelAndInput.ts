@@ -10,8 +10,6 @@ function createLabel(value: string, classes: string[]): HTMLLabelElement {
   return label
 }
 
-
-
 function createInput(
   type: string,
   id: string,

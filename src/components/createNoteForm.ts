@@ -1,5 +1,5 @@
-import { createInput, createLabel } from "../form components/labelAndInput";
-import colorSelect from "../form components/colorSelector";
+import { createInput, createLabel } from "./labelAndInput";
+import colorSelect from "./colorSelector";
 import { formatDate, formatMinDate } from "../utils/util";
 import newElement from "../utils/newElement";
 import { addNoteToContainer } from "./noteContainer";
