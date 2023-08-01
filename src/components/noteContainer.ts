@@ -1,6 +1,6 @@
 import { newNote } from "./createNote";
 import { Note } from "../utils/types";
-import { storedNotes, storageExists } from "../utils/storage";
+import { getStoredNotes, storageExists } from "../utils/storage";
 import newElement from "../utils/newElement";
 
 
@@ -24,7 +24,7 @@ function populateNoteContainer(noteArray?: Note[]): void {
         container.appendChild(newNote(note, true));
       });
     } else if (storageExists()) {
-      const notes: void | Note[] = storedNotes();
+      const notes: void | Note[] = getStoredNotes();
       if (notes) {
         localStorage.clear;
         notes.forEach((note: Note) => {

@@ -2,7 +2,7 @@ import directionToggle from "./directionToggle";
 import { sortMethods } from "../utils/util";
 import { SortMethod } from "../utils/types";
 import { resetNoteContainer } from "./noteContainer";
-import { storedNotes } from "../utils/storage";
+import { getStoredNotes } from "../utils/storage";
 import sortNotes from "../utils/sort";
 
 function sortOption(option: SortMethod): HTMLOptionElement {
@@ -32,11 +32,11 @@ function sortSelect(): HTMLDivElement {
 
   sortSelect.addEventListener("change", () => {
     const target = document.getElementById("sort-select") as HTMLSelectElement;
-    resetNoteContainer(sortNotes(storedNotes()!, target.value));
+    resetNoteContainer(sortNotes(getStoredNotes()!, target.value));
   });
   sortToggle.addEventListener("click", () => {
     const target = document.getElementById("sort-select") as HTMLSelectElement;
-    resetNoteContainer(sortNotes(storedNotes()!, target.value));
+    resetNoteContainer(sortNotes(getStoredNotes()!, target.value));
   });
 
   selectContainer.appendChild(sortSelect);
