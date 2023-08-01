@@ -1,5 +1,5 @@
 import "./style.css";
-import {makeFooter, makeHeader, makeMain } from "./components/createPage";
+import {foot, head, main } from "./components/createPage";
 import noteContainerControl from "./components/createNoteControl";
 import toggleNoteFormButton from "./components/toggleNoteFormButton";
 
@@ -8,10 +8,10 @@ app.style.height = '100vh'
 
 const container = document.createElement('div')
 container.classList.add('d-flex', 'flex-column', 'h-100')
-container.appendChild(makeHeader())
+container.appendChild(head)
 container.appendChild(noteContainerControl())
-container.appendChild(makeMain())
+container.appendChild(main)
 container.appendChild(toggleNoteFormButton)
-container.appendChild(makeFooter())
+container.appendChild(foot)
 
 app.appendChild(container)
