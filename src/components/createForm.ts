@@ -1,4 +1,5 @@
 import newElement from "../utils/newElement";
+import createLabel from "./labelAndInput"
 import { elementParams } from "../utils/types";
 
 function createForm() {
@@ -16,7 +17,17 @@ const formHeading = newElement({
     content: 'Title'
 })
 
-// const titleLabel 
-// const titleInput
+// const titleLabel
+const titleLabel = createLabel('title-input', ['form-label'])
+// const titleInput input type=text
 
+// const bodyLabel
+// const bodyInput type=textarea
 
+// const targetDateLabel
+// const targetDateInput input type=date
+
+// const colorLabel
+// const colorInput type=select + type=options
+
+// const actionButton
