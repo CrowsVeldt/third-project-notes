@@ -1,10 +1,20 @@
 import { createInput, createLabel } from "./labelAndInput";
 import colorSelect from "./colorSelector";
 import { formatDate, formatMinDate, removeTag } from "../utils/util";
+import Note from "../classes/Note";
 import newElement from "../utils/newElement";
 import { addNoteToContainer } from "./noteContainer";
 
-function noteForm(): HTMLDivElement {
+/* 
+  add Note: Fields empty, edit note: fields populated
+*/
+
+function noteForm(
+  // buttonName?: string,
+  // noteDetails?: Note
+): HTMLDivElement {
+  // const { title, body, createDate, targetDate, id, color } = noteDetails
+  
   const date: Date = new Date();
   const minDate = formatMinDate(date);
 
@@ -53,7 +63,7 @@ function noteForm(): HTMLDivElement {
   form.appendChild(colorLabel);
   form.appendChild(cSelect);
 
-  const addButton: HTMLButtonElement = newElement({
+  const actionButton: HTMLButtonElement = newElement({
     type: 'button',
     id: 'form-button',
     class: ['form-control'],
@@ -92,7 +102,7 @@ function noteForm(): HTMLDivElement {
     }
   }) as HTMLButtonElement
 
-  form.appendChild(addButton);
+  form.appendChild(actionButton);
 
   return form;
 }

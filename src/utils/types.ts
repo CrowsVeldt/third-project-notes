@@ -19,7 +19,7 @@ type EventListener = {
   listener: (evt?: Event) => void
 }
 
-type elementInput = {
+type elementParams = {
   type: string;
   id?: string;
   class?: string[];
@@ -28,4 +28,4 @@ type elementInput = {
   props?: string[][];
 };
 
-export type { colorObject, Note, SortMethod, elementInput };
+export type { colorObject, Note, SortMethod, elementParams };

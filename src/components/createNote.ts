@@ -2,6 +2,7 @@ import { saveNote, deleteNote, getNote } from "../utils/storage";
 import { Note } from "../utils/types";
 import { formatDate, makeHash } from "../utils/util";
 import newElement from "../utils/newElement";
+import { noteForm } from "./createNoteForm";
 
 function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
   const date: Date = new Date();
@@ -96,9 +97,8 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
 
 function editNote(noteId: string) {
   const note = getNote(noteId);
-  // console.log(note);
-  // noteForm()
-  // toggleForm()
+  // console.log(noteForm())
+  // toggleForm(note-form)
 }
 
 export { newNote, editNote };

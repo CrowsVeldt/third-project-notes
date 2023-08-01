@@ -43,7 +43,6 @@ id: string // hashed from Date.toString()
 
 - - - refactor createInput, etc. to objects and use inheritance for different types?
 - notes: Make notes editable
-- UX: when user clicks outside of menus, close them
 - dates: Check dates work in different locales
 - target date: Make target date alway be more than current date when adding date via keyboard
 - target date: prevent adding more than 4 digits in target date years column
