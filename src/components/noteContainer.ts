@@ -1,47 +1,62 @@
-import { noteForm } from "./createNoteForm";
-import {newNote} from "./createNote";
+import { newNote } from "./createNote";
 import { Note } from "../utils/types";
 import { storedNotes, storageExists } from "../utils/storage";
+import newElement from "../utils/newElement";
 
-function noteContainer(noteArray?: Note[]): HTMLDivElement {
-  const noteContainer: HTMLDivElement = document.createElement("div");
-  noteContainer.id = "note-container";
-  noteContainer.classList.add(
+
+const noteContainer: HTMLDivElement = newElement({
+  type: 'div',
+  id: 'note-container',
+  class: [
     "container",
     "d-flex",
     "flex-wrap",
     "space-between"
-  );
-  noteContainer.appendChild(noteForm());
+  ]
+}) as HTMLDivElement
 
-  if (noteArray) {
-    noteArray.forEach((note: Note) => {
-      noteContainer.appendChild(newNote(note, true));
-    });
-  } else if (storageExists()) {
-    const notes: void | Note[] = storedNotes();
-    if (notes) {
-      localStorage.clear;
-      notes.forEach((note: Note) => {
-        noteContainer.appendChild(newNote(note, true));
+function populateNoteContainer(noteArray?: Note[]): void {
+  const container: HTMLElement | null = document.getElementById('note-container')
+
+  if (container) {
+    if (noteArray) {
+      noteArray.forEach((note: Note) => {
+        container.appendChild(newNote(note, true));
       });
+    } else if (storageExists()) {
+      const notes: void | Note[] = storedNotes();
+      if (notes) {
+        localStorage.clear;
+        notes.forEach((note: Note) => {
+          container.appendChild(newNote(note, true));
+        });
+      }
     }
   }
-  return noteContainer;
 }
 
-function removeNoteContainer(): void {
+function addNoteToContainer(note: Note, fromStorage: boolean): void {
   const con: HTMLElement | null = document.getElementById("note-container");
   if (con) {
-    con.remove();
+    con.appendChild(newNote(note, fromStorage))
+  }
+}
+
+function wipeNoteContainer(): void {
+  const con: HTMLElement | null = document.getElementById("note-container");
+  if (con) {
+    con.innerHTML = ''
   }
 }
 
 function resetNoteContainer(notes: Note[] | void = []): void {
   if (!notes) return
+
+  wipeNoteContainer();
   const page: HTMLElement | null = document.getElementById("main-page");
-  removeNoteContainer();
-  page?.appendChild(noteContainer(notes));
+  if (page) {
+    populateNoteContainer(notes)
+  }
 }
 
-export { noteContainer, removeNoteContainer, resetNoteContainer };
+export { noteContainer, populateNoteContainer, addNoteToContainer, wipeNoteContainer, resetNoteContainer };
