@@ -1,9 +1,11 @@
-import { createInput, createLabel } from "./labelAndInput";
+import { addNoteToContainer, resetNoteContainer } from "./noteContainer";
 import colorSelect from "./colorSelector";
+import { createInput, createLabel } from "./labelAndInput";
 import { formatMinDate, removeTag } from "../utils/util";
+import { getNote } from "../utils/storage";
 import newElement from "../utils/newElement";
-import { addNoteToContainer } from "./noteContainer";
 import { Note } from "../utils/types";
+import NoteObj from "../classes/Note";
 
 function noteForm(
   buttonName: string,
@@ -11,12 +13,13 @@ function noteForm(
   formId: string,
   noteDetails?: Note
 ): HTMLDivElement {
-  // {title, body, color, targetDate?, id?, createDate?}
+
   let details = {} as Note
 
-  if(noteDetails) {
-    details = {...noteDetails}
+  if (noteDetails) {
+    details = { ...noteDetails }
   }
+
   const date: Date = new Date();
   const minDate = formatMinDate(date);
 
@@ -68,6 +71,7 @@ function noteForm(
   form.appendChild(colorLabel);
   form.appendChild(cSelect);
 
+
   const actionButton: HTMLButtonElement = newElement({
     type: 'button',
     id: 'form-button',
@@ -87,19 +91,23 @@ function noteForm(
           return;
         }
 
+        const note = new NoteObj(
+          titleInput.value.replace(removeTag, ''),
+          bodyInput.value.replace(removeTag, ''),
+          cSelect.value,
+          noteDetails ? noteDetails.id : undefined,
+          noteDetails ? noteDetails.createDate : undefined,
+          tDateInput.value
+        )
+
         if (form.classList.contains("d-flex")) {
           form.classList.toggle("d-flex");
         }
-        addNoteToContainer({
-          title: titleInput.value.replace(removeTag, ''),
-          body: bodyInput.value.replace(removeTag, ''),
-          targetDate: tDateInput.value,
-          color: cSelect.value,
-          id: details.id ? details.id : undefined,
-          createDate: details.createDate ? details.createDate : undefined
-        },
-          false
-        )
+
+        if (!getNote(note.getId())) note.saveToStorage()
+
+        addNoteToContainer(note.getDetails())
+        resetNoteContainer()
 
         titleInput.value = "";
         bodyInput.value = "";

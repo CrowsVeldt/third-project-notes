@@ -1,31 +1,24 @@
-import { saveNote, deleteNote, getNote } from "../utils/storage";
+import { deleteNote, getNote
+  // , getNote 
+} from "../utils/storage";
 import { Note } from "../utils/types";
-import { formatDate, makeHash } from "../utils/util";
+import { formatDate} from "../utils/util";
 import newElement from "../utils/newElement";
+// import { noteForm, toggleForm } from "./createNoteForm";
+import NoteObj from "../classes/Note";
 import { noteForm, toggleForm } from "./createNoteForm";
 
-function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
-  const date: Date = new Date();
-  const cDate: string = deetz.createDate ? deetz.createDate : formatDate(date);
-  // if there is no id, set it to a Hash of current time + random characters
-  const id: string = deetz.id ? deetz.id : makeHash(date.getTime().toString());
-  const deleteId: string = "delete-" + id;
-  const editId: string = "edit-" + id;
+function newNote(n: Note | undefined): HTMLDivElement {
+  const note = n ? new NoteObj(
+    n.title, n.body, n.color, n.id, n.createDate, n.targetDate
+  ) : new NoteObj()
 
-  if (!fromStorage) {
-    saveNote({
-      id: id,
-      title: deetz.title,
-      body: deetz.body,
-      createDate: cDate,
-      targetDate: deetz.targetDate,
-      color: deetz.color,
-    });
-  }
+  const deleteId: string = "delete-" + note.getId();
+  const editId: string = "edit-" + note.getId();
 
-  const note: HTMLDivElement = newElement({
+  const noteDiv: HTMLDivElement = newElement({
     type: "div",
-    id: id,
+    id: note.getId(),
     class: [
       "border",
       "rounded",
@@ -36,28 +29,28 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
       "flex-fill",
       "note",
     ],
-    props: [["style", `background-color: ${deetz.color}`]],
+    props: [["style", `background-color: ${note.getColor()}`]],
   }) as HTMLDivElement;
 
   const noteTitle: HTMLHeadingElement = newElement({
     type: "h3",
-    content: deetz.title,
+    content: note.getTitle(),
   }) as HTMLHeadingElement;
 
   const noteBody: HTMLParagraphElement = newElement({
     type: "p",
     class: ["mb-auto", "border-top", "border-bottom"],
-    content: deetz.body,
+    content: note.getBody(),
   }) as HTMLParagraphElement;
 
   const noteCDate: HTMLParagraphElement = newElement({
     type: "p",
-    content: `Created on ${cDate}`,
+    content: `Created on ${note.getCreateDate()}`,
   }) as HTMLParagraphElement;
 
   const noteTDate: HTMLParagraphElement = newElement({
     type: "p",
-    content: deetz.targetDate ? `Targate date ${formatDate(deetz.targetDate)}` : "",
+    content: note.getTargetDate() ? `Targate date ${formatDate(note.getTargetDate())}` : "",
   }) as HTMLParagraphElement;
 
   const deleteButton: HTMLButtonElement = newElement({
@@ -68,8 +61,9 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
     eventListener: {
       eventType: 'click',
       listener: () => {
-        deleteNote(id)
-        document.getElementById(id)?.remove()
+        console.log(note.getId())
+        deleteNote(note.getId())
+        document.getElementById(note.getId())?.remove()
       }
     }
   }) as HTMLButtonElement
@@ -82,39 +76,28 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
     eventListener: {
       eventType: 'click',
       listener: () => {
-        editNote(id)
+        editNote(note.getId())
       }
     }
   }) as HTMLButtonElement
 
-  note.appendChild(noteTitle);
-  note.appendChild(noteBody);
-  note.appendChild(noteCDate);
-  note.appendChild(noteTDate);
-  note.appendChild(deleteButton);
-  note.appendChild(editButton);
+  noteDiv.appendChild(noteTitle);
+  noteDiv.appendChild(noteBody);
+  noteDiv.appendChild(noteCDate);
+  noteDiv.appendChild(noteTDate);
+  noteDiv.appendChild(deleteButton);
+  noteDiv.appendChild(editButton);
 
-  return note;
+  return noteDiv;
 }
 
 function editNote(noteId: string) {
   const note = getNote(noteId);
-  const app = document.getElementById('app')
-  const noteContainer = document.getElementById('note-container')
   const editFormExists = document.getElementById('edit-note-form')
 
-  // if (note && note.id) {
-  //   const noteElement = noteContainer?.querySelector(`#\\${note.id}`)
-  //   if (noteElement) {
-  //     noteContainer!.removeChild(noteElement)
-  //   }
-  // }
-  if (note && app && !editFormExists) {
-    app.prepend(noteForm('Update Note', 'Edit Note', 'edit-note-form', note))
-    toggleForm('edit-note-form')
-  } else if (note && app && editFormExists) {
-    app?.removeChild(editFormExists!)
-    app.prepend(noteForm('Update Note', 'Edit Note', 'edit-note-form', note))
+  if (note && editFormExists) {
+    deleteNote(noteId)
+    document.getElementById('note-container')!.prepend(noteForm('Update Note', 'Edit Note', 'edit-note-form', note))
     toggleForm('edit-note-form')
   }
 }

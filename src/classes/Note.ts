@@ -1,28 +1,39 @@
 import { getNote, saveNote } from "../utils/storage";
 import { makeHash, formatDate } from "../utils/util";
 
-class Note {
-  #id: string;
+class NoteObj {
   #title: string;
   #body: string;
-  #targetDate: string;
-  #createDate: string;
   #color: string;
+  #id: string;
+  #createDate: string;
+  #targetDate: string;
   constructor(
-    id?: string,
     title?: string,
     body?: string,
-    targetDate?: string,
+    color?: string,
+    id?: string,
     createDate?: string,
-    color?: string
+    targetDate?: string,
   ) {
     const date = new Date();
-    this.#id = id ? id : makeHash(date.getTime().toString());
     this.#title = title ? title : "";
     this.#body = body ? body : "";
-    this.#targetDate = targetDate ? targetDate : "";
+    this.#color = color ? color : "none";
+    this.#id = id ? id : makeHash(date.getTime().toString());
     this.#createDate = createDate ? createDate : formatDate(date);
-    this.#color = color ? color : "";
+    this.#targetDate = targetDate ? targetDate : "";
+  }
+
+  getDetails() {
+    return {
+      title: this.#title,
+      body: this.#body,
+      color: this.#color,
+      id: this.#id,
+      createDate: this.#createDate,
+      targetDate: this.#targetDate
+    }
   }
 
   getTitle() {
@@ -80,7 +91,6 @@ class Note {
   }
 
   existsInStorage() {
-     console.log(this.#id)
     if (getNote(this.#id)) return true
     return false
   }
@@ -88,15 +98,15 @@ class Note {
   saveToStorage () {
       if (!this.existsInStorage()) {
           saveNote({
-              id: this.#id,
               title: this.#title,
               body: this.#body,
-              targetDate: this.#targetDate,
+              color: this.#color,
+              id: this.#id,
               createDate: this.#createDate,
-              color: this.#color
+              targetDate: this.#targetDate,
           })
       }
   }
 }
 
-export default Note;
+export default NoteObj;

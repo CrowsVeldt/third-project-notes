@@ -7,9 +7,9 @@ type Note = {
   title: string;
   body: string;
   color: string;
-  targetDate?: string;
   id?: string;
   createDate?: string;
+  targetDate?: string;
 };
 
 type SortMethod = { method: string };

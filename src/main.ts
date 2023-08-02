@@ -15,6 +15,7 @@ container.appendChild(noteDisplayControls)
 container.appendChild(main)
 main.appendChild(noteContainer)
 container.appendChild(noteForm('Add Note', 'New Note', 'add-note'))
+container.appendChild(noteForm('Update Note', 'Edit Note', 'edit-note-form'))
 container.appendChild(toggleFormButton('toggle-add-note', 'add-note'))
 container.appendChild(foot)
 container.addEventListener('click', (evt) => {
