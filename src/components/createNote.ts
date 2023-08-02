@@ -2,7 +2,7 @@ import { saveNote, deleteNote, getNote } from "../utils/storage";
 import { Note } from "../utils/types";
 import { formatDate, makeHash } from "../utils/util";
 import newElement from "../utils/newElement";
-import { toggleForm } from "./createNoteForm";
+import { noteForm, toggleForm } from "./createNoteForm";
 
 function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
   const date: Date = new Date();
@@ -78,7 +78,7 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
     type: 'button',
     id: editId,
     class: ['w-50', 'align-self-center', 'edit-button'],
-    content: 'Edit', 
+    content: 'Edit',
     eventListener: {
       eventType: 'click',
       listener: () => {
@@ -99,8 +99,24 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
 
 function editNote(noteId: string) {
   const note = getNote(noteId);
-  // console.log(noteForm())
-  toggleForm('edit-note')
+  const app = document.getElementById('app')
+  const noteContainer = document.getElementById('note-container')
+  const editFormExists = document.getElementById('edit-note-form')
+
+  // if (note && note.id) {
+  //   const noteElement = noteContainer?.querySelector(`#\\${note.id}`)
+  //   if (noteElement) {
+  //     noteContainer!.removeChild(noteElement)
+  //   }
+  // }
+  if (note && app && !editFormExists) {
+    app.prepend(noteForm('Update Note', 'Edit Note', 'edit-note-form', note))
+    toggleForm('edit-note-form')
+  } else if (note && app && editFormExists) {
+    app?.removeChild(editFormExists!)
+    app.prepend(noteForm('Update Note', 'Edit Note', 'edit-note-form', note))
+    toggleForm('edit-note-form')
+  }
 }
 
 export { newNote, editNote };

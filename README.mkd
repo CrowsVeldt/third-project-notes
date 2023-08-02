@@ -41,7 +41,8 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
-- - - notes: Make notes editable
+- forms: add resetForm or updateForm function? VVVVVV
+- forms: when opening one form (add/edit), if the other is open close it
 - refactor createInput, etc. to objects and use inheritance for different types?
 - dates: Check dates work in different locales
 - target date: Make target date alway be more than current date when adding date via keyboard
