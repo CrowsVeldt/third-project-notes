@@ -13,11 +13,10 @@ function noteForm(
   formId: string,
   noteDetails?: Note
 ): HTMLDivElement {
-
-  let details = {} as Note
+  let details = {} as Note;
 
   if (noteDetails) {
-    details = { ...noteDetails }
+    details = { ...noteDetails };
   }
 
   const date: Date = new Date();
@@ -33,20 +32,27 @@ function noteForm(
     "title-input",
     ["form-control"],
     true,
-    [["maxlength", "20"], ["required", 'true'], ['value', details.title ? details.title : '']]
+    [
+      ["maxlength", "50"],
+      ["required", "true"],
+      ["value", details.title ? details.title : ""],
+    ]
   );
   form.appendChild(titleLabel);
   form.appendChild(titleInput);
 
   const bodyLabel: HTMLLabelElement = createLabel("Note body", ["form-label"]);
   const bodyInput: HTMLTextAreaElement = newElement({
-    type: 'textarea',
-    id: 'body-input',
-    class: ['form-control'],
-    props: [['maxLength', '100'], ['required', 'true']]
-  }) as HTMLTextAreaElement
+    type: "textarea",
+    id: "body-input",
+    class: ["form-control"],
+    props: [
+      ["maxLength", "100"],
+      ["required", "true"],
+    ],
+  }) as HTMLTextAreaElement;
   // refactor to fit with other input values'?
-  bodyInput.value = details.body ? details.body : ''
+  bodyInput.value = details.body ? details.body : "";
   form.appendChild(bodyLabel);
   form.appendChild(bodyInput);
 
@@ -58,7 +64,10 @@ function noteForm(
     "tDate-input",
     ["form-control"],
     false,
-    [["min", minDate], ['value', details.targetDate ? details.targetDate : '']]
+    [
+      ["min", minDate],
+      ["value", details.targetDate ? details.targetDate : ""],
+    ]
   );
   form.appendChild(tDateLabel);
   form.appendChild(tDateInput);
@@ -67,21 +76,20 @@ function noteForm(
     "form-label",
   ]);
   const cSelect: HTMLSelectElement = colorSelect();
-  cSelect.value = details.color ? details.color : 'none'
+  cSelect.value = details.color ? details.color : "none";
   form.appendChild(colorLabel);
   form.appendChild(cSelect);
 
-
   const actionButton: HTMLButtonElement = newElement({
-    type: 'button',
-    id: 'form-button',
-    class: ['form-control'],
+    type: "button",
+    id: "form-button",
+    class: ["form-control"],
     content: buttonName,
-    props: [['type', 'submit']],
+    props: [["type", "submit"]],
     eventListener: {
-      eventType: 'click',
+      eventType: "click",
       listener: (evt?: Event) => {
-        if (evt) evt.preventDefault()
+        if (evt) evt.preventDefault();
 
         if (titleInput.value === "") {
           titleInput.reportValidity();
@@ -92,30 +100,30 @@ function noteForm(
         }
 
         const note = new NoteObj(
-          titleInput.value.replace(removeTag, ''),
-          bodyInput.value.replace(removeTag, ''),
+          titleInput.value.replace(removeTag, ""),
+          bodyInput.value.replace(removeTag, ""),
           cSelect.value,
           noteDetails ? noteDetails.id : undefined,
           noteDetails ? noteDetails.createDate : undefined,
           tDateInput.value
-        )
+        );
 
         if (form.classList.contains("d-flex")) {
           form.classList.toggle("d-flex");
         }
 
-        if (!getNote(note.getId())) note.saveToStorage()
+        if (!getNote(note.getId())) note.saveToStorage();
 
-        addNoteToContainer(note.getDetails())
-        resetNoteContainer()
+        addNoteToContainer(note.getDetails());
+        resetNoteContainer();
 
         titleInput.value = "";
         bodyInput.value = "";
         tDateInput.value = "";
         cSelect.value = "none";
-      }
-    }
-  }) as HTMLButtonElement
+      },
+    },
+  }) as HTMLButtonElement;
 
   form.appendChild(actionButton);
 
@@ -124,7 +132,7 @@ function noteForm(
 
 function formContainer(id: string, title: string): HTMLDivElement {
   const formContainer: HTMLDivElement = newElement({
-    type: 'div',
+    type: "div",
     id: id,
     class: [
       "position-fixed",
@@ -141,15 +149,15 @@ function formContainer(id: string, title: string): HTMLDivElement {
       "border-dark",
       "rounded",
       "hideable",
-      "form"
-    ]
-  }) as HTMLDivElement
+      "form",
+    ],
+  }) as HTMLDivElement;
 
   const formHeader: HTMLHeadingElement = newElement({
-    type: 'h3',
-    class: ['form-label'],
-    content: title
-  }) as HTMLHeadingElement
+    type: "h3",
+    class: ["form-label"],
+    content: title,
+  }) as HTMLHeadingElement;
 
   formContainer.appendChild(formHeader);
   return formContainer;

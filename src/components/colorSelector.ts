@@ -4,25 +4,29 @@ import { noteColors } from "../utils/util";
 
 function colorOption(color: colorObject): HTMLOptionElement {
   return newElement({
-    type: 'option',
-    class: ['form-control'],
+    type: "option",
+    class: ["form-control"],
     content: color.name,
-    props: [['value', color.value]]
-  }) as HTMLOptionElement
+    props: [["value", color.value]],
+  }) as HTMLOptionElement;
 }
 
-function colorSelect (): HTMLSelectElement {
+function colorSelect(): HTMLSelectElement {
   const colorSelect = newElement({
-    type: 'select',
-    id: 'color-select',
-    class: ['form-control'],
-    props: [['required', 'true'], ['ariaLabel', 'Default select element']]
-  }) as HTMLSelectElement
+    type: "select",
+    id: "color-select",
+    class: ["form-control"],
+    props: [
+      ["required", "true"],
+      ["ariaLabel", "Default select element"],
+    ],
+  }) as HTMLSelectElement;
 
-  noteColors.forEach(color => {
-    colorSelect.appendChild(colorOption(color))
-  })
+  noteColors.forEach((color) => {
+    colorSelect.appendChild(colorOption(color));
+  });
 
-  return colorSelect
+  return colorSelect;
 }
-export default colorSelect
+
+export default colorSelect;
