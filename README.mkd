@@ -41,7 +41,7 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
-- - - notes/forms: when an updated note is appended to noteContainer, delete the original
+- refactor createNoteForm, etc. to use NoteObj setters
 - feature: Add settings menu for deleteAll button
 - forms: when opening one form (add/edit), if the other is open close it
 - refactor createInput, etc. to objects and use inheritance for different types?

@@ -1,10 +1,7 @@
-import { deleteNote, getNote
-  // , getNote 
-} from "../utils/storage";
+import { deleteNote, getNote } from "../utils/storage";
 import { Note } from "../utils/types";
 import { formatDate} from "../utils/util";
 import newElement from "../utils/newElement";
-// import { noteForm, toggleForm } from "./createNoteForm";
 import NoteObj from "../classes/Note";
 import { noteForm, toggleForm } from "./createNoteForm";
 

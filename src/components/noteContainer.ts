@@ -50,8 +50,6 @@ function wipeNoteContainer(): void {
 }
 
 function resetNoteContainer(notes: Note[] | void): void {
-  // if (!notes) return
-
   wipeNoteContainer();
   const page: HTMLElement | null = document.getElementById("main-page");
   if (page && notes) {
