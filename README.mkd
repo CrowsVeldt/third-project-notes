@@ -41,13 +41,13 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
-- forms: add resetForm or updateForm function? VVVVVV
+- - - notes/forms: when an updated note is appended to noteContainer, delete the original
+- feature: Add settings menu for deleteAll button
 - forms: when opening one form (add/edit), if the other is open close it
 - refactor createInput, etc. to objects and use inheritance for different types?
 - dates: Check dates work in different locales
 - target date: Make target date alway be more than current date when adding date via keyboard
 - target date: prevent adding more than 4 digits in target date years column
-- layout: move delete all button to settings menu
 - sort: reduce redundancy in sortNotes file
 - sort: subsort by Abc or date as appropriate
 - sort: sorting by target date should sort by year, then month, then day,
