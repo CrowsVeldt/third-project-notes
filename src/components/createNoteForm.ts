@@ -47,7 +47,7 @@ function noteForm(
     id: "body-input",
     class: ["form-control"],
     props: [
-      ["maxLength", "100"],
+      ["maxLength", "1000"],
       ["required", "true"],
     ],
   }) as HTMLTextAreaElement;

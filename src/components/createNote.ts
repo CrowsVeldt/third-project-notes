@@ -24,6 +24,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
       "d-flex",
       "flex-column",
       "flex-fill",
+      "overflow-hidden",
       "note",
     ],
     props: [["style", `background-color: ${note.getColor()}`]],
