@@ -2,14 +2,15 @@ import { saveNote, deleteNote, getNote } from "../utils/storage";
 import { Note } from "../utils/types";
 import { formatDate, makeHash } from "../utils/util";
 import newElement from "../utils/newElement";
-import { noteForm } from "./createNoteForm";
+import { toggleForm } from "./createNoteForm";
 
 function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
   const date: Date = new Date();
   const cDate: string = deetz.createDate ? deetz.createDate : formatDate(date);
   // if there is no id, set it to a Hash of current time + random characters
   const id: string = deetz.id ? deetz.id : makeHash(date.getTime().toString());
-  const buttonId: string = "button-" + id;
+  const deleteId: string = "delete-" + id;
+  const editId: string = "edit-" + id;
 
   if (!fromStorage) {
     saveNote({
@@ -56,12 +57,12 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
 
   const noteTDate: HTMLParagraphElement = newElement({
     type: "p",
-    content: deetz.targetDate ? `Targate date ${deetz.targetDate}` : "",
+    content: deetz.targetDate ? `Targate date ${formatDate(deetz.targetDate)}` : "",
   }) as HTMLParagraphElement;
 
   const deleteButton: HTMLButtonElement = newElement({
     type: 'button',
-    id: buttonId,
+    id: deleteId,
     class: ['w-50', 'align-self-center'],
     content: 'Delete',
     eventListener: {
@@ -75,7 +76,8 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
 
   const editButton: HTMLButtonElement = newElement({
     type: 'button',
-    class: ['w-50', 'align-self-center'],
+    id: editId,
+    class: ['w-50', 'align-self-center', 'edit-button'],
     content: 'Edit', 
     eventListener: {
       eventType: 'click',
@@ -98,7 +100,7 @@ function newNote(deetz: Note, fromStorage: boolean): HTMLDivElement {
 function editNote(noteId: string) {
   const note = getNote(noteId);
   // console.log(noteForm())
-  // toggleForm(note-form)
+  toggleForm('edit-note')
 }
 
 export { newNote, editNote };

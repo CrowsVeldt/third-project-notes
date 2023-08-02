@@ -1,24 +1,26 @@
 import { createInput, createLabel } from "./labelAndInput";
 import colorSelect from "./colorSelector";
-import { formatDate, formatMinDate, removeTag } from "../utils/util";
-import Note from "../classes/Note";
+import { formatMinDate, removeTag } from "../utils/util";
 import newElement from "../utils/newElement";
 import { addNoteToContainer } from "./noteContainer";
-
-/* 
-  add Note: Fields empty, edit note: fields populated
-*/
+import { Note } from "../utils/types";
 
 function noteForm(
-  // buttonName?: string,
-  // noteDetails?: Note
+  buttonName: string,
+  formTitle: string,
+  formId: string,
+  noteDetails?: Note
 ): HTMLDivElement {
-  // const { title, body, createDate, targetDate, id, color } = noteDetails
-  
+  // {title, body, color, targetDate?, id?, createDate?}
+  let details = {} as Note
+
+  if(noteDetails) {
+    details = {...noteDetails}
+  }
   const date: Date = new Date();
   const minDate = formatMinDate(date);
 
-  const form = formContainer("note-form", "New Note");
+  const form = formContainer(formId, formTitle);
 
   const titleLabel: HTMLLabelElement = createLabel("Note title", [
     "form-label",
@@ -28,7 +30,7 @@ function noteForm(
     "title-input",
     ["form-control"],
     true,
-    [["maxlength", "20"]]
+    [["maxlength", "20"], ["required", 'true'], ['value', details.title ? details.title : '']]
   );
   form.appendChild(titleLabel);
   form.appendChild(titleInput);
@@ -40,6 +42,8 @@ function noteForm(
     class: ['form-control'],
     props: [['maxLength', '100'], ['required', 'true']]
   }) as HTMLTextAreaElement
+  // refactor to fit with other input values'?
+  bodyInput.value = details.body ? details.body : ''
   form.appendChild(bodyLabel);
   form.appendChild(bodyInput);
 
@@ -51,7 +55,7 @@ function noteForm(
     "tDate-input",
     ["form-control"],
     false,
-    [["min", minDate]]
+    [["min", minDate], ['value', details.targetDate ? details.targetDate : '']]
   );
   form.appendChild(tDateLabel);
   form.appendChild(tDateInput);
@@ -60,6 +64,7 @@ function noteForm(
     "form-label",
   ]);
   const cSelect: HTMLSelectElement = colorSelect();
+  cSelect.value = details.color ? details.color : 'none'
   form.appendChild(colorLabel);
   form.appendChild(cSelect);
 
@@ -67,7 +72,7 @@ function noteForm(
     type: 'button',
     id: 'form-button',
     class: ['form-control'],
-    content: 'Create note',
+    content: buttonName,
     props: [['type', 'submit']],
     eventListener: {
       eventType: 'click',
@@ -88,8 +93,10 @@ function noteForm(
         addNoteToContainer({
           title: titleInput.value.replace(removeTag, ''),
           body: bodyInput.value.replace(removeTag, ''),
-          targetDate: formatDate(tDateInput.value),
-          color: cSelect.value
+          targetDate: tDateInput.value,
+          color: cSelect.value,
+          id: details.id ? details.id : undefined,
+          createDate: details.createDate ? details.createDate : undefined
         },
           false
         )
