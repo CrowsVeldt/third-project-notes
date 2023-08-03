@@ -1,143 +1,93 @@
 import { addNoteToContainer, resetNoteContainer } from "./noteContainer";
 import colorSelect from "./colorSelector";
 import { createInput, createLabel } from "./labelAndInput";
-import { formatMinDate, removeTag } from "../utils/util";
+import { removeTag } from "../utils/util";
 import newElement from "../utils/newElement";
 import { Note } from "../utils/types";
 import NoteObj from "../classes/Note";
-import { updateNote } from "../utils/storage";
+import { getNote, updateNote } from "../utils/storage";
+import FormObject from "../classes/NoteForm";
 
-function noteForm(
-  buttonName: string,
-  formTitle: string,
-  formId: string,
-  noteDetails?: Note
-): HTMLDivElement {
-  let details: Note = {} as Note;
+const form = new FormObject("New Note", "", "", "", "none", "Add Note");
 
-  if (noteDetails) {
-    details = { ...noteDetails };
-  }
-
-  const date: Date = new Date();
-  const minDate: string = formatMinDate(date);
-
-  const form: HTMLDivElement = formContainer(formId, formTitle);
-
-  const titleLabel: HTMLLabelElement = createLabel("Note title", [
-    "form-label",
-  ]);
-  const titleInput: HTMLInputElement = createInput(
-    "text",
-    "title-input",
-    ["form-control"],
-    true,
-    [
-      ["maxlength", "50"],
-      ["required", "true"],
-      ["value", details.title ? details.title : ""],
-    ]
-  );
-  form.appendChild(titleLabel);
-  form.appendChild(titleInput);
-
-  const bodyLabel: HTMLLabelElement = createLabel("Note body", ["form-label"]);
-  const bodyInput: HTMLTextAreaElement = newElement({
-    type: "textarea",
-    id: "body-input",
-    class: ["form-control"],
-    props: [
-      ["maxLength", "1000"],
-      ["required", "true"],
-    ],
-  }) as HTMLTextAreaElement;
-  // refactor to fit with other input values'?
-  bodyInput.value = details.body ? details.body : "";
-  form.appendChild(bodyLabel);
-  form.appendChild(bodyInput);
-
-  const tDateLabel: HTMLLabelElement = createLabel("Target date", [
-    "form-label",
-  ]);
-  const tDateInput: HTMLInputElement = createInput(
-    "date",
-    "tDate-input",
-    ["form-control"],
-    false,
-    [
-      ["min", minDate],
-      ["value", details.targetDate ? details.targetDate : ""],
-    ]
-  );
-  form.appendChild(tDateLabel);
-  form.appendChild(tDateInput);
-
-  const colorLabel: HTMLLabelElement = createLabel("Select color", [
-    "form-label",
-  ]);
-  const cSelect: HTMLSelectElement = colorSelect();
-  cSelect.value = details.color ? details.color : "none";
-  form.appendChild(colorLabel);
-  form.appendChild(cSelect);
-
-  const actionButton: HTMLButtonElement = newElement({
-    type: "button",
-    id: "form-button",
-    class: ["form-control"],
-    content: buttonName,
-    props: [["type", "submit"]],
-    eventListener: {
-      eventType: "click",
-      listener: (evt?: Event) => {
-        if (evt) evt.preventDefault();
-
-
-        if (titleInput.value === "") {
-          titleInput.reportValidity();
-          return;
-        } else if (bodyInput.value === "") {
-          bodyInput.reportValidity();
-          return;
-        }
-
-        const note = new NoteObj(
-          titleInput.value.replace(removeTag, ""),
-          bodyInput.value.replace(removeTag, ""),
-          cSelect.value,
-          noteDetails ? noteDetails.id : undefined,
-          noteDetails ? noteDetails.createDate : undefined,
-          tDateInput.value
-        );
-
-        if (!note.existsInStorage()) {
-          note.saveToStorage();
-        } else if (noteDetails) {
-          updateNote(noteDetails.id as string, note.getDetails())}
-
-        if (form.classList.contains("d-flex")) {
-          form.classList.toggle("d-flex");
-        }
-
-        addNoteToContainer(note.getDetails());
-        resetNoteContainer();
-
-        titleInput.value = "";
-        bodyInput.value = "";
-        tDateInput.value = "";
-        cSelect.value = "none";
-      },
-    },
-  }) as HTMLButtonElement;
-
-  form.appendChild(actionButton);
-
-  return form;
+function accessFormElement() {
+  const header = document.getElementById(
+    "input-form-title"
+  ) as HTMLHeadingElement;
+  const title = document.getElementById("title-input") as HTMLInputElement;
+  const body = document.getElementById("body-input") as HTMLInputElement;
+  const date = document.getElementById("tDate-input") as HTMLInputElement;
+  const color = document.getElementById("color-select") as HTMLSelectElement;
+  const button = document.getElementById("form-button") as HTMLButtonElement;
+  return {
+    header: header,
+    title: title,
+    body: body,
+    date: date,
+    color: color,
+    button: button,
+  };
 }
 
-function formContainer(id: string, title: string): HTMLDivElement {
-  const formContainer: HTMLDivElement = newElement({
+function populateFormElement() {
+  const { header, title, body, date, color, button } = accessFormElement();
+  header.innerText = form.getHead();
+  title.value = form.getTitle();
+  body.value = form.getBody();
+  date.value = form.getTDate();
+  color.value = form.getColor();
+  button.innerText = form.getButtonName();
+
+  return form.getDetails();
+}
+
+function wipeForm() {
+  form.resetForm();
+  populateFormElement();
+}
+
+function editNote(noteId: string) {
+  form.resetForm()
+  const note = getNote(noteId);
+
+  if (note) {
+    form.setForm(
+      "Edit Note",
+      note.title,
+      note.body,
+      note.targetDate ? note.targetDate : "",
+      note.color,
+      "Update Note"
+    );
+    populateFormElement();
+  }
+}
+
+function formButtonHandler() {
+    // if triggered by an 'edit' button, call editNote(button.parent.id)
+
+  const form: HTMLElement = document.getElementById('input-form')!;
+  if (!form.classList.contains('d-flex')){
+    form.classList.add("d-flex");
+  } 
+  if (form.firstChild?.textContent === 'New Note') {
+    wipeForm()
+    populateFormElement()
+  } else if (form.firstChild?.textContent === 'Edit Note') {
+    wipeForm()
+  }
+}
+
+function toggleNoteForm() {
+  const formEl: HTMLElement = document.getElementById('input-form')!;
+  formEl.classList.toggle("d-flex");
+  console.log(formEl.firstChild?.textContent)
+}
+
+function createNoteForm(): HTMLDivElement {
+  const formElement: HTMLDivElement = newElement({
     type: "div",
-    id: id,
+    id: "input-form",
     class: [
       "position-fixed",
       "bg-light",
@@ -159,17 +109,135 @@ function formContainer(id: string, title: string): HTMLDivElement {
 
   const formHeader: HTMLHeadingElement = newElement({
     type: "h3",
+    id: "input-form-title",
     class: ["form-label"],
-    content: title,
+    content: form.getHead()!,
   }) as HTMLHeadingElement;
 
-  formContainer.appendChild(formHeader);
-  return formContainer;
+  formElement.appendChild(formHeader);
+
+  const titleLabel: HTMLLabelElement = createLabel("Note title", [
+    "form-label",
+  ]);
+  const titleInput: HTMLInputElement = createInput(
+    "text",
+    "title-input",
+    ["form-control"],
+    true,
+    [
+      ["maxlength", "50"],
+      ["required", "true"],
+    ]
+  );
+  formElement.appendChild(titleLabel);
+  formElement.appendChild(titleInput);
+
+  const bodyLabel: HTMLLabelElement = createLabel("Note body", ["form-label"]);
+  const bodyInput: HTMLTextAreaElement = newElement({
+    type: "textarea",
+    id: "body-input",
+    class: ["form-control"],
+    props: [
+      ["maxLength", "1000"],
+      ["required", "true"],
+      ["value", form.getBody()!],
+    ],
+  }) as HTMLTextAreaElement;
+  formElement.appendChild(bodyLabel);
+  formElement.appendChild(bodyInput);
+
+  const tDateLabel: HTMLLabelElement = createLabel("Target date", [
+    "form-label",
+  ]);
+  const tDateInput: HTMLInputElement = createInput(
+    "date",
+    "tDate-input",
+    ["form-control"],
+    false,
+    []
+  );
+  formElement.appendChild(tDateLabel);
+  formElement.appendChild(tDateInput);
+
+  const colorLabel: HTMLLabelElement = createLabel("Select color", [
+    "form-label",
+  ]);
+  const cSelect: HTMLSelectElement = colorSelect();
+  // figure out how to set color from FormObject
+  formElement.appendChild(colorLabel);
+  formElement.appendChild(cSelect);
+
+  const actionButton: HTMLButtonElement = newElement({
+    type: "button",
+    id: "form-button",
+    class: ["form-control"],
+    content: form.getButtonName()!,
+    props: [["type", "submit"]],
+    eventListener: {
+      eventType: "click",
+      listener: (evt?: Event) => {
+        if (evt) evt.preventDefault();
+
+        if (titleInput.value === "") {
+          titleInput.reportValidity();
+          return;
+        } else if (bodyInput.value === "") {
+          bodyInput.reportValidity();
+          return;
+        }
+
+        // const note = new NoteObj(
+        //   titleInput.value.replace(removeTag, ""),
+        //   bodyInput.value.replace(removeTag, ""),
+        //   cSelect.value,
+        //   noteDetails ? noteDetails.id : undefined,
+        //   noteDetails ? noteDetails.createDate : undefined,
+        //   tDateInput.value
+        // );
+
+        // if (!note.existsInStorage()) {
+        //   note.saveToStorage();
+        // } else if (noteDetails) {
+        //   updateNote(noteDetails.id as string, note.getDetails());
+        // }
+
+        // addNoteToContainer(note.getDetails());
+        // resetNoteContainer();
+        // if (formElement.classList.contains("d-flex")) {
+        //   formElement.classList.toggle("d-flex");
+        // }
+
+        wipeForm();
+      },
+    },
+  }) as HTMLButtonElement;
+
+  formElement.appendChild(actionButton);
+
+  return formElement;
 }
 
-function toggleForm(id: string) {
-  const form: HTMLElement = document.getElementById(id)!;
-  form.classList.toggle("d-flex");
-}
+// function addNoteHandler(
+//   form: HTMLDivElement,
+//   noteDetails: Note,
+//   titleInput: HTMLInputElement,
+//   bodyInput: HTMLTextAreaElement,
+//   tDateInput: HTMLInputElement,
+//   cSelect: HTMLSelectElement
+// ) {
+//   const note = new NoteObj(
+//     titleInput.value.replace(removeTag, ""),
+//     bodyInput.value.replace(removeTag, ""),
+//     cSelect.value,
+//     noteDetails ? noteDetails.id : undefined,
+//     noteDetails ? noteDetails.createDate : undefined,
+//     tDateInput.value
+//   );
 
-export { noteForm, toggleForm };
+//   titleInput.value = "";
+//   bodyInput.value = "";
+//   tDateInput.value = "";
+//   cSelect.value = "none";
+// }
+
+export { createNoteForm, formButtonHandler, editNote, wipeForm };
