@@ -1,4 +1,3 @@
-import { newNote } from "../components/createNote";
 import { Note } from "./types";
 import { lowerCase } from "./util";
 
@@ -76,6 +75,7 @@ function updateNote(noteId: string, obj: {}) {
       const updates = {}
 
     for (let a in obj){
+      // TODO: figure out how to fix type error
       updates[a] = obj[a]
     } 
 

@@ -19,11 +19,12 @@ function newNote(n: Note | undefined): HTMLDivElement {
     class: [
       "border",
       "rounded",
+       // "w-25",
       "ms-1",
       "p-2",
       "d-flex",
       "flex-column",
-      "flex-fill",
+      // "flex-fill",
       "overflow-hidden",
       "note",
     ],

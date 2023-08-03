@@ -60,35 +60,35 @@ class NoteObj {
     return this.#createDate;
   }
 
-  setId(id: string) {
-    this.#id = id;
-    return this.#id;
-  }
+  // setId(id: string) {
+  //   this.#id = id;
+  //   return this.#id;
+  // }
 
-  setTitle(title: string) {
-    this.#title = title;
-    return this.#title;
-  }
+  // setTitle(title: string) {
+  //   this.#title = title;
+  //   return this.#title;
+  // }
 
-  setBody(body: string) {
-    this.#body = body;
-    return this.#body;
-  }
+  // setBody(body: string) {
+  //   this.#body = body;
+  //   return this.#body;
+  // }
 
-  setTargetDate(targetDate: string) {
-    this.#targetDate = targetDate;
-    return this.#targetDate;
-  }
+  // setTargetDate(targetDate: string) {
+  //   this.#targetDate = targetDate;
+  //   return this.#targetDate;
+  // }
 
-  setCreateDate(createDate: string) {
-    this.#createDate = createDate;
-    return this.#createDate;
-  }
+  // setCreateDate(createDate: string) {
+  //   this.#createDate = createDate;
+  //   return this.#createDate;
+  // }
 
-  setColor(color: string) {
-    this.#color = color;
-    return this.#color;
-  }
+  // setColor(color: string) {
+  //   this.#color = color;
+  //   return this.#color;
+  // }
 
   existsInStorage() {
     if (getNote(this.#id)) return true

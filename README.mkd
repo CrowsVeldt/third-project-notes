@@ -41,6 +41,7 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
+- seperate listener functions from component files, component files should *just* handle markup and styling
 - set note element size on main page. click on a note to display it in full
 - feature: Add settings menu for deleteAll button
 - forms: when opening one form (add/edit), if the other is open close it
