@@ -3,7 +3,7 @@ import { Note } from "../utils/types";
 import { formatDate} from "../utils/util";
 import newElement from "../utils/newElement";
 import NoteObj from "../classes/Note";
-import { noteForm, toggleForm } from "./createNoteForm";
+import { editNote, formButtonHandler } from "./createNoteForm";
 
 function newNote(n: Note | undefined): HTMLDivElement {
   const note = n ? new NoteObj(
@@ -19,12 +19,11 @@ function newNote(n: Note | undefined): HTMLDivElement {
     class: [
       "border",
       "rounded",
-       // "w-25",
+      "w-25",
       "ms-1",
       "p-2",
       "d-flex",
       "flex-column",
-      // "flex-fill",
       "overflow-hidden",
       "note",
     ],
@@ -69,12 +68,13 @@ function newNote(n: Note | undefined): HTMLDivElement {
   const editButton: HTMLButtonElement = newElement({
     type: 'button',
     id: editId,
-    class: ['w-50', 'align-self-center', 'edit-button'],
+    class: ['w-50', 'align-self-center', 'toggle-button'],
     content: 'Edit',
     eventListener: {
       eventType: 'click',
       listener: () => {
-        openEditForm(note.getId())
+        editNote(note.getId())
+        formButtonHandler()
       }
     }
   }) as HTMLButtonElement
@@ -87,17 +87,6 @@ function newNote(n: Note | undefined): HTMLDivElement {
   noteDiv.appendChild(editButton);
 
   return noteDiv;
-}
-
-function openEditForm(noteId: string
-  ): void {
-  const note: Note | void = getNote(noteId);
-  const editFormExists: HTMLElement | null = document.getElementById('edit-note-form')
-
-  if (note && editFormExists) {
-    document.getElementById('note-container')!.prepend(noteForm('Update Note', 'Edit Note', 'edit-note-form', note))
-    toggleForm('edit-note-form')
-  }
 }
 
 export { newNote };
