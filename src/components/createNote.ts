@@ -73,7 +73,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
     eventListener: {
       eventType: 'click',
       listener: () => {
-        editNote(note.getId())
+        openEditForm(note.getId())
       }
     }
   }) as HTMLButtonElement
@@ -88,7 +88,8 @@ function newNote(n: Note | undefined): HTMLDivElement {
   return noteDiv;
 }
 
-function editNote(noteId: string): void {
+function openEditForm(noteId: string
+  ): void {
   const note: Note | void = getNote(noteId);
   const editFormExists: HTMLElement | null = document.getElementById('edit-note-form')
 
@@ -98,4 +99,4 @@ function editNote(noteId: string): void {
   }
 }
 
-export { newNote, editNote };
+export { newNote };
