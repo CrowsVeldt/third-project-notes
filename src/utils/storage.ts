@@ -7,11 +7,12 @@ import { lowerCase } from "./util";
   note requires fetching the whole array. May be worth redoing.
 */
 
-const storageExists = (): boolean | undefined => {
+const storageExists = (): boolean => {
   if (localStorage.length > 0) return true;
+  return false;
 };
 
-function getStoredNotes(): Note[] | void {
+function getStoredNotes(): Note[] {
   if (storageExists()) {
     const notes: string | null = localStorage.getItem("notes");
     if (notes !== null) {
@@ -19,63 +20,53 @@ function getStoredNotes(): Note[] | void {
       if (parsedNotes.length > 0) return parsedNotes;
     }
   }
+  return [];
 }
 
 function getNote(id: string): Note | void {
-    const notes = getStoredNotes()
-    if (notes) {
-        const data = notes.find(el => el.id === id)
-        if (data) return data
-    }
+  const notes: Note[] = getStoredNotes();
+  const foundNote: Note | undefined = notes.find((el) => el.id === id);
+  if (foundNote) return foundNote;
 }
 
 function saveNote(note: Note): void {
-  const notes: Note[] | void = getStoredNotes();
-  if (notes) {
-    notes.push(note);
-    localStorage.setItem("notes", JSON.stringify(notes));
-  } else {
-    const newNotes = JSON.stringify([note]);
-    localStorage.setItem("notes", newNotes);
-  }
+  const notes: Note[] = storageExists() ? getStoredNotes() : [];
+  notes.push(note);
+  localStorage.setItem("notes", JSON.stringify(notes));
 }
 
 function deleteNote(noteId: string): void {
-  const notes: Note[] | void = getStoredNotes();
-  if (notes) {
-    notes.forEach((note: Note) => {
-      if (note.id === noteId) {
-        notes.splice(notes.indexOf(note), 1);
-        if (notes.length > 0) {
-          localStorage.setItem("notes", JSON.stringify(notes));
-        } else {
-          localStorage.removeItem("notes");
-        }
+  const notes: Note[] = getStoredNotes();
+  notes.forEach((note: Note) => {
+    if (note.id === noteId) {
+      notes.splice(notes.indexOf(note), 1);
+      if (notes.length > 0) {
+        localStorage.setItem("notes", JSON.stringify(notes));
+      } else {
+        localStorage.removeItem("notes");
       }
-    });
-  }
+    }
+  });
 }
 
 function wipeStorage(): void {
   if (storageExists()) localStorage.clear();
 }
 
-function searchNotes(query: string): Note[] | undefined {
-  const notes: Note[] | void = getStoredNotes();
-  const lowQuery: string = lowerCase(query);
+function searchNotes(query: string): Note[] {
+  const notes: Note[] = getStoredNotes();
+  const formattedQuery: string = lowerCase(query);
+  const results: Note[] = [];
 
-  if (notes) {
-    const results: Note[] = [];
-    notes.forEach((note: Note) => {
-      if (
-        lowerCase(note.title).includes(lowQuery) ||
-        lowerCase(note.body).includes(lowQuery)
-      ) {
-        results.push(note);
-      }
-    });
-    return results;
-  }
+  notes.forEach((note: Note) => {
+    if (
+      lowerCase(note.title).includes(formattedQuery) ||
+      lowerCase(note.body).includes(formattedQuery)
+    ) {
+      results.push(note);
+    }
+  });
+  return results;
 }
 
 export {
