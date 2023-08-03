@@ -1,3 +1,4 @@
+import { newNote } from "../components/createNote";
 import { Note } from "./types";
 import { lowerCase } from "./util";
 
@@ -69,6 +70,22 @@ function searchNotes(query: string): Note[] {
   return results;
 }
 
+function updateNote(noteId: string, obj: {}) {
+  const oldNote = getNote(noteId)
+  if (oldNote) {
+      const updates = {}
+
+    for (let a in obj){
+      updates[a] = obj[a]
+    } 
+
+    const newNote = {...oldNote, ...updates}
+
+    deleteNote(noteId)
+    saveNote(newNote)
+  }
+}
+
 export {
   deleteNote,
   getNote,
@@ -76,5 +93,6 @@ export {
   searchNotes,
   getStoredNotes,
   storageExists,
+  updateNote,
   wipeStorage,
 };
