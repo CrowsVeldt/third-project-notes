@@ -2,7 +2,6 @@ import { addNoteToContainer, resetNoteContainer } from "./noteContainer";
 import colorSelect from "./colorSelector";
 import { createInput, createLabel } from "./labelAndInput";
 import { formatMinDate, removeTag } from "../utils/util";
-import { getNote } from "../utils/storage";
 import newElement from "../utils/newElement";
 import { Note } from "../utils/types";
 import NoteObj from "../classes/Note";
@@ -13,16 +12,16 @@ function noteForm(
   formId: string,
   noteDetails?: Note
 ): HTMLDivElement {
-  let details = {} as Note;
+  let details: Note = {} as Note;
 
   if (noteDetails) {
     details = { ...noteDetails };
   }
 
   const date: Date = new Date();
-  const minDate = formatMinDate(date);
+  const minDate: string = formatMinDate(date);
 
-  const form = formContainer(formId, formTitle);
+  const form: HTMLDivElement = formContainer(formId, formTitle);
 
   const titleLabel: HTMLLabelElement = createLabel("Note title", [
     "form-label",
@@ -112,7 +111,7 @@ function noteForm(
           form.classList.toggle("d-flex");
         }
 
-        if (!getNote(note.getId())) note.saveToStorage();
+        if (!note.existsInStorage()) note.saveToStorage();
 
         addNoteToContainer(note.getDetails());
         resetNoteContainer();

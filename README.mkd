@@ -51,3 +51,4 @@ id: string // hashed from Date.toString()
 - target date: prevent adding more than 4 digits in target date years column
 - sort: reduce redundancy in sortNotes file
 - sort: when sorting by createDate or color, subsort by title
+- types: add interface for noteObj

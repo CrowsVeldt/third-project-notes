@@ -59,7 +59,6 @@ function newNote(n: Note | undefined): HTMLDivElement {
     eventListener: {
       eventType: 'click',
       listener: () => {
-        console.log(note.getId())
         deleteNote(note.getId())
         document.getElementById(note.getId())?.remove()
       }
@@ -89,12 +88,11 @@ function newNote(n: Note | undefined): HTMLDivElement {
   return noteDiv;
 }
 
-function editNote(noteId: string) {
-  const note = getNote(noteId);
-  const editFormExists = document.getElementById('edit-note-form')
+function editNote(noteId: string): void {
+  const note: Note | void = getNote(noteId);
+  const editFormExists: HTMLElement | null = document.getElementById('edit-note-form')
 
   if (note && editFormExists) {
-    deleteNote(noteId)
     document.getElementById('note-container')!.prepend(noteForm('Update Note', 'Edit Note', 'edit-note-form', note))
     toggleForm('edit-note-form')
   }
