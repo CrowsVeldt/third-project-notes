@@ -1,11 +1,7 @@
-import { addNoteToContainer, resetNoteContainer } from "./noteContainer";
 import colorSelect from "./colorSelector";
 import { createInput, createLabel } from "./labelAndInput";
-import { removeTag } from "../utils/util";
 import newElement from "../utils/newElement";
-import { Note } from "../utils/types";
-import NoteObj from "../classes/Note";
-import { getNote, updateNote } from "../utils/storage";
+import { getNote } from "../utils/storage";
 import FormObject from "../classes/NoteForm";
 
 const form = new FormObject("New Note", "", "", "", "none", "Add Note");
@@ -47,7 +43,7 @@ function wipeForm() {
 }
 
 function editNote(noteId: string) {
-  form.resetForm()
+  form.resetForm();
   const note = getNote(noteId);
 
   if (note) {
@@ -63,25 +59,46 @@ function editNote(noteId: string) {
   }
 }
 
-function formButtonHandler() {
-    // if triggered by an 'edit' button, call editNote(button.parent.id)
+function formButtonHandler(evt: Event, id: string): void;
+function formButtonHandler(evt: Event): void;
+function formButtonHandler(evt: Event, id: string | void): void {
+  const inputForm: HTMLElement | null = document.getElementById("input-form");
+  const inputFormTitle = inputForm?.firstChild?.textContent;
+  const target = evt.target as HTMLElement;
 
-  const form: HTMLElement = document.getElementById('input-form')!;
-  if (!form.classList.contains('d-flex')){
-    form.classList.add("d-flex");
-  } 
-  if (form.firstChild?.textContent === 'New Note') {
-    wipeForm()
-    populateFormElement()
-  } else if (form.firstChild?.textContent === 'Edit Note') {
-    wipeForm()
+  // If FORM is closed
+  if (inputForm && !inputForm.classList.contains("d-flex")) {
+    // Display FORM
+    inputForm.classList.add("d-flex");
+    // if plus button was pressed
+    if (target.id === "plus-button") {
+      wipeForm();
+      // else
+    } else if (id) {
+      editNote(id);
+    }
+    // If FORM is open
+  } else if (inputForm && inputForm.classList.contains("d-flex")) {
+    // FORM title id 'New Note'
+    if (inputForm && inputFormTitle === "New Note") {
+      // if plus button was pressed
+      if (target.id === "plus-button") {
+        wipeForm();
+        inputForm.classList.remove("d-flex");
+        // else
+      } else if (id) {
+        editNote(id);
+      }
+    } else if (inputForm && inputFormTitle === "Edit Note") {
+      // if plus button was pressed
+      if (target.id === "plus-button") {
+        wipeForm();
+        // else
+      } else if (id) {
+        editNote(id);
+      }
+    }
   }
-}
-
-function toggleNoteForm() {
-  const formEl: HTMLElement = document.getElementById('input-form')!;
-  formEl.classList.toggle("d-flex");
-  console.log(formEl.firstChild?.textContent)
 }
 
 function createNoteForm(): HTMLDivElement {
