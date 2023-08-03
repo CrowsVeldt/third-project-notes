@@ -14,7 +14,7 @@ class NoteObj {
     color?: string,
     id?: string,
     createDate?: string,
-    targetDate?: string,
+    targetDate?: string
   ) {
     const date = new Date();
     this.#title = title ? title : "";
@@ -32,8 +32,8 @@ class NoteObj {
       color: this.#color,
       id: this.#id,
       createDate: this.#createDate,
-      targetDate: this.#targetDate
-    }
+      targetDate: this.#targetDate,
+    };
   }
 
   getTitle() {
@@ -60,53 +60,22 @@ class NoteObj {
     return this.#createDate;
   }
 
-  // setId(id: string) {
-  //   this.#id = id;
-  //   return this.#id;
-  // }
-
-  // setTitle(title: string) {
-  //   this.#title = title;
-  //   return this.#title;
-  // }
-
-  // setBody(body: string) {
-  //   this.#body = body;
-  //   return this.#body;
-  // }
-
-  // setTargetDate(targetDate: string) {
-  //   this.#targetDate = targetDate;
-  //   return this.#targetDate;
-  // }
-
-  // setCreateDate(createDate: string) {
-  //   this.#createDate = createDate;
-  //   return this.#createDate;
-  // }
-
-  // setColor(color: string) {
-  //   this.#color = color;
-  //   return this.#color;
-  // }
-
   existsInStorage() {
-    if (getNote(this.#id)) return true
-    return false
+    if (getNote(this.#id)) return true;
+    return false;
   }
 
-
-  saveToStorage () {
-      if (!this.existsInStorage()) {
-          saveNote({
-              title: this.#title,
-              body: this.#body,
-              color: this.#color,
-              id: this.#id,
-              createDate: this.#createDate,
-              targetDate: this.#targetDate,
-          })
-      }
+  saveToStorage() {
+    if (!this.existsInStorage()) {
+      saveNote({
+        title: this.#title,
+        body: this.#body,
+        color: this.#color,
+        id: this.#id,
+        createDate: this.#createDate,
+        targetDate: this.#targetDate,
+      });
+    }
   }
 }
 

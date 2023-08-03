@@ -1,14 +1,14 @@
-import { deleteNote, getNote } from "../utils/storage";
+import { deleteNote } from "../utils/storage";
 import { Note } from "../utils/types";
-import { formatDate} from "../utils/util";
+import { formatDate } from "../utils/util";
 import newElement from "../utils/newElement";
 import NoteObj from "../classes/Note";
-import { editNote, formButtonHandler } from "./createNoteForm";
+import { formButtonHandler } from "./createNoteForm";
 
 function newNote(n: Note | undefined): HTMLDivElement {
-  const note = n ? new NoteObj(
-    n.title, n.body, n.color, n.id, n.createDate, n.targetDate
-  ) : new NoteObj()
+  const note = n
+    ? new NoteObj(n.title, n.body, n.color, n.id, n.createDate, n.targetDate)
+    : new NoteObj();
 
   const deleteId: string = "delete-" + note.getId();
   const editId: string = "edit-" + note.getId();
@@ -48,36 +48,39 @@ function newNote(n: Note | undefined): HTMLDivElement {
 
   const noteTDate: HTMLParagraphElement = newElement({
     type: "p",
-    content: note.getTargetDate() ? `Targate date ${formatDate(note.getTargetDate())}` : "",
+    content: note.getTargetDate()
+      ? `Targate date ${formatDate(note.getTargetDate())}`
+      : "",
   }) as HTMLParagraphElement;
 
   const deleteButton: HTMLButtonElement = newElement({
-    type: 'button',
+    type: "button",
     id: deleteId,
-    class: ['w-50', 'align-self-center'],
-    content: 'Delete',
+    class: ["w-50", "align-self-center"],
+    content: "Delete",
     eventListener: {
-      eventType: 'click',
+      eventType: "click",
       listener: () => {
-        deleteNote(note.getId())
-        document.getElementById(note.getId())?.remove()
-      }
-    }
-  }) as HTMLButtonElement
+        deleteNote(note.getId());
+        document.getElementById(note.getId())?.remove();
+      },
+    },
+  }) as HTMLButtonElement;
 
   const editButton: HTMLButtonElement = newElement({
-    type: 'button',
+    type: "button",
     id: editId,
-    class: ['w-50', 'align-self-center', 'toggle-button'],
-    content: 'Edit',
+    class: ["w-50", "align-self-center", "toggle-button"],
+    content: "Edit",
     eventListener: {
-      eventType: 'click',
-      listener: () => {
-        editNote(note.getId())
-        formButtonHandler()
-      }
-    }
-  }) as HTMLButtonElement
+      eventType: "click",
+      listener: (evt) => {
+        if (evt) {
+          formButtonHandler(evt, note.getId());
+        }
+      },
+    },
+  }) as HTMLButtonElement;
 
   noteDiv.appendChild(noteTitle);
   noteDiv.appendChild(noteBody);

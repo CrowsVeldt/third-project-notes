@@ -1,21 +1,22 @@
-import { formButtonHandler, wipeForm, } from "./createNoteForm"; 
+import { formButtonHandler } from "./createNoteForm";
 import newElement from "../utils/newElement";
 
-function toggleFormButton (): HTMLButtonElement {
+function toggleFormButton(): HTMLButtonElement {
   return newElement({
-    type: 'button',
-    id: 'plus-button',
-    class: ['position-fixed', 'end-0', 'bottom-0', 'fs-1', 'toggle-button'],
-    content: '+',
-    props: [['style', 'width:50px;height:50px;']],
+    type: "button",
+    id: "plus-button",
+    class: ["position-fixed", "end-0", "bottom-0", "fs-1", "toggle-button"],
+    content: "+",
+    props: [["style", "width:50px;height:50px;"]],
     eventListener: {
-      eventType: 'click', 
-      listener: () => {
-        wipeForm()
-        formButtonHandler()
-      }
-    }
-  }) as HTMLButtonElement
+      eventType: "click",
+      listener: (evt) => {
+        if (evt) {
+          formButtonHandler(evt);
+        }
+      },
+    },
+  }) as HTMLButtonElement;
 }
 
-export default toggleFormButton
+export default toggleFormButton;

@@ -15,16 +15,16 @@ type Note = {
 type SortMethod = { method: string };
 
 type EventListener = {
-  eventType: string,
-  listener: (evt?: Event) => void
-}
+  eventType: string;
+  listener: (evt?: Event) => void;
+};
 
 type elementParams = {
   type: string;
   id?: string;
   class?: string[];
   content?: string;
-  eventListener?: EventListener,
+  eventListener?: EventListener;
   props?: string[][];
 };
 
