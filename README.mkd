@@ -41,8 +41,7 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
-- set max note size on main page. click on a note to open it
-- refactor createNoteForm, etc. to use NoteObj setters
+- set note element size on main page. click on a note to display it in full
 - feature: Add settings menu for deleteAll button
 - forms: when opening one form (add/edit), if the other is open close it
 - refactor createInput, etc. to objects and use inheritance for different types?

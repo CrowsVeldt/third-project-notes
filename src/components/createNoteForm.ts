@@ -5,6 +5,7 @@ import { formatMinDate, removeTag } from "../utils/util";
 import newElement from "../utils/newElement";
 import { Note } from "../utils/types";
 import NoteObj from "../classes/Note";
+import { updateNote } from "../utils/storage";
 
 function noteForm(
   buttonName: string,
@@ -90,6 +91,7 @@ function noteForm(
       listener: (evt?: Event) => {
         if (evt) evt.preventDefault();
 
+
         if (titleInput.value === "") {
           titleInput.reportValidity();
           return;
@@ -107,11 +109,14 @@ function noteForm(
           tDateInput.value
         );
 
+        if (!note.existsInStorage()) {
+          note.saveToStorage();
+        } else if (noteDetails) {
+          updateNote(noteDetails.id as string, note.getDetails())}
+
         if (form.classList.contains("d-flex")) {
           form.classList.toggle("d-flex");
         }
-
-        if (!note.existsInStorage()) note.saveToStorage();
 
         addNoteToContainer(note.getDetails());
         resetNoteContainer();

@@ -95,6 +95,7 @@ class NoteObj {
     return false
   }
 
+
   saveToStorage () {
       if (!this.existsInStorage()) {
           saveNote({
