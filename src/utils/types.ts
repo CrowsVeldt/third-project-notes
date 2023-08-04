@@ -28,4 +28,14 @@ type elementParams = {
   props?: string[][];
 };
 
-export type { colorObject, Note, SortMethod, elementParams };
+type FormElement = {
+  header: HTMLHeadingElement;
+  title: HTMLInputElement;
+  body: HTMLInputElement;
+  date: HTMLInputElement;
+  color: HTMLSelectElement;
+  button: HTMLButtonElement;
+  noteId?: string;
+};
+
+export type { colorObject, elementParams, FormElement, Note, SortMethod };
