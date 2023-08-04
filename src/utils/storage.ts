@@ -70,20 +70,19 @@ function searchNotes(query: string): Note[] {
 }
 
 function updateNote(noteId: string, obj: {}) {
-  // console.log(`id=${noteId} && obj=${obj}`)
-  const oldNote = getNote(noteId)
+  const oldNote = getNote(noteId);
   if (oldNote) {
-      const updates = {}
+    const updates = {};
 
-    for (let a in obj){
+    for (let a in obj) {
       // TODO: figure out how to fix type error
-      updates[a] = obj[a]
-    } 
+      updates[a] = obj[a];
+    }
 
-    const newNote = {...oldNote, ...updates}
+    const newNote = { ...oldNote, ...updates };
 
-    deleteNote(noteId)
-    saveNote(newNote)
+    deleteNote(noteId);
+    saveNote(newNote);
   }
 }
 

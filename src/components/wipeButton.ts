@@ -3,17 +3,20 @@ import { storageExists, wipeStorage } from "../utils/storage";
 import { resetNoteContainer } from "./noteContainer";
 
 const wipeButton: HTMLButtonElement = newElement({
-  type: 'button',
-  content: 'Delete all notes',
+  type: "button",
+  content: "Delete all notes",
   eventListener: {
-    eventType: 'click',
+    eventType: "click",
     listener: () => {
-      if (storageExists() && confirm("Delete all notes? This cannot be undone.")) {
-        wipeStorage()
-        resetNoteContainer()
+      if (
+        storageExists() &&
+        confirm("Delete all notes? This cannot be undone.")
+      ) {
+        wipeStorage();
+        resetNoteContainer();
       }
-    }
-  }
-}) as HTMLButtonElement
+    },
+  },
+}) as HTMLButtonElement;
 
 export default wipeButton;

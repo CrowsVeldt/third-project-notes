@@ -3,11 +3,11 @@ import newElement from "../utils/newElement";
 import makeSearchBar from "./createSearchBar";
 
 const noteDisplayControls: HTMLDivElement = newElement({
-    type: 'div',
-    class: ['container', 'd-flex', 'justify-content-between']
-}) as HTMLDivElement
+  type: "div",
+  class: ["container", "d-flex", "justify-content-between"],
+}) as HTMLDivElement;
 
-    noteDisplayControls.appendChild(sortSelect())
-    noteDisplayControls.appendChild(makeSearchBar())
+noteDisplayControls.appendChild(sortSelect());
+noteDisplayControls.appendChild(makeSearchBar());
 
-export default noteDisplayControls
+export default noteDisplayControls;

@@ -2,36 +2,36 @@ import newElement from "../utils/newElement";
 
 // header
 const head: HTMLHeadingElement = newElement({
-  type: 'header',
-  class: ['container-fluid', 'text-center', 'border']
-}) as HTMLHeadingElement
+  type: "header",
+  class: ["container-fluid", "text-center", "border"],
+}) as HTMLHeadingElement;
 
 const headTitle: HTMLHeadElement = newElement({
-  type: 'h1',
-  id: 'title',
-  content: 'Notes'
-}) as HTMLHeadElement
+  type: "h1",
+  id: "title",
+  content: "Notes",
+}) as HTMLHeadElement;
 
-head.appendChild(headTitle)
+head.appendChild(headTitle);
 
 // main
 const main: HTMLDivElement = newElement({
-  type: 'div',
-  id: 'main-page',
-  class: ['flex-grow-1']
-}) as HTMLDivElement
+  type: "div",
+  id: "main-page",
+  class: ["flex-grow-1"],
+}) as HTMLDivElement;
 
 // footer
 const foot: HTMLElement = newElement({
-  type: 'footer',
-  class: ['container-fluid', 'text-center', 'border']
-})
+  type: "footer",
+  class: ["container-fluid", "text-center", "border"],
+});
 
 const footTitle: HTMLHeadingElement = newElement({
-  type: 'h2',
-  content: 'Footer'
-}) as HTMLHeadingElement
+  type: "h2",
+  content: "Footer",
+}) as HTMLHeadingElement;
 
-foot.appendChild(footTitle)
+foot.appendChild(footTitle);
 
 export { foot, head, main };

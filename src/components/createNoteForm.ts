@@ -3,10 +3,9 @@ import { createInput, createLabel } from "./labelAndInput";
 import newElement from "../utils/newElement";
 import { getNote, updateNote } from "../utils/storage";
 import FormObject from "../classes/NoteForm";
-import { Note } from "../utils/types";
 import NoteObj from "../classes/Note";
-import { removeTag } from "../utils/util";
-import { addNoteToContainer, resetNoteContainer } from "./noteContainer";
+import { notesDifferent, removeTag } from "../utils/util";
+import { resetNoteContainer } from "./noteContainer";
 
 const form = new FormObject("New Note", "", "", "", "none", "Add Note");
 
@@ -60,51 +59,62 @@ function editNote(noteId: string) {
       "Update Note",
       "edit-" + note.id
     );
+    // console.log(form.getNoteId())
     populateFormElement();
   }
 }
 
 function openFormButtonHandler(evt: Event, id: string): void;
 function openFormButtonHandler(evt: Event): void;
-function openFormButtonHandler(evt: Event, id: string | void): void {
+function openFormButtonHandler(): void;
+function openFormButtonHandler(evt: Event | void, id: string | void): void {
   const inputForm: HTMLElement | null = document.getElementById("input-form");
-  const target = evt.target as HTMLElement;
-  const callerId = target.id;
 
-  if (inputForm && inputForm.firstChild) {
-    const formOpen = inputForm.classList.contains("d-flex");
-    const formTitleIsNewNote = inputForm.firstChild.textContent === "New Note";
+  if (arguments.length === 0 && inputForm) {
+    inputForm.classList.remove("d-flex");
+    resetForm();
+    return;
+  }
+  if (evt) {
+    const target = evt.target as HTMLElement;
+    const callerId = target.id;
 
-    if (callerId === "plus-button") {
-      // if plus button pressed
-      if (!formOpen) {
-        // and form is closed
-        inputForm.classList.add("d-flex"); // open form
-      } else {
-        // else if form is open
-        if (formTitleIsNewNote) {
-          // if form title is 'New Note'
-          inputForm.classList.remove("d-flex"); // remove form
+    if (inputForm && inputForm.firstChild) {
+      const formOpen = inputForm.classList.contains("d-flex");
+      const formTitleIsNewNote =
+        inputForm.firstChild.textContent === "New Note";
+
+      if (callerId === "plus-button") {
+        // if plus button pressed
+        if (!formOpen) {
+          // and form is closed
+          inputForm.classList.add("d-flex"); // open form
         } else {
-          // else if form title is not 'New Note'
-          resetForm(); // reset form
+          // else if form is open
+          if (formTitleIsNewNote) {
+            // if form title is 'New Note'
+            inputForm.classList.remove("d-flex"); // remove form
+          } else {
+            // else if form title is not 'New Note'
+            resetForm(); // reset form
+          }
         }
-      }
-    } else if (id) {
-      // if edit button pressed
-      if (!formOpen) {
-        // and form is closed
-        editNote(id); // populate form with details from note(id)
-        inputForm.classList.add("d-flex"); // and open form
-      } else {
-        // else if form is open
-        if (callerId === form.getNoteId()) {
-          // if form is already populated with details from note(id)
-          inputForm.classList.remove("d-flex"); // close form
-          resetForm(); // reset form
-        } else {
-          // else
+      } else if (id) {
+        // if edit button pressed
+        if (!formOpen) {
+          // and form is closed
           editNote(id); // populate form with details from note(id)
+          inputForm.classList.add("d-flex"); // and open form
+        } else {
+          // else if form is open
+          if (callerId === form.getNoteId()) {
+            // if form is already populated with details from note(id)
+            inputForm.classList.remove("d-flex"); // close form
+            resetForm(); // reset form
+          } else {
+            // else
+            editNote(id); // populate form with details from note(id)
+          }
         }
       }
     }
@@ -213,15 +223,55 @@ function createNoteForm(): HTMLDivElement {
           return;
         }
 
-        formActionButtonHandler(
-          form.getDetails(),
-          formElement,
-          titleInput,
-          bodyInput,
-          tDateInput,
-          cSelect
-        );
-        resetForm();
+        if (form) {
+          if (form.getNoteId()) {
+            // receive noteId from form, and slice off the first five chars to get the original note id
+            // TODO: fix this type error
+            const cleanId = form.getNoteId().slice(5);
+
+            // get originalNote
+            const originalNote = getNote(cleanId);
+
+            // merge original note with the values from the form
+            const newNote = {
+              ...originalNote,
+              ...{
+                title: titleInput.value.replace(removeTag, ""),
+                body: bodyInput.value.replace(removeTag, ""),
+                color: cSelect.value,
+                targetDate: tDateInput.value,
+              },
+            };
+
+            // if originalNote !== newNote
+            if (notesDifferent(originalNote, newNote)) {
+              // update note with the new values
+              updateNote(cleanId, {
+                title: titleInput.value,
+                body: bodyInput.value,
+                targetDate: tDateInput.value,
+                color: cSelect.value,
+              });
+              // and reset the note container
+              resetNoteContainer();
+            }
+
+            // close form
+            openFormButtonHandler();
+          } else if (!form.getNoteId()) {
+            const n = new NoteObj(
+              titleInput.value.replace(removeTag, ""),
+              bodyInput.value.replace(removeTag, ""),
+              cSelect.value,
+              undefined,
+              undefined,
+              tDateInput.value
+            );
+            n.saveToStorage();
+            resetNoteContainer();
+            openFormButtonHandler();
+          }
+        }
       },
     },
   }) as HTMLButtonElement;
@@ -229,43 +279,6 @@ function createNoteForm(): HTMLDivElement {
   formElement.appendChild(actionButton);
 
   return formElement;
-}
-
-function formActionButtonHandler(
-  noteDetails: Note,
-  formElement: HTMLDivElement,
-  titleInput: HTMLInputElement,
-  bodyInput: HTMLTextAreaElement,
-  tDateInput: HTMLInputElement,
-  cSelect: HTMLSelectElement
-) {
-
-// TODO: Make this work
-
-  const note = new NoteObj(
-    titleInput.value.replace(removeTag, ""),
-    bodyInput.value.replace(removeTag, ""),
-    cSelect.value,
-    noteDetails ? noteDetails.id : undefined,
-    noteDetails ? noteDetails.createDate : undefined,
-    tDateInput.value
-  );
-  console.log(note + '&&' + note.existsInStorage)
-
-  if (!note.existsInStorage()) {
-    note.saveToStorage();
-  } else if (noteDetails) {
-    updateNote(noteDetails.id as string, note.getDetails());
-  }
-
-  titleInput.value = "";
-  bodyInput.value = "";
-  tDateInput.value = "";
-  cSelect.value = "none";
-
-  addNoteToContainer(note.getDetails());
-  resetNoteContainer();
-  formElement.classList.remove("d-flex");
 }
 
 export { createNoteForm, openFormButtonHandler, editNote, resetForm };

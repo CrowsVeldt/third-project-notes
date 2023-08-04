@@ -1,26 +1,25 @@
 import { elementParams } from "./types";
 
 function newElement(a: elementParams) {
+  const el = document.createElement(a.type);
+  el.id = a.id ? a.id : "";
 
-  const el = document.createElement(a.type)
-  el.id = a.id ? a.id : ''
+  const classes = a.class ? a.class : [];
+  el.classList.add(...classes);
 
-  const classes = a.class ? a.class : []
-  el.classList.add(...classes)
-  
   if (a.props) {
-    a.props.forEach(element => {
-      el.setAttribute(element[0], element[1])
+    a.props.forEach((element) => {
+      el.setAttribute(element[0], element[1]);
     });
   }
 
   if (a.eventListener) {
-    el.addEventListener(a.eventListener.eventType, a.eventListener.listener)
+    el.addEventListener(a.eventListener.eventType, a.eventListener.listener);
   }
 
-  el.innerHTML = a.content ? a.content : ''
+  el.innerHTML = a.content ? a.content : "";
 
-  return el
+  return el;
 }
 
-export default newElement
+export default newElement;

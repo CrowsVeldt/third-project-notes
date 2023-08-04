@@ -14,21 +14,18 @@ function sortOption(option: SortMethod): HTMLOptionElement {
 
 function sortSelect(): HTMLDivElement {
   const selectContainer: HTMLDivElement = document.createElement("div");
-  selectContainer.id = 'sort-select-container'
-  selectContainer.classList.add(
-    "d-flex",
-    "align-items-center"
-  );
+  selectContainer.id = "sort-select-container";
+  selectContainer.classList.add("d-flex", "align-items-center");
   const sortSelect: HTMLSelectElement = document.createElement("select");
   sortSelect.id = "sort-select";
-  sortSelect.classList.add('me-3')
+  sortSelect.classList.add("me-3");
   sortSelect.ariaLabel = "Default select element";
 
   sortMethods.forEach((method: SortMethod) => {
     sortSelect.appendChild(sortOption(method));
   });
 
-  const sortToggle: HTMLDivElement = directionToggle
+  const sortToggle: HTMLDivElement = directionToggle;
 
   sortSelect.addEventListener("change", () => {
     const target = document.getElementById("sort-select") as HTMLSelectElement;

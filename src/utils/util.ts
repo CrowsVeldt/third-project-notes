@@ -61,6 +61,16 @@ const lowerCase: (arg0: string) => string = (n: string) =>
 // regex to prevent adding html tags to input value
 const removeTag = new RegExp("(<[a-zA-Z0-9]+>)|(</[a-zA-Z0-9]+>)", "g");
 
+// noteA and NoteB are type: any because otherwise it throws an error
+// TODO: fix type error
+function notesDifferent(noteA: any, noteB: any) {
+  for (let key in noteA) {
+    if (noteA[key] !== noteB[key]) {
+      return true;
+    }
+  }
+  return false;
+}
 
 export {
   noteColors,
@@ -68,6 +78,7 @@ export {
   formatDate,
   lowerCase,
   makeHash,
+  notesDifferent,
   formatMinDate,
-  removeTag
+  removeTag,
 };

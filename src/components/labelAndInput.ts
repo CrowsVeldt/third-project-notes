@@ -2,12 +2,12 @@ import newElement from "../utils/newElement";
 
 function createLabel(value: string, classes: string[]): HTMLLabelElement {
   const label: HTMLLabelElement = newElement({
-    type: 'label',
+    type: "label",
     class: [...classes],
-    content: value
-  }) as HTMLLabelElement
+    content: value,
+  }) as HTMLLabelElement;
 
-  return label
+  return label;
 }
 
 function createInput(
@@ -18,13 +18,15 @@ function createInput(
   other?: string[][]
 ): HTMLInputElement {
   const inp: HTMLInputElement = newElement({
-    type: 'input',
+    type: "input",
     id: id,
     class: [...classes],
-    props: [['type', type], ['required',required.toString()]].concat(other!)
-  }) as HTMLInputElement
+    props: [
+      ["type", type],
+      ["required", required.toString()],
+    ].concat(other!),
+  }) as HTMLInputElement;
 
-  
   return inp;
 }
 
