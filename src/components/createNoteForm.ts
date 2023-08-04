@@ -37,23 +37,24 @@ function populateFormElement() {
   return form.getDetails();
 }
 
-function wipeForm() {
-  form.resetForm();
+function resetForm() {
+  form.resetAll();
   populateFormElement();
 }
 
 function editNote(noteId: string) {
-  form.resetForm();
+  form.resetAll();
   const note = getNote(noteId);
 
   if (note) {
-    form.setForm(
+    form.setAll(
       "Edit Note",
       note.title,
       note.body,
       note.targetDate ? note.targetDate : "",
       note.color,
-      "Update Note"
+      "Update Note",
+      "edit-" + note.id
     );
     populateFormElement();
   }
@@ -63,39 +64,44 @@ function formButtonHandler(evt: Event, id: string): void;
 function formButtonHandler(evt: Event): void;
 function formButtonHandler(evt: Event, id: string | void): void {
   const inputForm: HTMLElement | null = document.getElementById("input-form");
-  const inputFormTitle = inputForm?.firstChild?.textContent;
   const target = evt.target as HTMLElement;
+  const callerId = target.id;
 
-  // If FORM is closed
-  if (inputForm && !inputForm.classList.contains("d-flex")) {
-    // Display FORM
-    inputForm.classList.add("d-flex");
-    // if plus button was pressed
-    if (target.id === "plus-button") {
-      wipeForm();
-      // else
-    } else if (id) {
-      editNote(id);
-    }
-    // If FORM is open
-  } else if (inputForm && inputForm.classList.contains("d-flex")) {
-    // FORM title id 'New Note'
-    if (inputForm && inputFormTitle === "New Note") {
-      // if plus button was pressed
-      if (target.id === "plus-button") {
-        wipeForm();
-        inputForm.classList.remove("d-flex");
-        // else
-      } else if (id) {
-        editNote(id);
+  if (inputForm && inputForm.firstChild) {
+    const formOpen = inputForm.classList.contains("d-flex");
+    const formTitleIsNewNote = inputForm.firstChild.textContent === "New Note";
+
+    if (callerId === "plus-button") {
+      // if plus button pressed
+      if (!formOpen) {
+        // and form is closed
+        inputForm.classList.add("d-flex"); // open form
+      } else {
+        // else if form is open
+        if (formTitleIsNewNote) {
+          // if form title is 'New Note'
+          inputForm.classList.remove("d-flex"); // remove form
+        } else {
+          // else if form title is not 'New Note'
+          resetForm(); // reset form
+        }
       }
-    } else if (inputForm && inputFormTitle === "Edit Note") {
-      // if plus button was pressed
-      if (target.id === "plus-button") {
-        wipeForm();
-        // else
-      } else if (id) {
-        editNote(id);
+    } else if (id) {
+      // if edit button pressed
+      if (!formOpen) {
+        // and form is closed
+        editNote(id); // populate form with details from note(id)
+        inputForm.classList.add("d-flex"); // and open form
+      } else {
+        // else if form is open
+        if (callerId === form.getNoteId()) {
+          // if form is already populated with details from note(id)
+          inputForm.classList.remove("d-flex"); // close form
+          resetForm(); // reset form
+        } else {
+          // else
+          editNote(id); // populate form with details from note(id)
+        }
       }
     }
   }
@@ -128,7 +134,7 @@ function createNoteForm(): HTMLDivElement {
     type: "h3",
     id: "input-form-title",
     class: ["form-label"],
-    content: form.getHead()!,
+    content: form.getHead(),
   }) as HTMLHeadingElement;
 
   formElement.appendChild(formHeader);
@@ -157,7 +163,7 @@ function createNoteForm(): HTMLDivElement {
     props: [
       ["maxLength", "1000"],
       ["required", "true"],
-      ["value", form.getBody()!],
+      ["value", form.getBody()],
     ],
   }) as HTMLTextAreaElement;
   formElement.appendChild(bodyLabel);
@@ -188,7 +194,7 @@ function createNoteForm(): HTMLDivElement {
     type: "button",
     id: "form-button",
     class: ["form-control"],
-    content: form.getButtonName()!,
+    content: form.getButtonName(),
     props: [["type", "submit"]],
     eventListener: {
       eventType: "click",
@@ -224,7 +230,7 @@ function createNoteForm(): HTMLDivElement {
         //   formElement.classList.toggle("d-flex");
         // }
 
-        wipeForm();
+        resetForm();
       },
     },
   }) as HTMLButtonElement;
@@ -257,4 +263,4 @@ function createNoteForm(): HTMLDivElement {
 //   cSelect.value = "none";
 // }
 
-export { createNoteForm, formButtonHandler, editNote, wipeForm };
+export { createNoteForm, formButtonHandler, editNote, resetForm };

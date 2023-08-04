@@ -6,7 +6,7 @@ import {
   noteContainer,
   populateNoteContainer,
 } from "./components/noteContainer";
-import { createNoteForm, wipeForm } from "./components/createNoteForm";
+import { createNoteForm, resetForm } from "./components/createNoteForm";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 app.style.height = "100vh";
@@ -32,7 +32,7 @@ container.addEventListener("click", (evt) => {
         document.getElementById("input-form");
       if (formOpen && formOpen.classList.contains("d-flex")) {
         formOpen.classList.remove("d-flex");
-        wipeForm();
+        resetForm();
       }
     }
   }
