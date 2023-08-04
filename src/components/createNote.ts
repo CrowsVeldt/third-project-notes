@@ -1,7 +1,7 @@
 import { deleteNote } from "../utils/storage";
-import { Note } from "../utils/types";
 import { formatDate } from "../utils/util";
 import newElement from "../utils/newElement";
+import { Note } from "../utils/types";
 import NoteObj from "../classes/Note";
 import { openFormButtonHandler } from "./createNoteForm";
 

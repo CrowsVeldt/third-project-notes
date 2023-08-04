@@ -1,15 +1,16 @@
 import colorSelect from "./colorSelector";
 import { createInput, createLabel } from "./labelAndInput";
-import newElement from "../utils/newElement";
 import { getNote, updateNote } from "../utils/storage";
 import FormObject from "../classes/NoteForm";
-import NoteObj from "../classes/Note";
+import newElement from "../utils/newElement";
 import { notesDifferent, removeTag } from "../utils/util";
+import NoteObj from "../classes/Note";
 import { resetNoteContainer } from "./noteContainer";
+import { FormElement } from "../utils/types";
 
 const form = new FormObject("New Note", "", "", "", "none", "Add Note");
 
-function accessFormElement() {
+function accessFormElement(): FormElement {
   const header = document.getElementById(
     "input-form-title"
   ) as HTMLHeadingElement;

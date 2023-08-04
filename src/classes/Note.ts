@@ -1,4 +1,5 @@
 import { getNote, saveNote } from "../utils/storage";
+import { Note } from "../utils/types";
 import { makeHash, formatDate } from "../utils/util";
 
 class NoteObj {
@@ -25,7 +26,7 @@ class NoteObj {
     this.#targetDate = targetDate ? targetDate : "";
   }
 
-  getDetails() {
+  getDetails(): Note {
     return {
       title: this.#title,
       body: this.#body,
@@ -36,36 +37,36 @@ class NoteObj {
     };
   }
 
-  getTitle() {
+  getTitle(): string {
     return this.#title;
   }
 
-  getBody() {
+  getBody(): string {
     return this.#body;
   }
 
-  getTargetDate() {
+  getTargetDate(): string {
     return this.#targetDate;
   }
 
-  getColor() {
+  getColor(): string {
     return this.#color;
   }
 
-  getId() {
+  getId(): string {
     return this.#id;
   }
 
-  getCreateDate() {
+  getCreateDate(): string {
     return this.#createDate;
   }
 
-  existsInStorage() {
+  existsInStorage(): boolean {
     if (getNote(this.#id)) return true;
     return false;
   }
 
-  saveToStorage() {
+  saveToStorage(): void {
     if (!this.existsInStorage()) {
       saveNote({
         title: this.#title,

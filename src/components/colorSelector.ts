@@ -1,5 +1,5 @@
-import newElement from "../utils/newElement";
 import { colorObject } from "../utils/types";
+import newElement from "../utils/newElement";
 import { noteColors } from "../utils/util";
 
 function colorOption(color: colorObject): HTMLOptionElement {
@@ -12,7 +12,7 @@ function colorOption(color: colorObject): HTMLOptionElement {
 }
 
 function colorSelect(): HTMLSelectElement {
-  const colorSelect = newElement({
+  const colorSelect: HTMLSelectElement = newElement({
     type: "select",
     id: "color-select",
     class: ["form-control"],

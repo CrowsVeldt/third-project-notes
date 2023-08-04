@@ -1,11 +1,11 @@
 class FormObject {
-  #head;
-  #title;
-  #body;
-  #tDate;
-  #color;
-  #buttonName;
-  #noteId?;
+  #head: string;
+  #title: string;
+  #body: string;
+  #tDate: string;
+  #color: string;
+  #buttonName: string;
+  #noteId?: string;
 
   constructor(
     head: string,
@@ -24,29 +24,37 @@ class FormObject {
     this.#noteId = "";
   }
 
-  getHead() {
+  getHead(): string {
     return this.#head;
   }
-  getTitle() {
+  getTitle(): string {
     return this.#title;
   }
-  getBody() {
+  getBody(): string {
     return this.#body;
   }
-  getTDate() {
+  getTDate(): string {
     return this.#tDate;
   }
-  getColor() {
+  getColor(): string {
     return this.#color;
   }
-  getButtonName() {
+  getButtonName(): string {
     return this.#buttonName;
   }
-  getNoteId() {
+  getNoteId(): string | undefined {
     return this.#noteId;
   }
 
-  getDetails() {
+  getDetails(): {
+    head: string;
+    title: string;
+    body: string;
+    tDate: string;
+    color: string;
+    buttonName: string;
+    noteId: string | undefined;
+  } {
     return {
       head: this.#head,
       title: this.#title,
@@ -58,25 +66,25 @@ class FormObject {
     };
   }
 
-  setHead(val: string) {
+  setHead(val: string): void {
     this.#head = val;
   }
-  setTitle(val: string) {
+  setTitle(val: string): void {
     this.#title = val;
   }
-  setBody(val: string) {
+  setBody(val: string): void {
     this.#body = val;
   }
-  setTDate(val: string) {
+  setTDate(val: string): void {
     this.#tDate = val;
   }
-  setColor(val: string) {
+  setColor(val: string): void {
     this.#color = val;
   }
-  setButtonName(val: string) {
+  setButtonName(val: string): void {
     this.#buttonName = val;
   }
-  setNoteId(val: string) {
+  setNoteId(val: string): void {
     this.#noteId = val;
   }
 
@@ -88,7 +96,7 @@ class FormObject {
     e: string,
     f: string,
     g: string
-  ) {
+  ): void {
     this.#head = a;
     this.#title = b;
     this.#body = c;
@@ -98,7 +106,7 @@ class FormObject {
     this.#noteId = g;
   }
 
-  resetAll() {
+  resetAll(): void {
     this.#head = "New Note";
     this.#title = "";
     this.#body = "";
