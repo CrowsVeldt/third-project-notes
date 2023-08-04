@@ -5,6 +5,7 @@ class FormObject {
   #tDate;
   #color;
   #buttonName;
+  #noteId;
 
   constructor(
     head: string,
@@ -20,6 +21,7 @@ class FormObject {
     this.#tDate = tDate;
     this.#color = color;
     this.#buttonName = buttonName;
+    this.#noteId = ''
   }
 
   getHead() {
@@ -40,6 +42,9 @@ class FormObject {
   getButtonName() {
     return this.#buttonName;
   }
+  getNoteId () {
+    return this.#noteId
+  }
 
   getDetails() {
     return {
@@ -49,6 +54,7 @@ class FormObject {
       tDate: this.#tDate,
       color: this.#color,
       buttonName: this.#buttonName,
+      noteId: this.#noteId
     };
   }
 
@@ -70,23 +76,28 @@ class FormObject {
   setButtonName(val: string) {
     this.#buttonName = val;
   }
+  setNoteId (val: string) {
+    this.#noteId = val
+  }
 
-  setForm(a: string, b: string, c: string, d: string, e: string, f: string) {
+  setAll(a: string, b: string, c: string, d: string, e: string, f: string, g: string) {
     this.#head = a;
     this.#title = b;
     this.#body = c;
     this.#tDate = d;
     this.#color = e;
     this.#buttonName = f;
+    this.#noteId = g
   }
 
-  resetForm() {
+  resetAll() {
     this.#head = "New Note";
     this.#title = "";
     this.#body = "";
     this.#tDate = "";
     this.#color = "none";
     this.#buttonName = "Add Note";
+    this.#noteId = ''
   }
 }
 
