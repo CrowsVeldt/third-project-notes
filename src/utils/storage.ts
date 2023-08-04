@@ -31,7 +31,7 @@ function getNote(id: string): Note | void {
 
 function saveNote(note: Note): void {
   const notes: Note[] = storageExists() ? getStoredNotes() : [];
-  notes.push(note);
+  notes.unshift(note);
   localStorage.setItem("notes", JSON.stringify(notes));
 }
 
@@ -70,7 +70,7 @@ function searchNotes(query: string): Note[] {
 }
 
 function updateNote(noteId: string, obj: {}) {
-  console.log(`id=${noteId} && obj=${obj}`)
+  // console.log(`id=${noteId} && obj=${obj}`)
   const oldNote = getNote(noteId)
   if (oldNote) {
       const updates = {}
