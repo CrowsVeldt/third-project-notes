@@ -1,8 +1,12 @@
 import colorSelect from "./colorSelector";
 import { createInput, createLabel } from "./labelAndInput";
 import newElement from "../utils/newElement";
-import { getNote } from "../utils/storage";
+import { getNote, updateNote } from "../utils/storage";
 import FormObject from "../classes/NoteForm";
+import { Note } from "../utils/types";
+import NoteObj from "../classes/Note";
+import { removeTag } from "../utils/util";
+import { addNoteToContainer, resetNoteContainer } from "./noteContainer";
 
 const form = new FormObject("New Note", "", "", "", "none", "Add Note");
 
@@ -60,9 +64,9 @@ function editNote(noteId: string) {
   }
 }
 
-function formButtonHandler(evt: Event, id: string): void;
-function formButtonHandler(evt: Event): void;
-function formButtonHandler(evt: Event, id: string | void): void {
+function openFormButtonHandler(evt: Event, id: string): void;
+function openFormButtonHandler(evt: Event): void;
+function openFormButtonHandler(evt: Event, id: string | void): void {
   const inputForm: HTMLElement | null = document.getElementById("input-form");
   const target = evt.target as HTMLElement;
   const callerId = target.id;
@@ -209,27 +213,14 @@ function createNoteForm(): HTMLDivElement {
           return;
         }
 
-        // const note = new NoteObj(
-        //   titleInput.value.replace(removeTag, ""),
-        //   bodyInput.value.replace(removeTag, ""),
-        //   cSelect.value,
-        //   noteDetails ? noteDetails.id : undefined,
-        //   noteDetails ? noteDetails.createDate : undefined,
-        //   tDateInput.value
-        // );
-
-        // if (!note.existsInStorage()) {
-        //   note.saveToStorage();
-        // } else if (noteDetails) {
-        //   updateNote(noteDetails.id as string, note.getDetails());
-        // }
-
-        // addNoteToContainer(note.getDetails());
-        // resetNoteContainer();
-        // if (formElement.classList.contains("d-flex")) {
-        //   formElement.classList.toggle("d-flex");
-        // }
-
+        formActionButtonHandler(
+          form.getDetails(),
+          formElement,
+          titleInput,
+          bodyInput,
+          tDateInput,
+          cSelect
+        );
         resetForm();
       },
     },
@@ -240,27 +231,41 @@ function createNoteForm(): HTMLDivElement {
   return formElement;
 }
 
-// function addNoteHandler(
-//   form: HTMLDivElement,
-//   noteDetails: Note,
-//   titleInput: HTMLInputElement,
-//   bodyInput: HTMLTextAreaElement,
-//   tDateInput: HTMLInputElement,
-//   cSelect: HTMLSelectElement
-// ) {
-//   const note = new NoteObj(
-//     titleInput.value.replace(removeTag, ""),
-//     bodyInput.value.replace(removeTag, ""),
-//     cSelect.value,
-//     noteDetails ? noteDetails.id : undefined,
-//     noteDetails ? noteDetails.createDate : undefined,
-//     tDateInput.value
-//   );
+function formActionButtonHandler(
+  noteDetails: Note,
+  formElement: HTMLDivElement,
+  titleInput: HTMLInputElement,
+  bodyInput: HTMLTextAreaElement,
+  tDateInput: HTMLInputElement,
+  cSelect: HTMLSelectElement
+) {
 
-//   titleInput.value = "";
-//   bodyInput.value = "";
-//   tDateInput.value = "";
-//   cSelect.value = "none";
-// }
+// TODO: Make this work
 
-export { createNoteForm, formButtonHandler, editNote, resetForm };
+  const note = new NoteObj(
+    titleInput.value.replace(removeTag, ""),
+    bodyInput.value.replace(removeTag, ""),
+    cSelect.value,
+    noteDetails ? noteDetails.id : undefined,
+    noteDetails ? noteDetails.createDate : undefined,
+    tDateInput.value
+  );
+  console.log(note + '&&' + note.existsInStorage)
+
+  if (!note.existsInStorage()) {
+    note.saveToStorage();
+  } else if (noteDetails) {
+    updateNote(noteDetails.id as string, note.getDetails());
+  }
+
+  titleInput.value = "";
+  bodyInput.value = "";
+  tDateInput.value = "";
+  cSelect.value = "none";
+
+  addNoteToContainer(note.getDetails());
+  resetNoteContainer();
+  formElement.classList.remove("d-flex");
+}
+
+export { createNoteForm, openFormButtonHandler, editNote, resetForm };

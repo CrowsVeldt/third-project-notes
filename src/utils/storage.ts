@@ -70,6 +70,7 @@ function searchNotes(query: string): Note[] {
 }
 
 function updateNote(noteId: string, obj: {}) {
+  console.log(`id=${noteId} && obj=${obj}`)
   const oldNote = getNote(noteId)
   if (oldNote) {
       const updates = {}

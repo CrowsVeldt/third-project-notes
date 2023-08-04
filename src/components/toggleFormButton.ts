@@ -1,4 +1,4 @@
-import { formButtonHandler } from "./createNoteForm";
+import { openFormButtonHandler } from "./createNoteForm";
 import newElement from "../utils/newElement";
 
 function toggleFormButton(): HTMLButtonElement {
@@ -12,7 +12,7 @@ function toggleFormButton(): HTMLButtonElement {
       eventType: "click",
       listener: (evt) => {
         if (evt) {
-          formButtonHandler(evt);
+          openFormButtonHandler(evt);
         }
       },
     },
