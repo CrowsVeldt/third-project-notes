@@ -71,7 +71,6 @@ function searchNotes(query: string): Note[] {
 
 function updateNote(noteId: string, obj: NoteUpdate) {
   const oldNote = getNote(noteId);
-  console.log(oldNote)
   if (oldNote) {
     const updates: NoteUpdate = {
       title: '',

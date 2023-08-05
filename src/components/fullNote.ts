@@ -23,7 +23,7 @@ function populateFullNote(id: string): void {
 
   if (note) {
     title.innerText = note.title
-    title.style.backgroundColor = note.color
+    title.style.backgroundColor = note.color === 'none' ? 'white' : note.color
     body.innerText = note.body
     created.innerText = `Created on: ${note.createDate}`
     if (note.targetDate) {
@@ -42,7 +42,7 @@ function toggleFullNote(id: string): void {
   if (fullNote) {
     if (fullNote.classList.contains('hideable')) {
       populateFullNote(id)
-    }
+    } 
     fullNote.classList.toggle('hideable')
   }
 }
@@ -74,6 +74,7 @@ function createFullNote(): HTMLDivElement {
     type: "h3",
     id: "full-note-title",
     class: ["form-label", "text-center", "border-bottom", 'w-100', 'full-note-child'],
+    //  props: [['style', 'background-color:white;']]
   }) as HTMLHeadingElement;
 
   fullNote.appendChild(noteTitle);
