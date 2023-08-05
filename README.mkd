@@ -45,8 +45,10 @@ id: string // hashed from Date.toString()
 ## TODO
 
 - feature: Add settings menu for deleteAll button
-- TODO: properly acknowledge fuse.js
+- style: move hideable elements to center of display
+- style: resize hideable elements and make them responsive
 - BUG: when searching notes they stick to the bottom of the screen
+- TODO: properly acknowledge fuse.js
 - BUG: when I click inside the note form, then drag outside of it and release, the form closes
 - seperate listener functions from component files, component files should _just_ handle markup and styling
 - dates: Check dates work in different locales
