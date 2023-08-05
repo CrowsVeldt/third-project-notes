@@ -54,10 +54,6 @@ function formatMinDate(date: Date): string {
     .toISOString()
     .split("T")[0];
 }
-
-const lowerCase: (arg0: string) => string = (n: string) =>
-  n.toLocaleLowerCase();
-
 // regex to prevent adding html tags to input value
 const removeTag = new RegExp("(<[a-zA-Z0-9]+>)|(</[a-zA-Z0-9]+>)", "g");
 
@@ -76,7 +72,6 @@ export {
   noteColors,
   sortMethods,
   formatDate,
-  lowerCase,
   makeHash,
   notesDifferent,
   formatMinDate,

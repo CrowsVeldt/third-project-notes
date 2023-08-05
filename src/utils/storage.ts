@@ -1,5 +1,5 @@
 import { Note, NoteUpdate } from "./types";
-import { lowerCase } from "./util";
+import Fuse from "fuse.js";
 
 /* 
   For now notes are stored in one array, for simplicity of access. 
@@ -55,18 +55,20 @@ function wipeStorage(): void {
 
 function searchNotes(query: string): Note[] {
   const notes: Note[] = getStoredNotes();
-  const formattedQuery: string = lowerCase(query);
   const results: Note[] = [];
 
-  notes.forEach((note: Note) => {
-    if (
-      lowerCase(note.title).includes(formattedQuery) ||
-      lowerCase(note.body).includes(formattedQuery)
-    ) {
-      results.push(note);
-    }
-  });
-  return results;
+  const fuseOptions = {
+    isCaseSensitive: false,
+    includeScore: true,
+    threshold: 0.5,
+    includeMatches: true,
+    keys: ['title', 'body']
+  }
+
+  new Fuse(notes, fuseOptions).search(query).forEach(i => results.push(i.item))
+
+  return results
+
 }
 
 function updateNote(noteId: string, obj: NoteUpdate) {
