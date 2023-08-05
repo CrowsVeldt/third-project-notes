@@ -16,6 +16,19 @@ const sortMethods: SortMethod[] = [
   { method: "Color" },
 ];
 
+const hideClasses: string[] = [
+  "position-fixed",
+  "bg-light",
+  "flex-column",
+  "justify-content-between",
+  "start-50",
+  "translate-middle-x",
+  "border",
+  "border-dark",
+  "rounded",
+  "hideable",
+];
+
 // Receives string, combine with random string, return hash of both
 function makeHash(s: string): string {
   const randString: string = (Math.random() + 1).toString(36).substring(7);
@@ -69,11 +82,12 @@ function notesDifferent(noteA: any, noteB: any) {
 }
 
 export {
-  noteColors,
-  sortMethods,
   formatDate,
-  makeHash,
-  notesDifferent,
   formatMinDate,
+  hideClasses,
+  makeHash,
+  noteColors,
+  notesDifferent,
   removeTag,
+  sortMethods,
 };

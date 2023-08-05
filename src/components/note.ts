@@ -43,12 +43,13 @@ function newNote(n: Note | undefined): HTMLDivElement {
 
   const noteCDate: HTMLParagraphElement = newElement({
     type: "p",
-    class: ["mt-auto"],
+    class: ["mt-auto", "mb-1"],
     content: `Created on ${note.getCreateDate()}`,
   }) as HTMLParagraphElement;
 
   const noteTDate: HTMLParagraphElement = newElement({
     type: "p",
+    class: ["mb-2"],
     content: note.getTargetDate()
       ? `Targate date ${formatDate(note.getTargetDate())}`
       : "",

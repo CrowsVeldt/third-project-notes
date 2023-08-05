@@ -1,4 +1,4 @@
-import { formatDate } from "../utils/util";
+import { formatDate, hideClasses } from "../utils/util";
 import { getNote } from "../utils/storage";
 import newElement from "../utils/newElement";
 import { Note } from "../utils/types";
@@ -46,32 +46,19 @@ function toggleFullNote(id: string): void {
   const fullNote = document.getElementById("full-note");
 
   if (fullNote) {
-    if (fullNote.classList.contains("hideable")) {
+    if (!fullNote.classList.contains("d-flex")) {
       populateFullNote(id);
+      fullNote.classList.add("d-flex");
+    } else {
+      fullNote.classList.remove("d-flex");
     }
-    fullNote.classList.toggle("hideable");
   }
 }
 
 const fullNote: HTMLDivElement = newElement({
   type: "div",
   id: "full-note",
-  class: [
-    "position-fixed",
-    "bg-light",
-    "w-75",
-    "h-75",
-    "flex-column",
-    "justify-content-between",
-    "top-25",
-    "start-50",
-    "translate-middle-x",
-    "border",
-    "border-dark",
-    "rounded",
-    "hideable",
-    "full-note-child",
-  ],
+  class: [...hideClasses, "full-note-child"],
 }) as HTMLDivElement;
 
 const noteTitle: HTMLHeadingElement = newElement({

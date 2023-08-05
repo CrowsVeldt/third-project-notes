@@ -14,7 +14,7 @@ function sortNotes(notes: undefined | Note[], method: string): Note[] | void {
   let met: Note[] = notes;
   switch (method) {
     case "Date Created":
-      met = notes.sort((a, b) => sortFunction(a.createDate, b.createDate));
+      met = notes.sort((a, b) => sortFunction(b.createDate, a.createDate));
       break;
     case "Title":
       met = notes.sort((a, b) => sortFunction(a.title, b.title));

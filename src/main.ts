@@ -51,9 +51,9 @@ function handleTouchEventsNote(evt: Event): void {
   if (note) {
     if (
       !target.classList.contains("full-note-child") &&
-      !note.classList.contains("hideable")
+      note.classList.contains("d-flex")
     ) {
-      note.classList.add("hideable");
+      note.classList.remove("d-flex");
     }
   }
 }

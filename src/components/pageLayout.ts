@@ -18,7 +18,6 @@ head.append(headTitle);
 const main: HTMLDivElement = newElement({
   type: "div",
   id: "main-page",
-  class: ["flex-grow-1"],
 }) as HTMLDivElement;
 
 // footer

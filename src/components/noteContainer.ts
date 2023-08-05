@@ -12,6 +12,7 @@ const noteContainer: HTMLDivElement = newElement({
     "flex-wrap",
     "justify-content-center",
     "justify-content-lg-start",
+    "flex-grow-1",
   ],
 }) as HTMLDivElement;
 

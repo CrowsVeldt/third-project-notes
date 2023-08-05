@@ -3,7 +3,7 @@ import { createInput, createLabel } from "./labelAndInput";
 import { getNote, updateNote } from "../utils/storage";
 import FormObject from "../classes/NoteForm";
 import newElement from "../utils/newElement";
-import { notesDifferent, removeTag } from "../utils/util";
+import { notesDifferent, removeTag, hideClasses } from "../utils/util";
 import NoteObj from "../classes/Note";
 import { resetNoteContainer } from "./noteContainer";
 import { FormElement } from "../utils/types";
@@ -125,23 +125,7 @@ function openFormButtonHandler(evt: Event | void, id: string | void): void {
 const formElement: HTMLDivElement = newElement({
   type: "div",
   id: "input-form",
-  class: [
-    "position-fixed",
-    "bg-light",
-    "w-75",
-    "h-75",
-    "flex-column",
-    "justify-content-between",
-    "px-2",
-    "top-25",
-    "start-50",
-    "translate-middle-x",
-    "border",
-    "border-dark",
-    "rounded",
-    "hideable",
-    "form",
-  ],
+  class: [...hideClasses, "px-2", "form"],
 }) as HTMLDivElement;
 
 const formHeader: HTMLHeadingElement = newElement({
