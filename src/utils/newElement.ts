@@ -1,6 +1,6 @@
-import { elementParams } from "./types";
+import { ElementParams } from "./types";
 
-function newElement(a: elementParams) {
+function newElement(a: ElementParams) {
   const el = document.createElement(a.type);
   el.id = a.id ? a.id : "";
 

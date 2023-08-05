@@ -19,7 +19,7 @@ type EventListener = {
   listener: (evt?: Event) => void;
 };
 
-type elementParams = {
+type ElementParams = {
   type: string;
   id?: string;
   class?: string[];
@@ -45,4 +45,4 @@ type NoteUpdate = {
   color: string
 }
 
-export type { colorObject, elementParams, FormElement, Note, NoteUpdate, SortMethod };
+export type { colorObject, ElementParams, FormElement, Note, NoteUpdate, SortMethod };
