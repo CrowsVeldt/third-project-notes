@@ -7,7 +7,14 @@
 }
 
 .note {
-  width: 33%vh;
+  width: 250px;
+  height: 350px;
+}
+
+.note > p {
+  max-height:  7.9em;
+  line-height: 1.3em;
+  text-overflow: ellipsis;
 }
 
 #box {

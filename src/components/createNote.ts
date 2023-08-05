@@ -19,7 +19,6 @@ function newNote(n: Note | undefined): HTMLDivElement {
     class: [
       "border",
       "rounded",
-      "w-25",
       "ms-1",
       "p-2",
       "d-flex",
@@ -37,12 +36,16 @@ function newNote(n: Note | undefined): HTMLDivElement {
 
   const noteBody: HTMLParagraphElement = newElement({
     type: "p",
-    class: ["mb-auto", "border-top", "border-bottom"],
+    class: [
+      'overflow-hidden',
+      "border-top", 
+      "border-bottom"],
     content: note.getBody(),
   }) as HTMLParagraphElement;
 
   const noteCDate: HTMLParagraphElement = newElement({
     type: "p",
+    class: ['mt-auto'],
     content: `Created on ${note.getCreateDate()}`,
   }) as HTMLParagraphElement;
 
