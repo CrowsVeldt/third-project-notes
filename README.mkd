@@ -42,6 +42,7 @@ id: string // hashed from Date.toString()
 ## TODO
 
 - feature: Add settings menu for deleteAll button
+- TODO: properly acknowledge fuse.js
 - BUG: when I click inside the note form, then drag outside of it and release, the form closes
 - seperate listener functions from component files, component files should *just* handle markup and styling
 - dates: Check dates work in different locales
@@ -51,3 +52,6 @@ id: string // hashed from Date.toString()
 - sort: when sorting by createDate or color, subsort by title
 - types: add interface for noteObj?
 - (would implement if this were more serious than a course project): make sure it works on all browsers
+
+# Acknowledgements: 
+fuse.js for fuzzy search

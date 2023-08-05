@@ -27,11 +27,11 @@ function populateFullNote(id: string): void {
     body.innerText = note.body
     created.innerText = `Created on: ${note.createDate}`
     if (note.targetDate) {
-      target.style.display = 'default'
+      target.style.display = 'inline-block'
       target.innerText = `Target date: ${formatDate(note.targetDate)}`
     } else {
-      target.style.display = 'none'
       target.innerHTML = ''
+      target.style.display = 'none'
     }
   }
 }
@@ -72,10 +72,8 @@ function toggleFullNote(id: string): void {
     type: "h3",
     id: "full-note-title",
     class: ["form-label", "text-center", "border-bottom", 'w-100', 'full-note-child'],
-    //  props: [['style', 'background-color:white;']]
   }) as HTMLHeadingElement;
 
-  fullNote.appendChild(noteTitle);
 
   const noteBackground: HTMLDivElement = newElement({
     type: "div",
@@ -84,7 +82,6 @@ function toggleFullNote(id: string): void {
     props: [["style", `background-color:white;`]],
   }) as HTMLDivElement;
 
-  fullNote.appendChild(noteBackground);
 
   const noteBody: HTMLParagraphElement = newElement({
     type: "p",
@@ -92,7 +89,6 @@ function toggleFullNote(id: string): void {
     class: ["overflow-scroll", "px-3", "border-bottom", 'full-note-child'],
   }) as HTMLParagraphElement;
 
-  noteBackground.appendChild(noteBody);
 
   const dateContainer: HTMLDivElement = newElement({
     type: 'div',
@@ -100,7 +96,6 @@ function toggleFullNote(id: string): void {
     class: ['full-note-child']
   }) as HTMLDivElement
 
-  noteBackground.appendChild(dateContainer)
 
   const noteCreated: HTMLParagraphElement = newElement({
     type: "p",
@@ -108,7 +103,6 @@ function toggleFullNote(id: string): void {
     class: ["px-3", "border-bottom", 'full-note-child'],
   }) as HTMLParagraphElement;
 
-  dateContainer.appendChild(noteCreated);
 
   const noteTarget: HTMLParagraphElement = newElement({
     type: "p",
@@ -116,6 +110,8 @@ function toggleFullNote(id: string): void {
     class: ["px-3", "border-bottom", 'full-note-child'],
   }) as HTMLParagraphElement;
 
-  dateContainer.appendChild(noteTarget);
+  fullNote.append(noteTitle, noteBackground);
+  noteBackground.append(noteBody, dateContainer);
+  dateContainer.append(noteCreated, noteTarget);
 
 export { fullNote, toggleFullNote };
