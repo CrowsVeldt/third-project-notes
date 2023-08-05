@@ -1,9 +1,6 @@
+import { formatDate } from "../utils/util";
 import { getNote } from "../utils/storage";
 import newElement from "../utils/newElement";
-import NoteObj from "../classes/Note";
-import { resetNoteContainer } from "./noteContainer";
-import { createLabel } from "./labelAndInput";
-import { formatDate } from "../utils/util";
 
 function createFullNote(id: string): HTMLDivElement {
   const note = getNote(id);
@@ -18,25 +15,36 @@ function createFullNote(id: string): HTMLDivElement {
       "h-75",
       "flex-column",
       "justify-content-between",
-      "px-2",
       "top-25",
       "start-50",
       "translate-middle-x",
       "border",
       "border-dark",
       "rounded",
+      //'hideable'
     ],
+    // props: [["style", `background-color:${note ? note.color : "none"};`]],
   }) as HTMLDivElement;
 
   if (note) {
     const noteTitle: HTMLHeadingElement = newElement({
       type: "h3",
       id: "full-note-title",
-      class: ["form-label", "text-center", "border-bottom", "py-2"],
+      class: ["form-label", "text-center", "border-bottom", 'w-100'],
       content: `${note.title}`,
+      props: [["style", `background-color:${note ? note.color : "none"};`]],
     }) as HTMLHeadingElement;
 
     fullNote.appendChild(noteTitle);
+
+    const noteBackground: HTMLDivElement = newElement({
+      type: "div",
+      id: "full-note-bg",
+      class: ['d-flex', 'flex-column', 'justify-content-between'],
+      props: [["style", `background-color:white;`]],
+    }) as HTMLDivElement;
+
+    fullNote.appendChild(noteBackground);
 
     const noteBody: HTMLParagraphElement = newElement({
       type: "p",
@@ -45,28 +53,36 @@ function createFullNote(id: string): HTMLDivElement {
       content: note.body,
     }) as HTMLParagraphElement;
 
-    fullNote.appendChild(noteBody);
+    noteBackground.appendChild(noteBody);
+
+    const dateContainer: HTMLDivElement = newElement({
+      type: 'div',
+      id: 'full-note-dates',
+      class: []
+    }) as HTMLDivElement
+
+    noteBackground.appendChild(dateContainer)
 
     const noteCreated: HTMLParagraphElement = newElement({
       type: "p",
       id: "full-note-created",
       class: ["px-3", "border-bottom"],
-      content: `Created on: ${note.createDate}`
+      content: `Created on: ${note.createDate}`,
     }) as HTMLParagraphElement;
 
-    fullNote.appendChild(noteCreated);
+    dateContainer.appendChild(noteCreated);
 
     if (note.targetDate) {
       const noteTarget: HTMLParagraphElement = newElement({
         type: "p",
         id: "full-note-created",
         class: ["px-3", "border-bottom"],
-        content: `Target date: ${formatDate(note.targetDate)}` 
+        content: `Target date: ${formatDate(note.targetDate)}`,
       }) as HTMLParagraphElement;
 
-    fullNote.appendChild(noteTarget);
-    }
+      dateContainer.appendChild(noteTarget);
 
+    }
   }
 
   return fullNote;

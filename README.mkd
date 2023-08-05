@@ -41,9 +41,9 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
+- click on a note to display it in full
 - BUG: when I click inside the note form, then drag outside of it and release, the form closes
 - seperate listener functions from component files, component files should *just* handle markup and styling
-- set note element size on main page. click on a note to display it in full
 - feature: Add settings menu for deleteAll button
 - dates: Check dates work in different locales
 - target date: Make target date alway be more than current date when adding date via keyboard

@@ -12,9 +12,22 @@
 }
 
 .note > p {
-  max-height:  7.9em;
+  max-height: 7.9em;
   line-height: 1.3em;
   text-overflow: ellipsis;
+}
+
+#full-note-title {
+  height: 40px;
+  margin: 0;
+}
+
+#full-note-bg {
+  position: relative;
+  top: 2em;
+  left: 2em;
+  width: calc(100% - 4em);
+  height: calc((100% - 40px) - 4em);
 }
 
 #box {

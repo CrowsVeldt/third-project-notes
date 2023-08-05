@@ -7,6 +7,8 @@ import {
   populateNoteContainer,
 } from "./components/noteContainer";
 import { createNoteForm, resetForm } from "./components/createNoteForm";
+import { createFullNote } from "./components/fullNote";
+import { getStoredNotes } from "./utils/storage";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 app.style.height = "100vh";
@@ -18,6 +20,9 @@ container.appendChild(noteDisplayControls);
 container.appendChild(main);
 main.appendChild(noteContainer);
 container.appendChild(createNoteForm());
+// for development purposes VVVVVVVVVVVV
+container.appendChild(createFullNote(getStoredNotes()[0].id));
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 container.appendChild(toggleFormButton());
 container.appendChild(foot);
 container.addEventListener("click", (evt) => {
