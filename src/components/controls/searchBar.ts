@@ -14,7 +14,12 @@ function makeSearchBar(): HTMLDivElement {
   );
   searchBar.addEventListener("input", (event: Event) => {
     const barInput = event.target as HTMLInputElement;
-    resetNoteContainer(searchNotes(barInput.value)!);
+    const response = searchNotes(barInput.value)
+    if (response.length > 0) {
+      resetNoteContainer(response);
+    } else {
+      resetNoteContainer()
+    }
   });
 
   barContainer.appendChild(searchBar);
