@@ -8,6 +8,7 @@ import {
 } from "./components/noteContainer";
 import { formElement, resetForm } from "./components/noteForm";
 import { fullNote } from "./components/fullNote";
+import { settings, toggleSettings } from "./components/settings";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 app.style.height = "100vh";
@@ -18,6 +19,7 @@ container.append(
   head,
   noteDisplayControls,
   main,
+  settings,
   noteContainer,
   formElement,
   fullNote,
@@ -26,6 +28,7 @@ container.append(
 );
 container.addEventListener("click", handleTouchEventsForm);
 container.addEventListener("click", handleTouchEventsNote);
+container.addEventListener("click", handleTouchEventsSettings);
 
 function handleTouchEventsForm(evt: Event): void {
   const target = evt.target as HTMLElement;
@@ -54,6 +57,16 @@ function handleTouchEventsNote(evt: Event): void {
       note.classList.contains("d-flex")
     ) {
       note.classList.remove("d-flex");
+    }
+  }
+}
+
+function handleTouchEventsSettings(evt: Event): void {
+  const target = evt.target as HTMLElement;
+  const settings = document.getElementById("settings");
+  if (settings) {
+    if (!target.classList.contains("settings")) {
+      if (settings.style.left === "0%") settings.style.left = "-25%";
     }
   }
 }

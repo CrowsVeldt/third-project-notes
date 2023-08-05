@@ -75,3 +75,20 @@
   border-width: 3px 3px 0px 0px;
   transform: rotate(-225deg);
 }
+
+#settings {
+  transition-property: left;
+  transition-timing-function: ease-in;
+}
+
+#settings-button {
+  transition-property: left;
+  transition-timing-function: ease-in;
+  position: relative;
+  top: 92%;
+  left: 56%;
+  height: 40px;
+  width: 30px;
+  white-space: pre-line;
+  line-height: 0.5em;
+}
