@@ -41,13 +41,12 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
-- click on a note to display it in full
+- feature: Add settings menu for deleteAll button
 - BUG: when I click inside the note form, then drag outside of it and release, the form closes
 - seperate listener functions from component files, component files should *just* handle markup and styling
-- feature: Add settings menu for deleteAll button
 - dates: Check dates work in different locales
 - target date: Make target date alway be more than current date when adding date via keyboard
 - target date: prevent adding more than 4 digits in target date years column
 - sort: reduce redundancy in sortNotes file
 - sort: when sorting by createDate or color, subsort by title
-- types: add interface for noteObj
+- types: add interface for noteObj?

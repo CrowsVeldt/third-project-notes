@@ -4,6 +4,7 @@ import newElement from "../utils/newElement";
 import { Note } from "../utils/types";
 import NoteObj from "../classes/Note";
 import { openFormButtonHandler } from "./createNoteForm";
+import { toggleFullNote } from "./fullNote";
 
 function newNote(n: Note | undefined): HTMLDivElement {
   const note = n
@@ -38,7 +39,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
     type: "p",
     class: [
       'overflow-hidden',
-      "border-top", 
+      "border-top",
       "border-bottom"],
     content: note.getBody(),
   }) as HTMLParagraphElement;
@@ -91,6 +92,10 @@ function newNote(n: Note | undefined): HTMLDivElement {
   noteDiv.appendChild(noteTDate);
   noteDiv.appendChild(deleteButton);
   noteDiv.appendChild(editButton);
+
+  noteDiv.addEventListener("dblclick", () => {
+    toggleFullNote(note.getId())
+  })
 
   return noteDiv;
 }
