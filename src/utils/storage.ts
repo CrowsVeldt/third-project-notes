@@ -1,4 +1,4 @@
-import { Note } from "./types";
+import { Note, NoteUpdate } from "./types";
 import { lowerCase } from "./util";
 
 /* 
@@ -69,13 +69,18 @@ function searchNotes(query: string): Note[] {
   return results;
 }
 
-function updateNote(noteId: string, obj: {}) {
+function updateNote(noteId: string, obj: NoteUpdate) {
   const oldNote = getNote(noteId);
+  console.log(oldNote)
   if (oldNote) {
-    const updates = {};
+    const updates: NoteUpdate = {
+      title: '',
+      body: '',
+      targetDate: '',
+      color: ''
+    }
 
     for (let a in obj) {
-      // TODO: figure out how to fix type error
       updates[a] = obj[a];
     }
 

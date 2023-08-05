@@ -227,8 +227,7 @@ function createNoteForm(): HTMLDivElement {
         if (form) {
           if (form.getNoteId()) {
             // receive noteId from form, and slice off the first five chars to get the original note id
-            // TODO: fix this type error
-            const cleanId = form.getNoteId().slice(5);
+            const cleanId = form.getNoteId()!.slice(5);
 
             // get originalNote
             const originalNote = getNote(cleanId);

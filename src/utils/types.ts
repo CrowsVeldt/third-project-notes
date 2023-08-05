@@ -38,4 +38,11 @@ type FormElement = {
   noteId?: string;
 };
 
-export type { colorObject, elementParams, FormElement, Note, SortMethod };
+type NoteUpdate = {
+  [title: string]: string;
+  body: string
+  targetDate: string
+  color: string
+}
+
+export type { colorObject, elementParams, FormElement, Note, NoteUpdate, SortMethod };
