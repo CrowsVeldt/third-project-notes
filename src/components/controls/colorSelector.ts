@@ -11,22 +11,18 @@ function colorOption(color: colorObject): HTMLOptionElement {
   }) as HTMLOptionElement;
 }
 
-function colorSelect(): HTMLSelectElement {
-  const colorSelect: HTMLSelectElement = newElement({
-    type: "select",
-    id: "color-select",
-    class: ["form-control"],
-    props: [
-      ["required", "true"],
-      ["ariaLabel", "Default select element"],
-    ],
-  }) as HTMLSelectElement;
+const colorSelect: HTMLSelectElement = newElement({
+  type: "select",
+  id: "color-select",
+  class: ["form-control"],
+  props: [
+    ["required", "true"],
+    ["ariaLabel", "Default select element"],
+  ],
+}) as HTMLSelectElement;
 
-  noteColors.forEach((color) => {
-    colorSelect.appendChild(colorOption(color));
-  });
-
-  return colorSelect;
-}
+noteColors.forEach((color) => {
+  colorSelect.append(colorOption(color));
+});
 
 export default colorSelect;

@@ -122,160 +122,156 @@ function openFormButtonHandler(evt: Event | void, id: string | void): void {
   }
 }
 
-  const formElement: HTMLDivElement = newElement({
-    type: "div",
-    id: "input-form",
-    class: [
-      "position-fixed",
-      "bg-light",
-      "w-75",
-      "h-75",
-      "flex-column",
-      "justify-content-between",
-      "px-2",
-      "top-25",
-      "start-50",
-      "translate-middle-x",
-      "border",
-      "border-dark",
-      "rounded",
-      "hideable",
-      "form",
-    ],
-  }) as HTMLDivElement;
+const formElement: HTMLDivElement = newElement({
+  type: "div",
+  id: "input-form",
+  class: [
+    "position-fixed",
+    "bg-light",
+    "w-75",
+    "h-75",
+    "flex-column",
+    "justify-content-between",
+    "px-2",
+    "top-25",
+    "start-50",
+    "translate-middle-x",
+    "border",
+    "border-dark",
+    "rounded",
+    "hideable",
+    "form",
+  ],
+}) as HTMLDivElement;
 
-  const formHeader: HTMLHeadingElement = newElement({
-    type: "h3",
-    id: "input-form-title",
-    class: ["form-label"],
-    content: form.getHead(),
-  }) as HTMLHeadingElement;
+const formHeader: HTMLHeadingElement = newElement({
+  type: "h3",
+  id: "input-form-title",
+  class: ["form-label"],
+  content: form.getHead(),
+}) as HTMLHeadingElement;
 
-  formElement.appendChild(formHeader);
+const titleLabel: HTMLLabelElement = createLabel("Note title", ["form-label"]);
+const titleInput: HTMLInputElement = createInput(
+  "text",
+  "title-input",
+  ["form-control"],
+  true,
+  [
+    ["maxlength", "50"],
+    ["required", "true"],
+  ]
+);
 
-  const titleLabel: HTMLLabelElement = createLabel("Note title", [
-    "form-label",
-  ]);
-  const titleInput: HTMLInputElement = createInput(
-    "text",
-    "title-input",
-    ["form-control"],
-    true,
-    [
-      ["maxlength", "50"],
-      ["required", "true"],
-    ]
-  );
-  formElement.appendChild(titleLabel);
-  formElement.appendChild(titleInput);
+const bodyLabel: HTMLLabelElement = createLabel("Note body", ["form-label"]);
+const bodyInput: HTMLTextAreaElement = newElement({
+  type: "textarea",
+  id: "body-input",
+  class: ["form-control"],
+  props: [
+    ["maxLength", "1000"],
+    ["required", "true"],
+    ["value", form.getBody()],
+  ],
+}) as HTMLTextAreaElement;
 
-  const bodyLabel: HTMLLabelElement = createLabel("Note body", ["form-label"]);
-  const bodyInput: HTMLTextAreaElement = newElement({
-    type: "textarea",
-    id: "body-input",
-    class: ["form-control"],
-    props: [
-      ["maxLength", "1000"],
-      ["required", "true"],
-      ["value", form.getBody()],
-    ],
-  }) as HTMLTextAreaElement;
-  formElement.appendChild(bodyLabel);
-  formElement.appendChild(bodyInput);
+const tDateLabel: HTMLLabelElement = createLabel("Target date", ["form-label"]);
+const tDateInput: HTMLInputElement = createInput(
+  "date",
+  "tDate-input",
+  ["form-control"],
+  false,
+  []
+);
 
-  const tDateLabel: HTMLLabelElement = createLabel("Target date", [
-    "form-label",
-  ]);
-  const tDateInput: HTMLInputElement = createInput(
-    "date",
-    "tDate-input",
-    ["form-control"],
-    false,
-    []
-  );
-  formElement.appendChild(tDateLabel);
-  formElement.appendChild(tDateInput);
+const colorLabel: HTMLLabelElement = createLabel("Select color", [
+  "form-label",
+]);
+const cSelect: HTMLSelectElement = colorSelect;
+// figure out how to set color from FormObject
 
-  const colorLabel: HTMLLabelElement = createLabel("Select color", [
-    "form-label",
-  ]);
-  const cSelect: HTMLSelectElement = colorSelect();
-  // figure out how to set color from FormObject
-  formElement.appendChild(colorLabel);
-  formElement.appendChild(cSelect);
+const actionButton: HTMLButtonElement = newElement({
+  type: "button",
+  id: "form-button",
+  class: ["form-control"],
+  content: form.getButtonName(),
+  props: [["type", "submit"]],
+  eventListener: {
+    eventType: "click",
+    listener: (evt?: Event) => {
+      if (evt) evt.preventDefault();
 
-  const actionButton: HTMLButtonElement = newElement({
-    type: "button",
-    id: "form-button",
-    class: ["form-control"],
-    content: form.getButtonName(),
-    props: [["type", "submit"]],
-    eventListener: {
-      eventType: "click",
-      listener: (evt?: Event) => {
-        if (evt) evt.preventDefault();
+      if (titleInput.value === "") {
+        titleInput.reportValidity();
+        return;
+      } else if (bodyInput.value === "") {
+        bodyInput.reportValidity();
+        return;
+      }
 
-        if (titleInput.value === "") {
-          titleInput.reportValidity();
-          return;
-        } else if (bodyInput.value === "") {
-          bodyInput.reportValidity();
-          return;
-        }
+      if (form) {
+        if (form.getNoteId()) {
+          // receive noteId from form, and slice off the first five chars to get the original note id
+          const cleanId = form.getNoteId()!.slice(5);
 
-        if (form) {
-          if (form.getNoteId()) {
-            // receive noteId from form, and slice off the first five chars to get the original note id
-            const cleanId = form.getNoteId()!.slice(5);
+          // get originalNote
+          const originalNote = getNote(cleanId);
 
-            // get originalNote
-            const originalNote = getNote(cleanId);
+          // merge original note with the values from the form
+          const newNote = {
+            ...originalNote,
+            ...{
+              title: titleInput.value.replace(removeTag, ""),
+              body: bodyInput.value.replace(removeTag, ""),
+              color: cSelect.value,
+              targetDate: tDateInput.value,
+            },
+          };
 
-            // merge original note with the values from the form
-            const newNote = {
-              ...originalNote,
-              ...{
-                title: titleInput.value.replace(removeTag, ""),
-                body: bodyInput.value.replace(removeTag, ""),
-                color: cSelect.value,
-                targetDate: tDateInput.value,
-              },
-            };
-
-            // if originalNote !== newNote
-            if (notesDifferent(originalNote, newNote)) {
-              // update note with the new values
-              updateNote(cleanId, {
-                title: titleInput.value,
-                body: bodyInput.value,
-                targetDate: tDateInput.value,
-                color: cSelect.value,
-              });
-              // and reset the note container
-              resetNoteContainer();
-            }
-
-            // close form
-            openFormButtonHandler();
-          } else if (!form.getNoteId()) {
-            const n = new NoteObj(
-              titleInput.value.replace(removeTag, ""),
-              bodyInput.value.replace(removeTag, ""),
-              cSelect.value,
-              undefined,
-              undefined,
-              tDateInput.value
-            );
-            n.saveToStorage();
+          // if originalNote !== newNote
+          if (notesDifferent(originalNote, newNote)) {
+            // update note with the new values
+            updateNote(cleanId, {
+              title: titleInput.value,
+              body: bodyInput.value,
+              targetDate: tDateInput.value,
+              color: cSelect.value,
+            });
+            // and reset the note container
             resetNoteContainer();
-            openFormButtonHandler();
           }
+
+          // close form
+          openFormButtonHandler();
+        } else if (!form.getNoteId()) {
+          const n = new NoteObj(
+            titleInput.value.replace(removeTag, ""),
+            bodyInput.value.replace(removeTag, ""),
+            cSelect.value,
+            undefined,
+            undefined,
+            tDateInput.value
+          );
+          n.saveToStorage();
+          resetNoteContainer();
+          openFormButtonHandler();
         }
-      },
+      }
     },
-  }) as HTMLButtonElement;
+  },
+}) as HTMLButtonElement;
 
-  formElement.appendChild(actionButton);
-
+formElement.append(
+  formHeader,
+  titleLabel,
+  titleInput,
+  bodyLabel,
+  bodyInput,
+  tDateLabel,
+  tDateInput,
+  colorLabel,
+  cSelect,
+  actionButton
+);
 
 export { formElement, openFormButtonHandler, editNote, resetForm };

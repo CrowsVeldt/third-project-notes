@@ -12,33 +12,30 @@ function sortOption(option: SortMethod): HTMLOptionElement {
   return o;
 }
 
-function sortSelect(): HTMLDivElement {
-  const selectContainer: HTMLDivElement = document.createElement("div");
-  selectContainer.id = "sort-select-container";
-  selectContainer.classList.add("d-flex", "align-items-center");
-  const sortSelect: HTMLSelectElement = document.createElement("select");
-  sortSelect.id = "sort-select";
-  sortSelect.classList.add("me-3");
-  sortSelect.ariaLabel = "Default select element";
+const selectContainer: HTMLDivElement = document.createElement("div");
+selectContainer.id = "sort-select-container";
+selectContainer.classList.add("d-flex", "align-items-center");
+const sortSelect: HTMLSelectElement = document.createElement("select");
+sortSelect.id = "sort-select";
+sortSelect.classList.add("me-3");
+sortSelect.ariaLabel = "Default select element";
 
-  sortMethods.forEach((method: SortMethod) => {
-    sortSelect.appendChild(sortOption(method));
-  });
+sortMethods.forEach((method: SortMethod) => {
+  sortSelect.append(sortOption(method));
+});
 
-  const sortToggle: HTMLDivElement = directionToggle;
+sortSelect.addEventListener("change", () => {
+  const target = document.getElementById("sort-select") as HTMLSelectElement;
+  resetNoteContainer(sortNotes(getStoredNotes()!, target.value));
+});
 
-  sortSelect.addEventListener("change", () => {
-    const target = document.getElementById("sort-select") as HTMLSelectElement;
-    resetNoteContainer(sortNotes(getStoredNotes()!, target.value));
-  });
-  sortToggle.addEventListener("click", () => {
-    const target = document.getElementById("sort-select") as HTMLSelectElement;
-    resetNoteContainer(sortNotes(getStoredNotes()!, target.value));
-  });
+const sortToggle: HTMLDivElement = directionToggle;
 
-  selectContainer.appendChild(sortSelect);
-  selectContainer.appendChild(sortToggle);
-  return selectContainer;
-}
+sortToggle.addEventListener("click", () => {
+  const target = document.getElementById("sort-select") as HTMLSelectElement;
+  resetNoteContainer(sortNotes(getStoredNotes()!, target.value));
+});
 
-export default sortSelect;
+selectContainer.append(sortSelect, sortToggle);
+
+export default selectContainer;

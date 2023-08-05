@@ -37,16 +37,13 @@ function newNote(n: Note | undefined): HTMLDivElement {
 
   const noteBody: HTMLParagraphElement = newElement({
     type: "p",
-    class: [
-      'overflow-hidden',
-      "border-top",
-      "border-bottom"],
+    class: ["overflow-hidden", "border-top", "border-bottom"],
     content: note.getBody(),
   }) as HTMLParagraphElement;
 
   const noteCDate: HTMLParagraphElement = newElement({
     type: "p",
-    class: ['mt-auto'],
+    class: ["mt-auto"],
     content: `Created on ${note.getCreateDate()}`,
   }) as HTMLParagraphElement;
 
@@ -86,16 +83,18 @@ function newNote(n: Note | undefined): HTMLDivElement {
     },
   }) as HTMLButtonElement;
 
-  noteDiv.appendChild(noteTitle);
-  noteDiv.appendChild(noteBody);
-  noteDiv.appendChild(noteCDate);
-  noteDiv.appendChild(noteTDate);
-  noteDiv.appendChild(deleteButton);
-  noteDiv.appendChild(editButton);
+  noteDiv.append(
+    noteTitle,
+    noteBody,
+    noteCDate,
+    noteTDate,
+    deleteButton,
+    editButton
+  );
 
   noteDiv.addEventListener("dblclick", () => {
-    toggleFullNote(note.getId())
-  })
+    toggleFullNote(note.getId());
+  });
 
   return noteDiv;
 }

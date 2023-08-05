@@ -12,7 +12,7 @@ const headTitle: HTMLHeadElement = newElement({
   content: "Notes",
 }) as HTMLHeadElement;
 
-head.appendChild(headTitle);
+head.append(headTitle);
 
 // main
 const main: HTMLDivElement = newElement({
@@ -32,6 +32,6 @@ const footTitle: HTMLHeadingElement = newElement({
   content: "Footer",
 }) as HTMLHeadingElement;
 
-foot.appendChild(footTitle);
+foot.append(footTitle);
 
 export { foot, head, main };

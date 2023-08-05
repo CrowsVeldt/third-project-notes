@@ -22,14 +22,14 @@ function populateNoteContainer(noteArray?: Note[]): void {
   if (container) {
     if (noteArray) {
       noteArray.forEach((note: Note) => {
-        container.appendChild(newNote(note));
+        container.append(newNote(note));
       });
     } else if (storageExists()) {
       const notes: void | Note[] = getStoredNotes();
       if (notes) {
         localStorage.clear;
         notes.forEach((note: Note) => {
-          container.appendChild(newNote(note));
+          container.append(newNote(note));
         });
       }
     }
@@ -37,16 +37,18 @@ function populateNoteContainer(noteArray?: Note[]): void {
 }
 
 function addNoteToContainer(note: Note): void {
-  const con: HTMLElement | null = document.getElementById("note-container");
-  if (con) {
-    con.appendChild(newNote(note));
+  const container: HTMLElement | null =
+    document.getElementById("note-container");
+  if (container) {
+    container.append(newNote(note));
   }
 }
 
 function wipeNoteContainer(): void {
-  const con: HTMLElement | null = document.getElementById("note-container");
-  if (con) {
-    con.innerHTML = "";
+  const container: HTMLElement | null =
+    document.getElementById("note-container");
+  if (container) {
+    container.innerHTML = "";
   }
 }
 
