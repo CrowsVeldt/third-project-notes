@@ -1,8 +1,7 @@
-import { openFormButtonHandler } from "./createNoteForm";
-import newElement from "../utils/newElement";
+import { openFormButtonHandler } from "../noteForm";
+import newElement from "../../utils/newElement";
 
-function toggleFormButton(): HTMLButtonElement {
-  return newElement({
+const toggleFormButton: HTMLButtonElement = newElement({
     type: "button",
     id: "plus-button",
     class: ["position-fixed", "end-0", "top-0", "fs-2", "toggle-button"],
@@ -17,6 +16,5 @@ function toggleFormButton(): HTMLButtonElement {
       },
     },
   }) as HTMLButtonElement;
-}
 
 export default toggleFormButton;

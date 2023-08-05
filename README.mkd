@@ -50,3 +50,4 @@ id: string // hashed from Date.toString()
 - sort: reduce redundancy in sortNotes file
 - sort: when sorting by createDate or color, subsort by title
 - types: add interface for noteObj?
+- (would implement if this were more serious than a course project): make sure it works on all browsers

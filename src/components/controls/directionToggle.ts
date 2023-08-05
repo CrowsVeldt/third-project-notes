@@ -1,4 +1,4 @@
-import newElement from "../utils/newElement";
+import newElement from "../../utils/newElement";
 
 const directionToggle: HTMLDivElement = newElement({
   type: "div",

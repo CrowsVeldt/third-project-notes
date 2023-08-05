@@ -1,6 +1,6 @@
-import { createInput } from "./labelAndInput";
-import { resetNoteContainer } from "./noteContainer";
-import { searchNotes } from "../utils/storage";
+import { createInput } from "../labelAndInput";
+import { resetNoteContainer } from "../noteContainer";
+import { searchNotes } from "../../utils/storage";
 
 function makeSearchBar(): HTMLDivElement {
   const barContainer: HTMLDivElement = document.createElement("div");

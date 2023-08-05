@@ -1,9 +1,9 @@
 import directionToggle from "./directionToggle";
-import { sortMethods } from "../utils/util";
-import { SortMethod } from "../utils/types";
-import { resetNoteContainer } from "./noteContainer";
-import { getStoredNotes } from "../utils/storage";
-import sortNotes from "../utils/sort";
+import { sortMethods } from "../../utils/util";
+import { SortMethod } from "../../utils/types";
+import { resetNoteContainer } from "../noteContainer";
+import { getStoredNotes } from "../../utils/storage";
+import sortNotes from "../../utils/sort";
 
 function sortOption(option: SortMethod): HTMLOptionElement {
   const o: HTMLOptionElement = document.createElement("option");

@@ -1,4 +1,4 @@
-import colorSelect from "./colorSelector";
+import colorSelect from "./controls/colorSelector";
 import { createInput, createLabel } from "./labelAndInput";
 import { getNote, updateNote } from "../utils/storage";
 import FormObject from "../classes/NoteForm";
@@ -122,7 +122,6 @@ function openFormButtonHandler(evt: Event | void, id: string | void): void {
   }
 }
 
-function createNoteForm(): HTMLDivElement {
   const formElement: HTMLDivElement = newElement({
     type: "div",
     id: "input-form",
@@ -278,7 +277,5 @@ function createNoteForm(): HTMLDivElement {
 
   formElement.appendChild(actionButton);
 
-  return formElement;
-}
 
-export { createNoteForm, openFormButtonHandler, editNote, resetForm };
+export { formElement, openFormButtonHandler, editNote, resetForm };

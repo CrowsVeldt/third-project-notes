@@ -1,6 +1,6 @@
 import sortSelect from "./sortSelector";
-import newElement from "../utils/newElement";
-import makeSearchBar from "./createSearchBar";
+import newElement from "../../utils/newElement";
+import makeSearchBar from "./searchBar";
 
 const noteDisplayControls: HTMLDivElement = newElement({
   type: "div",

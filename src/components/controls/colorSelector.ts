@@ -1,6 +1,6 @@
-import { colorObject } from "../utils/types";
-import newElement from "../utils/newElement";
-import { noteColors } from "../utils/util";
+import { colorObject } from "../../utils/types";
+import newElement from "../../utils/newElement";
+import { noteColors } from "../../utils/util";
 
 function colorOption(color: colorObject): HTMLOptionElement {
   return newElement({

@@ -47,8 +47,6 @@ function toggleFullNote(id: string): void {
   }
 }
 
-function createFullNote(): HTMLDivElement {
-
   const fullNote: HTMLDivElement = newElement({
     type: "div",
     id: "full-note",
@@ -120,7 +118,4 @@ function createFullNote(): HTMLDivElement {
 
   dateContainer.appendChild(noteTarget);
 
-  return fullNote;
-}
-
-export { createFullNote, toggleFullNote };
+export { fullNote, toggleFullNote };

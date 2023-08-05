@@ -1,13 +1,13 @@
 import "./style.css";
 import { foot, head, main } from "./components/pageLayout";
-import noteDisplayControls from "./components/noteDisplayControls";
-import toggleFormButton from "./components/toggleFormButton";
+import noteDisplayControls from "./components/controls/noteDisplayControls";
+import toggleFormButton from "./components/controls/toggleFormButton";
 import {
     noteContainer,
     populateNoteContainer,
 } from "./components/noteContainer";
-import { createNoteForm, resetForm } from "./components/createNoteForm";
-import { createFullNote } from "./components/fullNote";
+import { formElement, resetForm } from "./components/noteForm";
+import { fullNote } from "./components/fullNote";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 app.style.height = "100vh";
@@ -18,9 +18,9 @@ container.appendChild(head);
 container.appendChild(noteDisplayControls);
 container.appendChild(main);
 main.appendChild(noteContainer);
-container.appendChild(createNoteForm());
-container.appendChild(createFullNote());
-container.appendChild(toggleFormButton());
+container.appendChild(formElement);
+container.appendChild(fullNote);
+container.appendChild(toggleFormButton);
 container.appendChild(foot);
 container.addEventListener("click", handleTouchEventsForm);
 container.addEventListener("click", handleTouchEventsNote);
