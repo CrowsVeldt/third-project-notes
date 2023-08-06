@@ -14,9 +14,12 @@ const settings = newElement({
     "border",
     "border-dark",
     "rounded",
+    'd-flex',
+    'flex-column-reverse',
+    'align-items-center',
     "settings",
   ],
-  props: [["style", "left: -25%"]],
+    props: [["style", "left: -25%"]],
 }) as HTMLDivElement;
 
 const toggleButton = newElement({
