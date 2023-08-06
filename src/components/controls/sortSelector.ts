@@ -4,6 +4,7 @@ import { SortMethod } from "../../utils/types";
 import { resetNoteContainer } from "../noteContainer";
 import { getStoredNotes } from "../../utils/storage";
 import sortNotes from "../../utils/sort";
+import newElement from "../../utils/newElement";
 
 function sortOption(option: SortMethod): HTMLOptionElement {
   const o: HTMLOptionElement = document.createElement("option");
@@ -12,13 +13,17 @@ function sortOption(option: SortMethod): HTMLOptionElement {
   return o;
 }
 
-const selectContainer: HTMLDivElement = document.createElement("div");
-selectContainer.id = "sort-select-container";
-selectContainer.classList.add("d-flex", "align-items-center");
-const sortSelect: HTMLSelectElement = document.createElement("select");
-sortSelect.id = "sort-select";
-sortSelect.classList.add("me-3");
-sortSelect.ariaLabel = "Default select element";
+const selectContainer = newElement({
+  type: 'div',
+  id: 'sort-select-container'
+}) as HTMLDivElement
+
+const sortSelect = newElement({
+  type: 'select', 
+  id: 'sort-select',
+  class: ['me-3'],
+  props: [['ariaLabel', 'Default select element']]
+}) as HTMLSelectElement
 
 sortMethods.forEach((method: SortMethod) => {
   sortSelect.append(sortOption(method));
