@@ -42,13 +42,20 @@ function populateFullNote(id: string): void {
   }
 }
 
-function toggleFullNote(): void
-function toggleFullNote(id: string): void
+function noteIsOpen(): boolean {
+  const fullNote: HTMLElement | null = document.getElementById("full-note");
+  if (fullNote && fullNote.classList.contains("d-flex")) return true;
+
+  return false;
+}
+
+function toggleFullNote(): void;
+function toggleFullNote(id: string): void;
 function toggleFullNote(id: string | void): void {
-  const fullNote = document.getElementById("full-note");
+  const fullNote: HTMLElement | null = document.getElementById("full-note");
 
   if (fullNote) {
-    if (!fullNote.classList.contains("d-flex")) {
+    if (!noteIsOpen()) {
       if (id) {
         populateFullNote(id);
       }
@@ -117,4 +124,4 @@ fullNote.append(noteTitle, noteBackground);
 noteBackground.append(noteBody, dateContainer);
 dateContainer.append(noteCreated, noteTarget);
 
-export { fullNote, toggleFullNote };
+export { fullNote, noteIsOpen, toggleFullNote };
