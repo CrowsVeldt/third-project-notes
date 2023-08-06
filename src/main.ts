@@ -6,18 +6,24 @@ import {
   noteContainer,
   populateNoteContainer,
 } from "./components/noteContainer";
-import { formElement, resetForm } from "./components/noteForm";
-import { fullNote } from "./components/fullNote";
-import { settings } from "./components/settings";
+import {
+  formElement,
+  openFormButtonHandler,
+  resetForm,
+} from "./components/noteForm";
+import { fullNote, toggleFullNote } from "./components/fullNote";
+import { settings, toggleSettings } from "./components/settings";
 declare var bootstrap: any;
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 app.style.height = "100vh";
 
-const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"'))
+const tooltipTriggerList = [].slice.call(
+  document.querySelectorAll('[data-bs-toggle="tooltip"')
+);
 tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltop(tooltipTriggerEl)
-})
+  return new bootstrap.Tooltop(tooltipTriggerEl);
+});
 
 const container = document.createElement("div");
 container.classList.add("d-flex", "flex-column", "h-100");
@@ -35,6 +41,7 @@ container.append(
 container.addEventListener("click", handleTouchEventsForm);
 container.addEventListener("click", handleTouchEventsNote);
 container.addEventListener("click", handleTouchEventsSettings);
+document.addEventListener("keydown", handleKeydownEvents);
 
 function handleTouchEventsForm(evt: Event): void {
   const target = evt.target as HTMLElement;
@@ -72,7 +79,35 @@ function handleTouchEventsSettings(evt: Event): void {
   const settings = document.getElementById("settings");
   if (settings) {
     if (!target.classList.contains("settings")) {
-      if (settings.style.left === "0%") settings.style.left = "-25%";
+      if (settings.style.left === "0%") toggleSettings();
+    }
+  }
+}
+
+function handleKeydownEvents(evt: KeyboardEvent) {
+  const inputForm = document.getElementById("input-form");
+  const settings = document.getElementById("settings");
+  const note = document.getElementById('full-note')
+
+  const active = document.activeElement as HTMLElement;
+
+  if (evt.key === "Escape") {
+    if (active) {
+      if (active.classList.contains("form-control")) {
+        active.blur();
+      } else if (!active.classList.contains("form-control")) {
+        if (inputForm) {
+          openFormButtonHandler();
+        }
+      }
+    }
+
+    if (note && note.classList.contains('d-flex')) {
+      toggleFullNote()
+    }
+
+    if (settings && settings.style.left === "0%") {
+      toggleSettings();
     }
   }
 }

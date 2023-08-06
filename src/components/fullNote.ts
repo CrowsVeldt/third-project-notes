@@ -42,12 +42,16 @@ function populateFullNote(id: string): void {
   }
 }
 
-function toggleFullNote(id: string): void {
+function toggleFullNote(): void
+function toggleFullNote(id: string): void
+function toggleFullNote(id: string | void): void {
   const fullNote = document.getElementById("full-note");
 
   if (fullNote) {
     if (!fullNote.classList.contains("d-flex")) {
-      populateFullNote(id);
+      if (id) {
+        populateFullNote(id);
+      }
       fullNote.classList.add("d-flex");
     } else {
       fullNote.classList.remove("d-flex");
