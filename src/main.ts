@@ -51,7 +51,6 @@ document.addEventListener("keydown", handleKeydownEvents);
 function handleTouchEventsForm(evt: Event): void {
   const target = evt.target as HTMLElement;
   if (
-    !target.classList.contains("form") &&
     !target.classList.contains("form-child")
   ) {
     if (!target.classList.contains("toggle-button")) {

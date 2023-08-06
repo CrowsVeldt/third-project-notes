@@ -70,11 +70,60 @@ function editNote(noteId: string) {
   }
 }
 
+// function listTabIndexes(target: NodeListOf<HTMLElement>): Object[] {
+//   const indexes = [];
+
+//   for (let node in target) {
+//     if (target[node].tabIndex >= 0) {
+//       indexes.push(
+//         // target[node]
+//            {
+//            element: target[node],
+//            tabIndex: target[node].tabIndex,
+//            oldTabIndex: target[node].tabIndex,
+//           }
+//       );
+//     }
+//   }
+//   return indexes;
+// }
+
+// function resetTabIndexes (indexArr: Object[]) {
+//     indexArr.forEach((element) => {
+//       console.log(element)
+//       element.tabIndex = element.oldTabIndex
+//     })
+//   return true
+// }
+
+// function cancelTabIndex(): boolean{
+//   const notFormElements = document.querySelectorAll(
+//     ":not(.form-child)"
+//   ) as NodeListOf<HTMLElement>;
+//   const releventIndexes = listTabIndexes(notFormElements)
+
+//   releventIndexes.forEach((element) => {
+//     if (element.tabIndex >= 0) {
+
+//       element.tabIndex = -1;
+//     }
+//   });
+
+//   return resetTabIndexes(releventIndexes)
+
+// }
+
 function openFormButtonHandler(evt: Event, id: string): void;
 function openFormButtonHandler(evt: Event): void;
 function openFormButtonHandler(): void;
 function openFormButtonHandler(evt: Event | void, id: string | void): void {
   const inputForm: HTMLElement | null = document.getElementById("input-form");
+  // let cback = undefined
+  // if (inputForm?.classList.contains('d-flex')) {
+  //   cback = cancelTabIndex()
+  // } else {
+  //   cback()
+  // }
 
   if (arguments.length === 0 && inputForm) {
     inputForm.classList.remove("d-flex");
@@ -129,7 +178,7 @@ function openFormButtonHandler(evt: Event | void, id: string | void): void {
 const formElement: HTMLDivElement = newElement({
   type: "div",
   id: "input-form",
-  class: [...hideClasses, "px-2", "form"],
+  class: [...hideClasses, "px-2", "form", "form-child"],
 }) as HTMLDivElement;
 
 const formHeader: HTMLHeadingElement = newElement({
@@ -272,4 +321,12 @@ formElement.append(
   actionButton
 );
 
-export { editNote, formElement, formIsOpen, openFormButtonHandler, resetForm };
+export {
+  // cancelTabIndex,
+  editNote,
+  formElement,
+  formIsOpen,
+  openFormButtonHandler,
+  resetForm,
+  // resetTabIndexes
+};
