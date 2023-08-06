@@ -8,11 +8,16 @@ import {
 } from "./components/noteContainer";
 import {
   formElement,
+  formIsOpen,
   openFormButtonHandler,
   resetForm,
 } from "./components/noteForm";
-import { fullNote, toggleFullNote } from "./components/fullNote";
-import { settings, toggleSettings } from "./components/settings";
+import { fullNote, noteIsOpen, toggleFullNote } from "./components/fullNote";
+import {
+  settings,
+  settingsIsOpen,
+  toggleSettings,
+} from "./components/settings";
 declare var bootstrap: any;
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
@@ -47,14 +52,12 @@ function handleTouchEventsForm(evt: Event): void {
   const target = evt.target as HTMLElement;
   if (
     !target.classList.contains("form") &&
-    !target.classList.contains("form-control") &&
-    !target.classList.contains("form-label")
+    !target.classList.contains("form-child")
   ) {
     if (!target.classList.contains("toggle-button")) {
-      const formOpen: HTMLElement | null =
-        document.getElementById("input-form");
-      if (formOpen && formOpen.classList.contains("d-flex")) {
-        formOpen.classList.remove("d-flex");
+      const form: HTMLElement | null = document.getElementById("input-form");
+      if (form && formIsOpen()) {
+        form.classList.remove("d-flex");
         resetForm();
       }
     }
@@ -63,32 +66,19 @@ function handleTouchEventsForm(evt: Event): void {
 
 function handleTouchEventsNote(evt: Event): void {
   const target = evt.target as HTMLElement;
-  const note = document.getElementById("full-note");
-  if (note) {
-    if (
-      !target.classList.contains("full-note-child") &&
-      note.classList.contains("d-flex")
-    ) {
-      note.classList.remove("d-flex");
-    }
+  if (!target.classList.contains("full-note-child") && noteIsOpen()) {
+    toggleFullNote();
   }
 }
 
 function handleTouchEventsSettings(evt: Event): void {
   const target = evt.target as HTMLElement;
-  const settings = document.getElementById("settings");
-  if (settings) {
-    if (!target.classList.contains("settings")) {
-      if (settings.style.left === "0%") toggleSettings();
-    }
+  if (!target.classList.contains("settings") && settingsIsOpen()) {
+    toggleSettings();
   }
 }
 
 function handleKeydownEvents(evt: KeyboardEvent) {
-  const inputForm = document.getElementById("input-form");
-  const settings = document.getElementById("settings");
-  const note = document.getElementById('full-note')
-
   const active = document.activeElement as HTMLElement;
 
   if (evt.key === "Escape") {
@@ -96,17 +86,17 @@ function handleKeydownEvents(evt: KeyboardEvent) {
       if (active.classList.contains("form-control")) {
         active.blur();
       } else if (!active.classList.contains("form-control")) {
-        if (inputForm) {
+        if (formIsOpen()) {
           openFormButtonHandler();
         }
       }
     }
 
-    if (note && note.classList.contains('d-flex')) {
-      toggleFullNote()
+    if (noteIsOpen()) {
+      toggleFullNote();
     }
 
-    if (settings && settings.style.left === "0%") {
+    if (settingsIsOpen()) {
       toggleSettings();
     }
   }

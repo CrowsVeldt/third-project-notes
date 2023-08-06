@@ -46,9 +46,8 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
-- TODO: properly acknowledge fuse.js
 - UX: when form is open cancel tabindex for all none-form elements
-- UX: (if/when I add more items to settings): refactor togglesettings to get .settings-child(ren) and loop over them to toggle tabindex for all
+- TODO: properly acknowledge fuse.js
 - BUG: deleting notes rapidly triggers toggleFullNote
 - BUG: when I click inside the note form, then drag outside of it and release, the form closes
 - seperate listener functions from component files, component files should _just_ handle markup and styling
@@ -59,6 +58,7 @@ id: string // hashed from Date.toString()
 - sort: when sorting by createDate or color, subsort by title
 - types: add interface for noteObj?
 - UX: make sure sortSelect, sortDirection, and Search all work together appropriately
+- UX: (if/when I add more items to settings): refactor togglesettings to get .settings-child(ren) and loop over them to toggle tabindex for all
 - (would implement if this were more serious than a course project): make sure it works on all browsers
 
 # Acknowledgements:
