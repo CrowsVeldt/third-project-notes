@@ -27,7 +27,7 @@ const settingsTitle = newElement({
   type: "h3",
   id: "settings-title",
   content: "Settings",
-  class: ["border-bottom", "border-dark"],
+  class: ["border-bottom", "border-dark", "settings"],
 }) as HTMLHeadingElement;
 
 const toggleButton = newElement({
@@ -51,7 +51,7 @@ function toggleSettings(): void {
   // const children = document.querySelectorAll('.settings-child')
   // console.log(children)
   if (target) {
-    if (target.style.left === "0%") {
+    if (settingsIsOpen()) {
       wipeButton.tabIndex = -1;
       target.style.left = "-25%";
     } else {
@@ -61,6 +61,14 @@ function toggleSettings(): void {
   }
 }
 
+function settingsIsOpen(): boolean {
+  const settings: HTMLElement | null = document.getElementById("settings");
+
+  if (settings && settings.style.left === "0%") return true;
+
+  return false;
+}
+
 settings.append(wipeButton, settingsTitle, toggleButton);
 
-export { settings, toggleSettings };
+export { settings, settingsIsOpen, toggleSettings };
