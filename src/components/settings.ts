@@ -35,6 +35,7 @@ const toggleButton = newElement({
   id: "toggle-settings",
   content: `-\n -\n -`,
   class: ["border", "border-dark", "settings", "btn", "btn-secondary"],
+  props: [['data-bs-toggle', 'tooltip'], ['data-bs-placement', 'right'], ['title', 'Toggle settings menu']],
   eventListener: {
     eventType: "click",
     listener: toggleSettings,

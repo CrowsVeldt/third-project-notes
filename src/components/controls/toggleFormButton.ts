@@ -9,6 +9,9 @@ const toggleFormButton: HTMLButtonElement = newElement({
   props: [
     ["style", "width:50px;height:50px;"],
     ["tabindex", "4"],
+    ["data-bs-toggle", "tooltip"],
+    ["data-bs-placement", "left"],
+    ["title", "Add new note"],
   ],
   eventListener: {
     eventType: "click",

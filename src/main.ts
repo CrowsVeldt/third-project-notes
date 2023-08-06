@@ -9,9 +9,15 @@ import {
 import { formElement, resetForm } from "./components/noteForm";
 import { fullNote } from "./components/fullNote";
 import { settings } from "./components/settings";
+declare var bootstrap: any;
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 app.style.height = "100vh";
+
+const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"'))
+tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltop(tooltipTriggerEl)
+})
 
 const container = document.createElement("div");
 container.classList.add("d-flex", "flex-column", "h-100");
