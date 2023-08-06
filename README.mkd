@@ -1,5 +1,7 @@
 # Notes app - OOP - TypeScript and LocalStorage
 
+[Check out the latest version here!](https://crows-note-app.surge.sh)
+
 ## Tools
 
 - Vite
