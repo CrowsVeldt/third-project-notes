@@ -8,7 +8,7 @@ import {
 } from "./components/noteContainer";
 import { formElement, resetForm } from "./components/noteForm";
 import { fullNote } from "./components/fullNote";
-import { settings, toggleSettings } from "./components/settings";
+import { settings } from "./components/settings";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 app.style.height = "100vh";

@@ -27,7 +27,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
       "overflow-hidden",
       "note",
     ],
-    props: [["style", `background-color: ${note.getColor()}`]],
+    props: [["style", `background-color: ${note.getColor()}`], ['tabindex', '0']],
   }) as HTMLDivElement;
 
   const noteTitle: HTMLHeadingElement = newElement({
