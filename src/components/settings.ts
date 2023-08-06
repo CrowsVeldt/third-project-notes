@@ -16,17 +16,25 @@ const settings = newElement({
     "rounded",
     'd-flex',
     'flex-column-reverse',
+    'justify-content-between',
     'align-items-center',
     "settings",
   ],
-    props: [["style", "left: -25%"]],
+    // props: [["style", "left: -25%"]],
 }) as HTMLDivElement;
+
+const settingsTitle = newElement({
+    type: 'h3',
+    id: 'settings-title',
+    content: 'Settings',
+    class: ['border-bottom', 'border-dark']
+}) as HTMLHeadingElement
 
 const toggleButton = newElement({
   type: "button",
-  id: "settings-button",
+  id: "toggle-settings",
   content: `-\n -\n -`,
-  class: ["border", "border-dark", "rounded-end", "settings"],
+  class: ["border", "border-dark", "settings", 'btn', 'btn-secondary',],
   eventListener: {
     eventType: "click",
     listener: toggleSettings,
@@ -44,6 +52,6 @@ function toggleSettings(): void {
   }
 }
 
-settings.append(wipeButton, toggleButton);
+settings.append(wipeButton, settingsTitle, toggleButton);
 
 export { settings, toggleSettings };

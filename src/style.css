@@ -85,7 +85,7 @@
   color: white;
 }
 
-#settings-button {
+#toggle-settings {
   position: fixed;
   top: 92%;
   left: 100%;
@@ -93,4 +93,5 @@
   width: 30px;
   white-space: pre-line;
   line-height: 0.5em;
+  border-radius: 0px 5px 5px 0px;
 }
