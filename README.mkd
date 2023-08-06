@@ -45,6 +45,7 @@ id: string // hashed from Date.toString()
 ## TODO
 
 - TODO: properly acknowledge fuse.js
+- UX: add tooltips
 - BUG: deleting notes rapidly triggers toggleFullNote
 - BUG: when I click inside the note form, then drag outside of it and release, the form closes
 - seperate listener functions from component files, component files should _just_ handle markup and styling

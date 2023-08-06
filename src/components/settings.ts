@@ -20,7 +20,7 @@ const settings = newElement({
     'align-items-center',
     "settings",
   ],
-    // props: [["style", "left: -25%"]],
+    props: [["style", "left: -25%"]],
 }) as HTMLDivElement;
 
 const settingsTitle = newElement({
@@ -48,6 +48,7 @@ function toggleSettings(): void {
       target.style.left = "-25%";
     } else {
       target.style.left = "0%";
+      wipeButton.tabIndex = 5
     }
   }
 }

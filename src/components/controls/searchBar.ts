@@ -9,7 +9,7 @@ const searchBar: HTMLInputElement = createInput(
   "search-bar",
   [],
   false,
-  [["placeholder", "Search"]]
+  [["placeholder", "Search"], ['tabindex', '3']]
 );
 searchBar.addEventListener("input", (event: Event) => {
   const barInput = event.target as HTMLInputElement;

@@ -7,6 +7,7 @@ const wipeButton: HTMLButtonElement = newElement({
   id: 'wipe-button',
   content: "Delete all?",
   class: ["settings", 'btn', 'border', 'border-dark', 'bg-danger', 'mb-2'],
+  props: [['tabindex', '-1']],
   eventListener: {
     eventType: "click",
     listener: () => {

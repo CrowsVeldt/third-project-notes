@@ -22,7 +22,7 @@ const sortSelect = newElement({
   type: 'select', 
   id: 'sort-select',
   class: ['me-3'],
-  props: [['ariaLabel', 'Default select element']]
+  props: [['ariaLabel', 'Default select element'], ['tabindex', '1']]
 }) as HTMLSelectElement
 
 sortMethods.forEach((method: SortMethod) => {
