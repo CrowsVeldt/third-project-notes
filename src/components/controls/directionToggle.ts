@@ -3,7 +3,7 @@ import newElement from "../../utils/newElement";
 const directionToggle: HTMLDivElement = newElement({
   type: "div",
   id: "box",
-  props: [['tabindex', '2']],
+  props: [["tabindex", "2"]],
   eventListener: {
     eventType: "click",
     listener: () => {

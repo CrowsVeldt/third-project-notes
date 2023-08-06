@@ -4,10 +4,18 @@ import { resetNoteContainer } from "../noteContainer";
 
 const wipeButton: HTMLButtonElement = newElement({
   type: "button",
-  id: 'wipe-button',
+  id: "wipe-button",
   content: "Delete all?",
-  class: ["settings", 'btn', 'border', 'border-dark', 'bg-danger', 'mb-2'],
-  props: [['tabindex', '-1']],
+  class: [
+    "settings",
+    "settings-child",
+    "btn",
+    "border",
+    "border-dark",
+    "bg-danger",
+    "mb-2",
+  ],
+  props: [["tabindex", "-1"]],
   eventListener: {
     eventType: "click",
     listener: () => {

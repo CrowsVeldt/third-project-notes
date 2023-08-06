@@ -14,27 +14,27 @@ const settings = newElement({
     "border",
     "border-dark",
     "rounded",
-    'd-flex',
-    'flex-column-reverse',
-    'justify-content-between',
-    'align-items-center',
+    "d-flex",
+    "flex-column-reverse",
+    "justify-content-between",
+    "align-items-center",
     "settings",
   ],
-    props: [["style", "left: -25%"]],
+  props: [["style", "left: -25%"]],
 }) as HTMLDivElement;
 
 const settingsTitle = newElement({
-    type: 'h3',
-    id: 'settings-title',
-    content: 'Settings',
-    class: ['border-bottom', 'border-dark']
-}) as HTMLHeadingElement
+  type: "h3",
+  id: "settings-title",
+  content: "Settings",
+  class: ["border-bottom", "border-dark"],
+}) as HTMLHeadingElement;
 
 const toggleButton = newElement({
   type: "button",
   id: "toggle-settings",
   content: `-\n -\n -`,
-  class: ["border", "border-dark", "settings", 'btn', 'btn-secondary',],
+  class: ["border", "border-dark", "settings", "btn", "btn-secondary"],
   eventListener: {
     eventType: "click",
     listener: toggleSettings,
@@ -43,12 +43,15 @@ const toggleButton = newElement({
 
 function toggleSettings(): void {
   const target = settings;
+  // const children = document.querySelectorAll('.settings-child')
+  // console.log(children)
   if (target) {
     if (target.style.left === "0%") {
+      wipeButton.tabIndex = -1;
       target.style.left = "-25%";
     } else {
       target.style.left = "0%";
-      wipeButton.tabIndex = 5
+      wipeButton.tabIndex = 5;
     }
   }
 }

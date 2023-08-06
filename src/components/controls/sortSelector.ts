@@ -14,16 +14,19 @@ function sortOption(option: SortMethod): HTMLOptionElement {
 }
 
 const selectContainer = newElement({
-  type: 'div',
-  id: 'sort-select-container'
-}) as HTMLDivElement
+  type: "div",
+  id: "sort-select-container",
+}) as HTMLDivElement;
 
 const sortSelect = newElement({
-  type: 'select', 
-  id: 'sort-select',
-  class: ['me-3'],
-  props: [['ariaLabel', 'Default select element'], ['tabindex', '1']]
-}) as HTMLSelectElement
+  type: "select",
+  id: "sort-select",
+  class: ["me-3"],
+  props: [
+    ["ariaLabel", "Default select element"],
+    ["tabindex", "1"],
+  ],
+}) as HTMLSelectElement;
 
 sortMethods.forEach((method: SortMethod) => {
   sortSelect.append(sortOption(method));
