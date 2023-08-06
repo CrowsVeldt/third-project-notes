@@ -5,7 +5,7 @@ import { noteColors } from "../../utils/util";
 function colorOption(color: colorObject): HTMLOptionElement {
   return newElement({
     type: "option",
-    class: ["form-control"],
+    class: ["form-control", "form-child"],
     content: color.name,
     props: [["value", color.value]],
   }) as HTMLOptionElement;
@@ -14,7 +14,7 @@ function colorOption(color: colorObject): HTMLOptionElement {
 const colorSelect: HTMLSelectElement = newElement({
   type: "select",
   id: "color-select",
-  class: ["form-control"],
+  class: ["form-control", "form-child"],
   props: [
     ["required", "true"],
     ["ariaLabel", "Default select element"],

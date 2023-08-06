@@ -10,6 +10,12 @@ import { FormElement } from "../utils/types";
 
 const form = new FormObject("New Note", "", "", "", "none", "Add Note");
 
+function formIsOpen(): boolean {
+  const form: HTMLElement | null = document.getElementById("input-form");
+  if (form && form.classList.contains("d-flex")) return true;
+  return false;
+}
+
 function accessFormElement(): FormElement {
   const header = document.getElementById(
     "input-form-title"
@@ -60,7 +66,6 @@ function editNote(noteId: string) {
       "Update Note",
       "edit-" + note.id
     );
-    // console.log(form.getNoteId())
     populateFormElement();
   }
 }
@@ -81,13 +86,12 @@ function openFormButtonHandler(evt: Event | void, id: string | void): void {
     const callerId = target.id;
 
     if (inputForm && inputForm.firstChild) {
-      const formOpen = inputForm.classList.contains("d-flex");
       const formTitleIsNewNote =
         inputForm.firstChild.textContent === "New Note";
 
       if (callerId === "plus-button") {
         // if plus button pressed
-        if (!formOpen) {
+        if (!formIsOpen()) {
           // and form is closed
           inputForm.classList.add("d-flex"); // open form
         } else {
@@ -102,7 +106,7 @@ function openFormButtonHandler(evt: Event | void, id: string | void): void {
         }
       } else if (id) {
         // if edit button pressed
-        if (!formOpen) {
+        if (!formIsOpen()) {
           // and form is closed
           editNote(id); // populate form with details from note(id)
           inputForm.classList.add("d-flex"); // and open form
@@ -131,15 +135,18 @@ const formElement: HTMLDivElement = newElement({
 const formHeader: HTMLHeadingElement = newElement({
   type: "h3",
   id: "input-form-title",
-  class: ["form-label"],
+  class: ["form-label", "form-child"],
   content: form.getHead(),
 }) as HTMLHeadingElement;
 
-const titleLabel: HTMLLabelElement = createLabel("Note title", ["form-label"]);
+const titleLabel: HTMLLabelElement = createLabel("Note title", [
+  "form-label",
+  "form-child",
+]);
 const titleInput: HTMLInputElement = createInput(
   "text",
   "title-input",
-  ["form-control"],
+  ["form-control", "form-child"],
   true,
   [
     ["maxlength", "50"],
@@ -147,11 +154,14 @@ const titleInput: HTMLInputElement = createInput(
   ]
 );
 
-const bodyLabel: HTMLLabelElement = createLabel("Note body", ["form-label"]);
+const bodyLabel: HTMLLabelElement = createLabel("Note body", [
+  "form-label",
+  "form-child",
+]);
 const bodyInput: HTMLTextAreaElement = newElement({
   type: "textarea",
   id: "body-input",
-  class: ["form-control"],
+  class: ["form-control", "form-child"],
   props: [
     ["maxLength", "1000"],
     ["required", "true"],
@@ -159,17 +169,21 @@ const bodyInput: HTMLTextAreaElement = newElement({
   ],
 }) as HTMLTextAreaElement;
 
-const tDateLabel: HTMLLabelElement = createLabel("Target date", ["form-label"]);
+const tDateLabel: HTMLLabelElement = createLabel("Target date", [
+  "form-label",
+  "form-child",
+]);
 const tDateInput: HTMLInputElement = createInput(
   "date",
   "tDate-input",
-  ["form-control"],
+  ["form-control", "form-child"],
   false,
   []
 );
 
 const colorLabel: HTMLLabelElement = createLabel("Select color", [
   "form-label",
+  "form-child",
 ]);
 const cSelect: HTMLSelectElement = colorSelect;
 // figure out how to set color from FormObject
@@ -177,7 +191,7 @@ const cSelect: HTMLSelectElement = colorSelect;
 const actionButton: HTMLButtonElement = newElement({
   type: "button",
   id: "form-button",
-  class: ["form-control"],
+  class: ["form-control", "form-child"],
   content: form.getButtonName(),
   props: [["type", "submit"]],
   eventListener: {
@@ -258,4 +272,4 @@ formElement.append(
   actionButton
 );
 
-export { formElement, openFormButtonHandler, editNote, resetForm };
+export { editNote, formElement, formIsOpen, openFormButtonHandler, resetForm };
