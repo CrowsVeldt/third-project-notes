@@ -40,9 +40,22 @@ type FormElement = {
 
 type NoteUpdate = {
   [title: string]: string;
-  body: string
-  targetDate: string
-  color: string
-}
+  body: string;
+  targetDate: string;
+  color: string;
+};
 
-export type { colorObject, ElementParams, FormElement, Note, NoteUpdate, SortMethod };
+type TabIndexObject = {
+  el: HTMLElement;
+  oldIndex: number;
+};
+
+export type {
+  colorObject,
+  ElementParams,
+  FormElement,
+  Note,
+  NoteUpdate,
+  SortMethod,
+  TabIndexObject,
+};
