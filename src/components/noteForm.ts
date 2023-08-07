@@ -8,6 +8,8 @@ import NoteObj from "../classes/Note";
 import { resetNoteContainer } from "./noteContainer";
 import { FormElement } from "../utils/types";
 import { tih } from "../main";
+import textCounter from "./textCounter";
+
 const form = new FormObject("New Note", "", "", "", "none", "Add Note");
 
 function formIsOpen(): boolean {
@@ -76,11 +78,11 @@ function openFormButtonHandler(): void;
 function openFormButtonHandler(evt: Event | void, id: string | void): void {
   const inputForm: HTMLElement | null = document.getElementById("input-form");
 
-  tih.removeTabIndexes()
+  tih.removeTabIndexes();
 
   if (arguments.length === 0 && inputForm) {
     inputForm.classList.remove("d-flex");
-    tih.resetTabIndexes()
+    tih.resetTabIndexes();
     resetForm();
     return;
   }
@@ -103,7 +105,7 @@ function openFormButtonHandler(evt: Event | void, id: string | void): void {
           if (formTitleIsNewNote) {
             // if form title is 'New Note'
             inputForm.classList.remove("d-flex"); // remove form
-            tih.resetTabIndexes()
+            tih.resetTabIndexes();
           } else {
             // else if form title is not 'New Note'
             resetForm(); // reset form
@@ -120,7 +122,7 @@ function openFormButtonHandler(evt: Event | void, id: string | void): void {
           if (callerId === form.getNoteId()) {
             // if form is already populated with details from note(id)
             inputForm.classList.remove("d-flex"); // close form
-            tih.resetTabIndexes()
+            tih.resetTabIndexes();
             resetForm(); // reset form
           } else {
             // else
@@ -159,6 +161,7 @@ const titleInput: HTMLInputElement = createInput(
     ["required", "true"],
   ]
 );
+const titleCount = textCounter(titleInput);
 
 const bodyLabel: HTMLLabelElement = createLabel("Note body", [
   "form-label",
@@ -174,6 +177,7 @@ const bodyInput: HTMLTextAreaElement = newElement({
     ["value", form.getBody()],
   ],
 }) as HTMLTextAreaElement;
+const bodyCount = textCounter(bodyInput);
 
 const tDateLabel: HTMLLabelElement = createLabel("Target date", [
   "form-label",
@@ -269,8 +273,10 @@ formElement.append(
   formHeader,
   titleLabel,
   titleInput,
+  titleCount,
   bodyLabel,
   bodyInput,
+  bodyCount,
   tDateLabel,
   tDateInput,
   colorLabel,

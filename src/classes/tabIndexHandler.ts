@@ -17,7 +17,6 @@ class TabIndexHandler {
           });
         }
       }
-      console.log(indexes)
       return indexes;
     })();
   }
@@ -26,14 +25,12 @@ class TabIndexHandler {
     this.#list.forEach((i: TabIndexObject) => {
       i.el.tabIndex = -1;
     });
-    console.log("newList: ", this.#list);
   }
 
   resetTabIndexes() {
     this.#list.forEach((i: TabIndexObject) => {
       i.el.tabIndex = i.oldIndex;
     });
-    console.log("reset tab indexes", this.#list);
   }
 }
 

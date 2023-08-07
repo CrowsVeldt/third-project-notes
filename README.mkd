@@ -53,6 +53,7 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
+- DEV: refactor openFormbuttonHandler into two seperate functions: openForm, and closeForm
 - TODO: properly acknowledge fuse.js
 - BUG: in linux, on firefox, esc not doing what it should when form, etc. are open
 - BUG: deleting notes rapidly triggers toggleFullNote
