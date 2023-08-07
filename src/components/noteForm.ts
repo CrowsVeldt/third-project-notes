@@ -7,7 +7,7 @@ import { notesDifferent, removeTag, hideClasses } from "../utils/util";
 import NoteObj from "../classes/Note";
 import { resetNoteContainer } from "./noteContainer";
 import { FormElement } from "../utils/types";
-
+import { tih } from "../main";
 const form = new FormObject("New Note", "", "", "", "none", "Add Note");
 
 function formIsOpen(): boolean {
@@ -70,66 +70,21 @@ function editNote(noteId: string) {
   }
 }
 
-// function listTabIndexes(target: NodeListOf<HTMLElement>): Object[] {
-//   const indexes = [];
-
-//   for (let node in target) {
-//     if (target[node].tabIndex >= 0) {
-//       indexes.push(
-//         // target[node]
-//            {
-//            element: target[node],
-//            tabIndex: target[node].tabIndex,
-//            oldTabIndex: target[node].tabIndex,
-//           }
-//       );
-//     }
-//   }
-//   return indexes;
-// }
-
-// function resetTabIndexes (indexArr: Object[]) {
-//     indexArr.forEach((element) => {
-//       console.log(element)
-//       element.tabIndex = element.oldTabIndex
-//     })
-//   return true
-// }
-
-// function cancelTabIndex(): boolean{
-//   const notFormElements = document.querySelectorAll(
-//     ":not(.form-child)"
-//   ) as NodeListOf<HTMLElement>;
-//   const releventIndexes = listTabIndexes(notFormElements)
-
-//   releventIndexes.forEach((element) => {
-//     if (element.tabIndex >= 0) {
-
-//       element.tabIndex = -1;
-//     }
-//   });
-
-//   return resetTabIndexes(releventIndexes)
-
-// }
-
 function openFormButtonHandler(evt: Event, id: string): void;
 function openFormButtonHandler(evt: Event): void;
 function openFormButtonHandler(): void;
 function openFormButtonHandler(evt: Event | void, id: string | void): void {
   const inputForm: HTMLElement | null = document.getElementById("input-form");
-  // let cback = undefined
-  // if (inputForm?.classList.contains('d-flex')) {
-  //   cback = cancelTabIndex()
-  // } else {
-  //   cback()
-  // }
+
+  tih.removeTabIndexes()
 
   if (arguments.length === 0 && inputForm) {
     inputForm.classList.remove("d-flex");
+    tih.resetTabIndexes()
     resetForm();
     return;
   }
+
   if (evt) {
     const target = evt.target as HTMLElement;
     const callerId = target.id;
@@ -148,6 +103,7 @@ function openFormButtonHandler(evt: Event | void, id: string | void): void {
           if (formTitleIsNewNote) {
             // if form title is 'New Note'
             inputForm.classList.remove("d-flex"); // remove form
+            tih.resetTabIndexes()
           } else {
             // else if form title is not 'New Note'
             resetForm(); // reset form
@@ -164,6 +120,7 @@ function openFormButtonHandler(evt: Event | void, id: string | void): void {
           if (callerId === form.getNoteId()) {
             // if form is already populated with details from note(id)
             inputForm.classList.remove("d-flex"); // close form
+            tih.resetTabIndexes()
             resetForm(); // reset form
           } else {
             // else
@@ -322,11 +279,10 @@ formElement.append(
 );
 
 export {
-  // cancelTabIndex,
   editNote,
   formElement,
   formIsOpen,
   openFormButtonHandler,
   resetForm,
-  // resetTabIndexes
+  tih,
 };

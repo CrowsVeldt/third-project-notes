@@ -10,7 +10,6 @@ import {
   formElement,
   formIsOpen,
   openFormButtonHandler,
-  resetForm,
 } from "./components/noteForm";
 import { fullNote, noteIsOpen, toggleFullNote } from "./components/fullNote";
 import {
@@ -18,6 +17,7 @@ import {
   settingsIsOpen,
   toggleSettings,
 } from "./components/settings";
+import TabIndexHandler from "./classes/tabIndexHandler";
 declare var bootstrap: any;
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
@@ -50,14 +50,11 @@ document.addEventListener("keydown", handleKeydownEvents);
 
 function handleTouchEventsForm(evt: Event): void {
   const target = evt.target as HTMLElement;
-  if (
-    !target.classList.contains("form-child")
-  ) {
+  if (!target.classList.contains("form-child")) {
     if (!target.classList.contains("toggle-button")) {
       const form: HTMLElement | null = document.getElementById("input-form");
       if (form && formIsOpen()) {
-        form.classList.remove("d-flex");
-        resetForm();
+        openFormButtonHandler();
       }
     }
   }
@@ -103,3 +100,6 @@ function handleKeydownEvents(evt: KeyboardEvent) {
 
 app.appendChild(container);
 populateNoteContainer();
+const tih = new TabIndexHandler();
+
+export { tih };

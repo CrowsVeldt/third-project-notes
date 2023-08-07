@@ -44,10 +44,17 @@ id: string // hashed from Date.toString()
 }
 ```
 
+## Tab index manipulation 
+
+- When form is opened, find all elements with tabIndex >= 0
+- then save them to array [{element: element, oldIndex: element.tabIndex}]
+- forEach(element => element.index = -1)
+- when form is closed, forEach(element => element.index = element.oldIndex)
+
 ## TODO
 
-- UX: when form is open cancel tabindex for all none-form elements
 - TODO: properly acknowledge fuse.js
+- BUG: in linux, on firefox, esc not doing what it should when form, etc. are open
 - BUG: deleting notes rapidly triggers toggleFullNote
 - BUG: when I click inside the note form, then drag outside of it and release, the form closes
 - seperate listener functions from component files, component files should _just_ handle markup and styling
