@@ -57,17 +57,20 @@ id: string // hashed from Date.toString()
 - TODO: properly acknowledge fuse.js
 - BUG: in linux, on firefox, escape not doing what it should when form, etc. are open
 - BUG: deleting notes rapidly triggers toggleFullNote
-- BUG: when I click inside the noteForm, then drag outside of it and release, the form closes
-- seperate listener functions from component files, component files should _just_ handle markup and styling
 - dates: Check dates work in different locales
 - target date: Make targetDate alway be more than currentDate when adding date via keyboard
 - target date: prevent adding more than 4 digits in targetDate years column
 - sort: reduce redundancy in sortNotes file
 - sort: when sorting by createDate or color, subsort by title
-- types: add interface for noteObj?
 - UX: make sure sortSelect, sortDirection, and Search all work together appropriately
+
+## Under consideration
+
 - UX: (if/when I add more items to settings): refactor togglesettings to get .settings-child(ren) and loop over them to toggle tabindex for all
 - (would implement if this were more serious than a course project): make sure it works on all browsers
+- UI: allow editing note elements by double clicking on them in fullNote?
+- seperate listener functions from component files, component files should _just_ handle markup and styling
+- types: add interface for noteObj?
 
 # Acknowledgements:
 

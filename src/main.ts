@@ -43,9 +43,9 @@ container.append(
   toggleFormButton,
   foot
 );
-container.addEventListener("click", handleTouchEventsForm);
-container.addEventListener("click", handleTouchEventsNote);
-container.addEventListener("click", handleTouchEventsSettings);
+container.addEventListener("mousedown", handleTouchEventsForm);
+container.addEventListener("mousedown", handleTouchEventsNote);
+container.addEventListener("mousedown", handleTouchEventsSettings);
 document.addEventListener("keydown", handleKeydownEvents);
 
 function handleTouchEventsForm(evt: Event): void {
