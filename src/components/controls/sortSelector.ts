@@ -16,12 +16,13 @@ function sortOption(option: SortMethod): HTMLOptionElement {
 const selectContainer = newElement({
   type: "div",
   id: "sort-select-container",
+  class: ['me-3', 'd-flex', 'align-items-center']
 }) as HTMLDivElement;
 
 const sortSelect = newElement({
   type: "select",
   id: "sort-select",
-  class: ["me-3"],
+  class: ["me-1"],
   props: [
     ["ariaLabel", "Default select element"],
     ["tabindex", "1"],
