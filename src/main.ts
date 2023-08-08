@@ -1,7 +1,7 @@
 import "./style.css";
 import { foot, head, main } from "./components/pageLayout";
 import noteDisplayControls from "./components/controls/searchAndSort";
-import toggleFormButton from "./components/controls/toggleFormButton";
+import toggleFormButton from "./components/controls/newFormButton";
 import {
   noteContainer,
   populateNoteContainer,
