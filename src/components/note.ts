@@ -20,6 +20,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
     class: [
       "border",
       "rounded",
+      "border-dark",
       "ms-1",
       "p-2",
       "d-flex",

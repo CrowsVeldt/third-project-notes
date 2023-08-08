@@ -2,6 +2,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, max-content));
   justify-content: center;
+  column-gap: 5px;
+  row-gap: 10px;
 }
 
 .hideable {
@@ -41,10 +43,26 @@
   height: 350px;
 }
 
+.note:hover {
+  box-shadow: 5px 5px rgba(0, 0, 255, 0.2);
+  transition: box-shadow 0.1s, translate 0.1s;
+  transition-timing-function: ease-out;
+  transform: translate(-2px, -2px);
+}
+
+.note:active {
+  box-shadow: 2.5px 2.5px rgba(0, 0, 255, 0.2);
+  transform: translate(-1px, -1px);
+}
+
 .note > p {
   max-height: 7.9em;
   line-height: 1.3em;
   text-overflow: ellipsis;
+}
+
+#settings {
+  z-index: 1;
 }
 
 #full-note-title {
