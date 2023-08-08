@@ -6,9 +6,7 @@ import newElement from "../utils/newElement";
 const noteContainer: HTMLDivElement = newElement({
   type: "div",
   id: "note-container",
-  class: [
-    "container-fluid",
-  ],
+  class: ["container-fluid"],
 }) as HTMLDivElement;
 
 function populateNoteContainer(noteArray?: Note[]): void {

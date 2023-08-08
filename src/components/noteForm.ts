@@ -1,14 +1,14 @@
 import colorSelect from "./controls/colorSelector";
 import { createInput, createLabel } from "./labelAndInput";
 import { getNote, updateNote } from "../utils/storage";
+import { FormElement, Note } from "../utils/types";
 import FormObject from "../classes/NoteForm";
 import newElement from "../utils/newElement";
 import { notesDifferent, removeTag, hideClasses } from "../utils/util";
 import NoteObj from "../classes/Note";
 import { resetNoteContainer } from "./noteContainer";
-import { FormElement, Note } from "../utils/types";
-import { tih } from "../main";
 import { textCounter, setCounter } from "./textCounter";
+import { tih } from "../main";
 
 const form: FormObject = new FormObject(
   "New Note",
