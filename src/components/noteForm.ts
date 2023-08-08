@@ -6,11 +6,18 @@ import newElement from "../utils/newElement";
 import { notesDifferent, removeTag, hideClasses } from "../utils/util";
 import NoteObj from "../classes/Note";
 import { resetNoteContainer } from "./noteContainer";
-import { FormElement } from "../utils/types";
+import { FormElement, Note } from "../utils/types";
 import { tih } from "../main";
-import textCounter from "./textCounter";
+import { textCounter, setCounter } from "./textCounter";
 
-const form = new FormObject("New Note", "", "", "", "none", "Add Note");
+const form: FormObject = new FormObject(
+  "New Note",
+  "",
+  "",
+  "",
+  "none",
+  "Add Note"
+);
 
 function formIsOpen(): boolean {
   const form: HTMLElement | null = document.getElementById("input-form");
@@ -37,7 +44,7 @@ function accessFormElement(): FormElement {
   };
 }
 
-function populateFormElement() {
+function populateFormElement(): Note {
   const { header, title, body, date, color, button } = accessFormElement();
   header.innerText = form.getHead();
   title.value = form.getTitle();
@@ -46,15 +53,18 @@ function populateFormElement() {
   color.value = form.getColor();
   button.innerText = form.getButtonName();
 
+  setCounter(title, titleCount);
+  setCounter(body, bodyCount);
+
   return form.getDetails();
 }
 
-function resetForm() {
+function resetForm(): void {
   form.resetAll();
   populateFormElement();
 }
 
-function editNote(noteId: string) {
+function editNote(noteId: string): void {
   form.resetAll();
   const note = getNote(noteId);
 

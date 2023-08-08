@@ -1,32 +1,49 @@
 import newElement from "../utils/newElement";
 
-function textCounter(
-  target: HTMLInputElement | HTMLTextAreaElement
-): HTMLElement {
+type CounterTarget = HTMLInputElement | HTMLTextAreaElement;
+
+function colorCount(
+  target: CounterTarget,
+  counter: HTMLParagraphElement
+): void {
+  if (target.value.length < target.maxLength - 10) {
+    counter.style.color = "black";
+  } else if (target.value.length >= target.maxLength - 5) {
+    counter.style.color = "red";
+  } else if (target.value.length >= target.maxLength - 10) {
+    counter.style.color = "orange";
+  }
+}
+
+function countFormula(a: CounterTarget): string {
+  return `${a.value.length}/${a.maxLength}`;
+}
+
+function setCounter(
+  target: CounterTarget,
+  counter: HTMLParagraphElement
+): void {
+  counter.innerText = countFormula(target);
+  colorCount(target, counter);
+}
+
+function textCounter(target: CounterTarget): HTMLParagraphElement {
   const counter = newElement({
     type: "p",
     id: `${target.id}-counter`,
-    content: `${target.value.length}/${target.maxLength}`,
-  }) as HTMLElement;
+    content: countFormula(target),
+  }) as HTMLParagraphElement;
 
   target.addEventListener("input", () => {
-    const counter: HTMLElement | null = document.getElementById(
+    const counter = document.getElementById(
       `${target.id}-counter`
-    );
+    ) as HTMLParagraphElement;
 
     if (counter) {
-      counter.innerText = `${target.value.length}/${target.maxLength}`;
-
-      if (target.value.length < target.maxLength - 10) {
-        counter.style.color = "black";
-      } else if (target.value.length >= target.maxLength - 5) {
-        counter.style.color = "red";
-      } else if (target.value.length >= target.maxLength - 10) {
-        counter.style.color = "orange";
-      }
+      setCounter(target, counter);
     }
   });
   return counter;
 }
 
-export default textCounter;
+export { textCounter, setCounter };
