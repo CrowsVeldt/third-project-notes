@@ -21,7 +21,7 @@ import TabIndexHandler from "./classes/tabIndexHandler";
 declare var bootstrap: any;
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
-app.style.height = "100vh";
+// app.style.minHeight = '100vh'
 
 const tooltipTriggerList: never[] = [].slice.call(
   document.querySelectorAll('[data-bs-toggle="tooltip"')
@@ -30,22 +30,12 @@ tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltop(tooltipTriggerEl);
 });
 
-const container: HTMLDivElement = document.createElement("div");
-container.classList.add("d-flex", "flex-column", "h-100");
-container.append(
-  head,
-  noteDisplayControls,
-  main,
-  settings,
-  noteContainer,
-  formElement,
-  fullNote,
-  toggleFormButton,
-  foot
-);
-container.addEventListener("mousedown", handleTouchEventsForm);
-container.addEventListener("mousedown", handleTouchEventsNote);
-container.addEventListener("mousedown", handleTouchEventsSettings);
+main.append(settings, noteContainer, formElement, fullNote, toggleFormButton);
+
+app.append(head, noteDisplayControls, main, foot);
+app.addEventListener("mousedown", handleTouchEventsForm);
+app.addEventListener("mousedown", handleTouchEventsNote);
+app.addEventListener("mousedown", handleTouchEventsSettings);
 document.addEventListener("keydown", handleKeydownEvents);
 
 function handleTouchEventsForm(evt: Event): void {
@@ -98,7 +88,6 @@ function handleKeydownEvents(evt: KeyboardEvent) {
   }
 }
 
-app.appendChild(container);
 populateNoteContainer();
 const tih = new TabIndexHandler();
 

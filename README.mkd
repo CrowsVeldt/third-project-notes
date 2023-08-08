@@ -53,6 +53,8 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
+- BUG: settings button/window is fixed to page, not to window
+- REGRESSION: tab indexes not being updated when form is open
 - TODO: properly acknowledge fuse.js
 - BUG: in linux, on firefox, escape not doing what it should when form, etc. are open
 - dates: Check dates work in different locales

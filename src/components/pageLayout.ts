@@ -3,6 +3,7 @@ import newElement from "../utils/newElement";
 // header
 const head: HTMLHeadingElement = newElement({
   type: "header",
+  id: 'page-head',
   class: ["container-fluid", "text-center", "border"],
 }) as HTMLHeadingElement;
 
@@ -18,6 +19,7 @@ head.append(headTitle);
 const main: HTMLDivElement = newElement({
   type: "div",
   id: "main-page",
+  class: ['flex-grow-1']
 }) as HTMLDivElement;
 
 // footer
