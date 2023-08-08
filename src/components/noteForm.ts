@@ -171,7 +171,7 @@ const titleInput: HTMLInputElement = createInput(
     ["required", "true"],
   ]
 );
-const titleCount = textCounter(titleInput);
+const titleCount: HTMLParagraphElement = textCounter(titleInput);
 
 const bodyLabel: HTMLLabelElement = createLabel("Note body", [
   "form-label",
@@ -187,7 +187,7 @@ const bodyInput: HTMLTextAreaElement = newElement({
     ["value", form.getBody()],
   ],
 }) as HTMLTextAreaElement;
-const bodyCount = textCounter(bodyInput);
+const bodyCount: HTMLParagraphElement = textCounter(bodyInput);
 
 const tDateLabel: HTMLLabelElement = createLabel("Target date", [
   "form-label",

@@ -50,6 +50,8 @@ type TabIndexObject = {
   oldIndex: number;
 };
 
+type CounterTarget = HTMLInputElement | HTMLTextAreaElement;
+
 export type {
   colorObject,
   ElementParams,
@@ -58,4 +60,5 @@ export type {
   NoteUpdate,
   SortMethod,
   TabIndexObject,
+  CounterTarget,
 };

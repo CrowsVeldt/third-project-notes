@@ -1,6 +1,5 @@
 import newElement from "../utils/newElement";
-
-type CounterTarget = HTMLInputElement | HTMLTextAreaElement;
+import { CounterTarget } from "../utils/types";
 
 function colorCount(
   target: CounterTarget,

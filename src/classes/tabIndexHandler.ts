@@ -21,13 +21,13 @@ class TabIndexHandler {
     })();
   }
 
-  removeTabIndexes() {
+  removeTabIndexes(): void {
     this.#list.forEach((i: TabIndexObject) => {
       i.el.tabIndex = -1;
     });
   }
 
-  resetTabIndexes() {
+  resetTabIndexes(): void {
     this.#list.forEach((i: TabIndexObject) => {
       i.el.tabIndex = i.oldIndex;
     });
