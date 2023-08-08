@@ -8,11 +8,6 @@ const noteContainer: HTMLDivElement = newElement({
   id: "note-container",
   class: [
     "container-fluid",
-    "d-flex",
-    "flex-wrap",
-    "justify-content-center",
-    "justify-content-lg-start",
-    "flex-grow-1",
   ],
 }) as HTMLDivElement;
 
