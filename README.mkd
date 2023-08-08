@@ -18,7 +18,7 @@
 - I can search notes by title and body contents
 - I can sort notes by title (ABC), date (creation or target), and color
 
-### Not yet
+### In progress
 
 - The app fits well and looks good on any screen size
 
@@ -50,6 +50,21 @@ id: string // hashed from Date.toString()
 - then save them to array [{element: element, oldIndex: element.tabIndex}]
 - forEach(element => element.index = -1)
 - when form is closed, forEach(element => element.index = element.oldIndex)
+
+## Form behaviour
+
+- when the newNote button is pressed:
+- - if form is closed: open it with a new, empty note
+- - if form is open, with a new note: close it
+- - if form is open, with an old note being edited: replace with new note
+
+- when the editNote button is pressed:
+- - if form is closed: open it with note details
+- - if form is open, and same note's button is pressed: close form
+- - if form is open, and a different note's button is pressed: repopulate form with new note details
+- - if form is open, and newNote button is pressed: replace note details with new note
+
+- when clicking any other element outside the form: close it
 
 ## TODO
 

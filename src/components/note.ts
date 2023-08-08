@@ -3,7 +3,7 @@ import { formatDate } from "../utils/util";
 import newElement from "../utils/newElement";
 import { Note } from "../utils/types";
 import NoteObj from "../classes/Note";
-import { openFormButtonHandler } from "./noteForm";
+// import { openFormButtonHandler } from "./noteForm";
 import { toggleFullNote } from "./fullNote";
 
 function newNote(n: Note | undefined): HTMLDivElement {
@@ -82,7 +82,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
       eventType: "click",
       listener: (evt) => {
         if (evt) {
-          openFormButtonHandler(evt, note.getId());
+          // openFormButtonHandler(evt, note.getId());
         }
       },
     },

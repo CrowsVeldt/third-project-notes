@@ -9,7 +9,7 @@ import {
 import {
   formElement,
   formIsOpen,
-  openFormButtonHandler,
+  // openFormButtonHandler,
 } from "./components/noteForm";
 import { fullNote, noteIsOpen, toggleFullNote } from "./components/fullNote";
 import {
@@ -43,7 +43,7 @@ function handleTouchEventsForm(evt: Event): void {
     if (!target.classList.contains("toggle-button")) {
       const form: HTMLElement | null = document.getElementById("input-form");
       if (form && formIsOpen()) {
-        openFormButtonHandler();
+        // openFormButtonHandler();
       }
     }
   }
@@ -72,7 +72,7 @@ function handleKeydownEvents(evt: KeyboardEvent) {
         active.blur();
       } else if (!active.classList.contains("form-control")) {
         if (formIsOpen()) {
-          openFormButtonHandler();
+          // openFormButtonHandler();
         }
       }
     }
