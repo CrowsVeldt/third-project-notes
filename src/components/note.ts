@@ -97,8 +97,12 @@ function newNote(n: Note | undefined): HTMLDivElement {
     editButton
   );
 
-  noteDiv.addEventListener("dblclick", () => {
-    toggleFullNote(note.getId());
+  noteDiv.addEventListener("dblclick", (evt) => {
+    const target = evt.target as HTMLElement;
+
+    if (target && target.id !== deleteId) {
+      toggleFullNote(note.getId());
+    }
   });
 
   return noteDiv;

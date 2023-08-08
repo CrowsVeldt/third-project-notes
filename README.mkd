@@ -53,10 +53,8 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
-- DEV: refactor openFormbuttonHandler into two seperate functions: openForm, and closeForm
 - TODO: properly acknowledge fuse.js
 - BUG: in linux, on firefox, escape not doing what it should when form, etc. are open
-- BUG: deleting notes rapidly triggers toggleFullNote
 - dates: Check dates work in different locales
 - target date: Make targetDate alway be more than currentDate when adding date via keyboard
 - target date: prevent adding more than 4 digits in targetDate years column
@@ -66,6 +64,7 @@ id: string // hashed from Date.toString()
 
 ## Under consideration
 
+- DEV: refactor openFormbuttonHandler into two seperate functions: openForm, and closeForm
 - UX: (if/when I add more items to settings): refactor togglesettings to get .settings-child(ren) and loop over them to toggle tabindex for all
 - (would implement if this were more serious than a course project): make sure it works on all browsers
 - UI: allow editing note elements by double clicking on them in fullNote?
