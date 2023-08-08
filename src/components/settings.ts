@@ -7,7 +7,7 @@ const settings = newElement({
   class: [
     "h-75",
     "w-25",
-    "position-absolute",
+    "position-fixed",
     "top-50",
     "translate-middle-y",
     "bg-light",
