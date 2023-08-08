@@ -1,6 +1,6 @@
 import "./style.css";
 import { foot, head, main } from "./components/pageLayout";
-import noteDisplayControls from "./components/controls/noteDisplayControls";
+import noteDisplayControls from "./components/controls/searchAndSort";
 import toggleFormButton from "./components/controls/toggleFormButton";
 import {
   noteContainer,
@@ -21,7 +21,6 @@ import TabIndexHandler from "./classes/tabIndexHandler";
 declare var bootstrap: any;
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
-// app.style.minHeight = '100vh'
 
 const tooltipTriggerList: never[] = [].slice.call(
   document.querySelectorAll('[data-bs-toggle="tooltip"')
