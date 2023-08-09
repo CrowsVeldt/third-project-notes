@@ -1,10 +1,10 @@
 import { ElementParams } from "./types";
 
 function newElement(a: ElementParams) {
-  const el = document.createElement(a.type);
+  const el: HTMLElement = document.createElement(a.type);
   el.id = a.id ? a.id : "";
 
-  const classes = a.class ? a.class : [];
+  const classes: string[] = a.class ? a.class : [];
   el.classList.add(...classes);
 
   if (a.props) {

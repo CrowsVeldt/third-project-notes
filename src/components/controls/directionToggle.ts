@@ -1,6 +1,6 @@
 import newElement from "../../utils/newElement";
 
-const directionToggle: HTMLDivElement = newElement({
+const directionToggle = newElement({
   type: "div",
   id: "box",
   props: [["tabindex", "2"]],
@@ -12,7 +12,7 @@ const directionToggle: HTMLDivElement = newElement({
   },
 }) as HTMLDivElement;
 
-const arrow: HTMLDivElement = newElement({
+const arrow = newElement({
   type: "div",
   id: "arrow",
 }) as HTMLDivElement;

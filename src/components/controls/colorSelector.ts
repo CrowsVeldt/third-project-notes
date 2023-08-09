@@ -11,7 +11,7 @@ function colorOption(color: colorObject): HTMLOptionElement {
   }) as HTMLOptionElement;
 }
 
-const colorSelect: HTMLSelectElement = newElement({
+const colorSelect = newElement({
   type: "select",
   id: "color-select",
   class: ["form-control", "form-child"],

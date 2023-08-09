@@ -6,11 +6,7 @@ import {
   noteContainer,
   populateNoteContainer,
 } from "./components/noteContainer";
-import {
-  formElement,
-  formIsOpen,
-  formHandler,
-} from "./components/noteForm";
+import { formElement, formIsOpen, formHandler } from "./components/noteForm";
 import { fullNote, noteIsOpen, toggleFullNote } from "./components/fullNote";
 import {
   settings,
@@ -18,9 +14,10 @@ import {
   toggleSettings,
 } from "./components/settings";
 import TabIndexHandler from "./classes/tabIndexHandler";
+
 declare var bootstrap: any;
 
-const app = document.querySelector<HTMLDivElement>("#app")!;
+const app: HTMLDivElement = document.querySelector<HTMLDivElement>("#app")!;
 
 const tooltipTriggerList: never[] = [].slice.call(
   document.querySelectorAll('[data-bs-toggle="tooltip"')

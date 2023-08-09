@@ -5,7 +5,7 @@ import newElement from "../utils/newElement";
 import { tih } from "../main";
 
 
-const noteContainer: HTMLDivElement = newElement({
+const noteContainer = newElement({
   type: "div",
   id: "note-container",
   class: [

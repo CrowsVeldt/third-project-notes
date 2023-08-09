@@ -1,14 +1,14 @@
 import colorSelect from "./controls/colorSelector";
 import { createInput, createLabel } from "./labelAndInput";
 import { FormElement, Note } from "../utils/types";
-import FormObject from "../classes/NoteForm";
+import FormObject from "../classes/InputForm";
 import { getNote, updateNote } from "../utils/storage";
 import { hideClasses, notesDifferent, removeTag } from "../utils/util";
 import newElement from "../utils/newElement";
 import NoteObj from "../classes/Note";
 import { resetNoteContainer } from "./noteContainer";
-import { tih } from "../main";
 import { textCounter, setCounter } from "./textCounter";
+import { tih } from "../main";
 
 const form: FormObject = new FormObject(
   "New Note",
@@ -64,7 +64,7 @@ function resetForm(): void {
 }
 
 function editNote(noteId: string): void {
-  const note = getNote(noteId);
+  const note: Note | void = getNote(noteId);
 
   if (note) {
     form.setAll(
@@ -87,7 +87,7 @@ function openForm(element: HTMLElement): void {
   }
 }
 
-function closeForm(element: HTMLElement) {
+function closeForm(element: HTMLElement): void {
   tih.resetTabIndexes();
   if (element !== null) {
     element.classList.remove("d-flex");
@@ -108,10 +108,10 @@ function formHandler(evt: Event | void, id: string | void): void {
 
   if (evt) {
     const target = evt.target as HTMLElement;
-    const callerId = target.id;
+    const callerId: string = target.id;
 
     if (inputForm && inputForm.firstChild) {
-      const formTitleIsNewNote =
+      const formTitleIsNewNote: boolean =
         inputForm.firstChild.textContent === "New Note";
 
       if (callerId === "plus-button") {
@@ -129,19 +129,18 @@ function formHandler(evt: Event | void, id: string | void): void {
             resetForm(); // reset form
           }
         }
-      } else if (id) {
         // if edit button pressed
+      } else if (id) {
+        // and form is closed
         if (!formIsOpen()) {
-          // and form is closed
           editNote(id); // populate form with details from note(id)
-          openForm(inputForm);
-        } else {
+          openForm(inputForm); //open form
           // else if form is open
+        } else {
           if (callerId === form.getNoteId()) {
             // if form is already populated with details from note(id)
             closeForm(inputForm);
           } else {
-            // else
             editNote(id); // populate form with details from note(id)
           }
         }
@@ -150,13 +149,13 @@ function formHandler(evt: Event | void, id: string | void): void {
   }
 }
 
-const formElement: HTMLDivElement = newElement({
+const formElement = newElement({
   type: "div",
   id: "input-form",
   class: [...hideClasses, "px-2", "form", "form-child"],
 }) as HTMLDivElement;
 
-const formHeader: HTMLHeadingElement = newElement({
+const formHeader = newElement({
   type: "h3",
   id: "input-form-title",
   class: ["form-label", "form-child"],
@@ -183,7 +182,7 @@ const bodyLabel: HTMLLabelElement = createLabel("Note body", [
   "form-label",
   "form-child",
 ]);
-const bodyInput: HTMLTextAreaElement = newElement({
+const bodyInput = newElement({
   type: "textarea",
   id: "body-input",
   class: ["form-control", "form-child"],
@@ -193,6 +192,7 @@ const bodyInput: HTMLTextAreaElement = newElement({
     ["value", form.getBody()],
   ],
 }) as HTMLTextAreaElement;
+
 const bodyCount: HTMLParagraphElement = textCounter(bodyInput);
 
 const tDateLabel: HTMLLabelElement = createLabel("Target date", [
@@ -207,7 +207,7 @@ const tDateInput: HTMLInputElement = createInput(
   []
 );
 
-const colorLabel: HTMLLabelElement = createLabel("Select color", [
+const colorLabel = createLabel("Select color", [
   "form-label",
   "form-child",
 ]);
@@ -236,13 +236,13 @@ const actionButton: HTMLButtonElement = newElement({
       if (form && form !== undefined) {
         if (form.getNoteId()) {
           // receive noteId from form, and slice off the first five chars to get the original note id
-          const cleanId = form.getNoteId()!.slice(5);
+          const cleanId: string = form.getNoteId()!.slice(5);
 
           // get originalNote
-          const originalNote = getNote(cleanId);
+          const originalNote: Note | void = getNote(cleanId);
 
           // merge original note with the values from the form
-          const newNote = {
+          const newNote: Note = {
             ...originalNote,
             ...{
               title: titleInput.value.replace(removeTag, ""),

@@ -17,7 +17,7 @@ function createInput(
   required: boolean,
   other?: string[][]
 ): HTMLInputElement {
-  const inp: HTMLInputElement = newElement({
+  const inp = newElement({
     type: "input",
     id: id,
     class: [...classes],
