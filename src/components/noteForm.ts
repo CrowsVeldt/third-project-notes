@@ -95,9 +95,9 @@ function closeForm(element: HTMLElement): void {
   }
 }
 
-function formHandler(evt: Event, id: string): void;
-function formHandler(evt: Event): void;
 function formHandler(): void;
+function formHandler(evt: Event): void;
+function formHandler(evt: Event, id: string): void;
 function formHandler(evt: Event | void, id: string | void): void {
   const inputForm: HTMLElement | null = document.getElementById("input-form");
 
@@ -115,33 +115,24 @@ function formHandler(evt: Event | void, id: string | void): void {
         inputForm.firstChild.textContent === "New Note";
 
       if (callerId === "plus-button") {
-        // if plus button pressed
         if (!formIsOpen()) {
-          // and form is closed
           openForm(inputForm);
         } else {
-          // else if form is open
           if (formTitleIsNewNote) {
-            // if form title is 'New Note'
             closeForm(inputForm);
           } else {
-            // else if form title is not 'New Note'
-            resetForm(); // reset form
+            resetForm();
           }
         }
-        // if edit button pressed
       } else if (id) {
-        // and form is closed
         if (!formIsOpen()) {
-          editNote(id); // populate form with details from note(id)
-          openForm(inputForm); //open form
-          // else if form is open
-        } else {
+          editNote(id);
+          openForm(inputForm);
+        } else if (formIsOpen()) {
           if (callerId === form.getNoteId()) {
-            // if form is already populated with details from note(id)
             closeForm(inputForm);
           } else {
-            editNote(id); // populate form with details from note(id)
+            editNote(id);
           }
         }
       }
@@ -207,10 +198,7 @@ const tDateInput: HTMLInputElement = createInput(
   []
 );
 
-const colorLabel = createLabel("Select color", [
-  "form-label",
-  "form-child",
-]);
+const colorLabel = createLabel("Select color", ["form-label", "form-child"]);
 const cSelect: HTMLSelectElement = colorSelect;
 // figure out how to set color from FormObject
 

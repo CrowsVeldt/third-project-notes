@@ -81,7 +81,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
     eventListener: {
       eventType: "click",
       listener: (evt) => {
-          formHandler(evt!, note.getId())
+        formHandler(evt!, note.getId());
       },
     },
   }) as HTMLButtonElement;
@@ -106,4 +106,4 @@ function newNote(n: Note | undefined): HTMLDivElement {
   return noteDiv;
 }
 
-export { newNote };
+export default newNote;

@@ -1,4 +1,4 @@
-import { newNote } from "./note";
+import newNote from "./note";
 import { Note } from "../utils/types";
 import { getStoredNotes, storageExists } from "../utils/storage";
 import newElement from "../utils/newElement";

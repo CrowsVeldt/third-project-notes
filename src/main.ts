@@ -13,7 +13,7 @@ import {
   settingsIsOpen,
   toggleSettings,
 } from "./components/settings";
-import TabIndexHandler from "./classes/tabIndexHandler";
+import TabIndexHandler from "./classes/TabIndexHandler";
 
 declare var bootstrap: any;
 
