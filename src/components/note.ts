@@ -1,9 +1,9 @@
 import { deleteNote } from "../utils/storage";
 import { formatDate } from "../utils/util";
+import { formHandler } from "./noteForm";
 import newElement from "../utils/newElement";
 import { Note } from "../utils/types";
 import NoteObj from "../classes/Note";
-import { openFormButtonHandler } from "./noteForm";
 import { toggleFullNote } from "./fullNote";
 
 function newNote(n: Note | undefined): HTMLDivElement {
@@ -34,24 +34,24 @@ function newNote(n: Note | undefined): HTMLDivElement {
     ],
   }) as HTMLDivElement;
 
-  const noteTitle: HTMLHeadingElement = newElement({
+  const noteTitle = newElement({
     type: "h3",
     content: note.getTitle(),
   }) as HTMLHeadingElement;
 
-  const noteBody: HTMLParagraphElement = newElement({
+  const noteBody = newElement({
     type: "p",
     class: ["overflow-hidden", "border-top", "border-bottom"],
     content: note.getBody(),
   }) as HTMLParagraphElement;
 
-  const noteCDate: HTMLParagraphElement = newElement({
+  const noteCDate = newElement({
     type: "p",
     class: ["mt-auto", "mb-1"],
     content: `Created on ${note.getCreateDate()}`,
   }) as HTMLParagraphElement;
 
-  const noteTDate: HTMLParagraphElement = newElement({
+  const noteTDate = newElement({
     type: "p",
     class: ["mb-2"],
     content: note.getTargetDate()
@@ -59,7 +59,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
       : "",
   }) as HTMLParagraphElement;
 
-  const deleteButton: HTMLButtonElement = newElement({
+  const deleteButton = newElement({
     type: "button",
     id: deleteId,
     class: ["w-50", "align-self-center"],
@@ -73,7 +73,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
     },
   }) as HTMLButtonElement;
 
-  const editButton: HTMLButtonElement = newElement({
+  const editButton = newElement({
     type: "button",
     id: editId,
     class: ["w-50", "align-self-center", "toggle-button"],
@@ -81,9 +81,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
     eventListener: {
       eventType: "click",
       listener: (evt) => {
-        if (evt) {
-          openFormButtonHandler(evt, note.getId());
-        }
+        formHandler(evt!, note.getId());
       },
     },
   }) as HTMLButtonElement;
@@ -100,7 +98,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
   noteDiv.addEventListener("dblclick", (evt) => {
     const target = evt.target as HTMLElement;
 
-    if (target && target.id !== deleteId) {
+    if (target && target.id !== deleteId && target.id !== editId) {
       toggleFullNote(note.getId());
     }
   });
@@ -108,4 +106,4 @@ function newNote(n: Note | undefined): HTMLDivElement {
   return noteDiv;
 }
 
-export { newNote };
+export default newNote;

@@ -18,7 +18,7 @@
 - I can search notes by title and body contents
 - I can sort notes by title (ABC), date (creation or target), and color
 
-### Not yet
+### In progress
 
 - The app fits well and looks good on any screen size
 
@@ -51,20 +51,33 @@ id: string // hashed from Date.toString()
 - forEach(element => element.index = -1)
 - when form is closed, forEach(element => element.index = element.oldIndex)
 
+## Form behaviour
+
+- when the newNote button is pressed:
+- - if form is closed: open it with a new, empty note
+- - if form is open, with a new note: close it
+- - if form is open, with an old note being edited: replace with new note
+
+- when the editNote button is pressed:
+- - if form is closed: open it with note details
+- - if form is open, and same note's button is pressed: close form
+- - if form is open, and a different note's button is pressed: repopulate form with new note details
+- - if form is open, and newNote button is pressed: replace note details with new note
+
+- when clicking any other element outside the form: close it
+
 ## TODO
 
 - TODO: properly acknowledge fuse.js
-- BUG: in linux, on firefox, escape not doing what it should when form, etc. are open
 - dates: Check dates work in different locales
 - target date: Make targetDate alway be more than currentDate when adding date via keyboard
 - target date: prevent adding more than 4 digits in targetDate years column
-- sort: reduce redundancy in sortNotes file
 - sort: when sorting by createDate or color, subsort by title
 - UX: make sure sortSelect, sortDirection, and Search all work together appropriately
 
 ## Under consideration
 
-- DEV: refactor openFormbuttonHandler into two seperate functions: openForm, and closeForm
+- UX: save details of last deleted note so it can be recovered
 - UX: (if/when I add more items to settings): refactor togglesettings to get .settings-child(ren) and loop over them to toggle tabindex for all
 - (would implement if this were more serious than a course project): make sure it works on all browsers
 - UI: allow editing note elements by double clicking on them in fullNote?

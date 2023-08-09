@@ -1,5 +1,5 @@
-import newElement from "../utils/newElement";
 import { CounterTarget } from "../utils/types";
+import newElement from "../utils/newElement";
 
 function colorCount(
   target: CounterTarget,

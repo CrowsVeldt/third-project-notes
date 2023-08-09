@@ -3,7 +3,12 @@ import { getNote } from "../utils/storage";
 import newElement from "../utils/newElement";
 import { Note } from "../utils/types";
 
-function getFullNoteElements() {
+function getFullNoteElements(): {
+  title: HTMLHeadingElement;
+  body: HTMLHeadingElement;
+  created: HTMLHeadingElement;
+  target: HTMLHeadingElement;
+} {
   const title = document.getElementById(
     "full-note-title"
   ) as HTMLHeadingElement;
@@ -66,13 +71,13 @@ function toggleFullNote(id: string | void): void {
   }
 }
 
-const fullNote: HTMLDivElement = newElement({
+const fullNote = newElement({
   type: "div",
   id: "full-note",
   class: [...hideClasses, "full-note-child"],
 }) as HTMLDivElement;
 
-const noteTitle: HTMLHeadingElement = newElement({
+const noteTitle = newElement({
   type: "h3",
   id: "full-note-title",
   class: [
@@ -84,7 +89,7 @@ const noteTitle: HTMLHeadingElement = newElement({
   ],
 }) as HTMLHeadingElement;
 
-const noteBackground: HTMLDivElement = newElement({
+const noteBackground = newElement({
   type: "div",
   id: "full-note-bg",
   class: [
@@ -96,25 +101,25 @@ const noteBackground: HTMLDivElement = newElement({
   props: [["style", `background-color:white;`]],
 }) as HTMLDivElement;
 
-const noteBody: HTMLParagraphElement = newElement({
+const noteBody = newElement({
   type: "p",
   id: "full-note-body",
   class: ["overflow-scroll", "px-3", "border-bottom", "full-note-child"],
 }) as HTMLParagraphElement;
 
-const dateContainer: HTMLDivElement = newElement({
+const dateContainer = newElement({
   type: "div",
   id: "full-note-dates",
   class: ["full-note-child"],
 }) as HTMLDivElement;
 
-const noteCreated: HTMLParagraphElement = newElement({
+const noteCreated = newElement({
   type: "p",
   id: "full-note-created",
   class: ["px-3", "border-bottom", "full-note-child"],
 }) as HTMLParagraphElement;
 
-const noteTarget: HTMLParagraphElement = newElement({
+const noteTarget = newElement({
   type: "p",
   id: "full-note-target",
   class: ["px-3", "border-bottom", "full-note-child"],

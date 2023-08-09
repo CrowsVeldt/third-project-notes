@@ -57,6 +57,7 @@ function searchNotes(query: string): Note[] {
   const notes: Note[] = getStoredNotes();
   const results: Note[] = [];
 
+  // Using Fuse for fuzzy search
   const fuseOptions = {
     isCaseSensitive: false,
     includeScore: true,
@@ -66,13 +67,13 @@ function searchNotes(query: string): Note[] {
   }
 
   new Fuse(notes, fuseOptions).search(query).forEach(i => results.push(i.item))
-
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^
   return results
 
 }
 
 function updateNote(noteId: string, obj: NoteUpdate) {
-  const oldNote = getNote(noteId);
+  const oldNote: Note | void = getNote(noteId);
   if (oldNote) {
     const updates: NoteUpdate = {
       title: '',
@@ -85,7 +86,7 @@ function updateNote(noteId: string, obj: NoteUpdate) {
       updates[a] = obj[a];
     }
 
-    const newNote = { ...oldNote, ...updates };
+    const newNote: Note = { ...oldNote, ...updates };
 
     deleteNote(noteId);
     saveNote(newNote);

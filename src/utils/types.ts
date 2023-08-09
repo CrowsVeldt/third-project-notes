@@ -12,7 +12,7 @@ type Note = {
   targetDate?: string;
 };
 
-type SortMethod = { method: string };
+type SortMethodType = { method: string };
 
 type EventListener = {
   eventType: string;
@@ -58,7 +58,7 @@ export type {
   FormElement,
   Note,
   NoteUpdate,
-  SortMethod,
+  SortMethodType,
   TabIndexObject,
   CounterTarget,
 };

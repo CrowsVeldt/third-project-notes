@@ -1,13 +1,13 @@
 import newElement from "../utils/newElement";
 
 // header
-const head: HTMLHeadingElement = newElement({
+const head = newElement({
   type: "header",
   id: 'page-head',
   class: ["container-fluid", "text-center", "border"],
 }) as HTMLHeadingElement;
 
-const headTitle: HTMLHeadElement = newElement({
+const headTitle = newElement({
   type: "h1",
   id: "title",
   content: "Notes",
@@ -16,19 +16,19 @@ const headTitle: HTMLHeadElement = newElement({
 head.append(headTitle);
 
 // main
-const main: HTMLDivElement = newElement({
+const main = newElement({
   type: "div",
   id: "main-page",
   class: ['flex-grow-1']
 }) as HTMLDivElement;
 
 // footer
-const foot: HTMLElement = newElement({
+const foot = newElement({
   type: "footer",
   class: ["container-fluid", "text-center", "border"],
 });
 
-const footTitle: HTMLHeadingElement = newElement({
+const footTitle = newElement({
   type: "h2",
   content: "Footer",
 }) as HTMLHeadingElement;

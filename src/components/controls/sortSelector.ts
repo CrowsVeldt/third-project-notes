@@ -1,12 +1,12 @@
 import directionToggle from "./directionToggle";
-import { sortMethods } from "../../utils/util";
-import { SortMethod } from "../../utils/types";
-import { resetNoteContainer } from "../noteContainer";
 import { getStoredNotes } from "../../utils/storage";
-import sortNotes from "../../utils/sort";
 import newElement from "../../utils/newElement";
+import { resetNoteContainer } from "../noteContainer";
+import { sortMethods } from "../../utils/util";
+import { SortMethodType } from "../../utils/types";
+import sortNotes from "../../utils/sort";
 
-function sortOption(option: SortMethod): HTMLOptionElement {
+function sortOption(option: SortMethodType): HTMLOptionElement {
   const o: HTMLOptionElement = document.createElement("option");
   o.innerText = option.method;
   o.value = option.method;
@@ -16,7 +16,7 @@ function sortOption(option: SortMethod): HTMLOptionElement {
 const selectContainer = newElement({
   type: "div",
   id: "sort-select-container",
-  class: ['me-3', 'd-flex', 'align-items-center']
+  class: ["me-3", "d-flex", "align-items-center"],
 }) as HTMLDivElement;
 
 const sortSelect = newElement({
@@ -29,7 +29,7 @@ const sortSelect = newElement({
   ],
 }) as HTMLSelectElement;
 
-sortMethods.forEach((method: SortMethod) => {
+sortMethods.forEach((method: SortMethodType) => {
   sortSelect.append(sortOption(method));
 });
 

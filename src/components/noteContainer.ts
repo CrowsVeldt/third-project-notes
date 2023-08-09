@@ -1,9 +1,11 @@
-import { newNote } from "./note";
+import newNote from "./note";
 import { Note } from "../utils/types";
 import { getStoredNotes, storageExists } from "../utils/storage";
 import newElement from "../utils/newElement";
+import { tih } from "../main";
 
-const noteContainer: HTMLDivElement = newElement({
+
+const noteContainer = newElement({
   type: "div",
   id: "note-container",
   class: ["container-fluid"],
@@ -28,6 +30,7 @@ function populateNoteContainer(noteArray?: Note[]): void {
       }
     }
   }
+  tih.listTabIndexes()
 }
 
 function addNoteToContainer(note: Note): void {

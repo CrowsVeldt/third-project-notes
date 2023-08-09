@@ -2,7 +2,7 @@ import { createInput } from "../labelAndInput";
 import { resetNoteContainer } from "../noteContainer";
 import { searchNotes } from "../../utils/storage";
 
-const barContainer: HTMLDivElement = document.createElement("div");
+const searchBarContainer: HTMLDivElement = document.createElement("div");
 
 const searchBar: HTMLInputElement = createInput(
   "text",
@@ -24,6 +24,6 @@ searchBar.addEventListener("input", (event: Event) => {
   }
 });
 
-barContainer.append(searchBar);
+searchBarContainer.append(searchBar);
 
-export default barContainer;
+export default searchBarContainer;

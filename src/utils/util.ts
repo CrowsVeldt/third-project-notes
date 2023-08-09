@@ -1,4 +1,4 @@
-import { SortMethod, colorObject } from "./types";
+import { SortMethodType, colorObject } from "./types";
 
 const noteColors: colorObject[] = [
   { name: "None", value: "none" },
@@ -9,7 +9,7 @@ const noteColors: colorObject[] = [
   { name: "Brown", value: "tan" },
 ];
 
-const sortMethods: SortMethod[] = [
+const sortMethods: SortMethodType[] = [
   { method: "Date Created" },
   { method: "Title" },
   { method: "Target Date" },
@@ -68,11 +68,11 @@ function formatMinDate(date: Date): string {
     .split("T")[0];
 }
 // regex to prevent adding html tags to input value
-const removeTag = new RegExp("(<[a-zA-Z0-9]+>)|(</[a-zA-Z0-9]+>)", "g");
+const removeTag: RegExp = new RegExp("(<[a-zA-Z0-9]+>)|(</[a-zA-Z0-9]+>)", "g");
 
 // noteA and NoteB are type: any because otherwise it throws an error
 // TODO: fix type error
-function notesDifferent(noteA: any, noteB: any) {
+function notesDifferent(noteA: any, noteB: any): boolean {
   for (let key in noteA) {
     if (noteA[key] !== noteB[key]) {
       return true;
