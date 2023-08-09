@@ -84,23 +84,27 @@
   height: calc(100% - 4em);
 }
 
-#box {
-  height: 20px;
-  width: 20px;
-  border: 1px solid black;
+#direction {
+  height: 29px;
+  width: 29px;
   display: inline-block;
+  background-color: lightgray;
 }
 
-#box.up {
+#direction:hover {
+  background-color: darkgray;
+}
+
+#direction.up {
   transform: rotate(180deg);
 }
 
-#arrow {
-  height: 10px;
-  width: 10px;
+#direction-arrow {
+  height: 13.5px;
+  width: 13.5px;
   position: relative;
-  left: 4px;
-  top: 5px;
+  left: 7px;
+  top: 4px;
   border: solid black;
   border-width: 3px 3px 0px 0px;
   transform: rotate(-225deg);

@@ -2,7 +2,8 @@ import newElement from "../../utils/newElement";
 
 const directionToggle = newElement({
   type: "div",
-  id: "box",
+  id: "direction",
+  class: ["border", "border-dark", "rounded"],
   props: [["tabindex", "2"]],
   eventListener: {
     eventType: "click",
@@ -14,7 +15,7 @@ const directionToggle = newElement({
 
 const arrow = newElement({
   type: "div",
-  id: "arrow",
+  id: "direction-arrow",
 }) as HTMLDivElement;
 
 directionToggle.appendChild(arrow);

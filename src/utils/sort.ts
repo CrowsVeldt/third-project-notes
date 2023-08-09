@@ -9,7 +9,7 @@ function sortFunction(a: any, b: any) {
 function sortNotes(notes: undefined | Note[], method: string): Note[] | void {
   if (!notes) return;
   const toggle: boolean | undefined = document
-    .getElementById("box")
+    .getElementById("direction")
     ?.classList.contains("up");
   let met: Note[] = notes;
   switch (method) {
