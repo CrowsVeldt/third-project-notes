@@ -1,5 +1,5 @@
 import { 
-  // openFormButtonHandler 
+  formHandler 
 } from "../noteForm";
 import newElement from "../../utils/newElement";
 
@@ -19,7 +19,7 @@ const toggleFormButton: HTMLButtonElement = newElement({
     eventType: "click",
     listener: (evt) => {
       if (evt) {
-        // openFormButtonHandler(evt);
+        formHandler(evt);
       }
     },
   },

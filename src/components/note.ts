@@ -5,6 +5,7 @@ import { Note } from "../utils/types";
 import NoteObj from "../classes/Note";
 import { toggleFullNote } from "./fullNote";
 import { formHandler } from "./noteForm";
+// import { formHandler } from "./noteForm";
 
 function newNote(n: Note | undefined): HTMLDivElement {
   const note = n
@@ -80,8 +81,8 @@ function newNote(n: Note | undefined): HTMLDivElement {
     content: "Edit",
     eventListener: {
       eventType: "click",
-      listener: () => {
-          formHandler(note.getId())
+      listener: (evt) => {
+          formHandler(evt!, note.getId())
       },
     },
   }) as HTMLButtonElement;

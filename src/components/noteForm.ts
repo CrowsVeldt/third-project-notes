@@ -19,10 +19,9 @@ const form: FormObject = new FormObject(
   "Add Note"
 );
 
-function formIsOpen(): boolean {
+function formIsOpen(): boolean | void {
   const form: HTMLElement | null = document.getElementById("input-form");
   if (form && form.classList.contains("d-flex")) return true;
-  return false;
 }
 
 function accessFormElement(): FormElement {
@@ -65,7 +64,6 @@ function resetForm(): void {
 }
 
 function editNote(noteId: string): void {
-  form.resetAll();
   const note = getNote(noteId);
 
   if (note) {
@@ -82,100 +80,75 @@ function editNote(noteId: string): void {
   }
 }
 
-function openForm() {
+function openForm(element: HTMLElement): void {
   tih.removeTabIndexes();
-  // open form with details
+  if (element !== null) {
+    element.classList.add("d-flex");
+  }
 }
 
-function closeForm(){
-  tih.resetTabIndexes()
-  // close and reset form
+function closeForm(element: HTMLElement) {
+  tih.resetTabIndexes();
+  if (element !== null) {
+    element.classList.remove("d-flex");
+    resetForm();
+  }
 }
 
-function formHandler (evt: Event | null, id: string | null, formType: string | null): void {
+function formHandler(evt: Event, id: string): void;
+function formHandler(evt: Event): void;
+function formHandler(): void;
+function formHandler(evt: Event | void, id: string | void): void {
   const inputForm: HTMLElement | null = document.getElementById("input-form");
-  
-  // IF form is closed:
-  // - and formType newNote, open new note form
-  // - else if formType is editNote, open edit note form
 
-  // IF form is open: 
-  // - IF open form is editNote:
-  // - - IF formType is editNote:
-  // - - - IF same note is open as button pressed: close form, else repopulate form with new details
+  if (arguments.length === 0 && inputForm) {
+    closeForm(inputForm);
+    return;
+  }
 
-  // - - ELSE IF formType is newNote:
-  // - - - repopulate form with new note
+  if (evt) {
+    const target = evt.target as HTMLElement;
+    const callerId = target.id;
 
-  // - Else if open form is newNote
-  // - - IF formType = newNote: close form 
-  // - - ELSE IF formType = editNote: repopulate form with note details
+    if (inputForm && inputForm.firstChild) {
+      const formTitleIsNewNote =
+        inputForm.firstChild.textContent === "New Note";
 
-  // - ELSE IF element clicked is not a form element or form button: close the form
-
+      if (callerId === "plus-button") {
+        // if plus button pressed
+        if (!formIsOpen()) {
+          // and form is closed
+          openForm(inputForm);
+        } else {
+          // else if form is open
+          if (formTitleIsNewNote) {
+            // if form title is 'New Note'
+            closeForm(inputForm);
+          } else {
+            // else if form title is not 'New Note'
+            resetForm(); // reset form
+          }
+        }
+      } else if (id) {
+        // if edit button pressed
+        if (!formIsOpen()) {
+          // and form is closed
+          editNote(id); // populate form with details from note(id)
+          openForm(inputForm);
+        } else {
+          // else if form is open
+          if (callerId === form.getNoteId()) {
+            // if form is already populated with details from note(id)
+            closeForm(inputForm);
+          } else {
+            // else
+            editNote(id); // populate form with details from note(id)
+          }
+        }
+      }
+    }
+  }
 }
-
-// function openFormButtonHandler(evt: Event, id: string): void;
-// function openFormButtonHandler(evt: Event): void;
-// function openFormButtonHandler(): void;
-// function openFormButtonHandler(evt: Event | void, id: string | void): void {
-//   const inputForm: HTMLElement | null = document.getElementById("input-form");
-
-//   tih.removeTabIndexes();
-
-//   if (arguments.length === 0 && inputForm) {
-//     inputForm.classList.remove("d-flex");
-//     tih.resetTabIndexes();
-//     resetForm();
-//     return;
-//   }
-
-//   if (evt) {
-//     const target = evt.target as HTMLElement;
-//     const callerId = target.id;
-
-//     if (inputForm && inputForm.firstChild) {
-//       const formTitleIsNewNote =
-//         inputForm.firstChild.textContent === "New Note";
-
-//       if (callerId === "plus-button") {
-//         // if plus button pressed
-//         if (!formIsOpen()) {
-//           // and form is closed
-//           inputForm.classList.add("d-flex"); // open form
-//         } else {
-//           // else if form is open
-//           if (formTitleIsNewNote) {
-//             // if form title is 'New Note'
-//             inputForm.classList.remove("d-flex"); // remove form
-//             tih.resetTabIndexes();
-//           } else {
-//             // else if form title is not 'New Note'
-//             resetForm(); // reset form
-//           }
-//         }
-//       } else if (id) {
-//         // if edit button pressed
-//         if (!formIsOpen()) {
-//           // and form is closed
-//           editNote(id); // populate form with details from note(id)
-//           inputForm.classList.add("d-flex"); // and open form
-//         } else {
-//           // else if form is open
-//           if (callerId === form.getNoteId()) {
-//             // if form is already populated with details from note(id)
-//             inputForm.classList.remove("d-flex"); // close form
-//             tih.resetTabIndexes();
-//             resetForm(); // reset form
-//           } else {
-//             // else
-//             editNote(id); // populate form with details from note(id)
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
 
 const formElement: HTMLDivElement = newElement({
   type: "div",
@@ -260,7 +233,7 @@ const actionButton: HTMLButtonElement = newElement({
         return;
       }
 
-      if (form) {
+      if (form && form !== undefined) {
         if (form.getNoteId()) {
           // receive noteId from form, and slice off the first five chars to get the original note id
           const cleanId = form.getNoteId()!.slice(5);
@@ -291,10 +264,8 @@ const actionButton: HTMLButtonElement = newElement({
             // and reset the note container
             resetNoteContainer();
           }
-
-          // close form
-          openFormButtonHandler();
-        } else if (!form.getNoteId()) {
+          formHandler();
+        } else {
           const n = new NoteObj(
             titleInput.value.replace(removeTag, ""),
             bodyInput.value.replace(removeTag, ""),
@@ -305,7 +276,7 @@ const actionButton: HTMLButtonElement = newElement({
           );
           n.saveToStorage();
           resetNoteContainer();
-          openFormButtonHandler();
+          formHandler();
         }
       }
     },
@@ -327,11 +298,4 @@ formElement.append(
   actionButton
 );
 
-export {
-  editNote,
-  formElement,
-  formIsOpen,
-  openFormButtonHandler,
-  resetForm,
-  tih,
-};
+export { editNote, formElement, formIsOpen, formHandler, resetForm };
