@@ -3,8 +3,8 @@ import { formatDate } from "../utils/util";
 import newElement from "../utils/newElement";
 import { Note } from "../utils/types";
 import NoteObj from "../classes/Note";
-// import { openFormButtonHandler } from "./noteForm";
 import { toggleFullNote } from "./fullNote";
+import { formHandler } from "./noteForm";
 
 function newNote(n: Note | undefined): HTMLDivElement {
   const note = n
@@ -80,10 +80,8 @@ function newNote(n: Note | undefined): HTMLDivElement {
     content: "Edit",
     eventListener: {
       eventType: "click",
-      listener: (evt) => {
-        if (evt) {
-          // openFormButtonHandler(evt, note.getId());
-        }
+      listener: () => {
+          formHandler(note.getId())
       },
     },
   }) as HTMLButtonElement;
@@ -100,7 +98,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
   noteDiv.addEventListener("dblclick", (evt) => {
     const target = evt.target as HTMLElement;
 
-    if (target && target.id !== deleteId) {
+    if (target && target.id !== deleteId && target.id !== editId) {
       toggleFullNote(note.getId());
     }
   });
