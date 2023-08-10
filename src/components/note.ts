@@ -41,7 +41,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
   }) as HTMLDivElement;
 
   const noteTitle = newElement({
-    type: "h3",
+    type: "h4",
     class: ["note-title", 'overflow-hidden'],
     content: note.getTitle(),
   }) as HTMLHeadingElement;
@@ -130,10 +130,10 @@ function newNote(n: Note | undefined): HTMLDivElement {
   });
   editButton.append(editIcon);
 
-  noteHead.append(noteTitle, deleteButton);
+  noteHead.append(noteTitle, editButton);
 
   noteDatesContainer.append(noteCDate, noteTDate)
-  noteFoot.append(noteDatesContainer, editButton)
+  noteFoot.append(noteDatesContainer, deleteButton)
 
   noteDiv.append(noteHead, noteBody, noteFoot);
 

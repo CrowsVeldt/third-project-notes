@@ -69,6 +69,7 @@ id: string // hashed from Date.toString()
 ## TODO
 
 - BUG: sort by title treats upper case letters differently than lower case
+- BUG: can select text under fullNote (and maybe form?)
 - search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result
 - TODO: properly acknowledge fuse.js
 - dates: Check dates work in different locales
