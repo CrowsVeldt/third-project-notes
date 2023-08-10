@@ -12,8 +12,8 @@ function newNote(n: Note | undefined): HTMLDivElement {
     : new NoteObj();
 
   const id = note.getId();
-  const deleteId: string = "delete: " + id;
-  const editId: string = "edit: " + id;
+  const deleteId: string = "delete-" + id;
+  const editId: string = "edit-" + id;
 
   const noteDiv: HTMLDivElement = newElement({
     type: "div",
@@ -82,12 +82,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
   const editButton = newElement({
     type: "button",
     id: editId,
-    class: [
-      "align-self-end",
-      "toggle-button",
-      "btn",
-      "note-button",
-    ],
+    class: ["align-self-end", "toggle-button", "btn", "note-button"],
     eventListener: {
       eventType: "click",
       listener: (evt) => {
@@ -96,9 +91,26 @@ function newNote(n: Note | undefined): HTMLDivElement {
     },
   }) as HTMLButtonElement;
 
+  deleteButton.addEventListener("mouseenter", toggleDeleteIcon);
+  deleteButton.addEventListener("mouseleave", toggleDeleteIcon);
+  editButton.addEventListener("mouseenter", toggleEditIcon);
+  editButton.addEventListener("mouseleave", toggleEditIcon);
+
+  function toggleDeleteIcon() {
+    const button = deleteIcon;
+    button?.classList.toggle("bi-trash");
+    button?.classList.toggle("bi-trash-fill");
+  }
+
+  function toggleEditIcon() {
+    const button = editIcon;
+    button?.classList.toggle("bi-pencil");
+    button?.classList.toggle("bi-pencil-fill");
+  }
+
   const deleteIcon = newElement({
     type: "i",
-    class: ["bi-trash"],
+    class: ["bi", "bi-trash"],
   });
 
   const editIcon = newElement({
