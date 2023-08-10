@@ -92,7 +92,7 @@
 }
 
 #full-note-title {
-  height: 40px;
+  min-height: 40px;
   margin: 0;
 }
 

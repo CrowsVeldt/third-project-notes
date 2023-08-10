@@ -78,11 +78,12 @@ const fullNote = newElement({
 }) as HTMLDivElement;
 
 const noteTitle = newElement({
-  type: "h3",
+  type: "h4",
   id: "full-note-title",
   class: [
     "form-label",
     "text-center",
+    "lh-lg",
     "border-bottom",
     "w-100",
     "full-note-child",
@@ -104,25 +105,25 @@ const noteBackground = newElement({
 const noteBody = newElement({
   type: "p",
   id: "full-note-body",
-  class: ["overflow-scroll", "px-3", "border-bottom", "full-note-child"],
+  class: ["overflow-scroll", "px-3", "full-note-child"],
 }) as HTMLParagraphElement;
 
 const dateContainer = newElement({
   type: "div",
   id: "full-note-dates",
-  class: ["full-note-child"],
+  class: ["full-note-child", "d-flex", "justify-content-center"],
 }) as HTMLDivElement;
 
 const noteCreated = newElement({
   type: "p",
   id: "full-note-created",
-  class: ["px-3", "border-bottom", "full-note-child"],
+  class: ["px-3", "mb-0", "full-note-child"],
 }) as HTMLParagraphElement;
 
 const noteTarget = newElement({
   type: "p",
   id: "full-note-target",
-  class: ["px-3", "border-bottom", "full-note-child"],
+  class: ["px-3", "mb-0", "full-note-child"],
 }) as HTMLParagraphElement;
 
 fullNote.append(noteTitle, noteBackground);

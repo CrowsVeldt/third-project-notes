@@ -37,49 +37,64 @@ function newNote(n: Note | undefined): HTMLDivElement {
 
   const noteHead = newElement({
     type: "div",
-    class: ["note-head", "d-flex", "justify-content-between"],
+    class: ["note-head", "d-flex", "justify-content-between", "mb-1"],
   }) as HTMLDivElement;
 
   const noteTitle = newElement({
     type: "h4",
-    class: ["note-title", 'overflow-hidden'],
+    class: ["note-title", "overflow-hidden", "align-self-center"],
     content: note.getTitle(),
   }) as HTMLHeadingElement;
 
   const noteBody = newElement({
     type: "p",
-    class: ["overflow-hidden", "border-top", "border-bottom", 'flex-grow-1', "note-body"],
+    class: [
+      "overflow-hidden",
+      "border-top",
+      "border-bottom",
+      "flex-grow-1",
+      "note-body",
+    ],
     content: note.getBody(),
   }) as HTMLParagraphElement;
 
   const noteFoot = newElement({
     type: "div",
-    class: ["note-foot", 'd-flex', 'align-self-stretch', 'justify-content-between']
+    class: [
+      "note-foot",
+      "d-flex",
+      "align-self-stretch",
+      "justify-content-between",
+    ],
   }) as HTMLDivElement;
 
   const noteDatesContainer = newElement({
-    type: 'div',
-    class: ["dates-container", 'd-flex', 'flex-column'],
-  })as HTMLDivElement
+    type: "div",
+    class: ["dates-container", "d-flex", "flex-column", "justify-content-end"],
+  }) as HTMLDivElement;
 
   const noteCDate = newElement({
     type: "p",
-    class: [ "mb-1", "note-create-date"],
+    class: ["mb-0", "note-create-date", "align-self-start"],
     content: `Created on ${note.getCreateDate()}`,
   }) as HTMLParagraphElement;
 
   const noteTDate = newElement({
     type: "p",
-    class: ["mb-1", "note-target-date"],
+    class: ["mb-0", "note-target-date", "align-self-start"],
     content: note.getTargetDate()
       ? `Targate date ${formatDate(note.getTargetDate())}`
-      : "",
+      : "-",
+    // if no target date, turn value clear to keep the layout consistant
+    props: [
+      ["style", `color:${note.getTargetDate() ? "black" : "transparent"};`],
+    ],
   }) as HTMLParagraphElement;
 
   const deleteButton = newElement({
     type: "button",
     id: deleteId,
-    class: ["align-self-start", "btn", "note-button"],
+    class: ["align-self-center", "btn", "note-button"],
     eventListener: {
       eventType: "click",
       listener: () => {
@@ -92,7 +107,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
   const editButton = newElement({
     type: "button",
     id: editId,
-    class: ["align-self-center", "toggle-button", "btn", "note-button"],
+    class: ["align-self-start", "toggle-button", "btn", "note-button"],
     eventListener: {
       eventType: "click",
       listener: (evt) => {
@@ -132,8 +147,8 @@ function newNote(n: Note | undefined): HTMLDivElement {
 
   noteHead.append(noteTitle, editButton);
 
-  noteDatesContainer.append(noteCDate, noteTDate)
-  noteFoot.append(noteDatesContainer, deleteButton)
+  noteDatesContainer.append(noteTDate, noteCDate);
+  noteFoot.append(noteDatesContainer, deleteButton);
 
   noteDiv.append(noteHead, noteBody, noteFoot);
 

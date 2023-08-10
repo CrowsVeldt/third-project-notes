@@ -163,7 +163,7 @@ const titleInput: HTMLInputElement = createInput(
   ["form-control", "form-child"],
   true,
   [
-    ["maxlength", "100"],
+    ["maxlength", "50"],
     ["required", "true"],
   ]
 );
@@ -205,7 +205,7 @@ const cSelect: HTMLSelectElement = colorSelect;
 const actionButton: HTMLButtonElement = newElement({
   type: "button",
   id: "form-button",
-  class: ["form-control", "form-child", 'button-color'],
+  class: ["form-control", "form-child", "button-color"],
   content: form.getButtonName(),
   props: [["type", "submit"]],
   eventListener: {
