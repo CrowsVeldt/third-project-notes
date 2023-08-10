@@ -1,9 +1,13 @@
 import { Note } from "./types";
 
 function sortFunction(a: any, b: any) {
-  if (a === b) return 0;
-  if (a > b) return 1;
-  return -1;
+  if (a > b) {
+    return 1;
+  } else if (a < b) {
+    return -1;
+  } else {
+    return 0;
+  }
 }
 
 function sortNotes(notes: undefined | Note[], method: string): Note[] | void {
@@ -20,7 +24,7 @@ function sortNotes(notes: undefined | Note[], method: string): Note[] | void {
       met = notes.sort((a, b) => sortFunction(a.title, b.title));
       break;
     case "Target Date":
-      met = notes.sort((a, b) => sortFunction(a.targetDate, b.targetDate));
+      met = notes.sort((a, b) => sortFunction(b.targetDate, a.targetDate));
       break;
     default:
       met = notes.sort((a, b) => sortFunction(a.color, b.color));
