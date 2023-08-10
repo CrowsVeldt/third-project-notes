@@ -1,7 +1,7 @@
 import "./style.css";
 import { foot, head, main } from "./components/pageLayout";
 import noteDisplayControls from "./components/controls/searchAndSort";
-import toggleFormButton from "./components/controls/newFormButton";
+import plusButton from "./components/controls/plusButton";
 import {
   noteContainer,
   populateNoteContainer,
@@ -26,9 +26,9 @@ tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltop(tooltipTriggerEl);
 });
 
-main.append(settings, noteContainer, formElement, fullNote, toggleFormButton);
+main.append(settings, noteContainer, formElement, fullNote);
 
-app.append(head, noteDisplayControls, main, foot);
+app.append(head, plusButton, noteDisplayControls, main, foot);
 app.addEventListener("mousedown", handleTouchEventsForm);
 app.addEventListener("mousedown", handleTouchEventsNote);
 app.addEventListener("mousedown", handleTouchEventsSettings);

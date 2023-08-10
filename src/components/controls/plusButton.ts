@@ -1,12 +1,11 @@
 import { formHandler } from "../noteForm";
 import newElement from "../../utils/newElement";
 
-const toggleFormButton = newElement({
+const plusButton = newElement({
   type: "button",
   id: "plus-button",
-  class: ["position-fixed", "end-0", "top-0", "toggle-button"],
+  class: ['btn', 'border', 'border-dark', "toggle-button"],
   props: [
-    ["style", "width:50px;height:50px;"],
     ["tabindex", "4"],
     ["data-bs-toggle", "tooltip"],
     ["data-bs-placement", "left"],
@@ -24,11 +23,12 @@ const toggleFormButton = newElement({
 
 const plus = newElement({
   type: "p",
+  id: 'plus-icon',
   content: "+",
-  class: ["fs-3", "toggle-button"],
+  class: ["toggle-button"],
   props: [["style", "pointer-events:none;"]],
 }) as HTMLParagraphElement;
 
-toggleFormButton.append(plus);
+plusButton.append(plus);
 
-export default toggleFormButton;
+export default plusButton;

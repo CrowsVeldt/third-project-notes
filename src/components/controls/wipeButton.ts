@@ -5,7 +5,7 @@ import { storageExists, wipeStorage } from "../../utils/storage";
 const wipeButton: HTMLButtonElement = newElement({
   type: "button",
   id: "wipe-button",
-  content: "Delete all?",
+  content: "Delete all",
   class: [
     "settings",
     "settings-child",

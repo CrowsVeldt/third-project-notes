@@ -4,6 +4,25 @@
   flex-direction: column;
 }
 
+#plus-button {
+  width: 44.35px;
+  height: 44.35px;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+#plus-button:hover {
+  background-color: lightgrey;
+}
+
+#plus-icon {
+  position: fixed;
+  top: -0.4em;
+  right: 0.15em;
+  font-size: 3em;
+}
+
 #note-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, max-content));
@@ -77,6 +96,7 @@
 
 #settings {
   z-index: 1;
+  background-color: white;
 }
 
 #full-note-title {
@@ -96,11 +116,10 @@
   height: 29px;
   width: 29px;
   display: inline-block;
-  background-color: lightgray;
 }
 
 #direction:hover {
-  background-color: darkgray;
+  background-color: lightgray;
 }
 
 #direction.up {
