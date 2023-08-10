@@ -76,8 +76,7 @@
   transform: translate(-1px, -1px);
 }
 
-.note > p {
-  max-height: 7.9em;
+.note-body {
   line-height: 1.3em;
   text-overflow: ellipsis;
 }

@@ -42,25 +42,35 @@ function newNote(n: Note | undefined): HTMLDivElement {
 
   const noteTitle = newElement({
     type: "h3",
-    class: ["note-title"],
+    class: ["note-title", 'overflow-hidden'],
     content: note.getTitle(),
   }) as HTMLHeadingElement;
 
   const noteBody = newElement({
     type: "p",
-    class: ["overflow-hidden", "border-top", "border-bottom", "note-body"],
+    class: ["overflow-hidden", "border-top", "border-bottom", 'flex-grow-1', "note-body"],
     content: note.getBody(),
   }) as HTMLParagraphElement;
 
+  const noteFoot = newElement({
+    type: "div",
+    class: ["note-foot", 'd-flex', 'align-self-stretch', 'justify-content-between']
+  }) as HTMLDivElement;
+
+  const noteDatesContainer = newElement({
+    type: 'div',
+    class: ["dates-container", 'd-flex', 'flex-column'],
+  })as HTMLDivElement
+
   const noteCDate = newElement({
     type: "p",
-    class: ["mt-auto", "mb-1", "note-create-date"],
+    class: [ "mb-1", "note-create-date"],
     content: `Created on ${note.getCreateDate()}`,
   }) as HTMLParagraphElement;
 
   const noteTDate = newElement({
     type: "p",
-    class: ["mb-2", "note-target-date"],
+    class: ["mb-1", "note-target-date"],
     content: note.getTargetDate()
       ? `Targate date ${formatDate(note.getTargetDate())}`
       : "",
@@ -82,7 +92,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
   const editButton = newElement({
     type: "button",
     id: editId,
-    class: ["align-self-end", "toggle-button", "btn", "note-button"],
+    class: ["align-self-center", "toggle-button", "btn", "note-button"],
     eventListener: {
       eventType: "click",
       listener: (evt) => {
@@ -113,17 +123,19 @@ function newNote(n: Note | undefined): HTMLDivElement {
     class: ["bi", "bi-trash"],
   });
 
+  deleteButton.append(deleteIcon);
   const editIcon = newElement({
     type: "i",
     class: ["bi-pencil"],
   });
-
-  deleteButton.append(deleteIcon);
   editButton.append(editIcon);
 
   noteHead.append(noteTitle, deleteButton);
 
-  noteDiv.append(noteHead, noteBody, noteCDate, noteTDate, editButton);
+  noteDatesContainer.append(noteCDate, noteTDate)
+  noteFoot.append(noteDatesContainer, editButton)
+
+  noteDiv.append(noteHead, noteBody, noteFoot);
 
   noteDiv.addEventListener("dblclick", (evt) => {
     const target = evt.target as HTMLElement;
