@@ -68,13 +68,14 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
-- search: fix scenario where results are empty, and adding a new character returns a result again
-- UX: Move delete and edit note buttons to be more intuitive
+- UI: improve styling of buttons and input elements so that they all fit togather
+- search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result
 - TODO: properly acknowledge fuse.js
 - dates: Check dates work in different locales
 - target date: Make targetDate alway be more than currentDate when adding date via keyboard
 - target date: prevent adding more than 4 digits in targetDate years column
 - sort: when sorting by color subsort by title
+- BUG: if I type in the search bar, sometimes I need to toggle the direction twice to notice any difference
 
 ## Under consideration
 

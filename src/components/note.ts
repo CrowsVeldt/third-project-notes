@@ -11,12 +11,13 @@ function newNote(n: Note | undefined): HTMLDivElement {
     ? new NoteObj(n.title, n.body, n.color, n.id, n.createDate, n.targetDate)
     : new NoteObj();
 
-  const deleteId: string = "delete-" + note.getId();
-  const editId: string = "edit-" + note.getId();
+  const id = note.getId()
+  const deleteId: string = "delete: " + id
+  const editId: string = "edit: " + id
 
   const noteDiv: HTMLDivElement = newElement({
     type: "div",
-    id: note.getId(),
+    id: id,
     class: [
       "border",
       "rounded",
@@ -34,26 +35,32 @@ function newNote(n: Note | undefined): HTMLDivElement {
     ],
   }) as HTMLDivElement;
 
+  const noteHead = newElement({
+    type: 'div',
+    class: ['note-head', 'd-flex', 'justify-content-between']
+  }) as HTMLDivElement
+
   const noteTitle = newElement({
     type: "h3",
+    class:['note-title'],
     content: note.getTitle(),
   }) as HTMLHeadingElement;
 
   const noteBody = newElement({
     type: "p",
-    class: ["overflow-hidden", "border-top", "border-bottom"],
+    class: ["overflow-hidden", "border-top", "border-bottom", 'note-body'],
     content: note.getBody(),
   }) as HTMLParagraphElement;
 
   const noteCDate = newElement({
     type: "p",
-    class: ["mt-auto", "mb-1"],
+    class: ["mt-auto", "mb-1", 'note-create-date'],
     content: `Created on ${note.getCreateDate()}`,
   }) as HTMLParagraphElement;
 
   const noteTDate = newElement({
     type: "p",
-    class: ["mb-2"],
+    class: ["mb-2", 'note-target-date'],
     content: note.getTargetDate()
       ? `Targate date ${formatDate(note.getTargetDate())}`
       : "",
@@ -62,8 +69,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
   const deleteButton = newElement({
     type: "button",
     id: deleteId,
-    class: ["w-50", "align-self-center"],
-    content: "Delete",
+    class: ["align-self-start"],
     eventListener: {
       eventType: "click",
       listener: () => {
@@ -76,8 +82,9 @@ function newNote(n: Note | undefined): HTMLDivElement {
   const editButton = newElement({
     type: "button",
     id: editId,
-    class: ["w-50", "align-self-center", "toggle-button"],
-    content: "Edit",
+    class: [
+     "align-self-end", 
+    "toggle-button"],
     eventListener: {
       eventType: "click",
       listener: (evt) => {
@@ -86,12 +93,26 @@ function newNote(n: Note | undefined): HTMLDivElement {
     },
   }) as HTMLButtonElement;
 
+  const deleteIcon = newElement({
+    type: 'i',
+    class: ['bi-trash']
+  })
+
+  const editIcon= newElement({
+    type: 'i',
+    class: ['bi-pencil']
+  })
+
+  deleteButton.append(deleteIcon)
+  editButton.append(editIcon)
+
+  noteHead.append(noteTitle, deleteButton)
+
   noteDiv.append(
-    noteTitle,
+    noteHead,
     noteBody,
     noteCDate,
     noteTDate,
-    deleteButton,
     editButton
   );
 
