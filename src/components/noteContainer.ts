@@ -1,9 +1,8 @@
 import newNote from "./note";
 import { Note } from "../utils/types";
-import { getStoredNotes, storageExists } from "../utils/storage";
+import { getNote, getStoredNotes, storageExists } from "../utils/storage";
 import newElement from "../utils/newElement";
 import { tih } from "../main";
-
 
 const noteContainer = newElement({
   type: "div",
@@ -30,7 +29,7 @@ function populateNoteContainer(noteArray?: Note[]): void {
       }
     }
   }
-  tih.listTabIndexes()
+  tih.listTabIndexes();
 }
 
 function addNoteToContainer(note: Note): void {
@@ -59,8 +58,25 @@ function resetNoteContainer(notes: Note[] | void): void {
   }
 }
 
+function getDisplayedNotes() {
+  const childNodes: HTMLCollection | undefined =
+    document.getElementById("note-container")?.children;
+  const noteArray: Note[] = [];
+  if (childNodes) {
+    for (let node in childNodes) {
+      const noteId: string = childNodes[node].id;
+      const note: Note | void = getNote(noteId);
+      if (note) {
+        noteArray.push(note);
+      }
+    }
+  }
+  return noteArray;
+}
+
 export {
   noteContainer,
+  getDisplayedNotes,
   populateNoteContainer,
   addNoteToContainer,
   wipeNoteContainer,

@@ -55,18 +55,18 @@ function wipeStorage(): void {
 
 function searchNotes(query: string): Note[] {
   const notes: Note[] = getStoredNotes();
-  return search(query, notes)
+  return search(query, notes);
 }
 
 function updateNote(noteId: string, obj: NoteUpdate) {
   const oldNote: Note | void = getNote(noteId);
   if (oldNote) {
     const updates: NoteUpdate = {
-      title: '',
-      body: '',
-      targetDate: '',
-      color: ''
-    }
+      title: "",
+      body: "",
+      targetDate: "",
+      color: "",
+    };
 
     for (let a in obj) {
       updates[a] = obj[a];

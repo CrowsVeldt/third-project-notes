@@ -1,5 +1,6 @@
 import { createInput } from "../labelAndInput";
-import { resetNoteContainer } from "../noteContainer";
+import { Note } from "../../utils/types";
+import { resetNoteContainer, wipeNoteContainer } from "../noteContainer";
 import { searchNotes } from "../../utils/storage";
 
 const searchBarContainer: HTMLDivElement = document.createElement("div");
@@ -7,7 +8,7 @@ const searchBarContainer: HTMLDivElement = document.createElement("div");
 const searchBar: HTMLInputElement = createInput(
   "text",
   "search-bar",
-  ['ms-3'],
+  ["ms-3"],
   false,
   [
     ["placeholder", "Search"],
@@ -15,12 +16,14 @@ const searchBar: HTMLInputElement = createInput(
   ]
 );
 searchBar.addEventListener("input", (event: Event) => {
-  const barInput = event.target as HTMLInputElement;
-  const response = searchNotes(barInput.value);
+  const searchBarInput = event.target as HTMLInputElement;
+  const response: Note[] = searchNotes(searchBarInput.value);
   if (response.length > 0) {
     resetNoteContainer(response);
-  } else {
+  } else if (searchBarInput.value === "") {
     resetNoteContainer();
+  } else {
+    wipeNoteContainer();
   }
 });
 

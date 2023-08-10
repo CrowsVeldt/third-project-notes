@@ -1,9 +1,8 @@
 import directionToggle from "./directionToggle";
-import { getStoredNotes } from "../../utils/storage";
+import { getDisplayedNotes, resetNoteContainer } from "../noteContainer";
 import newElement from "../../utils/newElement";
-import { resetNoteContainer } from "../noteContainer";
+import { Note, SortMethodType } from "../../utils/types";
 import { sortMethods } from "../../utils/util";
-import { SortMethodType } from "../../utils/types";
 import sortNotes from "../../utils/sort";
 
 function sortOption(option: SortMethodType): HTMLOptionElement {
@@ -33,18 +32,21 @@ sortMethods.forEach((method: SortMethodType) => {
   sortSelect.append(sortOption(method));
 });
 
-sortSelect.addEventListener("change", () => {
-  const target = document.getElementById("sort-select") as HTMLSelectElement;
-  resetNoteContainer(sortNotes(getStoredNotes()!, target.value));
-});
-
 const sortToggle: HTMLDivElement = directionToggle;
 
-sortToggle.addEventListener("click", () => {
-  const target = document.getElementById("sort-select") as HTMLSelectElement;
-  resetNoteContainer(sortNotes(getStoredNotes()!, target.value));
-});
+sortSelect.addEventListener("change", sortEventListener);
+sortToggle.addEventListener("click", sortEventListener);
 
 selectContainer.append(sortSelect, sortToggle);
+
+function sortEventListener() {
+  const target = document.getElementById("sort-select") as HTMLSelectElement;
+  const displayedNotes: Note[] = getDisplayedNotes();
+
+  const notes: Note[] | void = sortNotes(displayedNotes, target.value);
+  if (notes) {
+    resetNoteContainer(notes);
+  }
+}
 
 export default selectContainer;

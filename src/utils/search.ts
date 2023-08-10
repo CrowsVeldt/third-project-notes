@@ -5,7 +5,7 @@ function search(query: string, notes: Note[]): Note[] {
   const results: Note[] = [];
 
   // Using Fuse for fuzzy search
-  const fuseOptions = {
+  const fuseOptions: {} = {
     isCaseSensitive: false,
     includeScore: true,
     threshold: 0.5,
@@ -16,9 +16,8 @@ function search(query: string, notes: Note[]): Note[] {
   new Fuse(notes, fuseOptions)
     .search(query)
     .forEach((i) => results.push(i.item));
-  // ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-  return results
+  return results;
 }
 
-export default search
+export default search;

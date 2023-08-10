@@ -68,12 +68,13 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
+- search: fix scenario where results are empty, and adding a new character returns a result again
+- UX: Move delete and edit note buttons to be more intuitive
 - TODO: properly acknowledge fuse.js
 - dates: Check dates work in different locales
 - target date: Make targetDate alway be more than currentDate when adding date via keyboard
 - target date: prevent adding more than 4 digits in targetDate years column
-- sort: when sorting by createDate or color, subsort by title
-- UX: make sure sortSelect, sortDirection, and Search all work together appropriately
+- sort: when sorting by color subsort by title
 
 ## Under consideration
 
