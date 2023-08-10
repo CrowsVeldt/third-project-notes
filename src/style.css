@@ -7,6 +7,7 @@
 #plus-button {
   width: 44.35px;
   height: 44.35px;
+  z-index: 1;
   position: fixed;
   top: 0;
   right: 0;
