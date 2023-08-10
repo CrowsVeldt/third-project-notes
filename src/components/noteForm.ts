@@ -163,7 +163,7 @@ const titleInput: HTMLInputElement = createInput(
   ["form-control", "form-child"],
   true,
   [
-    ["maxlength", "50"],
+    ["maxlength", "100"],
     ["required", "true"],
   ]
 );
@@ -178,7 +178,7 @@ const bodyInput = newElement({
   id: "body-input",
   class: ["form-control", "form-child"],
   props: [
-    ["maxLength", "1000"],
+    ["maxLength", "2000"],
     ["required", "true"],
     ["value", form.getBody()],
   ],
