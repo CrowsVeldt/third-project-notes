@@ -67,6 +67,14 @@
   text-overflow: ellipsis;
 }
 
+.note-button {
+  border-color: gray;
+}
+
+.note-button:hover {
+  border-color: black;
+}
+
 #settings {
   z-index: 1;
 }

@@ -68,7 +68,7 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
-- UI: improve styling of buttons and input elements so that they all fit togather
+- UI: improve styling of buttons and input elements so that they all fit togather (and aren't ugggggly)
 - search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result
 - TODO: properly acknowledge fuse.js
 - dates: Check dates work in different locales
