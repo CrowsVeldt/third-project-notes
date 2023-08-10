@@ -21,7 +21,7 @@ const selectContainer = newElement({
 const sortSelect = newElement({
   type: "select",
   id: "sort-select",
-  class: ["me-1"],
+  class: ["me-1", 'button-color', 'form-control', 'border-dark'],
   props: [
     ["ariaLabel", "Default select element"],
     ["tabindex", "1"],

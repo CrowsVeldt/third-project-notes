@@ -4,7 +4,7 @@ import newElement from "../../utils/newElement";
 const plusButton = newElement({
   type: "button",
   id: "plus-button",
-  class: ['btn', 'border', 'border-dark', "toggle-button"],
+  class: ["toggle-button", 'button-color', 'border', 'border-dark', 'rounded'],
   props: [
     ["tabindex", "4"],
     ["data-bs-toggle", "tooltip"],

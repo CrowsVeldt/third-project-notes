@@ -12,10 +12,6 @@
   right: 0;
 }
 
-#plus-button:hover {
-  background-color: lightgrey;
-}
-
 #plus-icon {
   position: fixed;
   top: -0.4em;
@@ -88,15 +84,11 @@
 
 .note-button {
   border-color: gray;
+  background: none;
 }
 
 .note-button:hover {
   border-color: black;
-}
-
-#settings {
-  z-index: 1;
-  background-color: white;
 }
 
 #full-note-title {
@@ -113,13 +105,9 @@
 }
 
 #direction {
-  height: 29px;
-  width: 29px;
+  height: 37.5px;
+  width: 37.5px;
   display: inline-block;
-}
-
-#direction:hover {
-  background-color: lightgray;
 }
 
 #direction.up {
@@ -130,20 +118,18 @@
   height: 13.5px;
   width: 13.5px;
   position: relative;
-  left: 7px;
-  top: 4px;
+  left: -1px;
+  top: 0.5px;
   border: solid black;
   border-width: 3px 3px 0px 0px;
   transform: rotate(-225deg);
 }
 
 #settings {
+  z-index: 1;
+  background-color: white;
   transition: left 0.1s;
   transition-timing-function: ease-out;
-}
-
-#wipe-button {
-  color: white;
 }
 
 #toggle-settings {
@@ -155,4 +141,21 @@
   white-space: pre-line;
   line-height: 0.5em;
   border-radius: 0px 5px 5px 0px;
+}
+
+#wipe-button {
+  color: white;
+}
+
+.button-color {
+  background-color: white;
+  border: 1px, solid, black;
+}
+
+.button-color:hover {
+  background-color: lightgray;
+}
+
+.button-color:active {
+  background-color: darkgray;
 }

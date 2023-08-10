@@ -205,7 +205,7 @@ const cSelect: HTMLSelectElement = colorSelect;
 const actionButton: HTMLButtonElement = newElement({
   type: "button",
   id: "form-button",
-  class: ["form-control", "form-child"],
+  class: ["form-control", "form-child", 'button-color'],
   content: form.getButtonName(),
   props: [["type", "submit"]],
   eventListener: {
