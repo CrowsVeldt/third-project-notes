@@ -100,6 +100,7 @@ function formHandler(evt: Event): void;
 function formHandler(evt: Event, id: string): void;
 function formHandler(evt: Event | void, id: string | void): void {
   const inputForm: HTMLElement | null = document.getElementById("input-form");
+  const formTitle: HTMLElement | null = document.getElementById('input-form-title')
 
   if (arguments.length === 0 && inputForm) {
     closeForm(inputForm);
@@ -110,9 +111,8 @@ function formHandler(evt: Event | void, id: string | void): void {
     const target = evt.target as HTMLElement;
     const callerId: string = target.id;
 
-    if (inputForm && inputForm.firstChild) {
-      const formTitleIsNewNote: boolean =
-        inputForm.firstChild.textContent === "New Note";
+    if (inputForm && formTitle) {
+      const formTitleIsNewNote: boolean = formTitle.textContent === 'New Note'
 
       if (callerId === "plus-button") {
         if (!formIsOpen()) {
@@ -146,12 +146,24 @@ const formElement = newElement({
   class: [...hideClasses, "px-2", "form", "form-child"],
 }) as HTMLDivElement;
 
+const formHead = newElement({
+  type: "div",
+  id: "ipnut-form-head",
+  class: ["d-flex", "justify-content-between"],
+}) as HTMLDivElement;
+
 const formHeader = newElement({
   type: "h3",
   id: "input-form-title",
   class: ["form-label", "form-child"],
   content: form.getHead(),
 }) as HTMLHeadingElement;
+
+const closeFormButton = newElement({
+  type: "button",
+  id: "close-form",
+  content: "x",
+}) as HTMLButtonElement;
 
 const titleLabel: HTMLLabelElement = createLabel("Note title", [
   "form-label",
@@ -271,8 +283,10 @@ const actionButton: HTMLButtonElement = newElement({
   },
 }) as HTMLButtonElement;
 
+formHead.append(formHeader, closeFormButton);
+
 formElement.append(
-  formHeader,
+  formHead,
   titleLabel,
   titleInput,
   titleCount,

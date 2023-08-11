@@ -190,3 +190,16 @@
 .no-select {
   user-select: none;
 }
+
+#close-form {
+  all: initial;
+  cursor: pointer;
+  border: 1px solid black;
+  height: 1em;
+  width: 1em;
+  text-align: center;
+  line-height: 1em;
+  position: relative;
+  top: 5px;
+  right: -3px;
+}
