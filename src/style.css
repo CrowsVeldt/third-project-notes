@@ -104,6 +104,10 @@
   height: calc(100% - 4em);
 }
 
+#search-and-sort {
+  justify-content: space-around;
+}
+
 #direction {
   height: 37.5px;
   width: 37.5px;
@@ -126,6 +130,10 @@
 }
 
 @media screen and (max-width: 480px) {
+  #search-and-sort {
+    justify-content: space-around;
+  }
+
   #search-bar {
     width: 33vw;
   }
@@ -136,10 +144,19 @@
 }
 
 #settings {
+  min-width: 300px;
+  left: -300px;
   z-index: 1;
   background-color: white;
   transition: left 0.1s;
   transition-timing-function: ease-out;
+}
+
+@media screen and (max-width: 480px) {
+  #settings {
+    min-width: 50%;
+    left: -50%;
+  }
 }
 
 #toggle-settings {
@@ -168,4 +185,8 @@
 
 .button-color:active {
   background-color: darkgray;
+}
+
+.no-select {
+  user-select: none;
 }
