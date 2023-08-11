@@ -80,17 +80,19 @@ function editNote(noteId: string): void {
   }
 }
 
-function openForm(element: HTMLElement): void {
+function openForm(): void {
+  const form = document.getElementById("input-form");
   tih.removeTabIndexes();
-  if (element !== null) {
-    element.classList.add("d-flex");
+  if (form !== null) {
+    form.classList.add("d-flex");
   }
 }
 
-function closeForm(element: HTMLElement): void {
+function closeForm(): void {
+  const form = document.getElementById("input-form");
   tih.resetTabIndexes();
-  if (element !== null) {
-    element.classList.remove("d-flex");
+  if (form !== null) {
+    form.classList.remove("d-flex");
     resetForm();
   }
 }
@@ -100,10 +102,11 @@ function formHandler(evt: Event): void;
 function formHandler(evt: Event, id: string): void;
 function formHandler(evt: Event | void, id: string | void): void {
   const inputForm: HTMLElement | null = document.getElementById("input-form");
-  const formTitle: HTMLElement | null = document.getElementById('input-form-title')
+  const formTitle: HTMLElement | null =
+    document.getElementById("input-form-title");
 
   if (arguments.length === 0 && inputForm) {
-    closeForm(inputForm);
+    closeForm();
     return;
   }
 
@@ -112,14 +115,14 @@ function formHandler(evt: Event | void, id: string | void): void {
     const callerId: string = target.id;
 
     if (inputForm && formTitle) {
-      const formTitleIsNewNote: boolean = formTitle.textContent === 'New Note'
+      const formNewNote: boolean = formTitle.textContent === "New Note";
 
       if (callerId === "plus-button") {
         if (!formIsOpen()) {
-          openForm(inputForm);
+          openForm();
         } else {
-          if (formTitleIsNewNote) {
-            closeForm(inputForm);
+          if (formNewNote) {
+            closeForm();
           } else {
             resetForm();
           }
@@ -127,10 +130,10 @@ function formHandler(evt: Event | void, id: string | void): void {
       } else if (id) {
         if (!formIsOpen()) {
           editNote(id);
-          openForm(inputForm);
+          openForm();
         } else if (formIsOpen()) {
           if (callerId === form.getNoteId()) {
-            closeForm(inputForm);
+            closeForm();
           } else {
             editNote(id);
           }
@@ -148,21 +151,25 @@ const formElement = newElement({
 
 const formHead = newElement({
   type: "div",
-  id: "ipnut-form-head",
-  class: ["d-flex", "justify-content-between"],
+  id: "input-form-head",
+  class: ["d-flex", "justify-content-between", 'align-items-start', "form-child"],
 }) as HTMLDivElement;
 
 const formHeader = newElement({
   type: "h3",
   id: "input-form-title",
-  class: ["form-label", "form-child"],
+  class: ["form-label", "form-child", 'mb-0'],
   content: form.getHead(),
 }) as HTMLHeadingElement;
 
 const closeFormButton = newElement({
-  type: "button",
-  id: "close-form",
-  content: "x",
+  type: "i",
+  id: "close-form-button",
+  class: ["form-child", "bi", "bi-x-square"],
+  eventListener: {
+    eventType: "click",
+    listener: () => closeForm(),
+  },
 }) as HTMLButtonElement;
 
 const titleLabel: HTMLLabelElement = createLabel("Note title", [
@@ -179,7 +186,9 @@ const titleInput: HTMLInputElement = createInput(
     ["required", "true"],
   ]
 );
+
 const titleCount: HTMLParagraphElement = textCounter(titleInput);
+titleCount.classList.add('form-child')
 
 const bodyLabel: HTMLLabelElement = createLabel("Note body", [
   "form-label",
@@ -197,6 +206,7 @@ const bodyInput = newElement({
 }) as HTMLTextAreaElement;
 
 const bodyCount: HTMLParagraphElement = textCounter(bodyInput);
+bodyCount.classList.add('form-child')
 
 const tDateLabel: HTMLLabelElement = createLabel("Target date", [
   "form-label",
