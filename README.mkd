@@ -68,19 +68,20 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
+- PRIORITY: make it look better on mobile
+- BUG: when all notes have same create date, direction toggle does nothing when switching from up to down
 - UI: sort select title is cut off on mobile browser
 - BUG: sort by title treats upper case letters differently than lower case
-- BUG: can select text under fullNote (and maybe form?)
 - search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result
-- TODO: properly acknowledge fuse.js
 - dates: Check dates work in different locales
 - target date: Make targetDate alway be more than currentDate when adding date via keyboard
 - target date: prevent adding more than 4 digits in targetDate years column
 - sort: when sorting by color subsort by title
-- BUG: if I type in the search bar, sometimes I need to toggle the direction twice to notice any difference
+- TODO: properly acknowledge fuse.js
 
 ## Under consideration
 
+- sort: have option to choose which color will be first when sorting by color
 - UX: save details of last deleted note so it can be recovered
 - UX: (if/when I add more items to settings): refactor togglesettings to get .settings-child(ren) and loop over them to toggle tabindex for all
 - (would implement if this were more serious than a course project): make sure it works on all browsers

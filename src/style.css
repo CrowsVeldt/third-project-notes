@@ -125,6 +125,16 @@
   transform: rotate(-225deg);
 }
 
+@media screen and (max-width: 480px) {
+  #search-bar {
+    width: 33vw;
+  }
+
+  #sort-select {
+    width: 8em;
+  }
+}
+
 #settings {
   z-index: 1;
   background-color: white;

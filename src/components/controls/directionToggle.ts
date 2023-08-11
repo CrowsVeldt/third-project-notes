@@ -4,7 +4,7 @@ const directionToggle = newElement({
   type: "div",
   id: "direction",
   class: ["border", "border-dark", "rounded", "button-color", "form-control"],
-  props: [["tabindex", "2"]],
+  props: [["tabindex", "2"], ['user-select', 'none']],
   eventListener: {
     eventType: "click",
     listener: () => {
