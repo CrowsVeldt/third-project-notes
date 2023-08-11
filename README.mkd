@@ -84,10 +84,13 @@ id: string // hashed from Date.toString()
 - sort: have option to choose which color will be first when sorting by color
 - UX: save details of last deleted note so it can be recovered
 - UX: (if/when I add more items to settings): refactor togglesettings to get .settings-child(ren) and loop over them to toggle tabindex for all
-- (would implement if this were more serious than a course project): make sure it works on all browsers
 - UI: allow editing note elements by double clicking on them in fullNote?
 - seperate listener functions from component files, component files should _just_ handle markup and styling
 - types: add interface for noteObj?
+
+## Given up for now
+- UI: getting the plus icon to be centered in all browsers has proven beyond my limited knowledge and patience for now, I've settled for good enought on the browsers I use most.
+- UX: making sure it works identically in all browsers
 
 # Acknowledgements:
 

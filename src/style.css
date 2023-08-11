@@ -9,14 +9,14 @@
   height: 44.35px;
   z-index: 1;
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 5px;
+  right: 5px;
 }
 
 #plus-icon {
   position: fixed;
-  top: -0.4em;
-  right: 0.15em;
+  top: -13px;
+  right: 13px;
   font-size: 3em;
 }
 
