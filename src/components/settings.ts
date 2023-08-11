@@ -6,7 +6,6 @@ const settings = newElement({
   id: "settings",
   class: [
     "h-75",
-    "w-25",
     "position-fixed",
     "top-50",
     "translate-middle-y",
@@ -20,7 +19,6 @@ const settings = newElement({
     "align-items-center",
     "settings",
   ],
-  props: [["style", "left: -25%"]],
 }) as HTMLDivElement;
 
 const settingsTitle = newElement({
@@ -34,7 +32,7 @@ const toggleButton = newElement({
   type: "button",
   id: "toggle-settings",
   content: `-\n -\n -`,
-  class: ["settings", "border", "border-dark", "button-color"],
+  class: ["settings", "border", "border-dark", "button-color", "no-select"],
   props: [
     ["data-bs-toggle", "tooltip"],
     ["data-bs-placement", "right"],
@@ -47,13 +45,14 @@ const toggleButton = newElement({
 }) as HTMLButtonElement;
 
 function toggleSettings(): void {
-  const target = settings;
+  const target = document.getElementById("settings");
+  const style = getComputedStyle(target!);
   // const children = document.querySelectorAll('.settings-child')
   // console.log(children)
   if (target) {
     if (settingsIsOpen()) {
       wipeButton.tabIndex = -1;
-      target.style.left = "-25%";
+      target.style.left = `-${style.minWidth}`;
     } else {
       target.style.left = "0%";
       wipeButton.tabIndex = 5;
@@ -62,11 +61,8 @@ function toggleSettings(): void {
 }
 
 function settingsIsOpen(): boolean {
-  const settings: HTMLElement | null = document.getElementById("settings");
-
-  if (settings && settings.style.left === "0%") return true;
-
-  return false;
+  const settings: HTMLElement = document.getElementById("settings")!;
+  return settings && settings.style.left === "0%";
 }
 
 settings.append(wipeButton, settingsTitle, toggleButton);
