@@ -21,7 +21,7 @@ function sortNotes(notes: undefined | Note[], method: string): Note[] | void {
       met = notes.sort((a, b) => sortFunction(b.createDate, a.createDate));
       break;
     case "Title":
-      met = notes.sort((a, b) => sortFunction(a.title, b.title));
+      met = notes.sort((a, b) => sortFunction(a.title.toLocaleLowerCase(), b.title.toLocaleLowerCase()));
       break;
     case "Target Date":
       met = notes.sort((a, b) => sortFunction(b.targetDate, a.targetDate));

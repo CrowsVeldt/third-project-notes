@@ -68,19 +68,16 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
-- PRIORITY: make it look better on mobile
-- BUG: when all notes have same create date, direction toggle does nothing when switching from up to down
-- UI: sort select title is cut off on mobile browser
-- BUG: sort by title treats upper case letters differently than lower case
-- search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result
-- dates: Check dates work in different locales
 - target date: Make targetDate alway be more than currentDate when adding date via keyboard
 - target date: prevent adding more than 4 digits in targetDate years column
-- sort: when sorting by color subsort by title
+- sort #1: when sorting by by 'x', if 'x' is the same, sort by subcategory 'y'. (i.e. if sorted by color, sort notes of the same color by title, &tc.)
 - TODO: properly acknowledge fuse.js
 
 ## Under consideration
 
+- BUG re:#1 : when all notes have same create date, direction toggle does nothing when switching from up to down (technically a bug but I'd rather not have the order change at all if they're all the same)
+- search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result (this has to do with Fuze.js' fuzzy search. It can probably sorted with the search options)
+- dates: Check dates work in different locales
 - sort: have option to choose which color will be first when sorting by color
 - UX: save details of last deleted note so it can be recovered
 - UX: (if/when I add more items to settings): refactor togglesettings to get .settings-child(ren) and loop over them to toggle tabindex for all
