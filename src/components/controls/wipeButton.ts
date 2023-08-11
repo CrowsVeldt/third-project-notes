@@ -26,7 +26,7 @@ const wipeButton: HTMLButtonElement = newElement({
       ) {
         wipeStorage();
         resetNoteContainer();
-        toggleSettings()
+        toggleSettings();
       }
     },
   },
