@@ -1,6 +1,7 @@
 import newElement from "../../utils/newElement";
 import { resetNoteContainer } from "../noteContainer";
 import { storageExists, wipeStorage } from "../../utils/storage";
+import { toggleSettings } from "../settings";
 
 const wipeButton: HTMLButtonElement = newElement({
   type: "button",
@@ -25,6 +26,7 @@ const wipeButton: HTMLButtonElement = newElement({
       ) {
         wipeStorage();
         resetNoteContainer();
+        toggleSettings()
       }
     },
   },
