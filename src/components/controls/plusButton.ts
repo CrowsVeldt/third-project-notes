@@ -25,7 +25,7 @@ const plus = newElement({
   type: "p",
   id: "plus-icon",
   content: "+",
-  class: ["toggle-button"],
+  class: ["toggle-button", "no-select"],
   props: [["style", "pointer-events:none;"]],
 }) as HTMLParagraphElement;
 

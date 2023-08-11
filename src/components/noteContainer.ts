@@ -58,9 +58,9 @@ function resetNoteContainer(notes: Note[] | void): void {
   }
 }
 
-function getDisplayedNotes() {
-  const childNodes: HTMLCollection | undefined =
-    document.getElementById("note-container")?.children;
+function getDisplayedNotes(): Note[] {
+  const childNodes: HTMLCollection =
+    document.getElementById("note-container")!.children;
   const noteArray: Note[] = [];
   if (childNodes) {
     for (let node in childNodes) {
