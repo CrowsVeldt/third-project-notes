@@ -70,12 +70,11 @@ id: string // hashed from Date.toString()
 
 - target date: Make targetDate alway be more than currentDate when adding date via keyboard
 - target date: prevent adding more than 4 digits in targetDate years column
-- sort #1: when sorting by by 'x', if 'x' is the same, sort by subcategory 'y'. (i.e. if sorted by color, sort notes of the same color by title, &tc.)
 - TODO: properly acknowledge fuse.js
+- sort: if sorting by target Date. push all notes without a target date to the end
 
 ## Under consideration
 
-- BUG re:#1 : when all notes have same create date, direction toggle does nothing when switching from up to down (technically a bug but I'd rather not have the order change at all if they're all the same)
 - search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result (this has to do with Fuze.js' fuzzy search. It can probably sorted with the search options)
 - dates: Check dates work in different locales
 - sort: have option to choose which color will be first when sorting by color

@@ -1,38 +1,47 @@
 import { Note } from "./types";
 
 function sortFunction(a: any, b: any) {
+  const direction: HTMLElement | null = document.getElementById("direction");
+  const toggle: boolean =
+    direction !== null && direction.classList.contains("up") ? true : false;
+
+  let result = 0;
+
   if (a > b) {
-    return 1;
+    result = 1;
   } else if (a < b) {
-    return -1;
-  } else {
-    return 0;
+    result = -1;
   }
+
+  // if toggle classlist foes not contain 'up', reverse sort order
+  if (toggle) {
+    return result - (result + result);
+  }
+
+  return result;
 }
 
 function sortNotes(notes: undefined | Note[], method: string): Note[] | void {
   if (!notes) return;
-  const toggle: boolean | undefined = document
-    .getElementById("direction")
-    ?.classList.contains("up");
-  let met: Note[] = notes;
+  let sorted: Note[] = notes;
   switch (method) {
     case "Date Created":
-      met = notes.sort((a, b) => sortFunction(b.createDate, a.createDate));
+      sorted = notes.sort((a, b) => sortFunction(b.createDate, a.createDate));
       break;
     case "Title":
-      met = notes.sort((a, b) => sortFunction(a.title.toLocaleLowerCase(), b.title.toLocaleLowerCase()));
+      sorted = notes.sort((a, b) =>
+        sortFunction(a.title.toLocaleLowerCase(), b.title.toLocaleLowerCase())
+      );
       break;
     case "Target Date":
-      met = notes.sort((a, b) => sortFunction(b.targetDate, a.targetDate));
+      sorted = notes.sort((a, b) => sortFunction(b.targetDate, a.targetDate));
       break;
-    default:
-      met = notes.sort((a, b) => sortFunction(a.color, b.color));
+    case "Color":
+      sorted = notes.sort((a, b) => sortFunction(a.color, b.color));
       break;
   }
-  if (toggle) return met.reverse();
 
-  return met;
+  return sorted;
 }
 
 export default sortNotes;
