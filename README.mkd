@@ -71,7 +71,6 @@ id: string // hashed from Date.toString()
 - target date: Make targetDate alway be more than currentDate when adding date via keyboard
 - target date: prevent adding more than 4 digits in targetDate years column
 - TODO: properly acknowledge fuse.js
-- sort: if sorting by target Date. push all notes without a target date to the end
 
 ## Under consideration
 
