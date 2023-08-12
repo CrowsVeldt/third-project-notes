@@ -15,6 +15,7 @@ import { textCounter, setCounter } from "./textCounter";
 import { tih } from "../main";
 import makeXButton from "./controls/xButton";
 import targetDateInput from "./controls/targetDateInput";
+import {errorMessage, updateErrorMessage} from "./errorMessage";
 
 const form: FormObject = new FormObject(
   "New Note",
@@ -99,6 +100,7 @@ function closeForm(): void {
   tih.resetTabIndexes();
   if (form !== null) {
     form.classList.remove("d-flex");
+    updateErrorMessage('', '')
     resetForm();
   }
 }
@@ -217,6 +219,7 @@ const tDateLabel: HTMLLabelElement = createLabel("Target date", [
 ]);
 
 const tDateInput = targetDateInput
+const dateError = errorMessage
 
 const colorLabel = createLabel("Select color", ["form-label", "form-child"]);
 const cSelect: HTMLSelectElement = colorSelect;
@@ -302,6 +305,7 @@ formElement.append(
   bodyCount,
   tDateLabel,
   tDateInput,
+  dateError,
   colorLabel,
   cSelect,
   actionButton

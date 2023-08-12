@@ -1,5 +1,6 @@
 import newElement from "../../utils/newElement";
 import { padTo2Digits } from "../../utils/util";
+import { updateErrorMessage } from "../errorMessage";
 
 const date = new Date();
 
@@ -16,26 +17,26 @@ const toInputDateFormat = (
 };
 
 function validDate(date: string): string {
-  const inputDate = date.split("-");
-  const inputYear = parseInt(inputDate[0]);
-  const inputMonth = parseInt(inputDate[1]);
-  const inputDay = parseInt(inputDate[2]);
+  const inputDate: string[] = date.split("-");
+  const inputYear: number = parseInt(inputDate[0]);
+  const inputMonth: number = parseInt(inputDate[1]);
+  const inputDay: number = parseInt(inputDate[2]);
 
-  if (inputYear < currentYear) {
-    // error message = 'year out of range'
-    return "";
-  } else if (inputMonth < currentMonth && inputYear === currentYear) {
-    // error message = 'month out of range'
-    return "";
-  } else if (
-    inputDay < currentDay + 1 &&
-    inputMonth === currentMonth &&
-    inputYear === currentYear
-  ) {
-    // error message = 'day out of range'
-    return "";
-  }
-
+    if (inputYear < currentYear) {
+      updateErrorMessage('Year given too early', 'red')
+      return "";
+    } else if (inputMonth < currentMonth && inputYear === currentYear) {
+      updateErrorMessage('Month given too early', 'red')
+      return "";
+    } else if (
+      inputDay < currentDay + 1 &&
+      inputMonth === currentMonth &&
+      inputYear === currentYear
+    ) {
+      updateErrorMessage('Day given too early', 'red')
+      return "";
+    }
+    updateErrorMessage('Valid date', 'black')
   return toInputDateFormat(inputYear, inputMonth, inputDay);
 }
 

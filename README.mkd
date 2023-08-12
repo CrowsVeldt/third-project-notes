@@ -77,9 +77,8 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
-- target date: add warning message for user if target date input is invalid
 - TODO: properly acknowledge fuse.js
-- BUG: target input date is displayed as mm/dd/yyyy on firefox android, on note it's displayed fine
+- BUG: target input date is displayed as mm/dd/yyyy on firefox on android and linux, displays appropriately on macos
 
 ## Under consideration
 
