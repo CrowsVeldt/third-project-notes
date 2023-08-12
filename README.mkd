@@ -69,7 +69,6 @@ id: string // hashed from Date.toString()
 ## TODO
 
 - target date: Make targetDate alway be more than currentDate when adding date via keyboard
-- target date: prevent adding more than 4 digits in targetDate years column
 - TODO: properly acknowledge fuse.js
 
 ## Under consideration

@@ -3,7 +3,12 @@ import { createInput, createLabel } from "./labelAndInput";
 import { FormElement, Note } from "../utils/types";
 import FormObject from "../classes/InputForm";
 import { getNote, updateNote } from "../utils/storage";
-import { hideClasses, notesDifferent, removeTag } from "../utils/util";
+import {
+  hideClasses,
+  notesDifferent,
+  padTo2Digits,
+  removeTag,
+} from "../utils/util";
 import newElement from "../utils/newElement";
 import NoteObj from "../classes/Note";
 import { resetNoteContainer } from "./noteContainer";
@@ -210,12 +215,25 @@ const tDateLabel: HTMLLabelElement = createLabel("Target date", [
   "form-label",
   "form-child",
 ]);
+
+const date = new Date();
+console.log(
+  `${date.getFullYear()}-${padTo2Digits(date.getMonth() + 1)}-${date.getDate()}`
+);
 const tDateInput: HTMLInputElement = createInput(
   "date",
   "tDate-input",
   ["form-control", "form-child", "mb-2"],
   false,
-  []
+  [
+    [
+      "min",
+      `${date.getFullYear()}-${padTo2Digits(
+        date.getMonth() + 1
+      )}-${date.getDate()}`,
+    ],
+    ["max", "9999-12-31"],
+  ]
 );
 
 const colorLabel = createLabel("Select color", ["form-label", "form-child"]);

@@ -87,6 +87,7 @@ export {
   makeHash,
   noteColors,
   notesDifferent,
+  padTo2Digits,
   removeTag,
   sortMethods,
 };

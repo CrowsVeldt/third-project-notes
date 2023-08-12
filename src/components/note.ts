@@ -83,7 +83,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
     type: "p",
     class: ["mb-0", "note-target-date", "align-self-start"],
     content: note.getTargetDate()
-      ? `Targate date ${formatDate(note.getTargetDate())}`
+      ? `Target date ${formatDate(note.getTargetDate())}`
       : "-",
     // if no target date, turn value clear to keep the layout consistant
     props: [
