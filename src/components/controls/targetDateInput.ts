@@ -7,6 +7,9 @@ const date = new Date();
 const currentYear = date.getFullYear();
 const currentMonth = date.getMonth() + 1;
 const currentDay = date.getDate();
+const errorMessage = `Target date must be after ${`${padTo2Digits(
+  currentDay
+)}/${padTo2Digits(currentMonth)}/${currentYear}`}`;
 
 const toInputDateFormat = (
   year: number,
@@ -22,21 +25,21 @@ function validDate(date: string): string {
   const inputMonth: number = parseInt(inputDate[1]);
   const inputDay: number = parseInt(inputDate[2]);
 
-    if (inputYear < currentYear) {
-      updateErrorMessage('Year given too early', 'red')
-      return "";
-    } else if (inputMonth < currentMonth && inputYear === currentYear) {
-      updateErrorMessage('Month given too early', 'red')
-      return "";
-    } else if (
-      inputDay < currentDay + 1 &&
-      inputMonth === currentMonth &&
-      inputYear === currentYear
-    ) {
-      updateErrorMessage('Day given too early', 'red')
-      return "";
-    }
-    updateErrorMessage('Valid date', 'black')
+  if (inputYear < currentYear) {
+    updateErrorMessage(errorMessage, "red");
+    return "";
+  } else if (inputMonth < currentMonth && inputYear === currentYear) {
+    updateErrorMessage(errorMessage, "red");
+    return "";
+  } else if (
+    inputDay < currentDay + 1 &&
+    inputMonth === currentMonth &&
+    inputYear === currentYear
+  ) {
+    updateErrorMessage(errorMessage, "red");
+    return "";
+  }
+  updateErrorMessage("", "");
   return toInputDateFormat(inputYear, inputMonth, inputDay);
 }
 
@@ -51,12 +54,7 @@ const targetDateInput: HTMLInputElement = newElement({
     ["max", "9999-12-31"],
     ["data-bs-toggle", "tooltip"],
     ["data-bs-placement", "left"],
-    [
-      "title",
-      `Target date must be after ${`${padTo2Digits(currentDay)}-${padTo2Digits(
-        currentMonth
-      )}-${currentYear}`}`,
-    ],
+    ["title", errorMessage],
   ],
   eventListener: {
     eventType: "blur",
