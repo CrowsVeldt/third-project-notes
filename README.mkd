@@ -66,20 +66,31 @@ id: string // hashed from Date.toString()
 
 - when clicking any other element outside the form: close it
 
+## Date input validation
+- - if input date is less than current day + 1, reset to default on loss of focus
+- - provide a popup or other message informing user of the requirements
+
+- if currentYear > inputYear: reset all
+- if currentYear === inputYear && currentMonth > inputMonth: reset all
+- if currentYear === inputYear && currentMonth === inputMonth && currentDay > inputDay: reset all
+- else date is valid
+
 ## TODO
 
-- target date: Make targetDate alway be more than currentDate when adding date via keyboard
+- target date: add warning message for user if target date input is invalid
 - TODO: properly acknowledge fuse.js
+- BUG: target input date is displayed as mm/dd/yyyy on firefox android, on note it's displayed fine
 
 ## Under consideration
 
+- UX: add popup asking user if they are sure they want to edit a note before saving
 - search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result (this has to do with Fuze.js' fuzzy search. It can probably sorted with the search options)
 - dates: Check dates work in different locales
 - sort: have option to choose which color will be first when sorting by color
 - UX: save details of last deleted note so it can be recovered
 - UX: (if/when I add more items to settings): refactor togglesettings to get .settings-child(ren) and loop over them to toggle tabindex for all
 - UI: allow editing note elements by double clicking on them in fullNote?
-- seperate listener functions from component files, component files should _just_ handle markup and styling
+- dev: separate listener functions from component files, component files should _just_ handle markup and styling
 - types: add interface for noteObj?
 
 ## Given up for now

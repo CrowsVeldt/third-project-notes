@@ -3,31 +3,40 @@ import { padTo2Digits } from "../../utils/util";
 
 const date = new Date();
 
-function validDate(date: string): boolean {
-  const current = new Date();
-  const currentYear = current.getFullYear();
-  const currentMonth = current.getMonth() + 1;
-  const currentDay = current.getDate();
+const currentYear = date.getFullYear();
+const currentMonth = date.getMonth() + 1;
+const currentDay = date.getDate();
 
-  const splitDate = date.split("-");
-  const dateYear = parseInt(splitDate[0]);
-  const dateMonth = parseInt(splitDate[1]);
-  const dateDay = parseInt(splitDate[2]);
+const toInputDateFormat = (
+  year: number,
+  month: number,
+  day: number
+): string => {
+  return `${year}-${padTo2Digits(month)}-${padTo2Digits(day)}`;
+};
 
-  if (date !== undefined) {
-    if (dateYear > currentYear) {
-      return true;
-    } else if (dateYear >= currentYear && dateMonth > currentMonth) {
-      return true;
-    } else if (
-      dateYear >= currentYear &&
-      dateMonth >= currentMonth &&
-      dateDay > currentDay
-    ) {
-      return true;
-    }
+function validDate(date: string): string {
+  const inputDate = date.split("-");
+  const inputYear = parseInt(inputDate[0]);
+  const inputMonth = parseInt(inputDate[1]);
+  const inputDay = parseInt(inputDate[2]);
+
+  if (inputYear < currentYear) {
+    // error message = 'year out of range'
+    return "";
+  } else if (inputMonth < currentMonth && inputYear === currentYear) {
+    // error message = 'month out of range'
+    return "";
+  } else if (
+    inputDay < currentDay + 1 &&
+    inputMonth === currentMonth &&
+    inputYear === currentYear
+  ) {
+    // error message = 'day out of range'
+    return "";
   }
-  return false;
+
+  return toInputDateFormat(inputYear, inputMonth, inputDay);
 }
 
 const targetDateInput: HTMLInputElement = newElement({
@@ -37,27 +46,26 @@ const targetDateInput: HTMLInputElement = newElement({
   props: [
     ["type", "date"],
     ["required", "false"],
-    [
-      "min",
-      `${date.getFullYear()}-${padTo2Digits(
-        date.getMonth() + 1
-      )}-${date.getDate()}`,
-    ],
+    ["min", toInputDateFormat(currentYear, currentMonth, currentDay + 1)],
     ["max", "9999-12-31"],
+    ["data-bs-toggle", "tooltip"],
+    ["data-bs-placement", "left"],
+    [
+      "title",
+      `Target date must be after ${`${padTo2Digits(currentDay)}-${padTo2Digits(
+        currentMonth
+      )}-${currentYear}`}`,
+    ],
   ],
   eventListener: {
-    eventType: "keydown",
-    listener: (evt?) => {
-      const event = evt as KeyboardEvent;
+    eventType: "blur",
+    listener: () => {
       const element = document.getElementById(
         "tDate-input"
       ) as HTMLInputElement;
-      if (element) {
-        const value = element.value;
-        if (value !== "" && !validDate(value)) {
-          evt?.preventDefault();
-          return false;
-        }
+      const value = element.value;
+      if (value !== "") {
+        element.value = validDate(value);
       }
     },
   },
