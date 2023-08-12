@@ -6,7 +6,6 @@ import { getNote, updateNote } from "../utils/storage";
 import {
   hideClasses,
   notesDifferent,
-  padTo2Digits,
   removeTag,
 } from "../utils/util";
 import newElement from "../utils/newElement";
