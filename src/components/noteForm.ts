@@ -15,6 +15,7 @@ import { resetNoteContainer } from "./noteContainer";
 import { textCounter, setCounter } from "./textCounter";
 import { tih } from "../main";
 import makeXButton from "./controls/xButton";
+import targetDateInput from "./controls/targetDateInput";
 
 const form: FormObject = new FormObject(
   "New Note",
@@ -216,29 +217,10 @@ const tDateLabel: HTMLLabelElement = createLabel("Target date", [
   "form-child",
 ]);
 
-const date = new Date();
-console.log(
-  `${date.getFullYear()}-${padTo2Digits(date.getMonth() + 1)}-${date.getDate()}`
-);
-const tDateInput: HTMLInputElement = createInput(
-  "date",
-  "tDate-input",
-  ["form-control", "form-child", "mb-2"],
-  false,
-  [
-    [
-      "min",
-      `${date.getFullYear()}-${padTo2Digits(
-        date.getMonth() + 1
-      )}-${date.getDate()}`,
-    ],
-    ["max", "9999-12-31"],
-  ]
-);
+const tDateInput = targetDateInput
 
 const colorLabel = createLabel("Select color", ["form-label", "form-child"]);
 const cSelect: HTMLSelectElement = colorSelect;
-// figure out how to set color from FormObject
 
 const actionButton: HTMLButtonElement = newElement({
   type: "button",
