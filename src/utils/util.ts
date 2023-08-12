@@ -20,7 +20,6 @@ const hideClasses: string[] = [
   "position-fixed",
   "bg-light",
   "flex-column",
-  "justify-content-between",
   "start-50",
   "translate-middle-x",
   "border",

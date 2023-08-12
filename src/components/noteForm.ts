@@ -9,6 +9,7 @@ import NoteObj from "../classes/Note";
 import { resetNoteContainer } from "./noteContainer";
 import { textCounter, setCounter } from "./textCounter";
 import { tih } from "../main";
+import makeXButton from "./controls/xButton";
 
 const form: FormObject = new FormObject(
   "New Note",
@@ -152,25 +153,22 @@ const formElement = newElement({
 const formHead = newElement({
   type: "div",
   id: "input-form-head",
-  class: ["d-flex", "justify-content-between", 'align-items-start', "form-child"],
+  class: [
+    "d-flex",
+    "justify-content-between",
+    "align-items-start",
+    "form-child",
+  ],
 }) as HTMLDivElement;
 
 const formHeader = newElement({
-  type: "h3",
+  type: "h2",
   id: "input-form-title",
-  class: ["form-label", "form-child", 'mb-0'],
+  class: ["form-label", "form-child", "mb-2", "mt-2"],
   content: form.getHead(),
 }) as HTMLHeadingElement;
 
-const closeFormButton = newElement({
-  type: "i",
-  id: "close-form-button",
-  class: ["form-child", "bi", "bi-x-square"],
-  eventListener: {
-    eventType: "click",
-    listener: () => closeForm(),
-  },
-}) as HTMLButtonElement;
+const closeFormButton = makeXButton("close-form-button", closeForm);
 
 const titleLabel: HTMLLabelElement = createLabel("Note title", [
   "form-label",
@@ -188,7 +186,7 @@ const titleInput: HTMLInputElement = createInput(
 );
 
 const titleCount: HTMLParagraphElement = textCounter(titleInput);
-titleCount.classList.add('form-child')
+titleCount.classList.add("form-child");
 
 const bodyLabel: HTMLLabelElement = createLabel("Note body", [
   "form-label",
@@ -197,7 +195,7 @@ const bodyLabel: HTMLLabelElement = createLabel("Note body", [
 const bodyInput = newElement({
   type: "textarea",
   id: "body-input",
-  class: ["form-control", "form-child"],
+  class: ["form-control", "form-child", "flex-grow-1"],
   props: [
     ["maxLength", "2000"],
     ["required", "true"],
@@ -206,7 +204,7 @@ const bodyInput = newElement({
 }) as HTMLTextAreaElement;
 
 const bodyCount: HTMLParagraphElement = textCounter(bodyInput);
-bodyCount.classList.add('form-child')
+bodyCount.classList.add("form-child");
 
 const tDateLabel: HTMLLabelElement = createLabel("Target date", [
   "form-label",
@@ -215,7 +213,7 @@ const tDateLabel: HTMLLabelElement = createLabel("Target date", [
 const tDateInput: HTMLInputElement = createInput(
   "date",
   "tDate-input",
-  ["form-control", "form-child"],
+  ["form-control", "form-child", "mb-2"],
   false,
   []
 );
@@ -227,7 +225,7 @@ const cSelect: HTMLSelectElement = colorSelect;
 const actionButton: HTMLButtonElement = newElement({
   type: "button",
   id: "form-button",
-  class: ["form-control", "form-child", "button-color"],
+  class: ["form-control", "form-child", "button-color", "mb-2"],
   content: form.getButtonName(),
   props: [["type", "submit"]],
   eventListener: {

@@ -75,7 +75,7 @@ function toggleFullNote(id: string | void): void {
 const fullNote = newElement({
   type: "div",
   id: "full-note",
-  class: [...hideClasses, "full-note-child", 'justify-content-between'],
+  class: [...hideClasses, "full-note-child", "justify-content-between"],
 }) as HTMLDivElement;
 
 const noteTitle = newElement({
@@ -91,7 +91,7 @@ const noteTitle = newElement({
   ],
 }) as HTMLHeadingElement;
 
-const xButton = makeXButton('close-full-note', toggleFullNote)
+const xButton = makeXButton("close-full-note", toggleFullNote);
 
 const noteBackground = newElement({
   type: "div",
@@ -114,7 +114,7 @@ const noteBody = newElement({
 const dateContainer = newElement({
   type: "div",
   id: "full-note-dates",
-  class: ["full-note-child", "d-flex", "justify-content-center", 'text-center'],
+  class: ["full-note-child", "d-flex", "justify-content-center", "text-center"],
 }) as HTMLDivElement;
 
 const noteCreated = newElement({

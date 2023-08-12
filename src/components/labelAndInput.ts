@@ -20,7 +20,7 @@ function createInput(
   const inp = newElement({
     type: "input",
     id: id,
-    class: [...classes],
+    class: [...classes, "mb-0"],
     props: [
       ["type", type],
       ["required", required.toString()],

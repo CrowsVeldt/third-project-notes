@@ -14,7 +14,7 @@ function colorOption(color: colorObject): HTMLOptionElement {
 const colorSelect = newElement({
   type: "select",
   id: "color-select",
-  class: ["form-control", "form-child"],
+  class: ["form-control", "form-child", "mb-2", "button-color"],
   props: [
     ["required", "true"],
     ["ariaLabel", "Default select element"],
