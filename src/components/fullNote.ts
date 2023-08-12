@@ -2,6 +2,7 @@ import { formatDate, hideClasses } from "../utils/util";
 import { getNote } from "../utils/storage";
 import newElement from "../utils/newElement";
 import { Note } from "../utils/types";
+import makeXButton from "./controls/xButton";
 
 function getFullNoteElements(): {
   title: HTMLHeadingElement;
@@ -74,11 +75,11 @@ function toggleFullNote(id: string | void): void {
 const fullNote = newElement({
   type: "div",
   id: "full-note",
-  class: [...hideClasses, "full-note-child"],
+  class: [...hideClasses, "full-note-child", 'justify-content-between'],
 }) as HTMLDivElement;
 
 const noteTitle = newElement({
-  type: "h4",
+  type: "h2",
   id: "full-note-title",
   class: [
     "form-label",
@@ -89,6 +90,8 @@ const noteTitle = newElement({
     "full-note-child",
   ],
 }) as HTMLHeadingElement;
+
+const xButton = makeXButton('close-full-note', toggleFullNote)
 
 const noteBackground = newElement({
   type: "div",
@@ -111,7 +114,7 @@ const noteBody = newElement({
 const dateContainer = newElement({
   type: "div",
   id: "full-note-dates",
-  class: ["full-note-child", "d-flex", "justify-content-center"],
+  class: ["full-note-child", "d-flex", "justify-content-center", 'text-center'],
 }) as HTMLDivElement;
 
 const noteCreated = newElement({
@@ -126,7 +129,7 @@ const noteTarget = newElement({
   class: ["px-3", "mb-0", "full-note-child"],
 }) as HTMLParagraphElement;
 
-fullNote.append(noteTitle, noteBackground);
+fullNote.append(noteTitle, xButton, noteBackground);
 noteBackground.append(noteBody, dateContainer);
 dateContainer.append(noteCreated, noteTarget);
 
