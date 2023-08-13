@@ -56,6 +56,7 @@ const langOptions = {
       },
       settings: {
         title: "Settings",
+        langToggle: "English",
       },
     },
     confirmations: {

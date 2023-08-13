@@ -8,7 +8,7 @@ const langPrefStored = (): boolean => {
 };
 
 function setLanguagePreferance(lang: string): boolean {
-  if (storageExists()) {
+  if (langPrefStored()) {
     localStorage.setItem("langPref", lang);
     return true;
   }
@@ -26,7 +26,12 @@ function getLanguagePreferance(): string {
 }
 
 function getBrowserDefaultLanguage(): string {
-  return navigator.language
+  return navigator.language;
 }
 
-export {setLanguagePreferance, getLanguagePreferance, getBrowserDefaultLanguage}
+export {
+  langPrefStored,
+  setLanguagePreferance,
+  getLanguagePreferance,
+  getBrowserDefaultLanguage,
+};

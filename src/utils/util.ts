@@ -1,9 +1,9 @@
 import langOptions from "./textContent";
 import { SortMethodType, colorObject } from "./types";
 
-const noteColors: colorObject[] = langOptions.english.colors
+const noteColors: colorObject[] = langOptions.english.colors;
 
-const sortMethods: SortMethodType[] = langOptions.english.sortMethods
+const sortMethods: SortMethodType[] = langOptions.english.sortMethods;
 
 const hideClasses: string[] = [
   "position-fixed",
@@ -69,8 +69,26 @@ function notesDifferent(noteA: any, noteB: any): boolean {
   return false;
 }
 
-function getBrowserDefaultLanguage(): string {
-  return navigator.language
+function switchDirection(param: string): void {
+  const html = document.querySelector("html");
+  if (html) {
+    const direction = html.dir;
+    switch (param) {
+      case "swap":
+        if (direction === "ltr") {
+          html.dir = "rtl";
+        } else {
+          html.dir = "ltr";
+        }
+        break;
+      case "ltr":
+        html.dir = "ltr";
+        break;
+      case "rtl":
+        html.dir = "rtl";
+        break;
+    }
+  }
 }
 
 export {
@@ -83,5 +101,5 @@ export {
   padTo2Digits,
   removeTag,
   sortMethods,
-  getBrowserDefaultLanguage
+  switchDirection,
 };
