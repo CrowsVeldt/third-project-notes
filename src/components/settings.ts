@@ -27,19 +27,20 @@ const settingsTitle = newElement({
   type: "h3",
   id: "settings-title",
   content: langOptions.english.elementText.settings.title,
-  class: ["border-bottom", "border-dark", "settings"],
+  class: ["border-bottom", "border-dark", 'settings'],
 }) as HTMLHeadingElement;
 
 const languageToggleContainer = newElement({
-  type: 'div',
-  id: 'lang-toggle-container'
-}) as HTMLDivElement
+  type: "div",
+  id: "lang-toggle-container",
+  class: ['settings', 'settings-child']
+}) as HTMLDivElement;
 
 const toggleButton = newElement({
   type: "button",
   id: "toggle-settings",
   content: `-\n -\n -`,
-  class: ["settings", "border", "border-dark", "button-color", "no-select"],
+  class: ["border", "border-dark", "button-color", "no-select"],
   props: [
     ["data-bs-toggle", "tooltip"],
     ["data-bs-placement", "right"],
@@ -54,15 +55,22 @@ const toggleButton = newElement({
 function toggleSettings(): void {
   const target = document.getElementById("settings");
   const style = getComputedStyle(target!);
-  // const children = document.querySelectorAll('.settings-child')
-  // console.log(children)
+  const children = document.querySelectorAll(".settings-child");
   if (target) {
     if (settingsIsOpen()) {
-      wipeButton.tabIndex = -1;
+      children.forEach((child) => {
+        const c = child as HTMLElement;
+        c.tabIndex = -1;
+      });
+      // wipeButton.tabIndex = -1;
       target.style.left = `-${style.minWidth}`;
     } else {
+      // wipeButton.tabIndex = 5;
+      children.forEach((child) => {
+        const c = child as HTMLElement;
+        c.tabIndex = 0;
+      });
       target.style.left = "0%";
-      wipeButton.tabIndex = 5;
     }
   }
 }
@@ -72,7 +80,12 @@ function settingsIsOpen(): boolean {
   return settings && settings.style.left === "0%";
 }
 
-languageToggleContainer.append(languageToggle)
-settings.append(wipeButton, languageToggleContainer, settingsTitle, toggleButton);
+languageToggleContainer.append(languageToggle);
+settings.append(
+  wipeButton,
+  languageToggleContainer,
+  settingsTitle,
+  toggleButton
+);
 
 export { settings, settingsIsOpen, toggleSettings };

@@ -9,7 +9,6 @@ const wipeButton: HTMLButtonElement = newElement({
   id: "wipe-button",
   content: langOptions.english.elementText.wipeButton,
   class: [
-    "settings",
     "settings-child",
     "btn",
     "border",
