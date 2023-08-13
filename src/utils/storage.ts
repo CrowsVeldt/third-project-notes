@@ -12,6 +12,32 @@ const storageExists = (): boolean => {
   return false;
 };
 
+const langPrefStored = (): boolean => {
+  if (storageExists()) {
+    if (localStorage.getItem('langPref')) return true
+  }
+
+  return false
+}
+
+function setLanguagePreferance (lang: string): boolean {
+  if (storageExists()) {
+    localStorage.setItem('langPref', lang)
+    return true
+  }
+  return false
+}
+
+function getLanguagePreferance (): string {
+  if (langPrefStored()) {
+    const lang = localStorage.getItem('langPref')
+    if (lang) {
+      return lang
+    }
+  }
+  return ''
+}
+
 function getStoredNotes(): Note[] {
   if (storageExists()) {
     const notes: string | null = localStorage.getItem("notes");
@@ -80,6 +106,8 @@ function updateNote(noteId: string, obj: NoteUpdate) {
 }
 
 export {
+  setLanguagePreferance,
+  getLanguagePreferance,
   deleteNote,
   getNote,
   saveNote,

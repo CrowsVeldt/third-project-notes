@@ -78,6 +78,9 @@ id: string // hashed from Date.toString()
 - check search
 - make sure all text still fits 
 
+- add language toggle to settings
+- save language preference on page close, load on page load
+
 
 ## TODO
 
@@ -87,13 +90,13 @@ id: string // hashed from Date.toString()
 - dev: separate listener functions from component files, component files should _just_ handle markup and styling
 - xButton: add tooltip
 
-## Bonus features
+## Bonus features?
 - Hebrew/English UI toggle
 - dark/light theme
 
 ## Under consideration
 
-- have language option in settings, hebrew/english?
+- change note storage to store each note individually?
 - sort: have option to choose which color will be first when sorting by color?
 - UX: (if/when I add more items to settings): refactor togglesettings to get .settings-child(ren) and loop over them to toggle tabindex for all
 - UI: allow editing note elements by double clicking on them in fullNote?
