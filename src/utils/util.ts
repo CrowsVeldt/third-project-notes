@@ -69,6 +69,10 @@ function notesDifferent(noteA: any, noteB: any): boolean {
   return false;
 }
 
+function getBrowserDefaultLanguage(): string {
+  return navigator.language
+}
+
 export {
   formatDate,
   formatMinDate,
@@ -79,4 +83,5 @@ export {
   padTo2Digits,
   removeTag,
   sortMethods,
+  getBrowserDefaultLanguage
 };
