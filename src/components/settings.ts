@@ -1,5 +1,6 @@
 import newElement from "../utils/newElement";
 import langOptions from "../utils/textContent";
+import languageToggle from "./controls/languageToggle";
 import wipeButton from "./controls/wipeButton";
 
 const settings = newElement({
@@ -28,6 +29,11 @@ const settingsTitle = newElement({
   content: langOptions.english.elementText.settings.title,
   class: ["border-bottom", "border-dark", "settings"],
 }) as HTMLHeadingElement;
+
+const languageToggleContainer = newElement({
+  type: 'div',
+  id: 'lang-toggle-container'
+}) as HTMLDivElement
 
 const toggleButton = newElement({
   type: "button",
@@ -66,6 +72,7 @@ function settingsIsOpen(): boolean {
   return settings && settings.style.left === "0%";
 }
 
-settings.append(wipeButton, settingsTitle, toggleButton);
+languageToggleContainer.append(languageToggle)
+settings.append(wipeButton, languageToggleContainer, settingsTitle, toggleButton);
 
 export { settings, settingsIsOpen, toggleSettings };

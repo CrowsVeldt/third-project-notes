@@ -14,28 +14,27 @@ const storageExists = (): boolean => {
 
 const langPrefStored = (): boolean => {
   if (storageExists()) {
-    if (localStorage.getItem('langPref')) return true
+    if (localStorage.getItem("langPref")) return true;
   }
+  return false;
+};
 
-  return false
-}
-
-function setLanguagePreferance (lang: string): boolean {
+function setLanguagePreferance(lang: string): boolean {
   if (storageExists()) {
-    localStorage.setItem('langPref', lang)
-    return true
+    localStorage.setItem("langPref", lang);
+    return true;
   }
-  return false
+  return false;
 }
 
-function getLanguagePreferance (): string {
+function getLanguagePreferance(): string {
   if (langPrefStored()) {
-    const lang = localStorage.getItem('langPref')
+    const lang: string | null = localStorage.getItem("langPref");
     if (lang) {
-      return lang
+      return JSON.parse(lang);
     }
   }
-  return ''
+  return "";
 }
 
 function getStoredNotes(): Note[] {
