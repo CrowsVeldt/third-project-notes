@@ -1,4 +1,5 @@
 import newElement from "../../utils/newElement";
+import langOptions from "../../utils/textContent";
 
 function makeXButton(id: string, eventHandler: () => void): HTMLDivElement {
   const buttonContainer = newElement({
@@ -8,7 +9,7 @@ function makeXButton(id: string, eventHandler: () => void): HTMLDivElement {
     props: [
       ["data-bs-toggle", "tooltip"],
       ["data-bs-placement", "left"],
-      ["title", "Close window"],
+      ["title", langOptions.english.tooltips.xButton],
     ],
   }) as HTMLDivElement;
 

@@ -1,5 +1,6 @@
 import { formHandler } from "../noteForm";
 import newElement from "../../utils/newElement";
+import langOptions from "../../utils/textContent";
 
 const plusButton = newElement({
   type: "button",
@@ -9,7 +10,7 @@ const plusButton = newElement({
     ["tabindex", "4"],
     ["data-bs-toggle", "tooltip"],
     ["data-bs-placement", "left"],
-    ["title", "Add new note"],
+    ["title", langOptions.english.tooltips.plusButton],
   ],
   eventListener: {
     eventType: "click",

@@ -2,6 +2,7 @@ import { createInput } from "../labelAndInput";
 import { Note } from "../../utils/types";
 import { resetNoteContainer, wipeNoteContainer } from "../noteContainer";
 import { searchNotes } from "../../utils/storage";
+import langOptions from "../../utils/textContent";
 
 const searchBarContainer: HTMLDivElement = document.createElement("div");
 
@@ -11,7 +12,7 @@ const searchBar: HTMLInputElement = createInput(
   ["form-control", "border", "border-dark"],
   false,
   [
-    ["placeholder", "Search"],
+    ["placeholder", langOptions.english.placeholders.searchBar],
     ["tabindex", "3"],
   ]
 );

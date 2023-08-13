@@ -5,6 +5,7 @@ import newElement from "../utils/newElement";
 import { Note } from "../utils/types";
 import NoteObj from "../classes/Note";
 import { toggleFullNote } from "./fullNote";
+import langOptions from "../utils/textContent";
 
 function newNote(n: Note | undefined): HTMLDivElement {
   const note = n
@@ -76,14 +77,17 @@ function newNote(n: Note | undefined): HTMLDivElement {
   const noteCDate = newElement({
     type: "p",
     class: ["mb-0", "note-create-date", "align-self-start"],
-    content: `Created on - ${note.getCreateDate()}`,
+    content:
+      langOptions.english.elementText.note.dates.createDate +
+      note.getCreateDate(),
   }) as HTMLParagraphElement;
 
   const noteTDate = newElement({
     type: "p",
     class: ["mb-0", "note-target-date", "align-self-start"],
     content: note.getTargetDate()
-      ? `Target date - ${formatDate(note.getTargetDate())}`
+      ? langOptions.english.elementText.note.dates.targetDate +
+        formatDate(note.getTargetDate())
       : "-",
     // if no target date, turn value clear to keep the layout consistant
     props: [
@@ -98,7 +102,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
     eventListener: {
       eventType: "click",
       listener: () => {
-        if (confirm("Delete note?")) {
+        if (confirm(langOptions.english.confirmations.deleteNote)) {
           deleteNote(note.getId());
           document.getElementById(note.getId())?.remove();
         }

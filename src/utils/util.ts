@@ -1,20 +1,9 @@
+import langOptions from "./textContent";
 import { SortMethodType, colorObject } from "./types";
 
-const noteColors: colorObject[] = [
-  { name: "None", value: "none" },
-  { name: "Red", value: "salmon" },
-  { name: "Blue", value: "lightblue" },
-  { name: "Green", value: "lightgreen" },
-  { name: "Yellow", value: "gold" },
-  { name: "Brown", value: "tan" },
-];
+const noteColors: colorObject[] = langOptions.english.colors
 
-const sortMethods: SortMethodType[] = [
-  { method: "Date Created" },
-  { method: "Title" },
-  { method: "Target Date" },
-  { method: "Color" },
-];
+const sortMethods: SortMethodType[] = langOptions.english.sortMethods
 
 const hideClasses: string[] = [
   "position-fixed",

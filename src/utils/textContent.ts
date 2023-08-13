@@ -1,4 +1,4 @@
-const langOptions: {} = {
+const langOptions = {
   english: {
     colors: [
       { name: "None", value: "none" },
@@ -26,10 +26,8 @@ const langOptions: {} = {
       wipeButton: "Delete all",
       fullNote: {
         dates: {
-          dates: {
-            createDate: "Created on: ",
-            targetDate: "Target date: ",
-          },
+          createDate: "Created on: ",
+          targetDate: "Target date: ",
         },
       },
       note: {
@@ -55,7 +53,9 @@ const langOptions: {} = {
       pageElements: {
         pageTitle: "Notes",
         footer: "Footer",
-        settingsTitle: "Settings",
+      },
+      settings: {
+        title: "Settings",
       },
     },
     confirmations: {
@@ -66,4 +66,4 @@ const langOptions: {} = {
   },
 };
 
-export default langOptions
+export default langOptions;

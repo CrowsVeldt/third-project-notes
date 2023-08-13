@@ -72,7 +72,7 @@ id: string // hashed from Date.toString()
 - if currentYear === inputYear && currentMonth === inputMonth && currentDay > inputDay: reset all
 - else date is valid
 
-## Hebrew option
+## Language options
 - create text object to hold all strings
 - check all elements for RtL support
 - check search
@@ -83,7 +83,6 @@ id: string // hashed from Date.toString()
 
 - TODO: properly acknowledge fuse.js
 - BUG: target input date is displayed as mm/dd/yyyy on firefox on android and linux, displays appropriately on macos
-- search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result (this has to do with Fuze.js' fuzzy search. It can probably sorted with the search options)
 - UX: save details of last deleted note so it can be recovered
 - dev: separate listener functions from component files, component files should _just_ handle markup and styling
 - xButton: add tooltip
@@ -94,13 +93,14 @@ id: string // hashed from Date.toString()
 
 ## Under consideration
 
-- can i change the date display to show hebrew character?
+- have language option in settings, hebrew/english?
 - sort: have option to choose which color will be first when sorting by color?
 - UX: (if/when I add more items to settings): refactor togglesettings to get .settings-child(ren) and loop over them to toggle tabindex for all
 - UI: allow editing note elements by double clicking on them in fullNote?
 - types: add interface for noteObj?
 
 ## Given up for now
+- search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result (this has to do with Fuze.js' fuzzy search. It can probably sorted with the search options)
 - UI: getting the plus icon to be centered in all browsers has proven beyond my limited knowledge and patience for now, I've settled for good enought on the browsers I use most.
 - UX: making sure it works identically in all browsers
 - dates: Check dates work in different locales

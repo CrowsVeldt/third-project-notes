@@ -3,11 +3,7 @@ import { createInput, createLabel } from "./labelAndInput";
 import { FormElement, Note } from "../utils/types";
 import FormObject from "../classes/InputForm";
 import { getNote, updateNote } from "../utils/storage";
-import {
-  hideClasses,
-  notesDifferent,
-  removeTag,
-} from "../utils/util";
+import { hideClasses, notesDifferent, removeTag } from "../utils/util";
 import newElement from "../utils/newElement";
 import NoteObj from "../classes/Note";
 import { resetNoteContainer } from "./noteContainer";
@@ -15,15 +11,16 @@ import { textCounter, setCounter } from "./textCounter";
 import { tih } from "../main";
 import makeXButton from "./controls/xButton";
 import targetDateInput from "./controls/targetDateInput";
-import {errorMessage, updateErrorMessage} from "./errorMessage";
+import { errorMessage, updateErrorMessage } from "./errorMessage";
+import langOptions from "../utils/textContent";
 
 const form: FormObject = new FormObject(
-  "New Note",
+  langOptions.english.elementText.noteForm.formTitle.add,
   "",
   "",
   "",
   "none",
-  "Add Note"
+  langOptions.english.elementText.noteForm.actionButton.add
 );
 
 function formIsOpen(): boolean | void {
@@ -75,12 +72,12 @@ function editNote(noteId: string): void {
 
   if (note) {
     form.setAll(
-      "Edit Note",
+      langOptions.english.elementText.noteForm.formTitle.update,
       note.title,
       note.body,
       note.targetDate ? note.targetDate : "",
       note.color,
-      "Update Note",
+      langOptions.english.elementText.noteForm.actionButton.update,
       "edit-" + note.id
     );
     populateFormElement();
@@ -100,7 +97,7 @@ function closeForm(): void {
   tih.resetTabIndexes();
   if (form !== null) {
     form.classList.remove("d-flex");
-    updateErrorMessage('', '')
+    updateErrorMessage("", "");
     resetForm();
   }
 }
@@ -123,7 +120,9 @@ function formHandler(evt: Event | void, id: string | void): void {
     const callerId: string = target.id;
 
     if (inputForm && formTitle) {
-      const formNewNote: boolean = formTitle.textContent === "New Note";
+      const formNewNote: boolean =
+        formTitle.textContent ===
+        langOptions.english.elementText.noteForm.formTitle.add;
 
       if (callerId === "plus-button") {
         if (!formIsOpen()) {
@@ -177,10 +176,10 @@ const formHeader = newElement({
 
 const closeFormButton = makeXButton("close-form-button", closeForm);
 
-const titleLabel: HTMLLabelElement = createLabel("Note title", [
-  "form-label",
-  "form-child",
-]);
+const titleLabel: HTMLLabelElement = createLabel(
+  langOptions.english.elementText.noteForm.noteTitle,
+  ["form-label", "form-child"]
+);
 const titleInput: HTMLInputElement = createInput(
   "text",
   "title-input",
@@ -195,10 +194,10 @@ const titleInput: HTMLInputElement = createInput(
 const titleCount: HTMLParagraphElement = textCounter(titleInput);
 titleCount.classList.add("form-child");
 
-const bodyLabel: HTMLLabelElement = createLabel("Note body", [
-  "form-label",
-  "form-child",
-]);
+const bodyLabel: HTMLLabelElement = createLabel(
+  langOptions.english.elementText.noteForm.body,
+  ["form-label", "form-child"]
+);
 const bodyInput = newElement({
   type: "textarea",
   id: "body-input",
@@ -213,15 +212,18 @@ const bodyInput = newElement({
 const bodyCount: HTMLParagraphElement = textCounter(bodyInput);
 bodyCount.classList.add("form-child");
 
-const tDateLabel: HTMLLabelElement = createLabel("Target date", [
+const tDateLabel: HTMLLabelElement = createLabel(
+  langOptions.english.elementText.noteForm.date,
+  ["form-label", "form-child"]
+);
+
+const tDateInput = targetDateInput;
+const dateError = errorMessage;
+
+const colorLabel = createLabel(langOptions.english.elementText.noteForm.color, [
   "form-label",
   "form-child",
 ]);
-
-const tDateInput = targetDateInput
-const dateError = errorMessage
-
-const colorLabel = createLabel("Select color", ["form-label", "form-child"]);
 const cSelect: HTMLSelectElement = colorSelect;
 
 const actionButton: HTMLButtonElement = newElement({
@@ -243,7 +245,12 @@ const actionButton: HTMLButtonElement = newElement({
         return;
       }
 
-      if (form && form !== undefined && confirm('Update note details? This cannot be undone')) {
+      if (
+        form &&
+        form !== undefined
+        // !!!! removed for dev
+        // && confirm(langOptions.english.confirmations.updateNote)
+      ) {
         if (form.getNoteId()) {
           // receive noteId from form, and slice off the first five chars to get the original note id
           const cleanId: string = form.getNoteId()!.slice(5);

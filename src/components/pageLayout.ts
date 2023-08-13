@@ -1,4 +1,5 @@
 import newElement from "../utils/newElement";
+import langOptions from "../utils/textContent";
 
 // header
 const head = newElement({
@@ -10,7 +11,7 @@ const head = newElement({
 const headTitle = newElement({
   type: "h1",
   id: "title",
-  content: "Notes",
+  content: langOptions.english.elementText.pageElements.pageTitle,
 }) as HTMLHeadElement;
 
 head.append(headTitle);
@@ -30,7 +31,7 @@ const foot = newElement({
 
 const footTitle = newElement({
   type: "h2",
-  content: "Footer",
+  content: langOptions.english.elementText.pageElements.footer,
 }) as HTMLHeadingElement;
 
 foot.append(footTitle);

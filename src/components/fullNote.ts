@@ -3,6 +3,7 @@ import { getNote } from "../utils/storage";
 import newElement from "../utils/newElement";
 import { Note } from "../utils/types";
 import makeXButton from "./controls/xButton";
+import langOptions from "../utils/textContent";
 
 function getFullNoteElements(): {
   title: HTMLHeadingElement;
@@ -37,10 +38,14 @@ function populateFullNote(id: string): void {
     title.innerText = note.title;
     title.style.backgroundColor = note.color === "none" ? "white" : note.color;
     body.innerText = note.body;
-    created.innerText = `Created on: ${note.createDate}`;
+    created.innerText =
+      langOptions.english.elementText.fullNote.dates.createDate +
+      note.createDate;
     if (note.targetDate) {
       target.style.display = "inline-block";
-      target.innerText = `Target date: ${formatDate(note.targetDate)}`;
+      target.innerText =
+        langOptions.english.elementText.fullNote.dates.targetDate +
+        formatDate(note.targetDate);
     } else {
       target.innerHTML = "";
       target.style.display = "none";

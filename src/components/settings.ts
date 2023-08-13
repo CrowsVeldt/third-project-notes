@@ -1,4 +1,5 @@
 import newElement from "../utils/newElement";
+import langOptions from "../utils/textContent";
 import wipeButton from "./controls/wipeButton";
 
 const settings = newElement({
@@ -24,7 +25,7 @@ const settings = newElement({
 const settingsTitle = newElement({
   type: "h3",
   id: "settings-title",
-  content: "Settings",
+  content: langOptions.english.elementText.settings.title,
   class: ["border-bottom", "border-dark", "settings"],
 }) as HTMLHeadingElement;
 
@@ -36,7 +37,7 @@ const toggleButton = newElement({
   props: [
     ["data-bs-toggle", "tooltip"],
     ["data-bs-placement", "right"],
-    ["title", "Toggle settings menu"],
+    ["title", langOptions.english.tooltips.settings],
   ],
   eventListener: {
     eventType: "click",

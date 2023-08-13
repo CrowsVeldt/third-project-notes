@@ -2,11 +2,12 @@ import newElement from "../../utils/newElement";
 import { resetNoteContainer } from "../noteContainer";
 import { storageExists, wipeStorage } from "../../utils/storage";
 import { toggleSettings } from "../settings";
+import langOptions from "../../utils/textContent";
 
 const wipeButton: HTMLButtonElement = newElement({
   type: "button",
   id: "wipe-button",
-  content: "Delete all",
+  content: langOptions.english.elementText.wipeButton,
   class: [
     "settings",
     "settings-child",
@@ -22,7 +23,7 @@ const wipeButton: HTMLButtonElement = newElement({
     listener: () => {
       if (
         storageExists() &&
-        confirm("Delete all notes? This cannot be undone.")
+        confirm(langOptions.english.confirmations.wipeButton)
       ) {
         wipeStorage();
         resetNoteContainer();
