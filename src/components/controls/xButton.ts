@@ -5,6 +5,11 @@ function makeXButton(id: string, eventHandler: () => void): HTMLDivElement {
     type: "div",
     id: `${id}-container`,
     class: ["form-child", "x-button-container"],
+    props: [
+      ["data-bs-toggle", "tooltip"],
+      ["data-bs-placement", "left"],
+      ["title", "Close window"],
+    ],
   }) as HTMLDivElement;
 
   const xButton = newElement({

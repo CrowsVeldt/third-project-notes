@@ -72,6 +72,13 @@ id: string // hashed from Date.toString()
 - if currentYear === inputYear && currentMonth === inputMonth && currentDay > inputDay: reset all
 - else date is valid
 
+## Hebrew option
+- create text object to hold all strings
+- check all elements for RtL support
+- check search
+- make sure all text still fits 
+
+
 ## TODO
 
 - TODO: properly acknowledge fuse.js
@@ -79,6 +86,7 @@ id: string // hashed from Date.toString()
 - search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result (this has to do with Fuze.js' fuzzy search. It can probably sorted with the search options)
 - UX: save details of last deleted note so it can be recovered
 - dev: separate listener functions from component files, component files should _just_ handle markup and styling
+- xButton: add tooltip
 
 ## Bonus features
 - Hebrew/English UI toggle
@@ -86,6 +94,7 @@ id: string // hashed from Date.toString()
 
 ## Under consideration
 
+- can i change the date display to show hebrew character?
 - sort: have option to choose which color will be first when sorting by color?
 - UX: (if/when I add more items to settings): refactor togglesettings to get .settings-child(ren) and loop over them to toggle tabindex for all
 - UI: allow editing note elements by double clicking on them in fullNote?

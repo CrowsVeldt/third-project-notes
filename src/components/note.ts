@@ -76,14 +76,14 @@ function newNote(n: Note | undefined): HTMLDivElement {
   const noteCDate = newElement({
     type: "p",
     class: ["mb-0", "note-create-date", "align-self-start"],
-    content: `Created on ${note.getCreateDate()}`,
+    content: `Created on - ${note.getCreateDate()}`,
   }) as HTMLParagraphElement;
 
   const noteTDate = newElement({
     type: "p",
     class: ["mb-0", "note-target-date", "align-self-start"],
     content: note.getTargetDate()
-      ? `Target date ${formatDate(note.getTargetDate())}`
+      ? `Target date - ${formatDate(note.getTargetDate())}`
       : "-",
     // if no target date, turn value clear to keep the layout consistant
     props: [
