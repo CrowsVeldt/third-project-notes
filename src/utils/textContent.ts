@@ -1,4 +1,12 @@
 const langOptions = {
+  // accept language code from [en-Us, he] returns textContent object for that language
+  getLanguage: function (langName: string) {
+    if (langName === "en-US") {
+      return this.english;
+    } else if (langName === "he") {
+      return this.hebrew;
+    }
+  },
   english: {
     colors: [
       { name: "None", value: "none" },

@@ -82,6 +82,7 @@ id: string // hashed from Date.toString()
 
 - check for langPref on startup, if none found: fallback to browser default
 - save language preference on page close
+- when a language is chosen, pass the apropriate language object to all elements
 
 - make xbutton responsive to direction change
 - style language preference toggle
