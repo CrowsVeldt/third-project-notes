@@ -243,7 +243,7 @@ const actionButton: HTMLButtonElement = newElement({
         return;
       }
 
-      if (form && form !== undefined) {
+      if (form && form !== undefined && confirm('Update note details? This cannot be undone')) {
         if (form.getNoteId()) {
           // receive noteId from form, and slice off the first five chars to get the original note id
           const cleanId: string = form.getNoteId()!.slice(5);

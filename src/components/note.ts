@@ -98,8 +98,10 @@ function newNote(n: Note | undefined): HTMLDivElement {
     eventListener: {
       eventType: "click",
       listener: () => {
-        deleteNote(note.getId());
-        document.getElementById(note.getId())?.remove();
+        if (confirm("Delete note?")) {
+          deleteNote(note.getId());
+          document.getElementById(note.getId())?.remove();
+        }
       },
     },
   }) as HTMLButtonElement;

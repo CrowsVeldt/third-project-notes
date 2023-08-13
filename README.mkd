@@ -17,10 +17,7 @@
 - I can delete all notes, but need to confirm before it will happen
 - I can search notes by title and body contents
 - I can sort notes by title (ABC), date (creation or target), and color
-
-### In progress
-
-- The app fits well and looks good on any screen size
+- The app fits well and looks good on any screen size ~
 
 ## Components
 
@@ -79,22 +76,25 @@ id: string // hashed from Date.toString()
 
 - TODO: properly acknowledge fuse.js
 - BUG: target input date is displayed as mm/dd/yyyy on firefox on android and linux, displays appropriately on macos
+- search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result (this has to do with Fuze.js' fuzzy search. It can probably sorted with the search options)
+- UX: save details of last deleted note so it can be recovered
+- dev: separate listener functions from component files, component files should _just_ handle markup and styling
+
+## Bonus features
+- Hebrew/English UI toggle
+- dark/light theme
 
 ## Under consideration
 
-- UX: add popup asking user if they are sure they want to edit a note before saving
-- search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result (this has to do with Fuze.js' fuzzy search. It can probably sorted with the search options)
-- dates: Check dates work in different locales
-- sort: have option to choose which color will be first when sorting by color
-- UX: save details of last deleted note so it can be recovered
+- sort: have option to choose which color will be first when sorting by color?
 - UX: (if/when I add more items to settings): refactor togglesettings to get .settings-child(ren) and loop over them to toggle tabindex for all
 - UI: allow editing note elements by double clicking on them in fullNote?
-- dev: separate listener functions from component files, component files should _just_ handle markup and styling
 - types: add interface for noteObj?
 
 ## Given up for now
 - UI: getting the plus icon to be centered in all browsers has proven beyond my limited knowledge and patience for now, I've settled for good enought on the browsers I use most.
 - UX: making sure it works identically in all browsers
+- dates: Check dates work in different locales
 
 # Acknowledgements:
 
