@@ -10,7 +10,7 @@ const head = newElement({
 
 const headTitle = newElement({
   type: "h1",
-  id: "title",
+  id: "page-title",
   content: langOptions.english.elementText.pageElements.pageTitle,
 }) as HTMLHeadElement;
 
@@ -31,6 +31,7 @@ const foot = newElement({
 
 const footTitle = newElement({
   type: "h2",
+  id: 'page-footer',
   content: langOptions.english.elementText.pageElements.footer,
 }) as HTMLHeadingElement;
 

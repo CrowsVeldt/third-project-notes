@@ -178,6 +178,7 @@ const closeFormButton = makeXButton("close-form-button", closeForm);
 
 const titleLabel: HTMLLabelElement = createLabel(
   langOptions.english.elementText.noteForm.noteTitle,
+  "note-title-label",
   ["form-label", "form-child"]
 );
 const titleInput: HTMLInputElement = createInput(
@@ -196,6 +197,7 @@ titleCount.classList.add("form-child");
 
 const bodyLabel: HTMLLabelElement = createLabel(
   langOptions.english.elementText.noteForm.body,
+  "note-body-label",
   ["form-label", "form-child"]
 );
 const bodyInput = newElement({
@@ -214,16 +216,18 @@ bodyCount.classList.add("form-child");
 
 const tDateLabel: HTMLLabelElement = createLabel(
   langOptions.english.elementText.noteForm.date,
+  "note-target-date-label",
   ["form-label", "form-child"]
 );
 
 const tDateInput = targetDateInput;
 const dateError = errorMessage;
 
-const colorLabel = createLabel(langOptions.english.elementText.noteForm.color, [
-  "form-label",
-  "form-child",
-]);
+const colorLabel = createLabel(
+  langOptions.english.elementText.noteForm.color,
+  "note-color-label",
+  ["form-label", "form-child"]
+);
 const cSelect: HTMLSelectElement = colorSelect;
 
 const actionButton: HTMLButtonElement = newElement({

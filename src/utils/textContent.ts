@@ -1,78 +1,80 @@
 const langOptions = {
-  // accept language code from [en-Us, he] returns textContent object for that language
   getLanguage: function (langName: string) {
+    // console.log(this[langName])
     if (langName === "en-US") {
       return this.english;
     } else if (langName === "he") {
       return this.hebrew;
     }
+
+    console.log('fail')
   },
-  english: {
-    colors: [
-      { name: "None", value: "none" },
-      { name: "Red", value: "salmon" },
-      { name: "Blue", value: "lightblue" },
-      { name: "Green", value: "lightgreen" },
-      { name: "Yellow", value: "gold" },
-      { name: "Brown", value: "tan" },
-    ],
-    sortMethods: [
-      { method: "Date Created" },
-      { method: "Title" },
-      { method: "Target Date" },
-      { method: "Color" },
-    ],
-    tooltips: {
-      plusButton: "Add new note",
-      xButton: "Close window",
-      settings: "Toggle settings menu",
-    },
-    placeholders: {
-      searchBar: "search",
-    },
-    elementText: {
-      wipeButton: "Delete all",
-      fullNote: {
-        dates: {
-          createDate: "Created on: ",
-          targetDate: "Target date: ",
-        },
-      },
-      note: {
-        dates: {
-          createDate: "Created on - ",
-          targetDate: "Target date - ",
-        },
-      },
-      noteForm: {
-        formTitle: {
-          add: "New note",
-          update: "Edit note",
-        },
-        noteTitle: "Note title",
-        body: "Note body",
-        date: "Target date",
-        color: "Select color",
-        actionButton: {
-          add: "Add note",
-          update: "Update note",
-        },
-      },
-      pageElements: {
-        pageTitle: "Notes",
-        footer: "Footer",
-      },
-      settings: {
-        title: "Settings",
-        langToggle: "English",
-      },
-    },
-    confirmations: {
-      wipeButton: "Delete all notes? This cannot be undone.",
-      deleteNote: "Delete note?",
-      updateNote: "Update note details? This cannot be undone",
-    },
-  },
+  english: { // Done
+    colors: [ // Done
+      { name: "None", value: "none" }, // Done
+      { name: "Red", value: "salmon" }, // Done
+      { name: "Blue", value: "lightblue" }, // Done
+      { name: "Green", value: "lightgreen" }, // Done
+      { name: "Yellow", value: "gold" }, // Done
+      { name: "Brown", value: "tan" }, // Done
+    ], // Done
+    sortMethods: [ // Done
+      { method: "Date Created" }, // Done
+      { method: "Title" }, // Done
+      { method: "Target Date" }, // Done
+      { method: "Color" }, // Done
+    ], // Done
+    tooltips: { // Done
+      plusButton: "Add new note", // Done
+      xButton: "Close window", // done
+      settings: "Toggle settings menu", // done
+    }, // Done
+    placeholders: { // Done
+      searchBar: "search", // Done
+    }, // Done
+    elementText: { //done
+      wipeButton: "Delete all", // done
+      fullNote: { // Done
+        dates: { // Done
+          createDate: "Created on: ", // Done
+          targetDate: "Target date: ", // Done
+        }, // Done
+      }, // Done
+      note: { // Done
+        dates: { // Done
+          createDate: "Created on - ", // Done
+          targetDate: "Target date - ", // Done
+        }, // Donw
+      }, // Donw
+      noteForm: { // Donw
+        formTitle: { // Donw
+          add: "New note", // Donw
+          update: "Edit note", // Donw
+        }, // Done
+        noteTitle: "Note title", // Done
+        body: "Note body", // Done
+        date: "Target date", // Done
+        color: "Select color", // Done
+        actionButton: { // Done
+          add: "Add note",// Done
+          update: "Update note",// Done
+        },// Done
+      },// Done
+      pageElements: { // Done
+        pageTitle: "Notes", // Done
+        footer: "Footer", // Done
+      }, // Done
+      settings: { // Done
+        title: "Settings", // Done
+        langToggle: "English", // Done
+      }, // Done
+    }, // Done
+    confirmations: { // Done
+      wipeButton: "Delete all notes? This cannot be undone.", // Done
+      deleteNote: "Delete note?", // Done
+      updateNote: "Update note details? This cannot be undone", // Done
+    }, // Done
+  }, // Done
   hebrew: {
     colors: [
       { name: "ללא צבע", value: "none" },

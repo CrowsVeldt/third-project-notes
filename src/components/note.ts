@@ -98,7 +98,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
   const deleteButton = newElement({
     type: "button",
     id: deleteId,
-    class: ["align-self-center", "btn", "note-button"],
+    class: ["align-self-center", "btn", "note-button", 'note-delete-button'],
     eventListener: {
       eventType: "click",
       listener: () => {

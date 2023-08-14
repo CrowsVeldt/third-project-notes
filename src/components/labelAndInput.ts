@@ -1,8 +1,9 @@
 import newElement from "../utils/newElement";
 
-function createLabel(value: string, classes: string[]): HTMLLabelElement {
+function createLabel(value: string, id: string, classes: string[]): HTMLLabelElement {
   const label: HTMLLabelElement = newElement({
     type: "label",
+    id: id,
     class: [...classes],
     content: value,
   }) as HTMLLabelElement;
