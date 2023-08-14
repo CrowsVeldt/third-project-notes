@@ -19,7 +19,7 @@ import {
   getBrowserDefaultLanguage,
   langPrefStored,
 } from "./utils/language";
-import langOptions from "./utils/textContent";
+// import langOptions from "./utils/textContent";
 
 declare var bootstrap: any;
 
@@ -33,8 +33,7 @@ tooltipTriggerList.map(function (tooltipTriggerEl) {
 });
 
 let lang = langPrefStored() ? getLanguagePreferance() : getBrowserDefaultLanguage()
-langOptions.getLanguage(lang)
-// TODO: pass langOptions.getLanguage(lang) to app and all it's children
+// langOptions.getLanguage(lang)
 
 main.append(settings, noteContainer, formElement, fullNote);
 

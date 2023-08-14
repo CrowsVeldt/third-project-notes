@@ -6,6 +6,7 @@ import { Note } from "../utils/types";
 import NoteObj from "../classes/Note";
 import { toggleFullNote } from "./fullNote";
 import langOptions from "../utils/textContent";
+import l18n from "../utils/l18n";
 
 function newNote(n: Note | undefined): HTMLDivElement {
   const note = n
@@ -102,7 +103,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
     eventListener: {
       eventType: "click",
       listener: () => {
-        if (confirm(langOptions.english.confirmations.deleteNote)) {
+        if (confirm(l18n.getConfirmation('class', 'en-US', 'note-delete-button'))) {
           deleteNote(note.getId());
           document.getElementById(note.getId())?.remove();
         }

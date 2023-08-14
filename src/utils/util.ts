@@ -1,9 +1,9 @@
 import l18n from "./l18n";
 import { SortMethodType, colorObject } from "./types";
 
-const noteColors: colorObject[] = l18n['en-US'].colors;
+const noteColors: colorObject[] = l18n.getColors('en-US')
 
-const sortMethods: SortMethodType[] = l18n['en-US'].sortMethods;
+const sortMethods: SortMethodType[] = l18n.getSortMethods('en-US');
 
 const hideClasses: string[] = [
   "position-fixed",

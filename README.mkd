@@ -90,6 +90,7 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
+- REGRESSION: wipe button not receiving event? just closes settings
 - TODO: properly acknowledge fuse.js
 - BUG: target input date is displayed as mm/dd/yyyy on firefox on android and linux, displays appropriately on macos
 - UX: save details of last deleted note so it can be recovered

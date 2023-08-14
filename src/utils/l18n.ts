@@ -1,4 +1,19 @@
 const l18n = {
+  getColors(lang: string): any {
+    return this[lang].colors;
+  },
+  getSortMethods(lang: string): any {
+    return this[lang].sortMethods;
+  },
+  getToolTip(lang: string, id: string): any {
+    return this[lang].tooltips[id];
+  },
+  getConfirmation(type: "id" | "class", lang: string, identifier: string): any {
+    return this[lang].confirmations[type][identifier];
+  },
+  getTextContent(type: 'id'| 'class', lang: string, identifier: string): any {
+    // finish this
+  },
   "en-US": {
     colors: [
       { name: "None", value: "none" },
@@ -14,18 +29,26 @@ const l18n = {
       { method: "Target Date" },
       { method: "Color" },
     ],
+    tooltips: {
+      "plus-button": "Add new note",
+      "close-form-button": "Close form",
+      "close-full-note": "Close note",
+      "toggle-settings": "Toggle settings menu",
+    },
+    confirmations: {
+      id: {
+        "wipe-button": "Delete all notes? This cannot be undone.",
+        "form-button": "Update note details? This cannot be undone",
+      },
+      class: {
+        "note-delete-button": "Delete note?",
+      },
+    },
     elementsById: {
       // placeholder:
       "search-bar": "Search",
-      // tooltip:
-      "plus-button": "Add new note",
-      "close-form-button": "Close window",
-      "toggle-settings": "Toggle settings menu",
       // text content:
-      "wipe-button": {
-        textContent: "Delete all",
-        confirm: "Delete all notes? This cannot be undone.",
-      },
+      "wipe-button": "Delete all",
       "full-note-created": "Created on: ",
       "full-note-target": "Target Date: ",
       "input-form-title": { add: "New note", update: "Edit Note" },
@@ -35,10 +58,7 @@ const l18n = {
       "note-color-label": "note-color-label",
       "form-button": {
         add: "Add note",
-        update: {
-          textContent: "Update note",
-          confirm: "Update note details? This cannot be undone",
-        },
+        update: "Update note",
       },
       "page-title": "Notes",
       "page-footer": "Footer",
@@ -46,13 +66,10 @@ const l18n = {
       "language-toggle": "English", // temporary value!!!!
     },
     elementsByClass: {
-      // text content:
       "note-target-date": "Target date - ",
       "note-create-date": "Created on - ",
-      // confirm
-      "note-delete-button": "Delete note?",
     },
   },
 };
 
-export default l18n
+export default l18n;

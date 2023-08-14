@@ -13,6 +13,7 @@ import makeXButton from "./controls/xButton";
 import targetDateInput from "./controls/targetDateInput";
 import { errorMessage, updateErrorMessage } from "./errorMessage";
 import langOptions from "../utils/textContent";
+import l18n from "../utils/l18n";
 
 const form: FormObject = new FormObject(
   langOptions.english.elementText.noteForm.formTitle.add,
@@ -252,8 +253,7 @@ const actionButton: HTMLButtonElement = newElement({
       if (
         form &&
         form !== undefined
-        // !!!! removed for dev
-        // && confirm(langOptions.english.confirmations.updateNote)
+        && confirm(l18n.getConfirmation('id', 'en-US', 'form-button'))
       ) {
         if (form.getNoteId()) {
           // receive noteId from form, and slice off the first five chars to get the original note id

@@ -1,3 +1,4 @@
+import l18n from "../utils/l18n";
 import newElement from "../utils/newElement";
 import langOptions from "../utils/textContent";
 import languageToggle from "./controls/languageToggle";
@@ -27,24 +28,24 @@ const settingsTitle = newElement({
   type: "h3",
   id: "settings-title",
   content: langOptions.english.elementText.settings.title,
-  class: ["border-bottom", "border-dark", 'settings'],
+  class: ["border-bottom", "border-dark", "settings", "l18n-target", 'settings-child'],
 }) as HTMLHeadingElement;
 
 const languageToggleContainer = newElement({
   type: "div",
   id: "lang-toggle-container",
-  class: ['settings', 'settings-child']
+  class: ["settings", "settings-child"],
 }) as HTMLDivElement;
 
 const toggleButton = newElement({
   type: "button",
   id: "toggle-settings",
   content: `-\n -\n -`,
-  class: ["border", "border-dark", "button-color", "no-select"],
+  class: ["border", "border-dark", "button-color", "no-select", "l18n-target", 'settings-child'],
   props: [
     ["data-bs-toggle", "tooltip"],
     ["data-bs-placement", "right"],
-    ["title", langOptions.english.tooltips.settings],
+    ["title", l18n.getToolTip("en-US", "toggle-settings")],
   ],
   eventListener: {
     eventType: "click",
