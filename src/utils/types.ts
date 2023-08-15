@@ -55,6 +55,34 @@ type CounterTarget = HTMLInputElement | HTMLTextAreaElement;
 type L18nLangOption = "en-US" | "he";
 type L18nIdentifier = "id" | "class";
 
+type L18nTextContent =
+  | "search-bar"
+  | "page-title"
+  | "page-footer"
+  | "full-note-created"
+  | "full-note-target"
+  | "form-heading:add"
+  | "form-heading:update"
+  | "form-button:add"
+  | "form-button:update"
+  | "note-title-label"
+  | "note-body-label"
+  | "note-target-date-label"
+  | "note-color-label"
+  | "wipe-button"
+  | "settings-title"
+  | "language-toggle"
+  | "note-target-date"
+  | "note-create-date";
+
+type L18nToolTip =
+  | "plus-button"
+  | "close-form-button"
+  | "close-full-note"
+  | "toggle-settings";
+
+type L18nConfirmation = "wipe-button" | "note-delete-button";
+
 export type {
   colorObject,
   ElementParams,
@@ -66,4 +94,7 @@ export type {
   CounterTarget,
   L18nLangOption,
   L18nIdentifier,
+  L18nTextContent,
+  L18nToolTip,
+  L18nConfirmation,
 };

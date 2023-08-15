@@ -1,8 +1,8 @@
-import l18n from "../utils/l18n";
 import { getCurrentLanguage } from "../utils/language";
-import newElement from "../utils/newElement";
+import l18n from "../utils/l18n";
 import { L18nLangOption } from "../utils/types";
 import languageToggle from "./controls/languageToggle";
+import newElement from "../utils/newElement";
 import wipeButton from "./controls/wipeButton";
 
 const settings = newElement({
@@ -29,7 +29,6 @@ const settingsTitle = newElement({
   type: "h3",
   id: "settings-title",
   content: l18n.getTextContent(
-    "id",
     getCurrentLanguage() as L18nLangOption,
     "settings-title"
   ),

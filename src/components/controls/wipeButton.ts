@@ -10,7 +10,6 @@ const wipeButton: HTMLButtonElement = newElement({
   type: "button",
   id: "wipe-button",
   content: l18n.getTextContent(
-    "id",
     getCurrentLanguage() as L18nLangOption,
     "wipe-button"
   ),
@@ -30,7 +29,6 @@ const wipeButton: HTMLButtonElement = newElement({
         storageExists() &&
         confirm(
           l18n.getConfirmation(
-            "id",
             getCurrentLanguage() as L18nLangOption,
             "wipe-button"
           )

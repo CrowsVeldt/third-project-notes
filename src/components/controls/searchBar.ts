@@ -15,11 +15,7 @@ const searchBar: HTMLInputElement = createInput(
   [
     [
       "placeholder",
-      l18n.getTextContent(
-        "id",
-        getCurrentLanguage() as L18nLangOption,
-        "search-bar"
-      ),
+      l18n.getTextContent(getCurrentLanguage() as L18nLangOption, "search-bar"),
     ],
     ["tabindex", "3"],
   ]

@@ -1,4 +1,9 @@
-import { L18nLangOption, L18nIdentifier } from "./types";
+import {
+  L18nLangOption,
+  L18nTextContent,
+  L18nToolTip,
+  L18nConfirmation,
+} from "./types";
 
 const l18n = {
   getColors(lang: L18nLangOption): any {
@@ -7,23 +12,14 @@ const l18n = {
   getSortMethods(lang: L18nLangOption): any {
     return this[lang].sortMethods;
   },
-  getToolTip(lang: L18nLangOption, id: any): any {
+  getToolTip(lang: L18nLangOption, id: L18nToolTip): any {
     return this[lang].tooltips[id];
   },
-  getConfirmation(
-    type: L18nIdentifier,
-    lang: L18nLangOption,
-    identifier: string
-  ): any {
-    return this[lang].confirmations[type][identifier];
+  getConfirmation(lang: L18nLangOption, key: L18nConfirmation): any {
+    return this[lang].confirmations[key];
   },
-  getTextContent(
-    type: L18nIdentifier,
-    lang: L18nLangOption,
-    identifier: string
-  ): any {
-    const getBy = type === "id" ? this[lang].elementsById : this[lang].elementsByClass;
-    return getBy[identifier];
+  getTextContent(lang: L18nLangOption, key: L18nTextContent): any {
+    return this[lang].textContent[key];
   },
   "en-US": {
     colors: [
@@ -47,17 +43,11 @@ const l18n = {
       "toggle-settings": "Toggle settings menu",
     },
     confirmations: {
-      id: {
-        "wipe-button": "Delete all notes? This cannot be undone.",
-      },
-      class: {
-        "note-delete-button": "Delete note?",
-      },
+      "wipe-button": "Delete all notes? This cannot be undone.",
+      "note-delete-button": "Delete note?",
     },
-    elementsById: {
-      // placeholder:
+    textContent: {
       "search-bar": "Search",
-      // text content:
       "page-title": "Notes",
       "page-footer": "Footer",
       "full-note-created": "Created on: ",
@@ -73,8 +63,6 @@ const l18n = {
       "wipe-button": "Delete all",
       "settings-title": "Settings",
       "language-toggle": "English", // temporary value!!!!
-    },
-    elementsByClass: {
       "note-target-date": "Target date - ",
       "note-create-date": "Created on - ",
     },
@@ -101,17 +89,11 @@ const l18n = {
       "toggle-settings": "פתח/סגור הגדרות",
     },
     confirmations: {
-      id: {
-        "wipe-button": "למחוק את כל הפתקים? אי אפשר לשחזר",
-      },
-      class: {
-        "note-delete-button": "למחוק?",
-      },
+      "wipe-button": "למחוק את כל הפתקים? אי אפשר לשחזר",
+      "note-delete-button": "למחוק?",
     },
-    elementsById: {
-      // placeholder:
+    textContent: {
       "search-bar": "חיפוש",
-      // text content:
       "page-title": "פתקים",
       "page-footer": "פוטר",
       "full-note-created": "תאריך ייצור: ",
@@ -127,8 +109,6 @@ const l18n = {
       "wipe-button": "למחוק הכל",
       "settings-title": "הגדרות",
       "language-toggle": "עברית", // temporary value!!!!
-    },
-    elementsByClass: {
       "note-target-date": "תאריך יעד - ",
       "note-create-date": "תאריך יצור - ",
     },
@@ -136,55 +116,3 @@ const l18n = {
 };
 
 export default l18n;
-
-// type LangObject = {
-//   colors: [
-//     { name: string; value: string },
-//     { name: string; value: string },
-//     { name: string; value: string },
-//     { name: string; value: string },
-//     { name: string; value: string }
-//   ];
-//   sortMethods: [
-//     { method: string },
-//     { method: string },
-//     { method: string },
-//     { method: string }
-//   ];
-//   tooltips: {
-//     "plus-button": string;
-//     "close-form-button": string;
-//     "close-full-note": string;
-//     "toggle-settings": string;
-//   };
-//   confirmations: {
-//     id: {
-//       "wipe-button": string;
-//     };
-//     class: {
-//       "note-delete-button": string;
-//     };
-//   };
-//   elementsById: {
-//     "search-bar": string;
-//     "page-title": string;
-//     "page-footer": string;
-//     "full-note-created": string;
-//     "full-note-target": string;
-//     "form-heading:add": string;
-//     "form-heading:update": string;
-//     "form-button:add": string;
-//     "form-button:update": string;
-//     "note-title-label": string;
-//     "note-body-label": string;
-//     "note-target-date-label": string;
-//     "note-color-label": string;
-//     "wipe-button": string;
-//     "settings-title": string;
-//     "language-toggle": string;
-//   };
-//   elementsByClass: {
-//     "note-target-date": string;
-//     "note-create-date": string;
-//   };
-// };

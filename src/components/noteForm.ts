@@ -17,7 +17,6 @@ import { getCurrentLanguage } from "../utils/language";
 
 const form: FormObject = new FormObject(
   l18n.getTextContent(
-    "id",
     getCurrentLanguage() as L18nLangOption,
     "form-heading:add"
   ),
@@ -26,11 +25,7 @@ const form: FormObject = new FormObject(
   "",
   // TODO: get color name from l18n
   "none",
-  l18n.getTextContent(
-    "id",
-    getCurrentLanguage() as L18nLangOption,
-    "form-button:add"
-  )
+  l18n.getTextContent(getCurrentLanguage() as L18nLangOption, "form-button:add")
 );
 
 function formIsOpen(): boolean | void {
@@ -81,7 +76,6 @@ function editNote(noteId: string): void {
   if (note) {
     form.setAll(
       l18n.getTextContent(
-        "id",
         getCurrentLanguage() as L18nLangOption,
         "form-heading:update"
       ),
@@ -90,7 +84,6 @@ function editNote(noteId: string): void {
       note.targetDate ? note.targetDate : "",
       note.color,
       l18n.getTextContent(
-        "id",
         getCurrentLanguage() as L18nLangOption,
         "form-button:update"
       ),
@@ -137,7 +130,6 @@ function formHandler(evt: Event | void, id: string | void): void {
       const isFormNewNote: boolean =
         formTitle.textContent ===
         l18n.getTextContent(
-          "id",
           getCurrentLanguage() as L18nLangOption,
           "form-heading:add"
         );
@@ -195,7 +187,6 @@ const closeFormButton = makeXButton("close-form-button", closeForm);
 
 const titleLabel: HTMLLabelElement = createLabel(
   l18n.getTextContent(
-    "id",
     getCurrentLanguage() as L18nLangOption,
     "note-title-label"
   ),
@@ -218,7 +209,6 @@ titleCount.classList.add("form-child");
 
 const bodyLabel: HTMLLabelElement = createLabel(
   l18n.getTextContent(
-    "id",
     getCurrentLanguage() as L18nLangOption,
     "note-body-label"
   ),
@@ -241,7 +231,6 @@ bodyCount.classList.add("form-child");
 
 const tDateLabel: HTMLLabelElement = createLabel(
   l18n.getTextContent(
-    "id",
     getCurrentLanguage() as L18nLangOption,
     "note-target-date-label"
   ),
@@ -254,7 +243,6 @@ const dateError = errorMessage;
 
 const colorLabel = createLabel(
   l18n.getTextContent(
-    "id",
     getCurrentLanguage() as L18nLangOption,
     "note-color-label"
   ),

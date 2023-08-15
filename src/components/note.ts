@@ -80,7 +80,6 @@ function newNote(n: Note | undefined): HTMLDivElement {
     class: ["mb-0", "note-create-date", "align-self-start"],
     content:
       l18n.getTextContent(
-        "class",
         getCurrentLanguage() as L18nLangOption,
         "note-create-date"
       ) + note.getCreateDate(),
@@ -91,7 +90,6 @@ function newNote(n: Note | undefined): HTMLDivElement {
     class: ["mb-0", "note-target-date", "align-self-start"],
     content: note.getTargetDate()
       ? l18n.getTextContent(
-          "class",
           getCurrentLanguage() as L18nLangOption,
           "note-target-date"
         ) + formatDate(note.getTargetDate())
@@ -112,7 +110,6 @@ function newNote(n: Note | undefined): HTMLDivElement {
         if (
           confirm(
             l18n.getConfirmation(
-              "class",
               getCurrentLanguage() as L18nLangOption,
               "note-delete-button"
             )

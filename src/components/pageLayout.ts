@@ -14,7 +14,6 @@ const headTitle = newElement({
   type: "h1",
   id: "page-title",
   content: l18n.getTextContent(
-    "id",
     getCurrentLanguage() as L18nLangOption,
     "page-title"
   ),
@@ -39,7 +38,6 @@ const footTitle = newElement({
   type: "h2",
   id: "page-footer",
   content: l18n.getTextContent(
-    "id",
     getCurrentLanguage() as L18nLangOption,
     "page-footer"
   ),

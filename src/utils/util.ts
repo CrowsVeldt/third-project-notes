@@ -1,8 +1,8 @@
 import l18n from "./l18n";
 import { SortMethodType, colorObject } from "./types";
 
+// TODO: FIX THIS
 const noteColors: colorObject[] = l18n.getColors('en-US')
-
 const sortMethods: SortMethodType[] = l18n.getSortMethods('en-US');
 
 const hideClasses: string[] = [

@@ -8,7 +8,6 @@ const languageToggle = newElement({
   type: "button",
   id: "language-toggle",
   content: l18n.getTextContent(
-    "id",
     getCurrentLanguage() as L18nLangOption,
     "language-toggle"
   ),

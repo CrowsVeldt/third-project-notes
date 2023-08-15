@@ -84,8 +84,8 @@ x when a language is chosen, pass the apropriate language object to all elements
 x check search
 x make xbutton responsive to direction change
 x fix full-note-bg position for rtl
+x fix TS errors in l18n.ts
 
-- fix TS errors in l18n.ts
 - fix colors and sortMethods for hebrew. langPrefStored called before initialization?
 - save language preference on page close
 - style language preference toggle
