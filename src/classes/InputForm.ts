@@ -111,13 +111,13 @@ class FormObject {
   }
 
   resetAll(): void {
-    this.#head = l18n.getTextContent('id', getCurrentLanguage() as L18nLangOption, 'form-heading:add');
+    this.#head = l18n.getTextContent(getCurrentLanguage() as L18nLangOption, 'form-heading:add');
     this.#title = "";
     this.#body = "";
     this.#tDate = "";
   // TODO: get color name from l18n
     this.#color = "none";
-    this.#buttonName = l18n.getTextContent('id', getCurrentLanguage() as L18nLangOption, 'form-button:add');
+    this.#buttonName = l18n.getTextContent(getCurrentLanguage() as L18nLangOption, 'form-button:add');
     this.#noteId = "";
   }
 }

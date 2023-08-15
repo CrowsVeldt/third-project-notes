@@ -41,7 +41,6 @@ function populateFullNote(id: string): void {
     body.innerText = note.body;
     created.innerText =
       l18n.getTextContent(
-        "id",
         getCurrentLanguage() as L18nLangOption,
         "full-note-created"
       ) + note.createDate;
@@ -49,7 +48,6 @@ function populateFullNote(id: string): void {
       target.style.display = "inline-block";
       target.innerText =
         l18n.getTextContent(
-          "id",
           getCurrentLanguage() as L18nLangOption,
           "full-note-target"
         ) + formatDate(note.targetDate);
