@@ -81,11 +81,13 @@ x add language toggle to settings
 x options: en-us, he
 x check for langPref on startup, if none found: fallback to browser default
 x when a language is chosen, pass the apropriate language object to all elements
+x check search
+x make xbutton responsive to direction change
+x fix full-note-bg position for rtl
 
+- fix colors and sortMethods for hebrew. langPrefStored called before initialization?
 - check all elements for RtL support
-- check search
 - save language preference on page close
-- make xbutton responsive to direction change
 - style language preference toggle
 
 ## TODO

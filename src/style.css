@@ -98,10 +98,14 @@
 
 #full-note-bg {
   position: relative;
-  bottom: 0.5em;
+  bottom: 0.2em;
   left: 2em;
   width: calc(100% - 4em);
   height: calc(100% - 4em);
+}
+
+html[dir="rtl"] #full-note-bg {
+  right: 2em;
 }
 
 #search-and-sort {
@@ -205,6 +209,10 @@
   position: relative;
   right: 13px;
   top: 9px;
+}
+
+html[dir="rtl"] .x-button-container {
+  right: 94%;
 }
 
 .x-button:hover::before {
