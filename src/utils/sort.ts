@@ -10,7 +10,7 @@ function sortFunction(a: any, b: any): number {
   } else if (a < b) {
     result = -1;
   }
-  // if toggle classlist foes not contain 'up', reverse sort order
+  // if toggle classlist does not contain 'up', reverse sort order
   if (toggle) {
     return result - (result + result);
   }
@@ -38,25 +38,22 @@ function sortByTargetDate(notes: Note[]): Note[] {
 }
 
 function sortNotes(notes: undefined | Note[], method: string): Note[] | void {
+  console.log(method);
   if (!notes) return;
   let sorted: Note[] = notes;
-  switch (method) {
-    case "Date Created":
-      sorted = notes.sort((a: Note, b: Note) =>
-        sortFunction(b.createDate, a.createDate)
-      );
-      break;
-    case "Title":
-      sorted = notes.sort((a: Note, b: Note) =>
-        sortFunction(a.title.toLocaleLowerCase(), b.title.toLocaleLowerCase())
-      );
-      break;
-    case "Color":
-      sorted = notes.sort((a: Note, b: Note) => sortFunction(a.color, b.color));
-      break;
-    case "Target Date":
-      sorted = sortByTargetDate(notes);
-      break;
+
+  if (method === "Date Created" || method === "תאריך ייצור") {
+    sorted = notes.sort((a: Note, b: Note) =>
+      sortFunction(b.createDate, a.createDate)
+    );
+  } else if (method === "Title" || method === "כותרת") {
+    sorted = notes.sort((a: Note, b: Note) =>
+      sortFunction(a.title.toLocaleLowerCase(), b.title.toLocaleLowerCase())
+    );
+  } else if (method === "Color" || method === "צבע") {
+    sorted = notes.sort((a: Note, b: Note) => sortFunction(a.color, b.color));
+  } else if (method === "Target Date" || method === "תאריך יעד") {
+    sorted = sortByTargetDate(notes);
   }
 
   return sorted;
