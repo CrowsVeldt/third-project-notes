@@ -86,16 +86,15 @@ x make xbutton responsive to direction change
 x fix full-note-bg position for rtl
 x fix TS errors in l18n.ts
 x fix colors and sortMethods for hebrew. langPrefStored called before initialization?
+x fix sort in hebrew. just not working
 
-- fix sort in hebrew. just not working
-- save language preference on page close
-- style language preference toggle
+- implement language toggle
 - show required-field-message in hebrew?
+- save language preference on page close?
 
 ## TODO
 
 - Form/UX: add '\*' to required fields
-- REGRESSION: wipe button not receiving event? just closes settings
 - TODO: properly acknowledge fuse.js
 - BUG: target input date is displayed as mm/dd/yyyy on firefox on android and linux, displays appropriately on macos
 - UX: save details of last deleted note so it can be recovered

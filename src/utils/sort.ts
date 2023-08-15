@@ -38,7 +38,6 @@ function sortByTargetDate(notes: Note[]): Note[] {
 }
 
 function sortNotes(notes: undefined | Note[], method: string): Note[] | void {
-  console.log(method);
   if (!notes) return;
   let sorted: Note[] = notes;
 
