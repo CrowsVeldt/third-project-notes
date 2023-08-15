@@ -2,11 +2,11 @@ import { deleteNote } from "../utils/storage";
 import { formatDate } from "../utils/util";
 import { formHandler } from "./noteForm";
 import newElement from "../utils/newElement";
-import { Note } from "../utils/types";
+import { L18nLangOption, Note } from "../utils/types";
 import NoteObj from "../classes/Note";
 import { toggleFullNote } from "./fullNote";
-import langOptions from "../utils/textContent";
 import l18n from "../utils/l18n";
+import { getCurrentLanguage } from "../utils/language";
 
 function newNote(n: Note | undefined): HTMLDivElement {
   const note = n
@@ -79,16 +79,22 @@ function newNote(n: Note | undefined): HTMLDivElement {
     type: "p",
     class: ["mb-0", "note-create-date", "align-self-start"],
     content:
-      langOptions.english.elementText.note.dates.createDate +
-      note.getCreateDate(),
+      l18n.getTextContent(
+        "class",
+        getCurrentLanguage() as L18nLangOption,
+        "note-create-date"
+      ) + note.getCreateDate(),
   }) as HTMLParagraphElement;
 
   const noteTDate = newElement({
     type: "p",
     class: ["mb-0", "note-target-date", "align-self-start"],
     content: note.getTargetDate()
-      ? langOptions.english.elementText.note.dates.targetDate +
-        formatDate(note.getTargetDate())
+      ? l18n.getTextContent(
+          "class",
+          getCurrentLanguage() as L18nLangOption,
+          "note-target-date"
+        ) + formatDate(note.getTargetDate())
       : "-",
     // if no target date, turn value clear to keep the layout consistant
     props: [
@@ -99,11 +105,19 @@ function newNote(n: Note | undefined): HTMLDivElement {
   const deleteButton = newElement({
     type: "button",
     id: deleteId,
-    class: ["align-self-center", "btn", "note-button", 'note-delete-button'],
+    class: ["align-self-center", "btn", "note-button", "note-delete-button"],
     eventListener: {
       eventType: "click",
       listener: () => {
-        if (confirm(l18n.getConfirmation('class', 'en-US', 'note-delete-button'))) {
+        if (
+          confirm(
+            l18n.getConfirmation(
+              "class",
+              getCurrentLanguage() as L18nLangOption,
+              "note-delete-button"
+            )
+          )
+        ) {
           deleteNote(note.getId());
           document.getElementById(note.getId())?.remove();
         }

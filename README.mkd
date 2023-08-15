@@ -41,7 +41,7 @@ id: string // hashed from Date.toString()
 }
 ```
 
-## Tab index manipulation 
+## Tab index manipulation
 
 - When form is opened, find all elements with tabIndex >= 0
 - then save them to array [{element: element, oldIndex: element.tabIndex}]
@@ -64,6 +64,7 @@ id: string // hashed from Date.toString()
 - when clicking any other element outside the form: close it
 
 ## Date input validation
+
 - - if input date is less than current day + 1, reset to default on loss of focus
 - - provide a popup or other message informing user of the requirements
 
@@ -73,29 +74,29 @@ id: string // hashed from Date.toString()
 - else date is valid
 
 ## Language options
-- create text object to hold all strings
+
+x create text object to hold all strings
+x make sure all text still fits
+x add language toggle to settings
+x options: en-us, he
+x check for langPref on startup, if none found: fallback to browser default
+x when a language is chosen, pass the apropriate language object to all elements
+
 - check all elements for RtL support
 - check search
-- make sure all text still fits 
-- add language toggle to settings
-- options: en-us, he
-
-- check for langPref on startup, if none found: fallback to browser default
 - save language preference on page close
-- when a language is chosen, pass the apropriate language object to all elements
-
 - make xbutton responsive to direction change
 - style language preference toggle
 
-
 ## TODO
 
+- Form/UX: add '\*' to required fields
 - REGRESSION: wipe button not receiving event? just closes settings
 - TODO: properly acknowledge fuse.js
 - BUG: target input date is displayed as mm/dd/yyyy on firefox on android and linux, displays appropriately on macos
 - UX: save details of last deleted note so it can be recovered
 - dev: separate listener functions from component files, component files should _just_ handle markup and styling
-- UX/BUG: make sure all elements have the same indication of being tab focussed
+- UX/BUG: make sure all elements have the same visual indication of tab focus
 
 ## Under consideration
 
@@ -105,10 +106,12 @@ id: string // hashed from Date.toString()
 - types: add interface for noteObj?
 
 ## Bonus features?
+
 - Hebrew/English UI toggle
 - dark/light theme
 
 ## Not planning to implement
+
 - standardize tabIndex behavior over all elements
 - search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result (this has to do with Fuze.js' fuzzy search. It can probably sorted with the search options)
 - UI: get the plus icon to be centered in all browsers has proven beyond my limited knowledge and patience for now, I've settled for good enought on the browsers I use most.

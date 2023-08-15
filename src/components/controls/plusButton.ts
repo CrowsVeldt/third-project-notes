@@ -1,6 +1,8 @@
 import { formHandler } from "../noteForm";
 import newElement from "../../utils/newElement";
-import langOptions from "../../utils/textContent";
+import l18n from "../../utils/l18n";
+import { getCurrentLanguage } from "../../utils/language";
+import { L18nLangOption } from "../../utils/types";
 
 const plusButton = newElement({
   type: "button",
@@ -10,7 +12,10 @@ const plusButton = newElement({
     ["tabindex", "4"],
     ["data-bs-toggle", "tooltip"],
     ["data-bs-placement", "left"],
-    ["title", langOptions.english.tooltips.plusButton],
+    [
+      "title",
+      l18n.getToolTip(getCurrentLanguage() as L18nLangOption, "plus-button"),
+    ],
   ],
   eventListener: {
     eventType: "click",

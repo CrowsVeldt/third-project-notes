@@ -29,7 +29,7 @@ type ElementParams = {
 };
 
 type FormElement = {
-  header: HTMLHeadingElement;
+  heading: HTMLHeadingElement;
   title: HTMLInputElement;
   body: HTMLInputElement;
   date: HTMLInputElement;
@@ -52,6 +52,9 @@ type TabIndexObject = {
 
 type CounterTarget = HTMLInputElement | HTMLTextAreaElement;
 
+type L18nLangOption = "en-US" | "he";
+type L18nIdentifier = "id" | "class";
+
 export type {
   colorObject,
   ElementParams,
@@ -61,4 +64,6 @@ export type {
   SortMethodType,
   TabIndexObject,
   CounterTarget,
+  L18nLangOption,
+  L18nIdentifier,
 };

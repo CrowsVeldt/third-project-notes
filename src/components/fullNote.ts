@@ -1,9 +1,10 @@
 import { formatDate, hideClasses } from "../utils/util";
 import { getNote } from "../utils/storage";
 import newElement from "../utils/newElement";
-import { Note } from "../utils/types";
+import { L18nLangOption, Note } from "../utils/types";
 import makeXButton from "./controls/xButton";
-import langOptions from "../utils/textContent";
+import l18n from "../utils/l18n";
+import { getCurrentLanguage } from "../utils/language";
 
 function getFullNoteElements(): {
   title: HTMLHeadingElement;
@@ -39,13 +40,19 @@ function populateFullNote(id: string): void {
     title.style.backgroundColor = note.color === "none" ? "white" : note.color;
     body.innerText = note.body;
     created.innerText =
-      langOptions.english.elementText.fullNote.dates.createDate +
-      note.createDate;
+      l18n.getTextContent(
+        "id",
+        getCurrentLanguage() as L18nLangOption,
+        "full-note-created"
+      ) + note.createDate;
     if (note.targetDate) {
       target.style.display = "inline-block";
       target.innerText =
-        langOptions.english.elementText.fullNote.dates.targetDate +
-        formatDate(note.targetDate);
+        l18n.getTextContent(
+          "id",
+          getCurrentLanguage() as L18nLangOption,
+          "full-note-target"
+        ) + formatDate(note.targetDate);
     } else {
       target.innerHTML = "";
       target.style.display = "none";

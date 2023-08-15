@@ -1,18 +1,30 @@
+import { L18nLangOption, L18nIdentifier } from "./types";
+
 const l18n = {
-  getColors(lang: string): any {
+  getColors(lang: L18nLangOption): any {
     return this[lang].colors;
   },
-  getSortMethods(lang: string): any {
+  getSortMethods(lang: L18nLangOption): any {
     return this[lang].sortMethods;
   },
-  getToolTip(lang: string, id: string): any {
+  getToolTip(lang: L18nLangOption, id: string): any {
     return this[lang].tooltips[id];
   },
-  getConfirmation(type: "id" | "class", lang: string, identifier: string): any {
+  getConfirmation(
+    type: L18nIdentifier,
+    lang: L18nLangOption,
+    identifier: string
+  ): any {
     return this[lang].confirmations[type][identifier];
   },
-  getTextContent(type: 'id'| 'class', lang: string, identifier: string): any {
-    // finish this
+  getTextContent(
+    type: L18nIdentifier,
+    lang: L18nLangOption,
+    identifier: string
+  ): any {
+    const getBy = () =>
+      type === "id" ? this[lang].elementsById : this[lang].elementsByClass;
+    return getBy()[identifier];
   },
   "en-US": {
     colors: [
@@ -38,7 +50,6 @@ const l18n = {
     confirmations: {
       id: {
         "wipe-button": "Delete all notes? This cannot be undone.",
-        "form-button": "Update note details? This cannot be undone",
       },
       class: {
         "note-delete-button": "Delete note?",
@@ -48,26 +59,79 @@ const l18n = {
       // placeholder:
       "search-bar": "Search",
       // text content:
-      "wipe-button": "Delete all",
-      "full-note-created": "Created on: ",
-      "full-note-target": "Target Date: ",
-      "input-form-title": { add: "New note", update: "Edit Note" },
-      "note-title-label": "note-title-label",
-      "note-body-label": "note-body-label",
-      "note-date-label": "note-target-date-label",
-      "note-color-label": "note-color-label",
-      "form-button": {
-        add: "Add note",
-        update: "Update note",
-      },
       "page-title": "Notes",
       "page-footer": "Footer",
+      "full-note-created": "Created on: ",
+      "full-note-target": "Target Date: ",
+      "form-heading:add": "New Note",
+      "form-heading:update": "Edit Note",
+      "form-button:add": "Add note",
+      "form-button:update": "Update note",
+      "note-title-label": "Note Title",
+      "note-body-label": "Note Body",
+      "note-target-date-label": "Target Date",
+      "note-color-label": "Color",
+      "wipe-button": "Delete all",
       "settings-title": "Settings",
       "language-toggle": "English", // temporary value!!!!
     },
     elementsByClass: {
       "note-target-date": "Target date - ",
       "note-create-date": "Created on - ",
+    },
+  },
+  he: {
+    colors: [
+      { name: "ללא צבע", value: "none" },
+      { name: "אדום", value: "salmon" },
+      { name: "כחול", value: "lightblue" },
+      { name: "ירוק", value: "lightgreen" },
+      { name: "צהוב", value: "gold" },
+      { name: "חום", value: "tan" },
+    ],
+    sortMethods: [
+      { method: "תאריך ייצור" },
+      { method: "כותרת" },
+      { method: "תאריך יעד" },
+      { method: "צבע" },
+    ],
+    tooltips: {
+      "plus-button": "יצור פתק חדש",
+      "close-form-button": "סגור חלון",
+      "close-full-note": "סגור פתק",
+      "toggle-settings": "פתח/סגור הגדרות",
+    },
+    confirmations: {
+      id: {
+        "wipe-button": "למחוק את כל הפתקים? אי אפשר לשחזר",
+      },
+      class: {
+        "note-delete-button": "למחוק?",
+      },
+    },
+    elementsById: {
+      // placeholder:
+      "search-bar": "חיפוש",
+      // text content:
+      "page-title": "פתקים",
+      "page-footer": "פוטר",
+      "full-note-created": "תאריך ייצור: ",
+      "full-note-target": "תאריך יעד: ",
+      "form-heading:add": "פתק חדש",
+      "form-heading:update": "עריכה",
+      "form-button:add": "להוסיף פתק",
+      "form-button:update": "לעדכן פתק",
+      "note-title-label": "כותרת",
+      "note-body-label": "תוכן",
+      "note-target-date-label": "תאריך יעד",
+      "note-color-label": "צבע",
+      "wipe-button": "למחוק הכל",
+      "settings-title": "הגדרות",
+      "language-toggle": "עברית", // temporary value!!!!
+    },
+    elementsByClass: {
+      "note-target-date": "תאריך יעד - ",
+      "note-create-date": "תאריך יצור - ",
     },
   },
 };

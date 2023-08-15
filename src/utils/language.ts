@@ -29,9 +29,20 @@ function getBrowserDefaultLanguage(): string {
   return navigator.language;
 }
 
+function getCurrentLanguage(): string {
+  const lang = langPrefStored()
+    ? getLanguagePreferance()
+    : getBrowserDefaultLanguage();
+
+  if (lang === "he") document.querySelector("html")!.dir = "rtl";
+
+  return lang;
+}
+
 export {
   langPrefStored,
   setLanguagePreferance,
   getLanguagePreferance,
   getBrowserDefaultLanguage,
+  getCurrentLanguage,
 };

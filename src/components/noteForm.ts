@@ -1,6 +1,6 @@
 import colorSelect from "./controls/colorSelector";
 import { createInput, createLabel } from "./labelAndInput";
-import { FormElement, Note } from "../utils/types";
+import { FormElement, L18nLangOption, Note } from "../utils/types";
 import FormObject from "../classes/InputForm";
 import { getNote, updateNote } from "../utils/storage";
 import { hideClasses, notesDifferent, removeTag } from "../utils/util";
@@ -12,16 +12,24 @@ import { tih } from "../main";
 import makeXButton from "./controls/xButton";
 import targetDateInput from "./controls/targetDateInput";
 import { errorMessage, updateErrorMessage } from "./errorMessage";
-import langOptions from "../utils/textContent";
 import l18n from "../utils/l18n";
+import { getCurrentLanguage } from "../utils/language";
 
 const form: FormObject = new FormObject(
-  langOptions.english.elementText.noteForm.formTitle.add,
+  l18n.getTextContent(
+    "id",
+    getCurrentLanguage() as L18nLangOption,
+    "form-heading:add"
+  ),
   "",
   "",
   "",
   "none",
-  langOptions.english.elementText.noteForm.actionButton.add
+  l18n.getTextContent(
+    "id",
+    getCurrentLanguage() as L18nLangOption,
+    "form-button:add"
+  )
 );
 
 function formIsOpen(): boolean | void {
@@ -30,16 +38,14 @@ function formIsOpen(): boolean | void {
 }
 
 function accessFormElement(): FormElement {
-  const header = document.getElementById(
-    "input-form-title"
-  ) as HTMLHeadingElement;
+  const heading = document.getElementById("form-heading") as HTMLHeadingElement;
   const title = document.getElementById("title-input") as HTMLInputElement;
   const body = document.getElementById("body-input") as HTMLInputElement;
   const date = document.getElementById("tDate-input") as HTMLInputElement;
   const color = document.getElementById("color-select") as HTMLSelectElement;
   const button = document.getElementById("form-button") as HTMLButtonElement;
   return {
-    header: header,
+    heading: heading,
     title: title,
     body: body,
     date: date,
@@ -49,8 +55,8 @@ function accessFormElement(): FormElement {
 }
 
 function populateFormElement(): Note {
-  const { header, title, body, date, color, button } = accessFormElement();
-  header.innerText = form.getHead();
+  const { heading, title, body, date, color, button } = accessFormElement();
+  heading.innerText = form.getHead();
   title.value = form.getTitle();
   body.value = form.getBody();
   date.value = form.getTDate();
@@ -73,12 +79,20 @@ function editNote(noteId: string): void {
 
   if (note) {
     form.setAll(
-      langOptions.english.elementText.noteForm.formTitle.update,
+      l18n.getTextContent(
+        "id",
+        getCurrentLanguage() as L18nLangOption,
+        "form-heading:update"
+      ),
       note.title,
       note.body,
       note.targetDate ? note.targetDate : "",
       note.color,
-      langOptions.english.elementText.noteForm.actionButton.update,
+      l18n.getTextContent(
+        "id",
+        getCurrentLanguage() as L18nLangOption,
+        "form-button:update"
+      ),
       "edit-" + note.id
     );
     populateFormElement();
@@ -108,8 +122,7 @@ function formHandler(evt: Event): void;
 function formHandler(evt: Event, id: string): void;
 function formHandler(evt: Event | void, id: string | void): void {
   const inputForm: HTMLElement | null = document.getElementById("input-form");
-  const formTitle: HTMLElement | null =
-    document.getElementById("input-form-title");
+  const formTitle: HTMLElement | null = document.getElementById("form-heading");
 
   if (arguments.length === 0 && inputForm) {
     closeForm();
@@ -123,7 +136,11 @@ function formHandler(evt: Event | void, id: string | void): void {
     if (inputForm && formTitle) {
       const formNewNote: boolean =
         formTitle.textContent ===
-        langOptions.english.elementText.noteForm.formTitle.add;
+        l18n.getTextContent(
+          "id",
+          getCurrentLanguage() as L18nLangOption,
+          "form-button:add"
+        );
 
       if (callerId === "plus-button") {
         if (!formIsOpen()) {
@@ -168,9 +185,9 @@ const formHead = newElement({
   ],
 }) as HTMLDivElement;
 
-const formHeader = newElement({
+const formheading = newElement({
   type: "h2",
-  id: "input-form-title",
+  id: "form-heading",
   class: ["form-label", "form-child", "mb-2", "mt-2"],
   content: form.getHead(),
 }) as HTMLHeadingElement;
@@ -178,7 +195,11 @@ const formHeader = newElement({
 const closeFormButton = makeXButton("close-form-button", closeForm);
 
 const titleLabel: HTMLLabelElement = createLabel(
-  langOptions.english.elementText.noteForm.noteTitle,
+  l18n.getTextContent(
+    "id",
+    getCurrentLanguage() as L18nLangOption,
+    "note-title-label"
+  ),
   "note-title-label",
   ["form-label", "form-child"]
 );
@@ -197,7 +218,11 @@ const titleCount: HTMLParagraphElement = textCounter(titleInput);
 titleCount.classList.add("form-child");
 
 const bodyLabel: HTMLLabelElement = createLabel(
-  langOptions.english.elementText.noteForm.body,
+  l18n.getTextContent(
+    "id",
+    getCurrentLanguage() as L18nLangOption,
+    "note-body-label"
+  ),
   "note-body-label",
   ["form-label", "form-child"]
 );
@@ -216,7 +241,11 @@ const bodyCount: HTMLParagraphElement = textCounter(bodyInput);
 bodyCount.classList.add("form-child");
 
 const tDateLabel: HTMLLabelElement = createLabel(
-  langOptions.english.elementText.noteForm.date,
+  l18n.getTextContent(
+    "id",
+    getCurrentLanguage() as L18nLangOption,
+    "note-target-date-label"
+  ),
   "note-target-date-label",
   ["form-label", "form-child"]
 );
@@ -225,7 +254,11 @@ const tDateInput = targetDateInput;
 const dateError = errorMessage;
 
 const colorLabel = createLabel(
-  langOptions.english.elementText.noteForm.color,
+  l18n.getTextContent(
+    "id",
+    getCurrentLanguage() as L18nLangOption,
+    "note-color-label"
+  ),
   "note-color-label",
   ["form-label", "form-child"]
 );
@@ -250,11 +283,7 @@ const actionButton: HTMLButtonElement = newElement({
         return;
       }
 
-      if (
-        form &&
-        form !== undefined
-        && confirm(l18n.getConfirmation('id', 'en-US', 'form-button'))
-      ) {
+      if (form && form !== undefined) {
         if (form.getNoteId()) {
           // receive noteId from form, and slice off the first five chars to get the original note id
           const cleanId: string = form.getNoteId()!.slice(5);
@@ -304,7 +333,7 @@ const actionButton: HTMLButtonElement = newElement({
   },
 }) as HTMLButtonElement;
 
-formHead.append(formHeader, closeFormButton);
+formHead.append(formheading, closeFormButton);
 
 formElement.append(
   formHead,

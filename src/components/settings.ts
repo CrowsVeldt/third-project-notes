@@ -1,6 +1,7 @@
 import l18n from "../utils/l18n";
+import { getCurrentLanguage } from "../utils/language";
 import newElement from "../utils/newElement";
-import langOptions from "../utils/textContent";
+import { L18nLangOption } from "../utils/types";
 import languageToggle from "./controls/languageToggle";
 import wipeButton from "./controls/wipeButton";
 
@@ -27,8 +28,18 @@ const settings = newElement({
 const settingsTitle = newElement({
   type: "h3",
   id: "settings-title",
-  content: langOptions.english.elementText.settings.title,
-  class: ["border-bottom", "border-dark", "settings", "l18n-target", 'settings-child'],
+  content: l18n.getTextContent(
+    "id",
+    getCurrentLanguage() as L18nLangOption,
+    "settings-title"
+  ),
+  class: [
+    "border-bottom",
+    "border-dark",
+    "settings",
+    "l18n-target",
+    "settings-child",
+  ],
 }) as HTMLHeadingElement;
 
 const languageToggleContainer = newElement({
@@ -41,11 +52,24 @@ const toggleButton = newElement({
   type: "button",
   id: "toggle-settings",
   content: `-\n -\n -`,
-  class: ["border", "border-dark", "button-color", "no-select", "l18n-target", 'settings-child'],
+  class: [
+    "border",
+    "border-dark",
+    "button-color",
+    "no-select",
+    "l18n-target",
+    "settings-child",
+  ],
   props: [
     ["data-bs-toggle", "tooltip"],
     ["data-bs-placement", "right"],
-    ["title", l18n.getToolTip("en-US", "toggle-settings")],
+    [
+      "title",
+      l18n.getToolTip(
+        getCurrentLanguage() as L18nLangOption,
+        "toggle-settings"
+      ),
+    ],
   ],
   eventListener: {
     eventType: "click",

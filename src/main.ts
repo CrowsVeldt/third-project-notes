@@ -14,12 +14,6 @@ import {
   toggleSettings,
 } from "./components/settings";
 import TabIndexHandler from "./classes/TabIndexHandler";
-import {
-  getLanguagePreferance,
-  getBrowserDefaultLanguage,
-  langPrefStored,
-} from "./utils/language";
-// import langOptions from "./utils/textContent";
 
 declare var bootstrap: any;
 
@@ -31,9 +25,6 @@ const tooltipTriggerList: never[] = [].slice.call(
 tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltop(tooltipTriggerEl);
 });
-
-let lang = langPrefStored() ? getLanguagePreferance() : getBrowserDefaultLanguage()
-// langOptions.getLanguage(lang)
 
 main.append(settings, noteContainer, formElement, fullNote);
 

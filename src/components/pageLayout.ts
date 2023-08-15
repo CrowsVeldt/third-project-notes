@@ -1,17 +1,23 @@
+import l18n from "../utils/l18n";
+import { getCurrentLanguage } from "../utils/language";
 import newElement from "../utils/newElement";
-import langOptions from "../utils/textContent";
+import { L18nLangOption } from "../utils/types";
 
 // header
 const head = newElement({
   type: "header",
-  id: 'page-head',
+  id: "page-head",
   class: ["container-fluid", "text-center", "border"],
 }) as HTMLHeadingElement;
 
 const headTitle = newElement({
   type: "h1",
   id: "page-title",
-  content: langOptions.english.elementText.pageElements.pageTitle,
+  content: l18n.getTextContent(
+    "id",
+    getCurrentLanguage() as L18nLangOption,
+    "page-title"
+  ),
 }) as HTMLHeadElement;
 
 head.append(headTitle);
@@ -20,7 +26,7 @@ head.append(headTitle);
 const main = newElement({
   type: "div",
   id: "main-page",
-  class: ['flex-grow-1']
+  class: ["flex-grow-1"],
 }) as HTMLDivElement;
 
 // footer
@@ -31,8 +37,12 @@ const foot = newElement({
 
 const footTitle = newElement({
   type: "h2",
-  id: 'page-footer',
-  content: langOptions.english.elementText.pageElements.footer,
+  id: "page-footer",
+  content: l18n.getTextContent(
+    "id",
+    getCurrentLanguage() as L18nLangOption,
+    "page-footer"
+  ),
 }) as HTMLHeadingElement;
 
 foot.append(footTitle);

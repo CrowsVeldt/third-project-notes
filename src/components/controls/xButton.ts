@@ -1,5 +1,7 @@
 import l18n from "../../utils/l18n";
+import { getCurrentLanguage } from "../../utils/language";
 import newElement from "../../utils/newElement";
+import { L18nLangOption } from "../../utils/types";
 
 function makeXButton(id: string, eventHandler: () => void): HTMLDivElement {
   const buttonContainer = newElement({
@@ -9,7 +11,7 @@ function makeXButton(id: string, eventHandler: () => void): HTMLDivElement {
     props: [
       ["data-bs-toggle", "tooltip"],
       ["data-bs-placement", "left"],
-      ["title", l18n.getToolTip('en-US', id)],
+      ["title", l18n.getToolTip(getCurrentLanguage() as L18nLangOption, id)],
     ],
   }) as HTMLDivElement;
 
