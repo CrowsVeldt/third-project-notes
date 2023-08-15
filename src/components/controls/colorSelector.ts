@@ -1,6 +1,7 @@
-import { colorObject } from "../../utils/types";
+import { L18nLangOption, colorObject } from "../../utils/types";
 import newElement from "../../utils/newElement";
-import { noteColors } from "../../utils/util";
+import l18n from "../../utils/l18n";
+import { getCurrentLanguage } from "../../utils/language";
 
 function colorOption(color: colorObject): HTMLOptionElement {
   return newElement({
@@ -21,7 +22,7 @@ const colorSelect = newElement({
   ],
 }) as HTMLSelectElement;
 
-noteColors.forEach((color) => {
+l18n.getColors(getCurrentLanguage() as L18nLangOption).forEach((color: any) => {
   colorSelect.append(colorOption(color));
 });
 

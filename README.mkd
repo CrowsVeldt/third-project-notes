@@ -85,8 +85,9 @@ x check search
 x make xbutton responsive to direction change
 x fix full-note-bg position for rtl
 x fix TS errors in l18n.ts
+x fix colors and sortMethods for hebrew. langPrefStored called before initialization?
 
-- fix colors and sortMethods for hebrew. langPrefStored called before initialization?
+- fix sort in hebrew. just not working
 - save language preference on page close
 - style language preference toggle
 - show required-field-message in hebrew?
