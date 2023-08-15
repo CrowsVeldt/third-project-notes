@@ -1,3 +1,7 @@
+import l18n from "../utils/l18n";
+import { getCurrentLanguage } from "../utils/language";
+import { L18nLangOption } from "../utils/types";
+
 class FormObject {
   #head: string;
   #title: string;
@@ -107,12 +111,13 @@ class FormObject {
   }
 
   resetAll(): void {
-    this.#head = "New Note";
+    this.#head = l18n.getTextContent('id', getCurrentLanguage() as L18nLangOption, 'form-heading:add');
     this.#title = "";
     this.#body = "";
     this.#tDate = "";
+  // TODO: get color name from l18n
     this.#color = "none";
-    this.#buttonName = "Add Note";
+    this.#buttonName = l18n.getTextContent('id', getCurrentLanguage() as L18nLangOption, 'form-button:add');
     this.#noteId = "";
   }
 }

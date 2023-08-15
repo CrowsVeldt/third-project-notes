@@ -85,10 +85,11 @@ x check search
 x make xbutton responsive to direction change
 x fix full-note-bg position for rtl
 
+- fix TS errors in l18n.ts
 - fix colors and sortMethods for hebrew. langPrefStored called before initialization?
-- check all elements for RtL support
 - save language preference on page close
 - style language preference toggle
+- show required-field-message in hebrew?
 
 ## TODO
 

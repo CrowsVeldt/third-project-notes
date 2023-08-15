@@ -24,6 +24,7 @@ const form: FormObject = new FormObject(
   "",
   "",
   "",
+  // TODO: get color name from l18n
   "none",
   l18n.getTextContent(
     "id",
@@ -123,7 +124,6 @@ function formHandler(evt: Event, id: string): void;
 function formHandler(evt: Event | void, id: string | void): void {
   const inputForm: HTMLElement | null = document.getElementById("input-form");
   const formTitle: HTMLElement | null = document.getElementById("form-heading");
-
   if (arguments.length === 0 && inputForm) {
     closeForm();
     return;
@@ -134,19 +134,18 @@ function formHandler(evt: Event | void, id: string | void): void {
     const callerId: string = target.id;
 
     if (inputForm && formTitle) {
-      const formNewNote: boolean =
+      const isFormNewNote: boolean =
         formTitle.textContent ===
         l18n.getTextContent(
           "id",
           getCurrentLanguage() as L18nLangOption,
-          "form-button:add"
+          "form-heading:add"
         );
-
       if (callerId === "plus-button") {
         if (!formIsOpen()) {
           openForm();
         } else {
-          if (formNewNote) {
+          if (isFormNewNote) {
             closeForm();
           } else {
             resetForm();
