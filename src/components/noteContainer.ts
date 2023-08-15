@@ -1,6 +1,6 @@
 import newNote from "./note";
 import { Note } from "../utils/types";
-import { getNote, getStoredNotes, storageExists } from "../utils/storage";
+import { getNote, getStoredNotes, storageExists } from "../utils/noteStorage";
 import newElement from "../utils/newElement";
 import { tih } from "../main";
 

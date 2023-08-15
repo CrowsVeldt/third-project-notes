@@ -69,6 +69,11 @@ function notesDifferent(noteA: any, noteB: any): boolean {
   return false;
 }
 
+const storageExists = (): boolean => {
+  if (localStorage.length > 0) return true;
+  return false;
+};
+
 function switchDirection(param: string): void {
   const html = document.querySelector("html");
   if (html) {
@@ -102,4 +107,5 @@ export {
   removeTag,
   sortMethods,
   switchDirection,
+  storageExists
 };

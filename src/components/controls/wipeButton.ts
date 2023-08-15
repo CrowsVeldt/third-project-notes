@@ -1,6 +1,6 @@
 import newElement from "../../utils/newElement";
 import { resetNoteContainer } from "../noteContainer";
-import { storageExists, wipeStorage } from "../../utils/storage";
+import { storageExists, wipeStorage } from "../../utils/noteStorage";
 import { toggleSettings } from "../settings";
 import l18n from "../../utils/l18n";
 import { getCurrentLanguage } from "../../utils/language";

@@ -1,4 +1,4 @@
-import { deleteNote } from "../utils/storage";
+import { deleteNote } from "../utils/noteStorage";
 import { formatDate } from "../utils/util";
 import { formHandler } from "./noteForm";
 import newElement from "../utils/newElement";

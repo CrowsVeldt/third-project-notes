@@ -2,7 +2,7 @@ import colorSelect from "./controls/colorSelector";
 import { createInput, createLabel } from "./labelAndInput";
 import { FormElement, L18nLangOption, Note } from "../utils/types";
 import FormObject from "../classes/InputForm";
-import { getNote, updateNote } from "../utils/storage";
+import { getNote, updateNote } from "../utils/noteStorage";
 import { hideClasses, notesDifferent, removeTag } from "../utils/util";
 import newElement from "../utils/newElement";
 import NoteObj from "../classes/Note";

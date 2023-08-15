@@ -1,4 +1,4 @@
-import { storageExists } from "./storage";
+import { storageExists } from "./noteStorage";
 
 const langPrefStored = (): boolean => {
   if (storageExists()) {

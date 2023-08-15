@@ -1,16 +1,12 @@
 import search from "./search";
 import { Note, NoteUpdate } from "./types";
+import { storageExists } from "./util";
 
 /* 
   For now notes are stored in one array, for simplicity of access. 
   This probably causes a performance bottleneck, since accessing one
   note requires fetching the whole array. May be worth redoing.
 */
-
-const storageExists = (): boolean => {
-  if (localStorage.length > 0) return true;
-  return false;
-};
 
 function getStoredNotes(): Note[] {
   if (storageExists()) {

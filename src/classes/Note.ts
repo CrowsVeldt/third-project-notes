@@ -1,4 +1,4 @@
-import { getNote, saveNote } from "../utils/storage";
+import { getNote, saveNote } from "../utils/noteStorage";
 import { Note } from "../utils/types";
 import { makeHash, formatDate } from "../utils/util";
 

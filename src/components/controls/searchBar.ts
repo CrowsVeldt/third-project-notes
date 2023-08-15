@@ -1,7 +1,7 @@
 import { createInput } from "../labelAndInput";
 import { L18nLangOption, Note } from "../../utils/types";
 import { resetNoteContainer, wipeNoteContainer } from "../noteContainer";
-import { searchNotes } from "../../utils/storage";
+import { searchNotes } from "../../utils/noteStorage";
 import l18n from "../../utils/l18n";
 import { getCurrentLanguage } from "../../utils/language";
 

@@ -1,5 +1,5 @@
 import { formatDate, hideClasses } from "../utils/util";
-import { getNote } from "../utils/storage";
+import { getNote } from "../utils/noteStorage";
 import newElement from "../utils/newElement";
 import { L18nLangOption, Note } from "../utils/types";
 import makeXButton from "./controls/xButton";
