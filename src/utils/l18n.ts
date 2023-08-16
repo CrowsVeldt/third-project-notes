@@ -15,6 +15,9 @@ const l18n = {
   getToolTip(lang: L18nLangOption, id: L18nToolTip): any {
     return this[lang].tooltips[id];
   },
+  getToolTips(lang: L18nLangOption): any {
+    return this[lang].tooltips;
+  },
   getConfirmation(lang: L18nLangOption, key: L18nConfirmation): any {
     return this[lang].confirmations[key];
   },
@@ -67,7 +70,7 @@ const l18n = {
       "note-create-date": "Created on - ",
     },
   },
-  "he": {
+  he: {
     colors: [
       { name: "ללא צבע", value: "none" },
       { name: "אדום", value: "salmon" },
