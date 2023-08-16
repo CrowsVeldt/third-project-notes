@@ -53,7 +53,6 @@ type TabIndexObject = {
 type CounterTarget = HTMLInputElement | HTMLTextAreaElement;
 
 type L18nLangOption = "en-US" | "he";
-type L18nIdentifier = "id" | "class";
 
 type L18nTextContent =
   | "search-bar"
@@ -93,7 +92,6 @@ export type {
   TabIndexObject,
   CounterTarget,
   L18nLangOption,
-  L18nIdentifier,
   L18nTextContent,
   L18nToolTip,
   L18nConfirmation,

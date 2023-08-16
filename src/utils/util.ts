@@ -67,38 +67,13 @@ const storageExists = (): boolean => {
   return false;
 };
 
-function switchDirection(param: string): void {
-  const html = document.querySelector("html");
-  if (html) {
-    const direction = html.dir;
-    switch (param) {
-      case "swap":
-        if (direction === "ltr") {
-          html.dir = "rtl";
-        } else {
-          html.dir = "ltr";
-        }
-        break;
-      case "ltr":
-        html.dir = "ltr";
-        break;
-      case "rtl":
-        html.dir = "rtl";
-        break;
-    }
-  }
-}
-
 export {
   formatDate,
   formatMinDate,
   hideClasses,
   makeHash,
-  // noteColors,
   notesDifferent,
   padTo2Digits,
   removeTag,
-  // sortMethods,
-  switchDirection,
-  storageExists
+  storageExists,
 };

@@ -1,51 +1,63 @@
-// import { storageExists } from "./noteStorage";
+import { L18nLangOption } from "./types.ts";
+import { storageExists } from "./util.ts";
 
-// const langPrefStored = (): boolean => {
-//   if (storageExists()) {
-//     if (localStorage.getItem("langPref")) return true;
-//   }
-//   return false;
-// };
+const langStored = (): boolean => {
+  if (storageExists()) {
+    if (localStorage.getItem("lang")) return true;
+  }
+  return false;
+};
 
-// function setLanguagePreferance(lang: string): boolean {
-//   if (langPrefStored()) {
-//     localStorage.setItem("langPref", lang);
-//     return true;
-//   }
-//   return false;
-// }
-
-// function getLanguagePreferance(): string {
-//   if (langPrefStored()) {
-//     const lang: string | null = localStorage.getItem("langPref");
-//     if (lang) {
-//       return JSON.parse(lang);
-//     }
-//   }
-//   return "";
-// }
-
-function getBrowserDefaultLanguage(): string {
-  return navigator.language;
+function initialLanguageCheck() {
+  if (getLanguage() === undefined) {
+    setLanguage(navigator.language as L18nLangOption);
+  }
 }
 
-function getCurrentLanguage(): string {
-  // const lang = langPrefStored()
-  //   ? getLanguagePreferance()
-  //   : getBrowserDefaultLanguage();
+function setLanguage(lang: any): boolean {
+  if (lang !== undefined) {
+    const langString = `{"language": "${lang}"}`;
+    localStorage.setItem("lang", langString);
+  }
+  return true;
+}
 
-  const lang = getBrowserDefaultLanguage()
-  
+function getLanguage(): L18nLangOption | void {
+  if (langStored()) {
+    const lang: string | null = localStorage.getItem("lang");
+    if (lang) {
+      const parsedLang = JSON.parse(lang);
+      return parsedLang.language;
+    }
+  }
+}
 
-  if (lang === "he") document.querySelector("html")!.dir = "rtl";
+function getBrowserDefaultLanguage(): L18nLangOption {
+  const browserLang = navigator.language as L18nLangOption;
+  return browserLang;
+}
 
-  return lang;
+function getCurrentLanguage(): L18nLangOption {
+  const html: HTMLHtmlElement | null = document.querySelector("html");
+  const lang: L18nLangOption | void = langStored()
+    ? getLanguage()
+    : getBrowserDefaultLanguage();
+
+  if (html !== null) {
+    if (lang === "he") {
+      html.dir = "rtl";
+    } else {
+      html.dir = "ltr";
+    }
+  }
+  return lang!;
 }
 
 export {
-  // langPrefStored,
-  // setLanguagePreferance,
-  // getLanguagePreferance,
+  langStored,
+  setLanguage,
+  getLanguage,
   getBrowserDefaultLanguage,
   getCurrentLanguage,
+  initialLanguageCheck,
 };

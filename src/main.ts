@@ -14,8 +14,13 @@ import {
   toggleSettings,
 } from "./components/settings";
 import TabIndexHandler from "./classes/TabIndexHandler";
+import { initialLanguageCheck } from "./utils/language";
 
 declare var bootstrap: any;
+
+document.addEventListener("DOMContentLoaded", () => {
+  initialLanguageCheck();
+});
 
 const app: HTMLDivElement = document.querySelector<HTMLDivElement>("#app")!;
 
