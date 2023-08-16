@@ -1,13 +1,21 @@
-import l18n from "../../utils/l18n";
+ import l18n from "../../utils/l18n";
 import {
-  getCurrentLanguage,
+   getCurrentLanguage,
   getLanguage,
   langStored,
   setLanguage,
 } from "../../utils/language";
 import newElement from "../../utils/newElement";
 import { L18nLangOption } from "../../utils/types";
+
 import { createLabel } from "../labelAndInput";
+// import { resetNoteContainer } from "../noteContainer";
+
+const languageToggleContainer = newElement({
+  type: "div",
+  id: "lang-toggle-container",
+  class: ["settings", "settings-child", 'form-check', 'form-switch'],
+}) as HTMLDivElement;
 
 const langToggleLabel = createLabel(
   l18n.getTextContent(
@@ -15,8 +23,26 @@ const langToggleLabel = createLabel(
     "language-toggle"
   ),
   "lang-toggle-label",
-  ["settings"]
+  ["settings", 'settings-child', 'form-check-label']
 );
+
+const languageToggle = newElement({
+  type: "input",
+  id: "language-toggle",
+  class: ["settings-child", "settings", 'form-check-input'],
+  props: [
+    ["type", "checkbox"],
+    ["role", "switch"],
+    ["data-language", "he"],
+  ],
+  eventListener: {
+    eventType: "change",
+    listener: () => {
+      changeLanguage();
+      window.location.reload();
+    },
+  },
+});
 
 function changeLanguage(): void {
   const currentLang: string | void | null = langStored()
@@ -28,25 +54,10 @@ function changeLanguage(): void {
     languageToggle.setAttribute("data-language", newLang);
   }
 
-  window.location.reload();
+  // window.location.reload();
+  // resetNoteContainer()
 }
 
-const languageToggle = newElement({
-  type: "input",
-  id: "language-toggle",
-  class: ["settings-child", "settings"],
-  props: [
-    ["type", "checkbox"],
-    ["data-language", "he"],
-  ],
-  eventListener: {
-    eventType: "change",
-    listener: () => {
-      changeLanguage();
-    },
-  },
-});
-
-langToggleLabel.append(languageToggle);
-
-export default langToggleLabel;
+langToggleLabel.append(languageToggle)
+languageToggleContainer.append(langToggleLabel);
+export default languageToggleContainer;

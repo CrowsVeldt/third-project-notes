@@ -62,7 +62,7 @@ const l18n = {
       "note-color-label": "Color",
       "wipe-button": "Delete all",
       "settings-title": "Settings",
-      "language-toggle": "English", // temporary value!!!!
+      "language-toggle": "Switch language",
       "note-target-date": "Target date - ",
       "note-create-date": "Created on - ",
     },
@@ -108,7 +108,7 @@ const l18n = {
       "note-color-label": "צבע",
       "wipe-button": "למחוק הכל",
       "settings-title": "הגדרות",
-      "language-toggle": "עברית", // temporary value!!!!
+      "language-toggle": "להחליף שפה",
       "note-target-date": "תאריך יעד - ",
       "note-create-date": "תאריך יצור - ",
     },

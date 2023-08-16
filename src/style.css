@@ -222,3 +222,14 @@ html[dir="rtl"] .x-button-container {
 .x-button:active::before {
   background-color: darkgray;
 }
+
+#lang-toggle-container {
+  width: 100%;
+}
+
+#language-toggle {
+  /* all: unset; */
+  border: 1px solid black;
+  height: 20px;
+  width: 60px;
+}

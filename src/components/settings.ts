@@ -41,12 +41,6 @@ const settingsTitle = newElement({
   ],
 }) as HTMLHeadingElement;
 
-const languageToggleContainer = newElement({
-  type: "div",
-  id: "lang-toggle-container",
-  class: ["settings", "settings-child"],
-}) as HTMLDivElement;
-
 const toggleButton = newElement({
   type: "button",
   id: "toggle-settings",
@@ -104,10 +98,9 @@ function settingsIsOpen(): boolean {
   return settings && settings.style.left === "0%";
 }
 
-languageToggleContainer.append(languageToggle);
 settings.append(
   wipeButton,
-  languageToggleContainer,
+  languageToggle,
   settingsTitle,
   toggleButton
 );
