@@ -22,8 +22,16 @@ const colorSelect = newElement({
   ],
 }) as HTMLSelectElement;
 
-l18n.getColors(getCurrentLanguage() as L18nLangOption).forEach((color: any) => {
-  colorSelect.append(colorOption(color));
-});
+function setColors() {
+  colorSelect.innerHTML = ''
+  l18n
+    .getColors(getCurrentLanguage() as L18nLangOption)
+    .forEach((color: any) => {
+      colorSelect.append(colorOption(color));
+    });
+}
 
-export default colorSelect;
+export {
+  colorSelect,
+  setColors
+}
