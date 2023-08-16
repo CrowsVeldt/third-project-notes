@@ -97,7 +97,6 @@ x language toggle should always point in the direction of the current language
 
 ## TODO
 
-- Form/UX: add '\*' to required fields
 - TODO: properly acknowledge fuse.js
 - BUG: target input date is displayed as mm/dd/yyyy on firefox on android and linux, displays appropriately on macos
 - UX: save details of last deleted note so it can be recovered

@@ -23,7 +23,6 @@ const form: FormObject = new FormObject(
   "",
   "",
   "",
-  // TODO: get color name from l18n
   "none",
   l18n.getTextContent(getCurrentLanguage() as L18nLangOption, "form-button:add")
 );
@@ -231,6 +230,24 @@ const bodyInput = newElement({
 const bodyCount: HTMLParagraphElement = textCounter(bodyInput);
 bodyCount.classList.add("form-child");
 
+const dateAndColorContainer = newElement({
+  type: "div",
+  id: "date-and-color-container",
+  class: ["form-child", 'd-flex', 'w-100'],
+});
+
+const dateContainer = newElement({
+  type: "div",
+  id: "date-container",
+  class: ["form-child", 'd-flex', 'flex-column', 'w-50', 'px-2'],
+});
+
+const colorContainer = newElement({
+  type: "div",
+  id: "color-container",
+  class: ["form-child", 'd-flex', 'flex-column', 'w-50', 'px-2'],
+});
+
 const tDateLabel: HTMLLabelElement = createLabel(
   l18n.getTextContent(
     getCurrentLanguage() as L18nLangOption,
@@ -258,7 +275,14 @@ const cSelect: HTMLSelectElement = colorSelect;
 const actionButton: HTMLButtonElement = newElement({
   type: "button",
   id: "form-button",
-  class: ["form-control", "form-child", "button-color", "mb-2"],
+  class: [
+    "form-control",
+    "form-child",
+    "button-color",
+    "mb-2",
+    "align-self-center",
+    "w-50",
+  ],
   content: form.getButtonName(),
   props: [["type", "submit"]],
   eventListener: {
@@ -325,6 +349,9 @@ const actionButton: HTMLButtonElement = newElement({
 }) as HTMLButtonElement;
 
 formHead.append(formheading, closeFormButton);
+dateContainer.append(tDateLabel, tDateInput, dateError)
+colorContainer.append(colorLabel, cSelect)
+dateAndColorContainer.append(dateContainer, colorContainer)
 
 formElement.append(
   formHead,
@@ -334,11 +361,7 @@ formElement.append(
   bodyLabel,
   bodyInput,
   bodyCount,
-  tDateLabel,
-  tDateInput,
-  dateError,
-  colorLabel,
-  cSelect,
+  dateAndColorContainer,
   actionButton
 );
 
