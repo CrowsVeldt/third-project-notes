@@ -89,10 +89,10 @@ x fix colors and sortMethods for hebrew. langPrefStored called before initializa
 x fix sort in hebrew. just not working
 x implement language toggle
 x save language preference on page close?
+x language toggle should always point in the direction of the current language
 
-- make resetPage function, like resetNoteContainer
-- language toggle should always point in the direction of the current language
 - language toggle background-color and color shouldn't change
+- make resetPage function, like resetNoteContainer
 - show required-field-message in hebrew?
 
 ## TODO
