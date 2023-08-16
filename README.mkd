@@ -102,6 +102,7 @@ x language toggle should always point in the direction of the current language
 - UX: save details of last deleted note so it can be recovered
 - dev: separate listener functions from component files, component files should _just_ handle markup and styling
 - UX/BUG: make sure all elements have the same visual indication of tab focus
+- UI: add message that required elements have a *
 
 ## Under consideration
 

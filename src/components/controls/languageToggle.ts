@@ -6,6 +6,17 @@ import {
 } from "../../utils/language";
 import newElement from "../../utils/newElement";
 import { createLabel } from "../labelAndInput";
+import { setColors } from "./colorSelector";
+import { setSortMethods } from "./sortSelector";
+
+function resetText() {
+  // const targetList = document.querySelectorAll(".l18n-target");
+  setColors();
+  setSortMethods();
+  // set tooltips
+  // set confirmations
+  // set textContent 
+}
 
 const languageToggleContainer = newElement({
   type: "div",
@@ -50,7 +61,8 @@ const languageToggle = newElement({
     eventType: "change",
     listener: () => {
       changeLanguage();
-      window.location.reload();
+      resetText();
+      // window.location.reload();
     },
   },
 });
