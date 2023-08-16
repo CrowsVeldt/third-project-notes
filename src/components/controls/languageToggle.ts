@@ -14,22 +14,25 @@ import { createLabel } from "../labelAndInput";
 const languageToggleContainer = newElement({
   type: "div",
   id: "lang-toggle-container",
-  class: ["settings", "settings-child", 'form-check', 'form-switch'],
+  class: ["settings", "settings-child", 'form-check', 'form-switch', 'align-self-center', 'd-flex', 'justify-content-around'],
 }) as HTMLDivElement;
 
-const langToggleLabel = createLabel(
-  l18n.getTextContent(
-    getCurrentLanguage() as L18nLangOption,
-    "language-toggle"
-  ),
+const langToggleLabel1 = createLabel(
+  'English', 
   "lang-toggle-label",
-  ["settings", 'settings-child', 'form-check-label']
+  ["settings", 'settings-child', 'form-check-label', 'order-1']
+);
+
+const langToggleLabel2 = createLabel(
+  'עברית', 
+  "lang-toggle-label",
+  ["settings", 'settings-child', 'form-check-label', 'order-3']
 );
 
 const languageToggle = newElement({
   type: "input",
   id: "language-toggle",
-  class: ["settings-child", "settings", 'form-check-input'],
+  class: ["settings-child", "settings", 'form-check-input', 'order-2'],
   props: [
     ["type", "checkbox"],
     ["role", "switch"],
@@ -39,7 +42,7 @@ const languageToggle = newElement({
     eventType: "change",
     listener: () => {
       changeLanguage();
-      window.location.reload();
+      //window.location.reload();
     },
   },
 });
@@ -58,6 +61,9 @@ function changeLanguage(): void {
   // resetNoteContainer()
 }
 
-langToggleLabel.append(languageToggle)
-languageToggleContainer.append(langToggleLabel);
+languageToggleContainer.append(
+  langToggleLabel1,
+  languageToggle,
+  langToggleLabel2,
+  );
 export default languageToggleContainer;

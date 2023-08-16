@@ -90,12 +90,13 @@ x fix sort in hebrew. just not working
 x implement language toggle
 x save language preference on page close?
 
-- refresh language content without reloading page
+- make resetPage function, like resetNoteContainer
+- language toggle should always point in the direction of the current language
+- language toggle background-color and color shouldn't change
 - show required-field-message in hebrew?
 
 ## TODO
 
-- make resetPage function, like resetNoteContainer
 - Form/UX: add '\*' to required fields
 - TODO: properly acknowledge fuse.js
 - BUG: target input date is displayed as mm/dd/yyyy on firefox on android and linux, displays appropriately on macos

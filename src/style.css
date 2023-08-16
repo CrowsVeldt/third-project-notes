@@ -226,10 +226,3 @@ html[dir="rtl"] .x-button-container {
 #lang-toggle-container {
   width: 100%;
 }
-
-#language-toggle {
-  /* all: unset; */
-  border: 1px solid black;
-  height: 20px;
-  width: 60px;
-}
