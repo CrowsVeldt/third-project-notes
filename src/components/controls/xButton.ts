@@ -7,7 +7,7 @@ function makeXButton(id: string, eventHandler: () => void): HTMLDivElement {
   const buttonContainer = newElement({
     type: "div",
     id: `${id}-container`,
-    class: ["form-child", "x-button-container"],
+    class: ["form-child", "x-button-container", "l18n-target"],
     props: [
       ["data-bs-toggle", "tooltip"],
       ["data-bs-placement", "left"],

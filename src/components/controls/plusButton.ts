@@ -7,7 +7,7 @@ import { L18nLangOption } from "../../utils/types";
 const plusButton = newElement({
   type: "button",
   id: "plus-button",
-  class: ["toggle-button", "button-color", "border", "border-dark", "rounded"],
+  class: ["toggle-button", "button-color", "border", "border-dark", "rounded", "l18n-target"],
   props: [
     ["tabindex", "4"],
     ["data-bs-toggle", "tooltip"],

@@ -17,6 +17,7 @@ const headTitle = newElement({
     getCurrentLanguage() as L18nLangOption,
     "page-title"
   ),
+  class: ["l18n-target"],
 }) as HTMLHeadElement;
 
 head.append(headTitle);
@@ -41,6 +42,7 @@ const footTitle = newElement({
     getCurrentLanguage() as L18nLangOption,
     "page-footer"
   ),
+  class: ["l18n-target"],
 }) as HTMLHeadingElement;
 
 foot.append(footTitle);

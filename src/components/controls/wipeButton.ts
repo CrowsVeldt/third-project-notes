@@ -21,6 +21,7 @@ const wipeButton: HTMLButtonElement = newElement({
     "mb-2",
     'settings', 
     "settings-child",
+    "l18n-target"
   ],
   props: [["tabindex", "-1"]],
   eventListener: {
