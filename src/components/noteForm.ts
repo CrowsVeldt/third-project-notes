@@ -1,4 +1,4 @@
-import colorSelect from "./controls/colorSelector";
+import { colorSelect, setColors } from "./controls/colorSelector";
 import { createInput, createLabel } from "./labelAndInput";
 import { FormElement, L18nLangOption, Note } from "../utils/types";
 import FormObject from "../classes/InputForm";
@@ -178,7 +178,7 @@ const formHead = newElement({
 const formheading = newElement({
   type: "h2",
   id: "form-heading",
-  class: ["form-label", "form-child", "mb-2", "mt-2"],
+  class: ["form-label", "form-child", "mb-2", "mt-2", "l18n-target"],
   content: form.getHead(),
 }) as HTMLHeadingElement;
 
@@ -190,7 +190,7 @@ const titleLabel: HTMLLabelElement = createLabel(
     "note-title-label"
   ),
   "note-title-label",
-  ["form-label", "form-child"],
+  ["form-label", "form-child", "l18n-target"],
   "title-input"
 );
 const titleInput: HTMLInputElement = createInput(
@@ -213,7 +213,7 @@ const bodyLabel: HTMLLabelElement = createLabel(
     "note-body-label"
   ),
   "note-body-label",
-  ["form-label", "form-child"],
+  ["form-label", "form-child", "l18n-target"],
   "body-input"
 );
 const bodyInput = newElement({
@@ -233,19 +233,19 @@ bodyCount.classList.add("form-child");
 const dateAndColorContainer = newElement({
   type: "div",
   id: "date-and-color-container",
-  class: ["form-child", 'd-flex', 'w-100'],
+  class: ["form-child", "d-flex", "w-100"],
 });
 
 const dateContainer = newElement({
   type: "div",
   id: "date-container",
-  class: ["form-child", 'd-flex', 'flex-column', 'w-50', 'px-2'],
+  class: ["form-child", "d-flex", "flex-column", "w-50", "px-2"],
 });
 
 const colorContainer = newElement({
   type: "div",
   id: "color-container",
-  class: ["form-child", 'd-flex', 'flex-column', 'w-50', 'px-2'],
+  class: ["form-child", "d-flex", "flex-column", "w-50", "px-2"],
 });
 
 const tDateLabel: HTMLLabelElement = createLabel(
@@ -254,7 +254,7 @@ const tDateLabel: HTMLLabelElement = createLabel(
     "note-target-date-label"
   ),
   "note-target-date-label",
-  ["form-label", "form-child"],
+  ["form-label", "form-child", "l18n-target"],
   "tDate-input"
 );
 
@@ -267,10 +267,11 @@ const colorLabel = createLabel(
     "note-color-label"
   ),
   "note-color-label",
-  ["form-label", "form-child"],
+  ["form-label", "form-child", "l18n-target"],
   "color-select"
 );
 const cSelect: HTMLSelectElement = colorSelect;
+setColors()
 
 const actionButton: HTMLButtonElement = newElement({
   type: "button",
@@ -282,6 +283,7 @@ const actionButton: HTMLButtonElement = newElement({
     "mb-2",
     "align-self-center",
     "w-50",
+    "l18n-target",
   ],
   content: form.getButtonName(),
   props: [["type", "submit"]],
@@ -349,9 +351,9 @@ const actionButton: HTMLButtonElement = newElement({
 }) as HTMLButtonElement;
 
 formHead.append(formheading, closeFormButton);
-dateContainer.append(tDateLabel, tDateInput, dateError)
-colorContainer.append(colorLabel, cSelect)
-dateAndColorContainer.append(dateContainer, colorContainer)
+dateContainer.append(tDateLabel, tDateInput, dateError);
+colorContainer.append(colorLabel, cSelect);
+dateAndColorContainer.append(dateContainer, colorContainer);
 
 formElement.append(
   formHead,
