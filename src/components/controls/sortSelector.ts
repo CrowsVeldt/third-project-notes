@@ -22,16 +22,19 @@ const selectContainer = newElement({
 const sortSelect = newElement({
   type: "select",
   id: "sort-select",
-  class: ["me-1", "button-color", "form-control", "border-dark", "text-center"],
+  class: [
+    "me-1",
+    "button-color",
+    "form-control",
+    "border-dark",
+    "text-center",
+    "l18n-target",
+  ],
   props: [
     ["ariaLabel", "Default select element"],
     ["tabindex", "1"],
   ],
 }) as HTMLSelectElement;
-
-l18n.getSortMethods(getCurrentLanguage() as L18nLangOption).forEach((method: SortMethodType) => {
-  sortSelect.append(sortOption(method));
-});
 
 const sortToggle: HTMLDivElement = directionToggle;
 
@@ -50,4 +53,13 @@ function sortEventListener() {
   }
 }
 
-export default selectContainer;
+function setSortMethods() {
+  sortSelect.innerHTML = ''
+  l18n
+    .getSortMethods(getCurrentLanguage() as L18nLangOption)
+    .forEach((method: SortMethodType) => {
+      sortSelect.append(sortOption(method));
+    });
+}
+
+export { selectContainer, setSortMethods };
