@@ -1,6 +1,6 @@
 import searchBarContainer from "./searchBar";
 import newElement from "../../utils/newElement";
-import { selectContainer, setSortMethods } from "./sortSelector";
+import selectContainer from "./sortSelector";
 
 const noteDisplayControls = newElement({
   type: "div",
@@ -9,7 +9,5 @@ const noteDisplayControls = newElement({
 }) as HTMLDivElement;
 
 noteDisplayControls.append(selectContainer, searchBarContainer);
-
-setSortMethods();
 
 export default noteDisplayControls;

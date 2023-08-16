@@ -1,17 +1,8 @@
 import directionToggle from "./directionToggle";
 import { getDisplayedNotes, resetNoteContainer } from "../noteContainer";
 import newElement from "../../utils/newElement";
-import { L18nLangOption, Note, SortMethodType } from "../../utils/types";
+import { Note } from "../../utils/types";
 import sortNotes from "../../utils/sort";
-import l18n from "../../utils/l18n";
-import { getCurrentLanguage } from "../../utils/language";
-
-function sortOption(option: SortMethodType): HTMLOptionElement {
-  const o: HTMLOptionElement = document.createElement("option");
-  o.innerText = option.method;
-  o.value = option.method;
-  return o;
-}
 
 const selectContainer = newElement({
   type: "div",
@@ -53,13 +44,4 @@ function sortEventListener() {
   }
 }
 
-function setSortMethods() {
-  sortSelect.innerHTML = ''
-  l18n
-    .getSortMethods(getCurrentLanguage() as L18nLangOption)
-    .forEach((method: SortMethodType) => {
-      sortSelect.append(sortOption(method));
-    });
-}
-
-export { selectContainer, setSortMethods };
+export default selectContainer;

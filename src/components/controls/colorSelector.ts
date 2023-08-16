@@ -1,16 +1,4 @@
-import { L18nLangOption, colorObject } from "../../utils/types";
 import newElement from "../../utils/newElement";
-import l18n from "../../utils/l18n";
-import { getCurrentLanguage } from "../../utils/language";
-
-function colorOption(color: colorObject): HTMLOptionElement {
-  return newElement({
-    type: "option",
-    class: ["form-control", "form-child"],
-    content: color.name,
-    props: [["value", color.value]],
-  }) as HTMLOptionElement;
-}
 
 const colorSelect = newElement({
   type: "select",
@@ -22,16 +10,4 @@ const colorSelect = newElement({
   ],
 }) as HTMLSelectElement;
 
-function setColors() {
-  colorSelect.innerHTML = ''
-  l18n
-    .getColors(getCurrentLanguage() as L18nLangOption)
-    .forEach((color: any) => {
-      colorSelect.append(colorOption(color));
-    });
-}
-
-export {
-  colorSelect,
-  setColors
-}
+export default colorSelect;
