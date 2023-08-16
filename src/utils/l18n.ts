@@ -1,9 +1,4 @@
-import {
-  L18nLangOption,
-  L18nTextContent,
-  L18nToolTip,
-  L18nConfirmation,
-} from "./types";
+import { L18nLangOption, L18nTextContent, L18nConfirmation } from "./types";
 
 const l18n = {
   getColors(lang: L18nLangOption): any {
@@ -11,9 +6,6 @@ const l18n = {
   },
   getSortMethods(lang: L18nLangOption): any {
     return this[lang].sortMethods;
-  },
-  getToolTip(lang: L18nLangOption, id: L18nToolTip): any {
-    return this[lang].tooltips[id];
   },
   getToolTips(lang: L18nLangOption): any {
     return this[lang].tooltips;
@@ -23,6 +15,9 @@ const l18n = {
   },
   getTextContent(lang: L18nLangOption, key: L18nTextContent): any {
     return this[lang].textContent[key];
+  },
+  getTextContents(lang: L18nLangOption): any {
+    return this[lang].textContent;
   },
   "en-US": {
     colors: [
@@ -44,6 +39,7 @@ const l18n = {
       "close-form-button": "Close form",
       "close-full-note": "Close note",
       "toggle-settings": "Toggle settings menu",
+      "language-toggle": "Switch language",
     },
     confirmations: {
       "wipe-button": "Delete all notes? This cannot be undone.",
@@ -51,21 +47,24 @@ const l18n = {
     },
     textContent: {
       "search-bar": "Search",
-      "page-title": "Notes",
-      "page-footer": "Footer",
-      "full-note-created": "Created on: ",
-      "full-note-target": "Target Date: ",
+
       "form-heading:add": "New Note",
       "form-heading:update": "Edit Note",
       "form-button:add": "Add note",
       "form-button:update": "Update note",
+
+      "page-title": "Notes",
+      "page-footer": "Footer",
+
+      "full-note-created": "Created on: ",
+      "full-note-target": "Target Date: ",
+
       "note-title-label": "Note Title *",
       "note-body-label": "Note Body *",
       "note-target-date-label": "Target Date",
       "note-color-label": "Color",
       "wipe-button": "Delete all",
       "settings-title": "Settings",
-      "language-toggle": "Switch language",
       "note-target-date": "Target date - ",
       "note-create-date": "Created on - ",
     },
@@ -90,6 +89,7 @@ const l18n = {
       "close-form-button": "סגור חלון",
       "close-full-note": "סגור פתק",
       "toggle-settings": "פתח/סגור הגדרות",
+      "language-toggle": "להחליף שפה",
     },
     confirmations: {
       "wipe-button": "למחוק את כל הפתקים? אי אפשר לשחזר",
@@ -111,7 +111,6 @@ const l18n = {
       "note-color-label": "צבע",
       "wipe-button": "למחוק הכל",
       "settings-title": "הגדרות",
-      "language-toggle": "להחליף שפה",
       "note-target-date": "תאריך יעד - ",
       "note-create-date": "תאריך יצור - ",
     },

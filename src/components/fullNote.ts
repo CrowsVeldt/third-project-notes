@@ -130,13 +130,13 @@ const dateContainer = newElement({
 const noteCreated = newElement({
   type: "p",
   id: "full-note-created",
-  class: ["px-3", "mb-0", "full-note-child", "l18n-target"],
+  class: ["px-3", "mb-0", "full-note-child"],
 }) as HTMLParagraphElement;
 
 const noteTarget = newElement({
   type: "p",
   id: "full-note-target",
-  class: ["px-3", "mb-0", "full-note-child", "l18n-target"],
+  class: ["px-3", "mb-0", "full-note-child"],
 }) as HTMLParagraphElement;
 
 fullNote.append(noteTitle, xButton, noteBackground);

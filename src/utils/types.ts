@@ -70,15 +70,8 @@ type L18nTextContent =
   | "note-color-label"
   | "wipe-button"
   | "settings-title"
-  | "language-toggle"
   | "note-target-date"
   | "note-create-date";
-
-type L18nToolTip =
-  | "plus-button"
-  | "close-form-button"
-  | "close-full-note"
-  | "toggle-settings";
 
 type L18nConfirmation = "wipe-button" | "note-delete-button";
 
@@ -93,6 +86,5 @@ export type {
   CounterTarget,
   L18nLangOption,
   L18nTextContent,
-  L18nToolTip,
   L18nConfirmation,
 };

@@ -10,4 +10,4 @@ function colorOption(color: colorObject): HTMLOptionElement {
   }) as HTMLOptionElement;
 }
 
-export default colorOption
+export default colorOption;

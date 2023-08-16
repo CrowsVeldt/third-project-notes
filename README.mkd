@@ -90,8 +90,8 @@ x fix sort in hebrew. just not working
 x implement language toggle
 x save language preference on page close?
 x language toggle should always point in the direction of the current language
+x add function to reset all text content
 
-- add function to reset all text content
 - language toggle background-color and color shouldn't change
 - show required-field-message in hebrew?
 

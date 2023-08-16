@@ -32,13 +32,7 @@ const settingsTitle = newElement({
     getCurrentLanguage() as L18nLangOption,
     "settings-title"
   ),
-  class: [
-    "border-bottom",
-    "border-dark",
-    "settings",
-    "l18n-target",
-    "settings-child",
-  ],
+  class: ["border-bottom", "border-dark", "settings", "settings-child"],
 }) as HTMLHeadingElement;
 
 const toggleButton = newElement({
@@ -50,19 +44,12 @@ const toggleButton = newElement({
     "border-dark",
     "button-color",
     "no-select",
-    "l18n-target",
     "settings-child",
   ],
   props: [
     ["data-bs-toggle", "tooltip"],
     ["data-bs-placement", "right"],
-    [
-      "title",
-      l18n.getToolTip(
-        getCurrentLanguage() as L18nLangOption,
-        "toggle-settings"
-      ),
-    ],
+    // title prop set via setText
   ],
   eventListener: {
     eventType: "click",
@@ -98,11 +85,6 @@ function settingsIsOpen(): boolean {
   return settings && settings.style.left === "0%";
 }
 
-settings.append(
-  wipeButton,
-  languageToggle,
-  settingsTitle,
-  toggleButton
-);
+settings.append(wipeButton, languageToggle, settingsTitle, toggleButton);
 
 export { settings, settingsIsOpen, toggleSettings };

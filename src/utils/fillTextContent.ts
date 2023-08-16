@@ -3,6 +3,7 @@ import colorOption from "../components/colorOption";
 import l18n from "./l18n";
 import { getCurrentLanguage } from "./language";
 import { SortMethodType } from "./types";
+import { populateNoteContainer } from "../components/noteContainer";
 
 function setSortMethods() {
   const sortSelect = document.getElementById("sort-select")!;
@@ -17,25 +18,42 @@ function setSortMethods() {
 function setColors() {
   const colorSelect = document.getElementById("color-select")!;
   colorSelect.innerHTML = "";
-  l18n
-    .getColors(getCurrentLanguage())
-    .forEach((color: any) => {
-      colorSelect.append(colorOption(color));
-    });
+  l18n.getColors(getCurrentLanguage()).forEach((color: any) => {
+    colorSelect.append(colorOption(color));
+  });
 }
 
-function setToolTips () {
-    console.log(l18n.getToolTips(getCurrentLanguage()))
-    const targets = l18n.getToolTips(getCurrentLanguage())
-    // loop over targets: id(target[key]).setAttribute('title', target[value])
+function setToolTips() {
+  const targets = l18n.getToolTips(getCurrentLanguage());
+  for (let key in targets) {
+    document.getElementById(key)?.setAttribute("title", targets[key]);
+  }
 }
 
-function resetText() {
+function setTextContent() {
+  const targets = l18n.getTextContents(getCurrentLanguage());
+  const id = (a: string) => document.getElementById(a)!;
+  for (let key in targets) {
+    if (key === "search-bar") {
+      id(key).setAttribute("placeholder", targets[key]);
+    } else if (key === "form-heading:add" || key === "form-heading:update") {
+      id("form-heading").textContent = targets["form-heading:add"];
+    } else if (key === "form-button:add" || key === "form-button:update") {
+      id("form-button").textContent = targets["form-button:add"];
+    } else if (key === "note-target-date" || key === "note-create-date") {
+      populateNoteContainer();
+    } else {
+      id(key).textContent = targets[key];
+    }
+  }
+}
+
+function setText() {
   setColors();
   setSortMethods();
-  setToolTips()
-  // set confirmations
-  // set textContent
+  setToolTips();
+  // confirm messages set when buttons clicked
+  setTextContent();
 }
 
-export { resetText };
+export { setText };

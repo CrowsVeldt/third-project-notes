@@ -88,6 +88,7 @@ function editNote(noteId: string): void {
       ),
       "edit-" + note.id
     );
+
     populateFormElement();
   }
 }
@@ -178,7 +179,7 @@ const formHead = newElement({
 const formheading = newElement({
   type: "h2",
   id: "form-heading",
-  class: ["form-label", "form-child", "mb-2", "mt-2", "l18n-target"],
+  class: ["form-label", "form-child", "mb-2", "mt-2"],
   content: form.getHead(),
 }) as HTMLHeadingElement;
 
@@ -190,7 +191,7 @@ const titleLabel: HTMLLabelElement = createLabel(
     "note-title-label"
   ),
   "note-title-label",
-  ["form-label", "form-child", "l18n-target"],
+  ["form-label", "form-child"],
   "title-input"
 );
 const titleInput: HTMLInputElement = createInput(
@@ -213,7 +214,7 @@ const bodyLabel: HTMLLabelElement = createLabel(
     "note-body-label"
   ),
   "note-body-label",
-  ["form-label", "form-child", "l18n-target"],
+  ["form-label", "form-child"],
   "body-input"
 );
 const bodyInput = newElement({
@@ -254,7 +255,7 @@ const tDateLabel: HTMLLabelElement = createLabel(
     "note-target-date-label"
   ),
   "note-target-date-label",
-  ["form-label", "form-child", "l18n-target"],
+  ["form-label", "form-child"],
   "tDate-input"
 );
 
@@ -267,7 +268,7 @@ const colorLabel = createLabel(
     "note-color-label"
   ),
   "note-color-label",
-  ["form-label", "form-child", "l18n-target"],
+  ["form-label", "form-child"],
   "color-select"
 );
 const cSelect: HTMLSelectElement = colorSelect;
@@ -282,7 +283,6 @@ const actionButton: HTMLButtonElement = newElement({
     "mb-2",
     "align-self-center",
     "w-50",
-    "l18n-target",
   ],
   content: form.getButtonName(),
   props: [["type", "submit"]],

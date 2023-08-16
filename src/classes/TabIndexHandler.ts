@@ -23,13 +23,15 @@ class TabIndexHandler {
 
   listTabIndexes(): void {
     const indexes: TabIndexObject[] = [];
-    const elements = document.querySelectorAll(":not(.form-child)") as NodeListOf<HTMLElement>;
+    const elements = document.querySelectorAll(
+      ":not(.form-child)"
+    ) as NodeListOf<HTMLElement>;
     for (let node in elements) {
       if (elements[node].tabIndex >= 0) {
         indexes.push({
           el: elements[node],
           oldIndex: elements[node].tabIndex,
-        });    
+        });
       }
     }
     this.#list = indexes;

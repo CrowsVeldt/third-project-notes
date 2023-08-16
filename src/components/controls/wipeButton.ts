@@ -19,15 +19,13 @@ const wipeButton: HTMLButtonElement = newElement({
     "border-dark",
     "bg-danger",
     "mb-2",
-    'settings', 
+    "settings",
     "settings-child",
-    "l18n-target"
   ],
   props: [["tabindex", "-1"]],
   eventListener: {
     eventType: "click",
     listener: () => {
-      // listener not even being called?
       if (
         storageExists() &&
         confirm(

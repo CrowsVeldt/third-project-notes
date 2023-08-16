@@ -1,4 +1,4 @@
-import { resetText } from "../../utils/fillTextContent";
+import { setText } from "../../utils/fillTextContent";
 import {
   getCurrentLanguage,
   getLanguage,
@@ -28,14 +28,14 @@ const langToggleLabel1 = createLabel(
   "lang-toggle-label",
   ["settings", "settings-child", "form-check-label", "order-1"],
   "language-toggle"
-);
+) as HTMLLabelElement;
 
 const langToggleLabel2 = createLabel(
   "עברית",
   "lang-toggle-label",
   ["settings", "settings-child", "form-check-label", "order-3"],
   "language-toggle"
-);
+) as HTMLLabelElement;
 
 const languageToggle = newElement({
   type: "input",
@@ -51,10 +51,10 @@ const languageToggle = newElement({
     eventType: "change",
     listener: () => {
       changeLanguage();
-      resetText();
+      setText();
     },
   },
-});
+}) as HTMLInputElement;
 
 function changeLanguage(): void {
   const currentLang: string | void | null = langStored()

@@ -77,7 +77,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
 
   const noteCDate = newElement({
     type: "p",
-    class: ["mb-0", "note-create-date", "align-self-start", "l18n-target"],
+    class: ["mb-0", "note-create-date", "align-self-start"],
     content:
       l18n.getTextContent(
         getCurrentLanguage() as L18nLangOption,
@@ -87,7 +87,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
 
   const noteTDate = newElement({
     type: "p",
-    class: ["mb-0", "note-target-date", "align-self-start", "l18n-target"],
+    class: ["mb-0", "note-target-date", "align-self-start"],
     content: note.getTargetDate()
       ? l18n.getTextContent(
           getCurrentLanguage() as L18nLangOption,

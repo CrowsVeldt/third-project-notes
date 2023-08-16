@@ -15,6 +15,7 @@ function populateNoteContainer(noteArray?: Note[]): void {
     document.getElementById("note-container");
 
   if (container) {
+    container.innerHTML = "";
     if (noteArray) {
       noteArray.forEach((note: Note) => {
         container.append(newNote(note));
