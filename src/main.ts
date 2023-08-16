@@ -15,6 +15,7 @@ import {
 } from "./components/settings";
 import TabIndexHandler from "./classes/TabIndexHandler";
 import { initialLanguageCheck } from "./utils/language";
+import { resetText } from "./utils/fillTextContent";
 
 declare var bootstrap: any;
 
@@ -91,5 +92,6 @@ function handleKeydownEvents(evt: KeyboardEvent) {
 
 const tih = new TabIndexHandler();
 populateNoteContainer();
+resetText()
 
 export { tih };

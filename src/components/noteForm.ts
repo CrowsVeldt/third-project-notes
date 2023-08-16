@@ -1,4 +1,4 @@
-import { colorSelect, setColors } from "./controls/colorSelector";
+import colorSelect from "./controls/colorSelector";
 import { createInput, createLabel } from "./labelAndInput";
 import { FormElement, L18nLangOption, Note } from "../utils/types";
 import FormObject from "../classes/InputForm";
@@ -271,7 +271,6 @@ const colorLabel = createLabel(
   "color-select"
 );
 const cSelect: HTMLSelectElement = colorSelect;
-setColors()
 
 const actionButton: HTMLButtonElement = newElement({
   type: "button",
