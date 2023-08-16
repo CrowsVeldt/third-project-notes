@@ -191,7 +191,8 @@ const titleLabel: HTMLLabelElement = createLabel(
     "note-title-label"
   ),
   "note-title-label",
-  ["form-label", "form-child"]
+  ["form-label", "form-child"],
+  "title-input"
 );
 const titleInput: HTMLInputElement = createInput(
   "text",
@@ -213,7 +214,8 @@ const bodyLabel: HTMLLabelElement = createLabel(
     "note-body-label"
   ),
   "note-body-label",
-  ["form-label", "form-child"]
+  ["form-label", "form-child"],
+  "body-input"
 );
 const bodyInput = newElement({
   type: "textarea",
@@ -235,7 +237,8 @@ const tDateLabel: HTMLLabelElement = createLabel(
     "note-target-date-label"
   ),
   "note-target-date-label",
-  ["form-label", "form-child"]
+  ["form-label", "form-child"],
+  "tDate-input"
 );
 
 const tDateInput = targetDateInput;
@@ -247,7 +250,8 @@ const colorLabel = createLabel(
     "note-color-label"
   ),
   "note-color-label",
-  ["form-label", "form-child"]
+  ["form-label", "form-child"],
+  "color-select"
 );
 const cSelect: HTMLSelectElement = colorSelect;
 
