@@ -239,4 +239,6 @@ html[dir="rtl"] .x-button-container {
   width: 15px;
   display: inline-block;
   top: -0.09em;
+  transition: left 100ms;
+  transition-timing-function: ease-in-out;
 }
