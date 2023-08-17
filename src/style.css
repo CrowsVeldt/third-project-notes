@@ -104,6 +104,17 @@
   height: calc(100% - 4em);
 }
 
+@media screen and (max-width: 480px) {
+/* Sizing manually because calc() is not supported by some versions of Android 
+   I don't currently have a way of testing on iPhone*/
+  #full-note-bg {
+    left: 8%;
+    width: 82%;
+    bottom: 2%;
+    height: 65vh;
+  }
+}
+
 html[dir="rtl"] #full-note-bg {
   right: 2em;
 }
@@ -212,7 +223,7 @@ html[dir="rtl"] #full-note-bg {
 }
 
 html[dir="rtl"] .x-button-container {
-  right: 94%;
+  right: 90%;
 }
 
 .x-button:hover::before {
