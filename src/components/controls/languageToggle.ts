@@ -7,6 +7,7 @@ import {
 } from "../../utils/language";
 import newElement from "../../utils/newElement";
 import { createLabel } from "../labelAndInput";
+import { toggleContainer, toggle } from "./toggle";
 
 const languageToggleContainer = newElement({
   type: "div",
@@ -37,24 +38,21 @@ const langToggleLabel2 = createLabel(
   "language-toggle"
 ) as HTMLLabelElement;
 
-const languageToggle = newElement({
-  type: "input",
-  id: "language-toggle",
-  class: ["settings-child", "settings", "form-check-input", "order-2"],
-  props: [
+const languageToggle = toggleContainer(
+  "language-toggle",
+  ["order-2"],
+  [
+    ["dir", "ltr"],
     ["type", "checkbox"],
     ["role", "switch"],
-    ["data-language", getCurrentLanguage() === "en-US" ? "en-US" : "he"],
-    [getCurrentLanguage() === "he" ? "checked" : "notchecked"],
-  ],
-  eventListener: {
-    eventType: "change",
-    listener: () => {
-      changeLanguage();
-      setText();
-    },
-  },
-}) as HTMLInputElement;
+    ["data-language", getCurrentLanguage()],
+  ]
+) as HTMLDivElement;
+
+languageToggle.addEventListener("click", () => {
+  changeLanguage();
+  setText();
+});
 
 function changeLanguage(): void {
   const currentLang: string | void | null = langStored()
@@ -64,18 +62,18 @@ function changeLanguage(): void {
     if (currentLang === "en-US") {
       setLanguage("he");
       languageToggle.setAttribute("data-language", "he");
-      languageToggle.setAttribute("checked", "true");
     } else {
       setLanguage("en-US");
       languageToggle.setAttribute("data-language", "en-US");
-      languageToggle.removeAttribute("checked");
     }
   }
 }
 
+languageToggle.append(toggle);
 languageToggleContainer.append(
   langToggleLabel1,
   languageToggle,
   langToggleLabel2
 );
+
 export default languageToggleContainer;

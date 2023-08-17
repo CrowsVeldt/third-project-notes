@@ -4,6 +4,7 @@ import l18n from "./l18n";
 import { getCurrentLanguage } from "./language";
 import { SortMethodType } from "./types";
 import { populateNoteContainer } from "../components/noteContainer";
+import { setToggle } from "../components/controls/toggle";
 
 function setSortMethods() {
   const sortSelect = document.getElementById("sort-select")!;
@@ -52,8 +53,9 @@ function setText() {
   setColors();
   setSortMethods();
   setToolTips();
-  // confirm messages set when buttons clicked
+  // confirm messages set when relevent buttons clicked
   setTextContent();
+  setToggle("language-toggle", "data-language", "he");
 }
 
 export { setText };

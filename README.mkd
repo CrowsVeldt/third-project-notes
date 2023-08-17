@@ -91,18 +91,20 @@ x implement language toggle
 x save language preference on page close?
 x language toggle should always point in the direction of the current language
 x add function to reset all text content
+x language toggle background-color and color shouldn't change
 
-- language toggle background-color and color shouldn't change
 - show required-field-message in hebrew?
 
 ## TODO
 
+- ui/bug: fix full note layout on mobile
+- l18n: get someone to proofread hebrew text
+- UX/BUG: make sure all elements have the same visual indication of tab focus
+- UI: add message that required elements have a *
 - TODO: properly acknowledge fuse.js
 - BUG: target input date is displayed as mm/dd/yyyy on firefox on android and linux, displays appropriately on macos
 - UX: save details of last deleted note so it can be recovered
 - dev: separate listener functions from component files, component files should _just_ handle markup and styling
-- UX/BUG: make sure all elements have the same visual indication of tab focus
-- UI: add message that required elements have a *
 
 ## Under consideration
 

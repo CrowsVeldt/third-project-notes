@@ -227,3 +227,16 @@ html[dir="rtl"] .x-button-container {
   width: 100%;
   padding: 6px;
 }
+
+.toggle-parent {
+  height: 20px;
+  width: 40px;
+  cursor: pointer;
+}
+
+.toggle {
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  top: -0.09em;
+}

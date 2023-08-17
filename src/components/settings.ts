@@ -58,19 +58,18 @@ const toggleButton = newElement({
 }) as HTMLButtonElement;
 
 function toggleSettings(): void {
-  const target = document.getElementById("settings");
-  const style = getComputedStyle(target!);
-  const children = document.querySelectorAll(".settings-child");
+  const target: HTMLElement | null = document.getElementById("settings");
+
   if (target) {
+    const style: CSSStyleDeclaration = getComputedStyle(target);
+    const children = document.querySelectorAll(".settings-child");
     if (settingsIsOpen()) {
       children.forEach((child) => {
         const c = child as HTMLElement;
         c.tabIndex = -1;
       });
-      // wipeButton.tabIndex = -1;
       target.style.left = `-${style.minWidth}`;
     } else {
-      // wipeButton.tabIndex = 5;
       children.forEach((child) => {
         const c = child as HTMLElement;
         c.tabIndex = 0;
