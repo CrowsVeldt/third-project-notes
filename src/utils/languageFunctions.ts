@@ -53,13 +53,12 @@ function getCurrentLanguage(): l10nLangOption {
   return lang!;
 }
 
-const langOptions: string[] = ['en-US', 'he']
+const langOptions: string[] = ["en-US", "he"];
 
 function replaceLangOption(val: string): l10nLangOption {
-  if (langOptions.includes(val)) return val as l10nLangOption
-  return 'en-US'
+  if (langOptions.includes(val)) return val as l10nLangOption;
+  return "en-US" as l10nLangOption;
 }
-
 
 export {
   langStored,
@@ -68,5 +67,5 @@ export {
   getBrowserDefaultLanguage,
   getCurrentLanguage,
   initialLanguageCheck,
-  replaceLangOption
+  replaceLangOption,
 };
