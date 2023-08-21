@@ -1,7 +1,7 @@
-import l18n from "../utils/l18n";
+import l10n from "../utils/l10n";
 import { getCurrentLanguage } from "../utils/languageFunctions";
 import newElement from "../utils/newElement";
-import { L18nLangOption } from "../utils/types";
+import { l10nLangOption } from "../utils/types";
 
 // header
 const head = newElement({
@@ -13,8 +13,8 @@ const head = newElement({
 const headTitle = newElement({
   type: "h1",
   id: "page-title",
-  content: l18n.getTextContent(
-    getCurrentLanguage() as L18nLangOption,
+  content: l10n.getTextContent(
+    getCurrentLanguage() as l10nLangOption,
     "page-title"
   ),
 }) as HTMLHeadElement;
@@ -37,8 +37,8 @@ const foot = newElement({
 const footTitle = newElement({
   type: "h2",
   id: "page-footer",
-  content: l18n.getTextContent(
-    getCurrentLanguage() as L18nLangOption,
+  content: l10n.getTextContent(
+    getCurrentLanguage() as l10nLangOption,
     "page-footer"
   ),
 }) as HTMLHeadingElement;

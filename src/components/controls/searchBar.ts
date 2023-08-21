@@ -1,8 +1,8 @@
 import { createInput } from "../labelAndInput";
-import { L18nLangOption, Note } from "../../utils/types";
+import { l10nLangOption, Note } from "../../utils/types";
 import { resetNoteContainer, wipeNoteContainer } from "../noteContainer";
 import { searchNotes } from "../../utils/noteStorage";
-import l18n from "../../utils/l18n";
+import l10n from "../../utils/l10n";
 import { getCurrentLanguage } from "../../utils/languageFunctions";
 
 const searchBarContainer: HTMLDivElement = document.createElement("div");
@@ -15,7 +15,7 @@ const searchBar: HTMLInputElement = createInput(
   [
     [
       "placeholder",
-      l18n.getTextContent(getCurrentLanguage() as L18nLangOption, "search-bar"),
+      l10n.getTextContent(getCurrentLanguage() as l10nLangOption, "search-bar"),
     ],
     ["tabindex", "3"],
   ]

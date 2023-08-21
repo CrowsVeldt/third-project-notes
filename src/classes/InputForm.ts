@@ -1,6 +1,6 @@
-import l18n from "../utils/l18n";
+import l10n from "../utils/l10n";
 import { getCurrentLanguage } from "../utils/languageFunctions";
-import { L18nLangOption } from "../utils/types";
+import { l10nLangOption } from "../utils/types";
 
 class FormObject {
   #head: string;
@@ -111,12 +111,12 @@ class FormObject {
   }
 
   resetAll(): void {
-    this.#head = l18n.getTextContent(getCurrentLanguage() as L18nLangOption, 'form-heading:add');
+    this.#head = l10n.getTextContent(getCurrentLanguage() as l10nLangOption, 'form-heading:add');
     this.#title = "";
     this.#body = "";
     this.#tDate = "";
     this.#color = "none";
-    this.#buttonName = l18n.getTextContent(getCurrentLanguage() as L18nLangOption, 'form-button:add');
+    this.#buttonName = l10n.getTextContent(getCurrentLanguage() as l10nLangOption, 'form-button:add');
     this.#noteId = "";
   }
 }

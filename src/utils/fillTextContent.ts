@@ -1,6 +1,6 @@
 import sortOption from "../components/sortOption";
 import colorOption from "../components/colorOption";
-import l18n from "./l18n";
+import l10n from "./l10n";
 import { getCurrentLanguage } from "./languageFunctions";
 import { SortMethodType } from "./types";
 import { populateNoteContainer } from "../components/noteContainer";
@@ -9,7 +9,7 @@ import { setToggle } from "../components/controls/toggle";
 function setSortMethods() {
   const sortSelect = document.getElementById("sort-select")!;
   sortSelect.innerHTML = "";
-  l18n
+  l10n
     .getSortMethods(getCurrentLanguage())
     .forEach((method: SortMethodType) => {
       sortSelect.append(sortOption(method));
@@ -19,20 +19,20 @@ function setSortMethods() {
 function setColors() {
   const colorSelect = document.getElementById("color-select")!;
   colorSelect.innerHTML = "";
-  l18n.getColors(getCurrentLanguage()).forEach((color: any) => {
+  l10n.getColors(getCurrentLanguage()).forEach((color: any) => {
     colorSelect.append(colorOption(color));
   });
 }
 
 function setToolTips() {
-  const targets = l18n.getToolTips(getCurrentLanguage());
+  const targets = l10n.getToolTips(getCurrentLanguage());
   for (let key in targets) {
     document.getElementById(key)?.setAttribute("title", targets[key]);
   }
 }
 
 function setTextContent() {
-  const targets = l18n.getTextContents(getCurrentLanguage());
+  const targets = l10n.getTextContents(getCurrentLanguage());
   const id = (a: string) => document.getElementById(a)!;
   for (let key in targets) {
     if (key === "search-bar") {

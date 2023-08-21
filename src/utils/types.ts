@@ -52,9 +52,9 @@ type TabIndexObject = {
 
 type CounterTarget = HTMLInputElement | HTMLTextAreaElement;
 
-type L18nLangOption = "en-US" | "he";
+type l10nLangOption = "en-US" | "he";
 
-type L18nTextContent =
+type l10nTextContent =
   | "search-bar"
   | "page-title"
   | "page-footer"
@@ -73,7 +73,7 @@ type L18nTextContent =
   | "note-target-date"
   | "note-create-date";
 
-type L18nConfirmation = "wipe-button" | "note-delete-button";
+type l10nConfirmation = "wipe-button" | "note-delete-button";
 
 export type {
   colorObject,
@@ -84,7 +84,7 @@ export type {
   SortMethodType,
   TabIndexObject,
   CounterTarget,
-  L18nLangOption,
-  L18nTextContent,
-  L18nConfirmation,
+  l10nLangOption,
+  l10nTextContent,
+  l10nConfirmation,
 };

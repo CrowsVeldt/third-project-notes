@@ -84,7 +84,7 @@ x when a language is chosen, pass the apropriate language object to all elements
 x check search
 x make xbutton responsive to direction change
 x fix full-note-bg position for rtl
-x fix TS errors in l18n.ts
+x fix TS errors in l10n.ts
 x fix colors and sortMethods for hebrew. langPrefStored called before initialization?
 x fix sort in hebrew. just not working
 x implement language toggle
@@ -98,7 +98,7 @@ x language toggle background-color and color shouldn't change
 ## TODO
 
 - ui/bug: fix full note layout on mobile
-- l18n: get someone to proofread hebrew text
+- l10n: get someone to proofread hebrew text
 - UX/BUG: make sure all elements have the same visual indication of tab focus
 - UI: add message that required elements have a *
 - TODO: properly acknowledge fuse.js

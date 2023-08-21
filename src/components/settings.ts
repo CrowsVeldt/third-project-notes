@@ -1,6 +1,6 @@
 import { getCurrentLanguage } from "../utils/languageFunctions";
-import l18n from "../utils/l18n";
-import { L18nLangOption } from "../utils/types";
+import l10n from "../utils/l10n";
+import { l10nLangOption } from "../utils/types";
 import languageToggle from "./controls/languageToggle";
 import newElement from "../utils/newElement";
 import wipeButton from "./controls/wipeButton";
@@ -28,8 +28,8 @@ const settings = newElement({
 const settingsTitle = newElement({
   type: "h3",
   id: "settings-title",
-  content: l18n.getTextContent(
-    getCurrentLanguage() as L18nLangOption,
+  content: l10n.getTextContent(
+    getCurrentLanguage() as l10nLangOption,
     "settings-title"
   ),
   class: ["border-bottom", "border-dark", "settings", "settings-child"],

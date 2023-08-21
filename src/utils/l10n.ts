@@ -1,24 +1,24 @@
 import { replaceLangOption } from "./languageFunctions";
-import { L18nLangOption, L18nTextContent, L18nConfirmation } from "./types";
+import { l10nLangOption, l10nTextContent, l10nConfirmation } from "./types";
 
 
-const l18n = {
-  getColors(lang: L18nLangOption): any {
+const l10n = {
+  getColors(lang: l10nLangOption): any {
     return this[replaceLangOption(lang)].colors
   },
-  getSortMethods(lang: L18nLangOption): any {
+  getSortMethods(lang: l10nLangOption): any {
     return this[replaceLangOption(lang)].sortMethods
   },
-  getToolTips(lang: L18nLangOption): any {
+  getToolTips(lang: l10nLangOption): any {
     return this[replaceLangOption(lang)].tooltips
   },
-  getConfirmation(lang: L18nLangOption, key: L18nConfirmation): any {
+  getConfirmation(lang: l10nLangOption, key: l10nConfirmation): any {
     return this[replaceLangOption(lang)].confirmations[key]
   },
-  getTextContent(lang: L18nLangOption, key: L18nTextContent): any {
+  getTextContent(lang: l10nLangOption, key: l10nTextContent): any {
     return this[replaceLangOption(lang)].textContent[key]
   },
-  getTextContents(lang: L18nLangOption): any {
+  getTextContents(lang: l10nLangOption): any {
     return this[replaceLangOption(lang)].textContent
   },
   "en-US": {
@@ -119,4 +119,4 @@ const l18n = {
   },
 };
 
-export default l18n;
+export default l10n;
