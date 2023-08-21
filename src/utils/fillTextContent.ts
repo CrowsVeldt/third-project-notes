@@ -1,7 +1,7 @@
 import sortOption from "../components/sortOption";
 import colorOption from "../components/colorOption";
 import l18n from "./l18n";
-import { getCurrentLanguage } from "./language";
+import { getCurrentLanguage } from "./languageFunctions";
 import { SortMethodType } from "./types";
 import { populateNoteContainer } from "../components/noteContainer";
 import { setToggle } from "../components/controls/toggle";

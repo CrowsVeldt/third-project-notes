@@ -13,7 +13,7 @@ import makeXButton from "./controls/xButton";
 import targetDateInput from "./controls/targetDateInput";
 import { errorMessage, updateErrorMessage } from "./errorMessage";
 import l18n from "../utils/l18n";
-import { getCurrentLanguage } from "../utils/language";
+import { getCurrentLanguage } from "../utils/languageFunctions";
 
 const form: FormObject = new FormObject(
   l18n.getTextContent(

@@ -1,4 +1,4 @@
-import { getCurrentLanguage } from "../utils/language";
+import { getCurrentLanguage } from "../utils/languageFunctions";
 import l18n from "../utils/l18n";
 import { L18nLangOption } from "../utils/types";
 import languageToggle from "./controls/languageToggle";

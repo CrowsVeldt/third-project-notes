@@ -14,7 +14,7 @@ import {
   toggleSettings,
 } from "./components/settings";
 import TabIndexHandler from "./classes/TabIndexHandler";
-import { initialLanguageCheck } from "./utils/language";
+import { initialLanguageCheck } from "./utils/languageFunctions";
 import { setText } from "./utils/fillTextContent";
 
 declare var bootstrap: any;

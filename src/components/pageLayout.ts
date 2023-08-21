@@ -1,5 +1,5 @@
 import l18n from "../utils/l18n";
-import { getCurrentLanguage } from "../utils/language";
+import { getCurrentLanguage } from "../utils/languageFunctions";
 import newElement from "../utils/newElement";
 import { L18nLangOption } from "../utils/types";
 

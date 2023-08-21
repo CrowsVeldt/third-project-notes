@@ -3,7 +3,7 @@ import { resetNoteContainer } from "../noteContainer";
 import { storageExists, wipeStorage } from "../../utils/noteStorage";
 import { toggleSettings } from "../settings";
 import l18n from "../../utils/l18n";
-import { getCurrentLanguage } from "../../utils/language";
+import { getCurrentLanguage } from "../../utils/languageFunctions";
 import { L18nLangOption } from "../../utils/types";
 
 const wipeButton: HTMLButtonElement = newElement({

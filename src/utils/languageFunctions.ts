@@ -53,6 +53,14 @@ function getCurrentLanguage(): L18nLangOption {
   return lang!;
 }
 
+const langOptions: string[] = ['en-US', 'he']
+
+function replaceLangOption(val: string): L18nLangOption {
+  if (langOptions.includes(val)) return val as L18nLangOption
+  return 'en-US'
+}
+
+
 export {
   langStored,
   setLanguage,
@@ -60,4 +68,5 @@ export {
   getBrowserDefaultLanguage,
   getCurrentLanguage,
   initialLanguageCheck,
+  replaceLangOption
 };

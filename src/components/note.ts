@@ -6,7 +6,7 @@ import { L18nLangOption, Note } from "../utils/types";
 import NoteObj from "../classes/Note";
 import { toggleFullNote } from "./fullNote";
 import l18n from "../utils/l18n";
-import { getCurrentLanguage } from "../utils/language";
+import { getCurrentLanguage } from "../utils/languageFunctions";
 
 function newNote(n: Note | undefined): HTMLDivElement {
   const note = n

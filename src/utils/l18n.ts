@@ -1,23 +1,25 @@
+import { replaceLangOption } from "./languageFunctions";
 import { L18nLangOption, L18nTextContent, L18nConfirmation } from "./types";
+
 
 const l18n = {
   getColors(lang: L18nLangOption): any {
-    return this[lang].colors;
+    return this[replaceLangOption(lang)].colors
   },
   getSortMethods(lang: L18nLangOption): any {
-    return this[lang].sortMethods;
+    return this[replaceLangOption(lang)].sortMethods
   },
   getToolTips(lang: L18nLangOption): any {
-    return this[lang].tooltips;
+    return this[replaceLangOption(lang)].tooltips
   },
   getConfirmation(lang: L18nLangOption, key: L18nConfirmation): any {
-    return this[lang].confirmations[key];
+    return this[replaceLangOption(lang)].confirmations[key]
   },
   getTextContent(lang: L18nLangOption, key: L18nTextContent): any {
-    return this[lang].textContent[key];
+    return this[replaceLangOption(lang)].textContent[key]
   },
   getTextContents(lang: L18nLangOption): any {
-    return this[lang].textContent;
+    return this[replaceLangOption(lang)].textContent
   },
   "en-US": {
     colors: [

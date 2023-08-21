@@ -4,7 +4,7 @@ import {
   getLanguage,
   langStored,
   setLanguage,
-} from "../../utils/language";
+} from "../../utils/languageFunctions";
 import newElement from "../../utils/newElement";
 import { createLabel } from "../labelAndInput";
 import { toggleContainer, toggle } from "./toggle";

@@ -4,7 +4,7 @@ import newElement from "../utils/newElement";
 import { L18nLangOption, Note } from "../utils/types";
 import makeXButton from "./controls/xButton";
 import l18n from "../utils/l18n";
-import { getCurrentLanguage } from "../utils/language";
+import { getCurrentLanguage } from "../utils/languageFunctions";
 
 function getFullNoteElements(): {
   title: HTMLHeadingElement;
