@@ -112,7 +112,6 @@ const noteBackground = newElement({
     "justify-content-between",
     "full-note-child",
   ],
-  props: [["style", `background-color:white;`]],
 }) as HTMLDivElement;
 
 const noteBody = newElement({

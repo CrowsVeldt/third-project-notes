@@ -22,6 +22,7 @@ const settings = newElement({
     "justify-content-between",
     "align-items-center",
     "settings",
+    'bg-light'
   ],
 }) as HTMLDivElement;
 

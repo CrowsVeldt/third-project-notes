@@ -113,7 +113,7 @@ html[dir="rtl"] #full-note-bg {
   min-width: 300px;
   left: -300px;
   z-index: 1;
-  background-color: white;
+  /* background-color: white; */
   transition: left 0.1s;
   transition-timing-function: ease-out;
 }
