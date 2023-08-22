@@ -96,7 +96,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
       : "-",
     // if no target date, turn value clear to keep the layout consistant
     props: [
-      ["style", `color:${note.getTargetDate() ? "black" : "transparent"};`],
+      ["style", `color:${note.getTargetDate() ? "" : "transparent"};`],
     ],
   }) as HTMLParagraphElement;
 

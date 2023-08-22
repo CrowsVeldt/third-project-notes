@@ -29,15 +29,16 @@ const main = newElement({
 // footer
 const foot = newElement({
   type: "footer",
+  id: 'footer',
   class: ["container-fluid", "text-center", "border"],
 }) as HTMLElement;
 
 const footTitle = newElement({
   type: "h2",
-  id: "page-footer",
+  id: "page-foot-title",
   content: l10n.getTextContent(
     getCurrentLanguage() as l10nLangOption,
-    "page-footer"
+    "page-foot-title"
   ),
 }) as HTMLHeadingElement;
 

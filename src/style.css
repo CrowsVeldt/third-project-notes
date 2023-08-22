@@ -178,7 +178,7 @@ html[dir="rtl"] .x-button-container {
   background-color: darkgray;
 }
 
-#lang-toggle-container {
+.toggle-container {
   width: 100%;
   padding: 6px;
 }
@@ -196,6 +196,14 @@ html[dir="rtl"] .x-button-container {
   top: -0.09em;
   transition: left 100ms;
   transition-timing-function: ease-in-out;
+}
+
+.toggle-right {
+  left: 1.3em;
+}
+
+.toggle-left {
+  left: 0.1em;
 }
 
 @media screen and (max-width: 480px) {

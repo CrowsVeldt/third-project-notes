@@ -4,6 +4,7 @@ import { l10nLangOption } from "../utils/types";
 import languageToggle from "./controls/languageToggle";
 import newElement from "../utils/newElement";
 import wipeButton from "./controls/wipeButton";
+import themeToggleContainer from "./controls/themeToggle";
 
 const settings = newElement({
   type: "div",
@@ -13,7 +14,6 @@ const settings = newElement({
     "position-fixed",
     "top-50",
     "translate-middle-y",
-    "bg-light",
     "border",
     "border-dark",
     "rounded",
@@ -84,6 +84,12 @@ function settingsIsOpen(): boolean {
   return settings && settings.style.left === "0%";
 }
 
-settings.append(wipeButton, languageToggle, settingsTitle, toggleButton);
+settings.append(
+  wipeButton,
+  languageToggle,
+  themeToggleContainer,
+  settingsTitle,
+  toggleButton
+);
 
 export { settings, settingsIsOpen, toggleSettings };

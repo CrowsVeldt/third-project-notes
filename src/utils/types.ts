@@ -57,7 +57,7 @@ type l10nLangOption = "en-US" | "he";
 type l10nTextContent =
   | "search-bar"
   | "page-title"
-  | "page-footer"
+  | "page-foot-title"
   | "full-note-created"
   | "full-note-target"
   | "form-heading:add"

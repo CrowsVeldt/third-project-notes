@@ -4,8 +4,6 @@ const toggleContainer = (
   id: string,
   classes: string[],
   props: string[][],
-  attribute: string,
-  value: string
 ) =>
   newElement({
     type: "div",
@@ -22,16 +20,11 @@ const toggleContainer = (
       "order-2",
     ],
     props: [...props],
-    eventListener: {
-      eventType: "click",
-      listener: () => {
-        setToggle(id, attribute, value);
-      },
-    },
   }) as HTMLDivElement;
 
-const toggle = newElement({
+const toggle = (id: string) => newElement({
   type: "i",
+  id: id,
   class: [
     "toggle",
     "border",
@@ -45,10 +38,16 @@ const toggle = newElement({
 }) as HTMLElement;
 
 function setToggle(id: string, attribute: string, value: string): void {
-  if (document.getElementById(id)!.getAttribute(attribute) === value) {
-    toggle.style.left = "1.3em";
-  } else {
-    toggle.style.left = "0.1em";
+  const toggle: HTMLElement | null = document.getElementById(id);
+  const s: HTMLElement | null = document.getElementById(id + "-switch");
+  if (toggle !== null && s !== null) {
+    if (toggle.getAttribute(attribute) === value) {
+      s.classList.add("toggle-right");
+      s.classList.remove("toggle-left");
+    } else {
+      s.classList.add("toggle-left");
+      s.classList.remove("toggle-right");
+    }
   }
 }
 

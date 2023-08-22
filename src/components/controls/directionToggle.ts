@@ -3,7 +3,10 @@ import newElement from "../../utils/newElement";
 const directionToggle = newElement({
   type: "div",
   id: "direction",
-  class: ["border", "border-dark", "rounded", "button-color", "form-control"],
+  class: ["border", "border-dark", "rounded", 
+  //"button-color", 
+  "form-control"
+],
   props: [["tabindex", "2"]],
   eventListener: {
     eventType: "click",

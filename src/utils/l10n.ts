@@ -55,7 +55,7 @@ const l10n = {
       "form-button:update": "Update note",
 
       "page-title": "Notes",
-      "page-footer": "Footer",
+      "page-foot-title": "Footer",
 
       "full-note-created": "Created on: ",
       "full-note-target": "Target Date: ",
@@ -99,7 +99,7 @@ const l10n = {
     textContent: {
       "search-bar": "חיפוש",
       "page-title": "פתקים",
-      "page-footer": "פוטר",
+      "page-foot-title": "פוטר",
       "full-note-created": "תאריך יצירה: ",
       "full-note-target": "תאריך יעד: ",
       "form-heading:add": "פתק חדש",

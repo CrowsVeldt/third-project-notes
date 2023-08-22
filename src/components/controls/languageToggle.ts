@@ -7,7 +7,7 @@ import {
 } from "../../utils/languageFunctions";
 import newElement from "../../utils/newElement";
 import { createLabel } from "../labelAndInput";
-import { toggleContainer, toggle } from "./toggle";
+import { toggleContainer, toggle, setToggle } from "./toggle";
 
 const languageToggleContainer = newElement({
   type: "div",
@@ -20,6 +20,7 @@ const languageToggleContainer = newElement({
     "align-self-center",
     "d-flex",
     "justify-content-between",
+    "toggle-container"
   ],
   props: [["dir", "ltr"]],
 }) as HTMLDivElement;
@@ -47,8 +48,6 @@ const languageToggle = toggleContainer(
     ["role", "switch"],
     ["data-language", getCurrentLanguage()],
   ],
-  "data-language",
-  "he"
 ) as HTMLDivElement;
 
 languageToggle.addEventListener("click", () => {
@@ -69,9 +68,10 @@ function changeLanguage(): void {
       languageToggle.setAttribute("data-language", "en-US");
     }
   }
+  setToggle('language-toggle', 'data-language', 'he')
 }
 
-languageToggle.append(toggle);
+languageToggle.append(toggle('language-toggle-switch'));
 languageToggleContainer.append(
   langToggleLabel1,
   languageToggle,

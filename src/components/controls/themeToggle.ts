@@ -14,19 +14,20 @@ const themeToggleContainer = newElement({
     "align-self-center",
     "d-flex",
     "justify-content-between",
+    "toggle-container"
   ],
   props: [["dir", "ltr"]],
 }) as HTMLDivElement;
 
 const themeToggleLabel1 = createLabel(
-  "Light Theme",
+  "Light",
   "theme-toggle-light",
   ["settings", "settings-child", "form-check-label", "order-1"],
   "theme-toggle"
 ) as HTMLLabelElement;
 
 const themeToggleLabel2 = createLabel(
-  "Dark theme",
+  "Dark",
   "theme-toggle-dark",
   ["settings", "settings-child", "form-check-label", "order-3"],
   "theme-toggle"
@@ -34,22 +35,18 @@ const themeToggleLabel2 = createLabel(
 
 const themeToggle = toggleContainer(
   "theme-toggle",
-  ["order-2", "toggle-left"],
+  ["order-2"],
   [
     ["dir", "ltr"],
     ["type", "checkbox"],
     ["role", "switch"],
     ["data-theme", "light"],
-  ],
-  "date-theme",
-  "light"
+  ]
 ) as HTMLDivElement;
 
 themeToggle.addEventListener("click", () => {
   changeTheme();
 });
-
-const themeSwitch = toggle;
 
 function changeTheme(): void {
   // get theme if stored
@@ -66,7 +63,7 @@ function changeTheme(): void {
   setToggle("theme-toggle", "data-theme", "dark");
 }
 
-themeToggle.append(themeSwitch);
+themeToggle.append(toggle("theme-toggle-switch"));
 themeToggleContainer.append(themeToggleLabel1, themeToggle, themeToggleLabel2);
 
 export default themeToggleContainer;
