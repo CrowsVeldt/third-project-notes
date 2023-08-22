@@ -46,7 +46,9 @@ const languageToggle = toggleContainer(
     ["type", "checkbox"],
     ["role", "switch"],
     ["data-language", getCurrentLanguage()],
-  ]
+  ],
+  "data-language",
+  "he"
 ) as HTMLDivElement;
 
 languageToggle.addEventListener("click", () => {

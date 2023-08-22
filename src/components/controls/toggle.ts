@@ -1,6 +1,12 @@
 import newElement from "../../utils/newElement";
 
-const toggleContainer = (id: string, classes: string[], props: string[][]) =>
+const toggleContainer = (
+  id: string,
+  classes: string[],
+  props: string[][],
+  attribute: string,
+  value: string
+) =>
   newElement({
     type: "div",
     id: id,
@@ -15,11 +21,11 @@ const toggleContainer = (id: string, classes: string[], props: string[][]) =>
       "bg-primary",
       "order-2",
     ],
-    props: [...props, ["dir", "ltr"]],
+    props: [...props],
     eventListener: {
       eventType: "click",
       listener: () => {
-        setToggle("language-toggle", "data-language", "he");
+        setToggle(id, attribute, value);
       },
     },
   }) as HTMLDivElement;
