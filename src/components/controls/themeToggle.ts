@@ -2,6 +2,9 @@ import { createLabel } from "../labelAndInput";
 import newElement from "../../utils/newElement";
 import { setTheme } from "../../utils/theme";
 import { toggle, toggleContainer, setToggle } from "./toggle";
+import { retrieveTheme } from "../../utils/theme";
+
+// set direction of theme toggle on start
 
 const themeToggleContainer = newElement({
   type: "div",
@@ -40,7 +43,7 @@ const themeToggle = toggleContainer(
     ["dir", "ltr"],
     ["type", "checkbox"],
     ["role", "switch"],
-    ["data-theme", "light"],
+    ["data-theme", retrieveTheme()],
   ]
 ) as HTMLDivElement;
 
@@ -49,7 +52,6 @@ themeToggle.addEventListener("click", () => {
 });
 
 function changeTheme(): void {
-  // get theme if stored
   const currentTheme = themeToggle.getAttribute("data-theme");
   if (currentTheme) {
     if (currentTheme === "light") {

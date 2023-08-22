@@ -16,6 +16,7 @@ import {
 import TabIndexHandler from "./classes/TabIndexHandler";
 import { initialLanguageCheck } from "./utils/languageFunctions";
 import { setText } from "./utils/fillTextContent";
+import { retrieveTheme, setTheme } from "./utils/theme";
 
 declare var bootstrap: any;
 
@@ -93,5 +94,6 @@ function handleKeydownEvents(evt: KeyboardEvent) {
 const tih = new TabIndexHandler();
 populateNoteContainer();
 setText();
+setTheme(retrieveTheme())
 
 export { tih };
