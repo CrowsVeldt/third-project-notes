@@ -154,7 +154,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
   const deleteIcon = newElement({
     type: "i",
     class: ["bi", "bi-trash"],
-  });
+  }) as HTMLElement;
 
   deleteButton.append(deleteIcon);
   const editIcon = newElement({

@@ -17,7 +17,7 @@ class NoteObj {
     createDate?: string,
     targetDate?: string
   ) {
-    const date = new Date();
+    const date: Date = new Date();
     this.#title = title ? title : "";
     this.#body = body ? body : "";
     this.#color = color ? color : "none";

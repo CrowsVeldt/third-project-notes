@@ -19,8 +19,6 @@ const headTitle = newElement({
   ),
 }) as HTMLHeadElement;
 
-head.append(headTitle);
-
 // main
 const main = newElement({
   type: "div",
@@ -32,7 +30,7 @@ const main = newElement({
 const foot = newElement({
   type: "footer",
   class: ["container-fluid", "text-center", "border"],
-});
+}) as HTMLElement;
 
 const footTitle = newElement({
   type: "h2",
@@ -43,6 +41,7 @@ const footTitle = newElement({
   ),
 }) as HTMLHeadingElement;
 
+head.append(headTitle);
 foot.append(footTitle);
 
 export { foot, head, main };

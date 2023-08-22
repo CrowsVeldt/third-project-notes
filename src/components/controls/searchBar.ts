@@ -7,7 +7,7 @@ import { getCurrentLanguage } from "../../utils/languageFunctions";
 
 const searchBarContainer: HTMLDivElement = document.createElement("div");
 
-const searchBar: HTMLInputElement = createInput(
+const searchBar = createInput(
   "text",
   "search-bar",
   ["form-control", "border", "border-dark"],
@@ -19,7 +19,8 @@ const searchBar: HTMLInputElement = createInput(
     ],
     ["tabindex", "3"],
   ]
-);
+) as HTMLInputElement;
+
 searchBar.addEventListener("input", (event: Event) => {
   const searchBarInput = event.target as HTMLInputElement;
   const response: Note[] = searchNotes(searchBarInput.value);

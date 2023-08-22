@@ -93,30 +93,36 @@ class FormObject {
   }
 
   setAll(
-    a: string,
-    b: string,
-    c: string,
-    d: string,
-    e: string,
-    f: string,
-    g: string
+    head: string,
+    title: string,
+    body: string,
+    tDate: string,
+    color: string,
+    buttonName: string,
+    noteId: string
   ): void {
-    this.#head = a;
-    this.#title = b;
-    this.#body = c;
-    this.#tDate = d;
-    this.#color = e;
-    this.#buttonName = f;
-    this.#noteId = g;
+    this.#head = head;
+    this.#title = title;
+    this.#body = body;
+    this.#tDate = tDate;
+    this.#color = color;
+    this.#buttonName = buttonName;
+    this.#noteId = noteId;
   }
 
   resetAll(): void {
-    this.#head = l10n.getTextContent(getCurrentLanguage() as l10nLangOption, 'form-heading:add');
+    this.#head = l10n.getTextContent(
+      getCurrentLanguage() as l10nLangOption,
+      "form-heading:add"
+    );
     this.#title = "";
     this.#body = "";
     this.#tDate = "";
     this.#color = "none";
-    this.#buttonName = l10n.getTextContent(getCurrentLanguage() as l10nLangOption, 'form-button:add');
+    this.#buttonName = l10n.getTextContent(
+      getCurrentLanguage() as l10nLangOption,
+      "form-button:add"
+    );
     this.#noteId = "";
   }
 }

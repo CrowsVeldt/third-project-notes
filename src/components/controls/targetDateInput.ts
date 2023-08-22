@@ -2,22 +2,18 @@ import newElement from "../../utils/newElement";
 import { padTo2Digits } from "../../utils/util";
 import { updateErrorMessage } from "../errorMessage";
 
-const date = new Date();
+const date: Date = new Date();
 
-const currentYear = date.getFullYear();
-const currentMonth = date.getMonth() + 1;
-const currentDay = date.getDate();
-const errorMessage = `Target date must be after ${`${padTo2Digits(
+const currentYear: number = date.getFullYear();
+const currentMonth: number = date.getMonth() + 1;
+const currentDay: number = date.getDate();
+const errorMessage: string = `Target date must be after ${`${padTo2Digits(
   currentDay
 )}/${padTo2Digits(currentMonth)}/${currentYear}`}`;
 
-const toInputDateFormat = (
-  year: number,
-  month: number,
-  day: number
-): string => {
+function toInputDateFormat(year: number, month: number, day: number): string {
   return `${year}-${padTo2Digits(month)}-${padTo2Digits(day)}`;
-};
+}
 
 function validDate(date: string): string {
   const inputDate: string[] = date.split("-");
@@ -62,7 +58,7 @@ const targetDateInput: HTMLInputElement = newElement({
       const element = document.getElementById(
         "tDate-input"
       ) as HTMLInputElement;
-      const value = element.value;
+      const value: string = element.value;
       if (value !== "") {
         element.value = validDate(value);
       }

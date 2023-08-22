@@ -4,7 +4,7 @@ class TabIndexHandler {
   #list: TabIndexObject[];
 
   constructor() {
-    this.#list = (() => {
+    this.#list = (() => { // IIFE to get all elements with tabIndex > 0
       const indexes: TabIndexObject[] = [];
       const elements = document.querySelectorAll(
         ":not(.form-child)"

@@ -53,7 +53,7 @@ function setText() {
   setColors();
   setSortMethods();
   setToolTips();
-  // confirm messages set when relevent buttons clicked
+  // confirmation messages are set when their buttons are clicked
   setTextContent();
   setToggle("language-toggle", "data-language", "he");
 }

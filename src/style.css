@@ -32,30 +32,6 @@
   display: none;
 }
 
-@media screen and (max-width: 480px) {
-  .hideable {
-    width: 100%;
-    min-height: 75%;
-    top: 10vh;
-  }
-}
-
-@media screen and (min-width: 480px) and (max-width: 1024px) {
-  .hideable {
-    width: 75%;
-    height: 75%;
-    top: 10vh;
-  }
-}
-
-@media screen and (min-width: 1025px) {
-  .hideable {
-    width: 50%;
-    height: 75%;
-    top: 10vh;
-  }
-}
-
 #body-input {
   width: 100%;
 }
@@ -104,17 +80,6 @@
   height: calc(100% - 4em);
 }
 
-@media screen and (max-width: 480px) {
-/* Sizing manually because calc() is not supported by some versions of Android 
-   I don't currently have a way of testing on iPhone*/
-  #full-note-bg {
-    left: 8%;
-    width: 82%;
-    bottom: 2%;
-    height: 65vh;
-  }
-}
-
 html[dir="rtl"] #full-note-bg {
   right: 2em;
 }
@@ -144,20 +109,6 @@ html[dir="rtl"] #full-note-bg {
   transform: rotate(-225deg);
 }
 
-@media screen and (max-width: 480px) {
-  #search-and-sort {
-    justify-content: space-around;
-  }
-
-  #search-bar {
-    width: 33vw;
-  }
-
-  #sort-select {
-    width: 8em;
-  }
-}
-
 #settings {
   min-width: 300px;
   left: -300px;
@@ -165,13 +116,6 @@ html[dir="rtl"] #full-note-bg {
   background-color: white;
   transition: left 0.1s;
   transition-timing-function: ease-out;
-}
-
-@media screen and (max-width: 480px) {
-  #settings {
-    min-width: 50%;
-    left: -50%;
-  }
 }
 
 #toggle-settings {
@@ -252,4 +196,54 @@ html[dir="rtl"] .x-button-container {
   top: -0.09em;
   transition: left 100ms;
   transition-timing-function: ease-in-out;
+}
+
+@media screen and (max-width: 480px) {
+  .hideable {
+    width: 100%;
+    min-height: 75%;
+    top: 10vh;
+  }
+
+/* Sizing manually because calc() is not supported by some versions of Android 
+   (I don't currently have a way of testing on iPhone)*/
+  #full-note-bg {
+    left: 8%;
+    width: 82%;
+    bottom: 2%;
+    height: 65vh;
+  }
+
+  #search-and-sort {
+    justify-content: space-around;
+  }
+
+  #search-bar {
+    width: 33vw;
+  }
+
+  #sort-select {
+    width: 8em;
+  }
+
+  #settings {
+    min-width: 50%;
+    left: -50%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 1024px) {
+  .hideable {
+    width: 75%;
+    height: 75%;
+    top: 10vh;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .hideable {
+    width: 50%;
+    height: 75%;
+    top: 10vh;
+  }
 }
