@@ -15,6 +15,9 @@ function setTheme(theme: ThemeName) {
     const settings = document.getElementById('settings')!
     const form = document.getElementById('input-form')!
     const fullNote = document.getElementById('full-note')!
+  const search = document.getElementById('search-bar')!
+  const sort = document.getElementById('sort-select')!
+    // loop over elements?
   if (theme === 'dark') {
     app.classList.add(...themes['dark'])
     app.classList.remove(...themes['light'])
@@ -24,6 +27,10 @@ function setTheme(theme: ThemeName) {
     form.classList.remove(...themes['light'])
     fullNote.classList.add(...themes['dark'])
     fullNote.classList.remove(...themes['light'])
+    search.classList.add(...themes['dark'])
+    search.classList.remove(...themes['light'])
+    sort.classList.add(...themes['dark'])
+    sort.classList.remove(...themes['light'])
   } else if (theme === "light") {
     app.classList.add(...themes['light'])
     app.classList.remove(...themes['dark'])
@@ -33,6 +40,10 @@ function setTheme(theme: ThemeName) {
     form.classList.remove(...themes['dark'])
     fullNote.classList.add(...themes['light'])
     fullNote.classList.remove(...themes['dark'])
+    search.classList.add(...themes['light'])
+    search.classList.remove(...themes['dark'])
+    sort.classList.add(...themes['light'])
+    sort.classList.remove(...themes['dark'])
   }
   
   // const mainPage = document.getElementById("main-page");
@@ -48,6 +59,7 @@ function setTheme(theme: ThemeName) {
 type ThemeName = "dark" | "light";
 
 const themes = {
+  // change note colors for dark mode
   dark: ['bg-dark', 'text-light', 'border-light'],
   light: ['bg-light', 'text-dark', 'border-dark'],
 };
