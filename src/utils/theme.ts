@@ -10,6 +10,14 @@ function themeSaved() {
   }
 }
 
+function saveTheme (theme: string) {
+  localStorage.setItem('themePref', JSON.stringify(theme))
+}
+
+function retrieveTheme () {
+  return JSON.parse(localStorage.getItem('themePref')!)
+}
+
 function setTheme(theme: ThemeName) {
     const app = document.getElementById('app')!
     const settings = document.getElementById('settings')!
@@ -31,6 +39,7 @@ function setTheme(theme: ThemeName) {
     search.classList.remove(...themes['light'])
     sort.classList.add(...themes['dark'])
     sort.classList.remove(...themes['light'])
+    saveTheme('dark')
   } else if (theme === "light") {
     app.classList.add(...themes['light'])
     app.classList.remove(...themes['dark'])
@@ -44,6 +53,7 @@ function setTheme(theme: ThemeName) {
     search.classList.remove(...themes['dark'])
     sort.classList.add(...themes['light'])
     sort.classList.remove(...themes['dark'])
+    saveTheme('light')
   }
   
   // const mainPage = document.getElementById("main-page");
@@ -64,4 +74,8 @@ const themes = {
   light: ['bg-light', 'text-dark', 'border-dark'],
 };
 
-export { setTheme, themeSaved };
+export { 
+  setTheme, 
+  themeSaved,
+  retrieveTheme
+};
