@@ -5,6 +5,8 @@ import { l10nLangOption, Note } from "../utils/types";
 import makeXButton from "./controls/xButton";
 import l10n from "../utils/l10n";
 import { getCurrentLanguage } from "../utils/languageFunctions";
+import { getColor } from "../utils/colors";
+import { retrieveTheme } from "../utils/theme";
 
 function getFullNoteElements(): {
   title: HTMLHeadingElement;
@@ -37,7 +39,7 @@ function populateFullNote(id: string): void {
 
   if (note) {
     title.innerText = note.title;
-    title.style.backgroundColor = note.color === "none" ? "white" : note.color;
+    title.style.backgroundColor = note.color === 0 ? "white" : getColor(retrieveTheme(), note.color);
     body.innerText = note.body;
     created.innerText =
       l10n.getTextContent(

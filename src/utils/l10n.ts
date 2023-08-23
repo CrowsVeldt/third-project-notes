@@ -22,12 +22,12 @@ const l10n = {
   },
   "en-US": {
     colors: [
-      { name: "None", value: "none" },
-      { name: "Red", value: "salmon" },
-      { name: "Blue", value: "lightblue" },
-      { name: "Green", value: "lightgreen" },
-      { name: "Yellow", value: "gold" },
-      { name: "Brown", value: "tan" },
+      { name: "None", value: "0" },
+      { name: "Red", value: "1" },
+      { name: "Blue", value: "2" },
+      { name: "Green", value: "3" },
+      { name: "Yellow", value: "4" },
+      { name: "Brown", value: "5" },
     ],
     sortMethods: [
       { method: "Date Created" },
@@ -72,12 +72,12 @@ const l10n = {
   },
   he: {
     colors: [
-      { name: "ללא צבע", value: "none" },
-      { name: "אדום", value: "salmon" },
-      { name: "כחול", value: "lightblue" },
-      { name: "ירוק", value: "lightgreen" },
-      { name: "צהוב", value: "gold" },
-      { name: "חום", value: "tan" },
+      { name: "ללא צבע", value: "0" },
+      { name: "אדום", value: "1" },
+      { name: "כחול", value: "2" },
+      { name: "ירוק", value: "3" },
+      { name: "צהוב", value: "4" },
+      { name: "חום", value: "5" },
     ],
     sortMethods: [
       { method: "תאריך יצירה" },

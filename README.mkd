@@ -97,9 +97,8 @@ id: string // hashed from Date.toString()
 
 ## TODO
 
+- BUG: inputCount color is sometimes black in dark mode
 - UI: make input background color darker in dark mode
-- UI: add darker colors for notes in dark mode
-- BUG/regression: placeholder text not showing in dark mode
 - UX: indicate tab focus in dark mode
 - UX: make toggles larger
 - UX/BUG: make sure all elements have the same visual indication of tab focus

@@ -7,10 +7,14 @@ import NoteObj from "../classes/Note";
 import { toggleFullNote } from "./fullNote";
 import l10n from "../utils/l10n";
 import { getCurrentLanguage } from "../utils/languageFunctions";
+import { getColor } from "../utils/colors";
+import { retrieveTheme } from "../utils/theme";
 
 function newNote(n: Note | undefined): HTMLDivElement {
   const note = n
-    ? new NoteObj(n.title, n.body, n.color, n.id, n.createDate, n.targetDate)
+    ? new NoteObj(n.title, n.body, 
+      n.color, 
+      n.id, n.createDate, n.targetDate)
     : new NoteObj();
 
   const id = note.getId();
@@ -32,7 +36,11 @@ function newNote(n: Note | undefined): HTMLDivElement {
       "note",
     ],
     props: [
-      ["style", `background-color: ${note.getColor()}`],
+      ["style", 
+      `background-color: ${
+        getColor(retrieveTheme(), note.getColor())
+      }`
+    ],
       ["tabindex", "0"],
     ],
   }) as HTMLDivElement;

@@ -2,6 +2,7 @@ import { createLabel } from "../labelAndInput";
 import newElement from "../../utils/newElement";
 import { retrieveTheme, setTheme } from "../../utils/theme";
 import { setToggle, toggle, toggleContainer } from "./toggle";
+import { populateNoteContainer } from "../noteContainer";
 
 const themeToggleContainer = newElement({
   type: "div",
@@ -64,6 +65,7 @@ function changeTheme(): void {
       setToggle("theme-toggle", "left");
     }
   }
+  populateNoteContainer()
 }
 
 const initialTheme: string = retrieveTheme() === "dark" ? "right" : "left";

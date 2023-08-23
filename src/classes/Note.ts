@@ -5,14 +5,14 @@ import { makeHash, formatDate } from "../utils/util";
 class NoteObj {
   #title: string;
   #body: string;
-  #color: string;
+  #color: number;
   #id: string;
   #createDate: string;
   #targetDate: string;
   constructor(
     title?: string,
     body?: string,
-    color?: string,
+    color?: number,
     id?: string,
     createDate?: string,
     targetDate?: string
@@ -20,7 +20,7 @@ class NoteObj {
     const date: Date = new Date();
     this.#title = title ? title : "";
     this.#body = body ? body : "";
-    this.#color = color ? color : "none";
+    this.#color = color ? color : 0;
     this.#id = id ? id : makeHash(date.getTime().toString());
     this.#createDate = createDate ? createDate : formatDate(date);
     this.#targetDate = targetDate ? targetDate : "";
@@ -49,7 +49,7 @@ class NoteObj {
     return this.#targetDate;
   }
 
-  getColor(): string {
+  getColor(): number {
     return this.#color;
   }
 

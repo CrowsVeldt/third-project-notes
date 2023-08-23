@@ -57,11 +57,12 @@ function searchNotes(query: string): Note[] {
 function updateNote(noteId: string, obj: NoteUpdate) {
   const oldNote: Note | void = getNote(noteId);
   if (oldNote) {
-    const updates: NoteUpdate = {
+    // noteUpdate type is broken now
+    const updates = {
       title: "",
       body: "",
       targetDate: "",
-      color: "",
+      color: 0,
     };
 
     for (let a in obj) {

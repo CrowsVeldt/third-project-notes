@@ -26,6 +26,7 @@ const themeElements: string[] = [
   "sort-select",
   "footer",
   "page-head",
+  "note-container"
 ];
 
 function setTheme(theme: ThemeName): void {

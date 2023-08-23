@@ -1,12 +1,13 @@
 type colorObject = {
   name: string;
   value: string;
+  nth?: number;
 };
 
 type Note = {
   title: string;
   body: string;
-  color: string;
+  color: number;
   id?: string;
   createDate?: string;
   targetDate?: string;
@@ -42,7 +43,7 @@ type NoteUpdate = {
   [title: string]: string;
   body: string;
   targetDate: string;
-  color: string;
+  color: number;
 };
 
 type TabIndexObject = {
