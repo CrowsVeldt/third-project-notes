@@ -24,8 +24,6 @@ const toggle = (id: string, initialDirection: string) =>
     id: id,
     class: [
       "toggle",
-      "border",
-      "border-light",
       "rounded-circle",
       "position-relative",
       "settings",

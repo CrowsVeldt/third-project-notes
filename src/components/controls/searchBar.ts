@@ -7,19 +7,13 @@ import { getCurrentLanguage } from "../../utils/languageFunctions";
 
 const searchBarContainer: HTMLDivElement = document.createElement("div");
 
-const searchBar = createInput(
-  "text",
-  "search-bar",
-  ["form-control"],
-  false,
+const searchBar = createInput("text", "search-bar", ["form-control"], false, [
   [
-    [
-      "placeholder",
-      l10n.getTextContent(getCurrentLanguage() as l10nLangOption, "search-bar"),
-    ],
-    ["tabindex", "3"],
-  ]
-) as HTMLInputElement;
+    "placeholder",
+    l10n.getTextContent(getCurrentLanguage() as l10nLangOption, "search-bar"),
+  ],
+  ["tabindex", "3"],
+]) as HTMLInputElement;
 
 searchBar.addEventListener("input", (event: Event) => {
   const searchBarInput = event.target as HTMLInputElement;
