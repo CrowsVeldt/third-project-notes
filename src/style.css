@@ -198,11 +198,11 @@ html[dir="rtl"] .x-button-container {
   transition-timing-function: ease-in-out;
 }
 
-.toggle-right {
+.toggle[data-direction='right'] {
   left: 1.3em;
 }
 
-.toggle-left {
+.toggle[data-direction='left'] {
   left: 0.1em;
 }
 

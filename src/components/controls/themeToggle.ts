@@ -1,10 +1,7 @@
 import { createLabel } from "../labelAndInput";
 import newElement from "../../utils/newElement";
-import { setTheme } from "../../utils/theme";
-import { toggle, toggleContainer, setToggle } from "./toggle";
-import { retrieveTheme } from "../../utils/theme";
-
-// set direction of theme toggle on start
+import { retrieveTheme, setTheme } from "../../utils/theme";
+import { setToggle, toggle, toggleContainer } from "./toggle";
 
 const themeToggleContainer = newElement({
   type: "div",
@@ -17,7 +14,7 @@ const themeToggleContainer = newElement({
     "align-self-center",
     "d-flex",
     "justify-content-between",
-    "toggle-container"
+    "toggle-container",
   ],
   props: [["dir", "ltr"]],
 }) as HTMLDivElement;
@@ -51,21 +48,27 @@ themeToggle.addEventListener("click", () => {
   changeTheme();
 });
 
+function currentTheme(): string {
+  return themeToggle.getAttribute("data-theme")!;
+}
+
 function changeTheme(): void {
-  const currentTheme = themeToggle.getAttribute("data-theme");
-  if (currentTheme) {
-    if (currentTheme === "light") {
+  if (currentTheme()) {
+    if (currentTheme() === "light") {
       setTheme("dark");
       themeToggle.setAttribute("data-theme", "dark");
+      setToggle("theme-toggle", "right");
     } else {
       setTheme("light");
       themeToggle.setAttribute("data-theme", "light");
+      setToggle("theme-toggle", "left");
     }
   }
-  setToggle("theme-toggle", "data-theme", "dark");
 }
 
-themeToggle.append(toggle("theme-toggle-switch"));
+const initialTheme: string = retrieveTheme() === "dark" ? "right" : "left";
+
+themeToggle.append(toggle("theme-toggle-switch", initialTheme));
 themeToggleContainer.append(themeToggleLabel1, themeToggle, themeToggleLabel2);
 
 export default themeToggleContainer;

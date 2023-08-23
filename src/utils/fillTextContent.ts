@@ -4,7 +4,6 @@ import l10n from "./l10n";
 import { getCurrentLanguage } from "./languageFunctions";
 import { SortMethodType } from "./types";
 import { populateNoteContainer } from "../components/noteContainer";
-import { setToggle } from "../components/controls/toggle";
 
 function setSortMethods() {
   const sortSelect = document.getElementById("sort-select")!;
@@ -55,7 +54,6 @@ function setText() {
   setToolTips();
   // confirmation messages are set when their buttons are clicked
   setTextContent();
-  setToggle("language-toggle", "data-language", "he");
 }
 
 export { setText };

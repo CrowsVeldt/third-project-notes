@@ -1,13 +1,19 @@
 import { ThemeName } from "./types";
 
+function themeStored(): boolean {
+  if (localStorage.getItem("themePref")) return true;
+  return false;
+}
+
 function saveTheme(theme: ThemeName): void {
   localStorage.setItem("themePref", JSON.stringify(theme));
 }
 
 function retrieveTheme(): ThemeName {
   const theme: string | null = localStorage.getItem("themePref");
-
-  if (theme) return JSON.parse(theme);
+  if (theme && themeStored() !== null) {
+    return JSON.parse(theme);
+  }
   return "light";
 }
 
@@ -42,16 +48,8 @@ function setTheme(theme: ThemeName): void {
 
 const themes = {
   //TODO:  change note colors for dark mode
-  dark: [
-    "bg-dark",
-    "text-light",
-    "border-light"
-  ],
-  light: [
-    "bg-light",
-    "text-dark",
-    "border-dark"
-  ],
+  dark: ["bg-dark", "text-light", "border-light"],
+  light: ["bg-light", "text-dark", "border-dark"],
 };
 
 export { setTheme, retrieveTheme };

@@ -20,7 +20,7 @@ const languageToggleContainer = newElement({
     "align-self-center",
     "d-flex",
     "justify-content-between",
-    "toggle-container"
+    "toggle-container",
   ],
   props: [["dir", "ltr"]],
 }) as HTMLDivElement;
@@ -47,7 +47,7 @@ const languageToggle = toggleContainer(
     ["type", "checkbox"],
     ["role", "switch"],
     ["data-language", getCurrentLanguage()],
-  ],
+  ]
 ) as HTMLDivElement;
 
 languageToggle.addEventListener("click", () => {
@@ -55,23 +55,30 @@ languageToggle.addEventListener("click", () => {
   setText();
 });
 
-function changeLanguage(): void {
-  const currentLang: string | void | null = langStored()
+// get current language: stored language if there is one, else get from languagetoggle directly
+function currentLanguage() {
+  return langStored()
     ? getLanguage()
     : languageToggle.getAttribute("data-language");
-  if (currentLang) {
-    if (currentLang === "en-US") {
-      setLanguage("he");
-      languageToggle.setAttribute("data-language", "he");
-    } else {
-      setLanguage("en-US");
-      languageToggle.setAttribute("data-language", "en-US");
-    }
-  }
-  setToggle('language-toggle', 'data-language', 'he')
 }
 
-languageToggle.append(toggle('language-toggle-switch'));
+// toggle Language
+function changeLanguage(): void {
+  if (currentLanguage() === "en-US") {
+    setLanguage("he");
+    languageToggle.setAttribute("data-language", "he");
+    setToggle("language-toggle", "right");
+  } else {
+    setLanguage("en-US");
+    languageToggle.setAttribute("data-language", "en-US");
+    setToggle("language-toggle", "left");
+  }
+}
+
+// set initial direction
+const initialDirection: string = currentLanguage() === "he" ? "right" : "left";
+
+languageToggle.append(toggle("language-toggle-switch", initialDirection));
 languageToggleContainer.append(
   langToggleLabel1,
   languageToggle,

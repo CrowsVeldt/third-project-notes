@@ -1,10 +1,6 @@
 import newElement from "../../utils/newElement";
 
-const toggleContainer = (
-  id: string,
-  classes: string[],
-  props: string[][],
-) =>
+const toggleContainer = (id: string, classes: string[], props: string[][]) =>
   newElement({
     type: "div",
     id: id,
@@ -22,31 +18,38 @@ const toggleContainer = (
     props: [...props],
   }) as HTMLDivElement;
 
-const toggle = (id: string) => newElement({
-  type: "i",
-  id: id,
-  class: [
-    "toggle",
-    "border",
-    "border-light",
-    "rounded-circle",
-    "position-relative",
-    "settings",
-    "settings-child",
-    "bg-light",
-  ],
-}) as HTMLElement;
+const toggle = (id: string, initialDirection: string) =>
+  newElement({
+    type: "i",
+    id: id,
+    class: [
+      "toggle",
+      "border",
+      "border-light",
+      "rounded-circle",
+      "position-relative",
+      "settings",
+      "settings-child",
+      "bg-light",
+    ],
+    props: [["data-direction", initialDirection]],
+  }) as HTMLElement;
 
-function setToggle(id: string, attribute: string, value: string): void {
+function setToggle(id: string): void;
+function setToggle(id: string, direction: string): void;
+function setToggle(id: string, direction: string | void): void {
   const toggle: HTMLElement | null = document.getElementById(id);
-  const s: HTMLElement | null = document.getElementById(id + "-switch");
-  if (toggle !== null && s !== null) {
-    if (toggle.getAttribute(attribute) === value) {
-      s.classList.add("toggle-right");
-      s.classList.remove("toggle-left");
+  const toggleSwitch: HTMLElement | null = document.getElementById(
+    id + "-switch"
+  );
+
+  if (toggle !== null && toggleSwitch !== null) {
+    if (direction) {
+      toggleSwitch.setAttribute("data-direction", direction);
+    } else if (toggleSwitch.getAttribute("data-direction") === "left") {
+      toggleSwitch.setAttribute("data-direction", "right");
     } else {
-      s.classList.add("toggle-left");
-      s.classList.remove("toggle-right");
+      toggleSwitch.setAttribute("data-direction", "left");
     }
   }
 }

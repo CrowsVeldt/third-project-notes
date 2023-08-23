@@ -94,6 +94,6 @@ function handleKeydownEvents(evt: KeyboardEvent) {
 const tih = new TabIndexHandler();
 populateNoteContainer();
 setText();
-setTheme(retrieveTheme())
+setTheme(retrieveTheme());
 
 export { tih };

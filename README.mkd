@@ -75,32 +75,35 @@ id: string // hashed from Date.toString()
 
 ## Language options
 
-x create text object to hold all strings
-x make sure all text still fits
-x add language toggle to settings
-x options: en-us, he
-x check for langPref on startup, if none found: fallback to browser default
-x when a language is chosen, pass the apropriate language object to all elements
-x check search
-x make xbutton responsive to direction change
-x fix full-note-bg position for rtl
-x fix TS errors in l10n.ts
-x fix colors and sortMethods for hebrew. langPrefStored called before initialization?
-x fix sort in hebrew. just not working
-x implement language toggle
-x save language preference on page close?
-x language toggle should always point in the direction of the current language
-x add function to reset all text content
-x language toggle background-color and color shouldn't change
+- x create text object to hold all strings
+- x make sure all text still fits
+- x add language toggle to settings
+- x options: en-us, he
+- x check for langPref on startup, if none found: fallback to browser default
+- x when a language is chosen, pass the apropriate language object to all elements
+- x check search
+- x make xbutton responsive to direction change
+- x fix full-note-bg position for rtl
+- x fix TS errors in l10n.ts
+- x fix colors and sortMethods for hebrew. langPrefStored called before initialization?
+- x fix sort in hebrew. just not working
+- x implement language toggle
+- x save language preference on page close?
+- x language toggle should always point in the direction of the current language
+- x add function to reset all text content
+- x language toggle background-color and color shouldn't change
 
 - show required-field-message in hebrew?
 
 ## TODO
 
-- ui/bug: fix full note layout on mobile
-- l10n: get someone to proofread hebrew text
+- UI: make input background color darker in dark mode
+- UI: add darker colors for notes in dark mode
+- BUG/regression: placeholder text not showing in dark mode
+- UX: indicate tab focus in dark mode
+- UX: make toggles larger
 - UX/BUG: make sure all elements have the same visual indication of tab focus
-- UI: add message that required elements have a *
+- UI: add message that required elements have a \*
 - TODO: properly acknowledge fuse.js
 - BUG: target input date is displayed as mm/dd/yyyy on firefox on android and linux, displays appropriately on macos
 - UX: save details of last deleted note so it can be recovered
@@ -115,8 +118,8 @@ x language toggle background-color and color shouldn't change
 
 ## Bonus features?
 
-x Hebrew/English UI toggle
-- dark/light theme
+- x Hebrew/English UI toggle
+- x dark/light theme
 
 ## Not planning to implement
 
