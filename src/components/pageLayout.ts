@@ -29,7 +29,7 @@ const main = newElement({
 // footer
 const foot = newElement({
   type: "footer",
-  id: 'footer',
+  id: "footer",
   class: ["container-fluid", "text-center", "border"],
 }) as HTMLElement;
 
