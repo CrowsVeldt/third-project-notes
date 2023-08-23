@@ -230,6 +230,14 @@ html[dir="rtl"] .x-button-container {
     width: 33vw;
   }
 
+  #search-bar.bg-dark::placeholder {
+    color: white;
+  }
+
+  #search-bar.bg-light::placeholder {
+    color: black;
+  }
+
   #sort-select {
     width: 8em;
   }
