@@ -10,7 +10,7 @@ const searchBarContainer: HTMLDivElement = document.createElement("div");
 const searchBar = createInput(
   "text",
   "search-bar",
-  ["form-control", "border", "border-dark"],
+  ["form-control"],
   false,
   [
     [

@@ -88,6 +88,14 @@ html[dir="rtl"] #full-note-bg {
   justify-content: space-around;
 }
 
+#search-bar.bg-dark::placeholder {
+  color: white;
+}
+
+#search-bar.bg-light::placeholder {
+  color: black;
+}
+
 #direction {
   height: 37.5px;
   width: 37.5px;
@@ -113,7 +121,6 @@ html[dir="rtl"] #full-note-bg {
   min-width: 300px;
   left: -300px;
   z-index: 1;
-  /* background-color: white; */
   transition: left 0.1s;
   transition-timing-function: ease-out;
 }
@@ -198,11 +205,11 @@ html[dir="rtl"] .x-button-container {
   transition-timing-function: ease-in-out;
 }
 
-.toggle[data-direction='right'] {
+.toggle[data-direction="right"] {
   left: 1.3em;
 }
 
-.toggle[data-direction='left'] {
+.toggle[data-direction="left"] {
   left: 0.1em;
 }
 
@@ -213,7 +220,7 @@ html[dir="rtl"] .x-button-container {
     top: 10vh;
   }
 
-/* Sizing manually because calc() is not supported by some versions of Android 
+  /* Sizing manually because calc() is not supported by some versions of Android 
    (I don't currently have a way of testing on iPhone)*/
   #full-note-bg {
     left: 8%;
@@ -222,20 +229,8 @@ html[dir="rtl"] .x-button-container {
     height: 65vh;
   }
 
-  #search-and-sort {
-    justify-content: space-around;
-  }
-
   #search-bar {
     width: 33vw;
-  }
-
-  #search-bar.bg-dark::placeholder {
-    color: white;
-  }
-
-  #search-bar.bg-light::placeholder {
-    color: black;
   }
 
   #sort-select {
