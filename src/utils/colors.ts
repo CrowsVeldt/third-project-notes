@@ -1,14 +1,14 @@
-/* 
- color rework:
- color = title, colorName, index
- l10n.color = {title, index}
- noteObject.color = {index}
- note background-color = colorName
+type ThemeColor = {
+  value: string;
+  index: number;
+};
 
- make colorOptions with title and index
-*/
+type ThemeColorsObject = {
+  light: ThemeColor[];
+  dark: ThemeColor[];
+};
 
-const colors = {
+const colors: ThemeColorsObject = {
   light: [
     { value: "none", index: 0 }, //none
     { value: "salmon", index: 1 }, //salmon
@@ -28,9 +28,8 @@ const colors = {
 };
 
 function getColor(theme: string, index: number): string {
-    const result = colors[theme][index].value
-    return result
+  const result: string = colors[theme][index].value;
+  return result;
 }
-
 
 export { getColor };

@@ -1,7 +1,6 @@
 type colorObject = {
   name: string;
   value: string;
-  nth?: number;
 };
 
 type Note = {
