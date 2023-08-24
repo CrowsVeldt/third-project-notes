@@ -19,7 +19,6 @@
 
 ## TODO
 
-- add light and dark theme labels to l10n
 - UI: full note title will underflow xButton when long enough
 - UX/BUG: make sure all elements have the same visual indication of tab focus
 - UI: add message that required elements have a \*

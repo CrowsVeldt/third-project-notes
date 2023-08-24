@@ -68,6 +68,8 @@ const l10n = {
       "settings-title": "Settings",
       "note-target-date": "Target date - ",
       "note-create-date": "Created on - ",
+      "theme-toggle-light": "Light",
+      "theme-toggle-dark": "Dark",
     },
   },
   he: {
@@ -114,6 +116,8 @@ const l10n = {
       "settings-title": "הגדרות",
       "note-target-date": "תאריך יעד - ",
       "note-create-date": "תאריך יצירה - ",
+      "theme-toggle-light": "בהיר",
+      "theme-toggle-dark": "חשוך",
     },
   },
 };
