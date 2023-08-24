@@ -18,7 +18,7 @@ const settings = newElement({
     "border-dark",
     "rounded",
     "d-flex",
-    "flex-column-reverse",
+    "flex-column",
     "justify-content-between",
     "align-items-center",
     "settings",
@@ -86,10 +86,10 @@ function settingsIsOpen(): boolean {
 }
 
 settings.append(
-  wipeButton,
-  languageToggle,
-  themeToggleContainer,
   settingsTitle,
+  themeToggleContainer,
+  languageToggle,
+  wipeButton,
   toggleButton
 );
 
