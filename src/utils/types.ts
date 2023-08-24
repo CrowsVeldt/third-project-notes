@@ -77,6 +77,13 @@ type l10nConfirmation = "wipe-button" | "note-delete-button";
 
 type ThemeName = "dark" | "light";
 
+type ThemeColor = {
+  [value: string]: string | number;
+  index: number;
+};
+
+type ThemeColorsArray = ThemeColor[];
+
 export type {
   colorObject,
   ElementParams,
@@ -89,5 +96,6 @@ export type {
   l10nLangOption,
   l10nTextContent,
   l10nConfirmation,
-  ThemeName
+  ThemeName,
+  ThemeColorsArray,
 };
