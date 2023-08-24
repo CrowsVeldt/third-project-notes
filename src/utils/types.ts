@@ -40,7 +40,7 @@ type FormElement = {
 };
 
 type NoteUpdate = {
-  [title: string]: string;
+  [title: string]: string | number;
   body: string;
   targetDate: string;
   color: number;

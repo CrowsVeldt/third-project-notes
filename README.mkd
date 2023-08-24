@@ -98,7 +98,6 @@ id: string // hashed from Date.toString()
 ## TODO
 
 - UI: full note title will underflow xButton when long enough
-- UX: indicate tab focus in dark mode
 - UX: make toggles larger
 - UX/BUG: make sure all elements have the same visual indication of tab focus
 - UI: add message that required elements have a \*

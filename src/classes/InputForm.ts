@@ -7,7 +7,7 @@ class FormObject {
   #title: string;
   #body: string;
   #tDate: string;
-  #color: string;
+  #color: number;
   #buttonName: string;
   #noteId?: string;
 
@@ -16,7 +16,7 @@ class FormObject {
     title: string,
     body: string,
     tDate: string,
-    color: string,
+    color: number,
     buttonName: string
   ) {
     this.#head = head;
@@ -40,7 +40,7 @@ class FormObject {
   getTDate(): string {
     return this.#tDate;
   }
-  getColor(): string {
+  getColor(): number {
     return this.#color;
   }
   getButtonName(): string {
@@ -55,7 +55,7 @@ class FormObject {
     title: string;
     body: string;
     tDate: string;
-    color: string;
+    color: number;
     buttonName: string;
     noteId: string | undefined;
   } {
@@ -82,7 +82,7 @@ class FormObject {
   setTDate(val: string): void {
     this.#tDate = val;
   }
-  setColor(val: string): void {
+  setColor(val: number): void {
     this.#color = val;
   }
   setButtonName(val: string): void {
@@ -97,7 +97,7 @@ class FormObject {
     title: string,
     body: string,
     tDate: string,
-    color: string,
+    color: number,
     buttonName: string,
     noteId: string
   ): void {
@@ -118,7 +118,7 @@ class FormObject {
     this.#title = "";
     this.#body = "";
     this.#tDate = "";
-    this.#color = "none";
+    this.#color = 0;
     this.#buttonName = l10n.getTextContent(
       getCurrentLanguage() as l10nLangOption,
       "form-button:add"

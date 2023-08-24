@@ -23,7 +23,7 @@ const form: FormObject = new FormObject(
   "",
   "",
   "",
-  "none",
+  0,
   l10n.getTextContent(getCurrentLanguage() as l10nLangOption, "form-button:add")
 );
 
@@ -55,7 +55,7 @@ function populateFormElement(): Note {
   title.value = form.getTitle();
   body.value = form.getBody();
   date.value = form.getTDate();
-  color.value = form.getColor();
+  color.value = form.getColor().toString();
   button.innerText = form.getButtonName();
 
   setCounter(title, titleCount);
@@ -73,6 +73,7 @@ function editNote(noteId: string): void {
   const note: Note | void = getNote(noteId);
 
   if (note) {
+    console.log(typeof note.color, note.color);
     form.setAll(
       l10n.getTextContent(
         getCurrentLanguage() as l10nLangOption,
@@ -313,7 +314,7 @@ const actionButton: HTMLButtonElement = newElement({
             ...{
               title: titleInput.value.replace(removeTag, ""),
               body: bodyInput.value.replace(removeTag, ""),
-              color: cSelect.value,
+              color: parseInt(cSelect.value),
               targetDate: tDateInput.value,
             },
           };
@@ -325,7 +326,7 @@ const actionButton: HTMLButtonElement = newElement({
               title: titleInput.value,
               body: bodyInput.value,
               targetDate: tDateInput.value,
-              color: cSelect.value,
+              color: parseInt(cSelect.value),
             });
             // and reset the note container
             resetNoteContainer();
@@ -335,7 +336,7 @@ const actionButton: HTMLButtonElement = newElement({
           const n = new NoteObj(
             titleInput.value.replace(removeTag, ""),
             bodyInput.value.replace(removeTag, ""),
-            cSelect.value,
+            parseInt(cSelect.value),
             undefined,
             undefined,
             tDateInput.value
