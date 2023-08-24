@@ -22,7 +22,7 @@ const colors = {
     { value: "maroon", index: 1 }, //salmon
     { value: "midnightblue", index: 2 }, //lightblue
     { value: "darkgreen", index: 3 }, //lightgreen
-    { value: "goldenrod", index: 4 }, //gold
+    { value: "darkgoldenrod", index: 4 }, //gold
     { value: "saddlebrown", index: 5 }, //tan
   ],
 };
