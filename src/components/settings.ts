@@ -10,7 +10,7 @@ const settings = newElement({
   type: "div",
   id: "settings",
   class: [
-    "h-75",
+    "h-50",
     "position-fixed",
     "top-50",
     "translate-middle-y",

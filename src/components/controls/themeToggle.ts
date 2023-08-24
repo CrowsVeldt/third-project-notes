@@ -23,14 +23,14 @@ const themeToggleContainer = newElement({
 const themeToggleLabel1 = createLabel(
   "Light",
   "theme-toggle-light",
-  ["settings", "settings-child", "form-check-label", "order-1"],
+  ["settings", "settings-child", "form-check-label", "order-1", 'w-25'],
   "theme-toggle"
 ) as HTMLLabelElement;
 
 const themeToggleLabel2 = createLabel(
   "Dark",
   "theme-toggle-dark",
-  ["settings", "settings-child", "form-check-label", "order-3"],
+  ["settings", "settings-child", "form-check-label", "order-3", 'w-25', 'text-end'],
   "theme-toggle"
 ) as HTMLLabelElement;
 

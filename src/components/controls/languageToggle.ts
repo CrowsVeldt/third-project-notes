@@ -28,14 +28,14 @@ const languageToggleContainer = newElement({
 const langToggleLabel1 = createLabel(
   "English",
   "lang-toggle-label",
-  ["settings", "settings-child", "form-check-label", "order-1"],
+  ["settings", "settings-child", "form-check-label", "order-1", 'w-25'],
   "language-toggle"
 ) as HTMLLabelElement;
 
 const langToggleLabel2 = createLabel(
   "עברית",
   "lang-toggle-label",
-  ["settings", "settings-child", "form-check-label", "order-3"],
+  ["settings", "settings-child", "form-check-label", "order-3", 'w-25', 'text-end'],
   "language-toggle"
 ) as HTMLLabelElement;
 
