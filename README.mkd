@@ -19,6 +19,7 @@
 
 ## TODO
 
+- UI: make colorless notes work in dark mode
 - UI: full note title will underflow xButton when long enough
 - UX/BUG: make sure all elements have the same visual indication of tab focus
 - UI: add message that required elements have a \*

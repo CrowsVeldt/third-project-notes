@@ -208,7 +208,6 @@ const titleInput: HTMLInputElement = createInput(
 
 const titleCount: HTMLParagraphElement = textCounter(titleInput);
 titleCount.classList.add("form-child");
-titleCount.id = "title-counter";
 
 const bodyLabel: HTMLLabelElement = createLabel(
   l10n.getTextContent(
@@ -232,7 +231,6 @@ const bodyInput = newElement({
 
 const bodyCount: HTMLParagraphElement = textCounter(bodyInput);
 bodyCount.classList.add("form-child");
-bodyCount.id = "body-counter";
 
 const dateAndColorContainer = newElement({
   type: "div",
