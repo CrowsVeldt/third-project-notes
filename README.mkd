@@ -8,8 +8,6 @@
 
 ## User Stories
 
-### Achieved
-
 - I can make a new note
 - I can delete individual notes
 - The contents persist even after reloading or closing the page
@@ -18,6 +16,42 @@
 - I can search notes by title and body contents
 - I can sort notes by title (ABC), date (creation or target), and color
 - The app fits well and looks good on any screen size ~
+
+## TODO
+
+- UI: full note title will underflow xButton when long enough
+- UX/BUG: make sure all elements have the same visual indication of tab focus
+- UI: add message that required elements have a \*
+- TODO: properly acknowledge fuse.js
+- BUG: target input date is displayed as mm/dd/yyyy on firefox on android and linux, displays appropriately on macos
+- UX: save details of last deleted note so it can be recovered
+- dev: separate listener functions from component files, component files should _just_ handle markup and styling
+
+## Under consideration
+
+- change note storage to store each note individually?
+- sort: have option to choose which color will be first when sorting by color?
+- UI: allow editing note elements by double clicking on them in fullNote?
+
+## Bonus features?
+
+- x Hebrew/English UI toggle
+- x dark/light theme
+
+## Not planning to implement
+
+- standardize tabIndex behavior over all elements
+- search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result (this has to do with Fuze.js' fuzzy search. It can probably sorted with the search options)
+- UI: get the plus icon to be centered in all browsers has proven beyond my limited knowledge and patience for now, I've settled for good enought on the browsers I use most.
+- UX: make sure it works identically in all browsers
+- dates: Check dates work in different locales
+
+# Acknowledgements:
+
+fuse.js for fuzzy search
+
+
+# Implemented:
 
 ## Components
 
@@ -94,38 +128,3 @@ id: string // hashed from Date.toString()
 - x language toggle background-color and color shouldn't change
 
 - show required-field-message in hebrew?
-
-## TODO
-
-- UI: full note title will underflow xButton when long enough
-- UX: make toggles larger
-- UX/BUG: make sure all elements have the same visual indication of tab focus
-- UI: add message that required elements have a \*
-- TODO: properly acknowledge fuse.js
-- BUG: target input date is displayed as mm/dd/yyyy on firefox on android and linux, displays appropriately on macos
-- UX: save details of last deleted note so it can be recovered
-- dev: separate listener functions from component files, component files should _just_ handle markup and styling
-
-## Under consideration
-
-- change note storage to store each note individually?
-- sort: have option to choose which color will be first when sorting by color?
-- UI: allow editing note elements by double clicking on them in fullNote?
-- types: add interface for noteObj?
-
-## Bonus features?
-
-- x Hebrew/English UI toggle
-- x dark/light theme
-
-## Not planning to implement
-
-- standardize tabIndex behavior over all elements
-- search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result (this has to do with Fuze.js' fuzzy search. It can probably sorted with the search options)
-- UI: get the plus icon to be centered in all browsers has proven beyond my limited knowledge and patience for now, I've settled for good enought on the browsers I use most.
-- UX: make sure it works identically in all browsers
-- dates: Check dates work in different locales
-
-# Acknowledgements:
-
-fuse.js for fuzzy search
