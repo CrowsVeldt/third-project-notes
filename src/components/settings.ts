@@ -19,7 +19,7 @@ const settings = newElement({
     "rounded",
     "d-flex",
     "flex-column",
-    "justify-content-between",
+    "justify-content-end",
     "align-items-center",
     "settings",
     'bg-light'
@@ -33,7 +33,7 @@ const settingsTitle = newElement({
     getCurrentLanguage() as l10nLangOption,
     "settings-title"
   ),
-  class: ["border-bottom", "border-dark", "settings", "settings-child"],
+  class: ["border-bottom", "border-dark", "settings", "settings-child", 'flex-grow-1'],
 }) as HTMLHeadingElement;
 
 const toggleButton = newElement({

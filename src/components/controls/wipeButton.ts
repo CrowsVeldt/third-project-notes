@@ -19,6 +19,7 @@ const wipeButton: HTMLButtonElement = newElement({
     "border-dark",
     "bg-danger",
     "mb-2",
+    "mt-4",
     "settings",
     "settings-child",
   ],
