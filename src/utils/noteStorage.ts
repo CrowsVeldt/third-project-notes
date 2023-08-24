@@ -57,8 +57,7 @@ function searchNotes(query: string): Note[] {
 function updateNote(noteId: string, obj: NoteUpdate) {
   const oldNote: Note | void = getNote(noteId);
   if (oldNote) {
-    // noteUpdate type is broken now
-    const updates = {
+    const updates: NoteUpdate = {
       title: "",
       body: "",
       targetDate: "",
