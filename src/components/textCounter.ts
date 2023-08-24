@@ -5,9 +5,7 @@ function colorCount(
   target: CounterTarget,
   counter: HTMLParagraphElement
 ): void {
-  if (target.value.length < target.maxLength - 10) {
-    counter.style.color = "black";
-  } else if (target.value.length >= target.maxLength - 5) {
+  if (target.value.length >= target.maxLength - 5) {
     counter.style.color = "red";
   } else if (target.value.length >= target.maxLength - 10) {
     counter.style.color = "orange";

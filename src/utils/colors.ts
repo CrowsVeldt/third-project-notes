@@ -29,7 +29,6 @@ const colors = {
 
 function getColor(theme: string, index: number): string {
     const result = colors[theme][index].value
-    console.log(result)
     return result
 }
 
