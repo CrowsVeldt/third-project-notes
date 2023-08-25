@@ -19,17 +19,17 @@
 
 ## TODO
 
-- UI: make colorless notes work in dark mode
+- UX: if new note form is closed while partially finished, save details
 - UI: full note title will underflow xButton when long enough
 - UX/BUG: make sure all elements have the same visual indication of tab focus
 - UI: add message that required elements have a \*
 - TODO: properly acknowledge fuse.js
 - BUG: target input date is displayed as mm/dd/yyyy on firefox on android and linux, displays appropriately on macos
 - UX: save details of last deleted note so it can be recovered
-- dev: separate listener functions from component files, component files should _just_ handle markup and styling
 
 ## Under consideration
 
+- dev: separate listener functions from component files, component files should _just_ handle markup and styling
 - change note storage to store each note individually?
 - sort: have option to choose which color will be first when sorting by color?
 - UI: allow editing note elements by double clicking on them in fullNote?
@@ -112,22 +112,22 @@ id: string // hashed from Date.toString()
 
 ## Language options
 
-- x create text object to hold all strings
-- x make sure all text still fits
-- x add language toggle to settings
-- x options: en-us, he
-- x check for langPref on startup, if none found: fallback to browser default
-- x when a language is chosen, pass the apropriate language object to all elements
-- x check search
-- x make xbutton responsive to direction change
-- x fix full-note-bg position for rtl
-- x fix TS errors in l10n.ts
-- x fix colors and sortMethods for hebrew. langPrefStored called before initialization?
-- x fix sort in hebrew. just not working
-- x implement language toggle
-- x save language preference on page close?
-- x language toggle should always point in the direction of the current language
-- x add function to reset all text content
-- x language toggle background-color and color shouldn't change
+- create text object to hold all strings
+- make sure all text still fits
+- add language toggle to settings
+- options: en-us, he
+- check for langPref on startup, if none found: fallback to browser default
+- when a language is chosen, pass the apropriate language object to all elements
+- check search
+- make xbutton responsive to direction change
+- fix full-note-bg position for rtl
+- fix TS errors in l10n.ts
+- fix colors and sortMethods for hebrew. langPrefStored called before initialization?
+- fix sort in hebrew. just not working
+- implement language toggle
+- save language preference on page close?
+- language toggle should always point in the direction of the current language
+- add function to reset all text content
+- language toggle background-color and color shouldn't change
 
 - show required-field-message in hebrew?

@@ -100,6 +100,7 @@ const noteTitle = newElement({
     "border-bottom",
     "w-100",
     "full-note-child",
+    "text-break"
   ],
 }) as HTMLHeadingElement;
 

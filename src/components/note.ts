@@ -49,7 +49,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
 
   const noteTitle = newElement({
     type: "h4",
-    class: ["note-title", "overflow-hidden", "align-self-center"],
+    class: ["note-title", "overflow-hidden", "align-self-center", "text-break"],
     content: note.getTitle(),
   }) as HTMLHeadingElement;
 
@@ -193,13 +193,13 @@ function newNote(n: Note | undefined): HTMLDivElement {
     }
   });
 
-  noteDiv.addEventListener('mouseenter', () => {
-    noteDiv.classList.add('border-2')
-  })
+  noteDiv.addEventListener("mouseenter", () => {
+    noteDiv.classList.add("border-2");
+  });
 
-  noteDiv.addEventListener('mouseleave', () => {
-    noteDiv.classList.remove('border-2')
-  })
+  noteDiv.addEventListener("mouseleave", () => {
+    noteDiv.classList.remove("border-2");
+  });
 
   return noteDiv;
 }
