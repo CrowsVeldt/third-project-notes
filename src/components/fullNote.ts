@@ -111,7 +111,7 @@ const noteTitle = newElement({
   ],
 }) as HTMLHeadingElement;
 
-const xButton = makeXButton("close-full-note", toggleFullNote);
+const xButton = makeXButton("close-button", toggleFullNote);
 
 const noteBackground = newElement({
   type: "div",
@@ -148,9 +148,9 @@ const noteTarget = newElement({
   class: ["px-3", "mb-0", "full-note-child"],
 }) as HTMLParagraphElement;
 
-noteHead.append(noteTitle)
+noteHead.append( xButton,noteTitle)
 dateContainer.append(noteCreated, noteTarget);
 noteBackground.append(noteBody, dateContainer);
-fullNote.append(noteHead, xButton, noteBackground);
+fullNote.append(noteHead, noteBackground);
 
 export { fullNote, noteIsOpen, toggleFullNote };
