@@ -1,3 +1,4 @@
+import { populateNoteContainer } from "../components/noteContainer";
 import { ThemeName } from "./types";
 
 function themeStored(): boolean {
@@ -29,10 +30,9 @@ const themeElements: string[] = [
   "note-container",
   "body-input",
   "title-input",
-  "tDate-input", 
+  "tDate-input",
   "color-select",
-  "form-button"
-  
+  "form-button",
 ];
 
 function setTheme(theme: ThemeName): void {
@@ -51,10 +51,10 @@ function setTheme(theme: ThemeName): void {
       }
     }
   });
+  populateNoteContainer();
 }
 
 const themes = {
-  //TODO:  change note colors for dark mode
   dark: ["bg-dark", "text-light", "border-light"],
   light: ["bg-light", "text-dark", "border-dark"],
 };

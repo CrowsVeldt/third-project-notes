@@ -63,8 +63,12 @@
   background: none;
 }
 
-.note-button:hover {
+.note-button.text-dark:hover {
   border-color: black;
+}
+
+.note-button.text-light:hover {
+  border-color: white;
 }
 
 #full-note-title {

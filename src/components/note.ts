@@ -12,9 +12,7 @@ import { retrieveTheme } from "../utils/theme";
 
 function newNote(n: Note | undefined): HTMLDivElement {
   const note = n
-    ? new NoteObj(n.title, n.body, 
-      n.color, 
-      n.id, n.createDate, n.targetDate)
+    ? new NoteObj(n.title, n.body, n.color, n.id, n.createDate, n.targetDate)
     : new NoteObj();
 
   const id = note.getId();
@@ -27,20 +25,19 @@ function newNote(n: Note | undefined): HTMLDivElement {
     class: [
       "border",
       "rounded",
-      "border-dark",
       "ms-1",
       "p-2",
       "d-flex",
       "flex-column",
       "overflow-hidden",
       "note",
+      retrieveTheme() === "dark" ? "border-light" : "border-dark",
     ],
     props: [
-      ["style", 
-      `background-color: ${
-        getColor(retrieveTheme(), note.getColor())
-      }`
-    ],
+      [
+        "style",
+        `background-color: ${getColor(retrieveTheme(), note.getColor())}`,
+      ],
       ["tabindex", "0"],
     ],
   }) as HTMLDivElement;
@@ -103,15 +100,19 @@ function newNote(n: Note | undefined): HTMLDivElement {
         ) + formatDate(note.getTargetDate())
       : "-",
     // if no target date, turn value clear to keep the layout consistant
-    props: [
-      ["style", `color:${note.getTargetDate() ? "" : "transparent"};`],
-    ],
+    props: [["style", `color:${note.getTargetDate() ? "" : "transparent"};`]],
   }) as HTMLParagraphElement;
 
   const deleteButton = newElement({
     type: "button",
     id: deleteId,
-    class: ["align-self-center", "btn", "note-button", "note-delete-button"],
+    class: [
+      "align-self-center",
+      "btn",
+      "note-button",
+      "note-delete-button",
+      retrieveTheme() === "dark" ? "text-light" : "text-dark",
+    ],
     eventListener: {
       eventType: "click",
       listener: () => {
@@ -133,7 +134,13 @@ function newNote(n: Note | undefined): HTMLDivElement {
   const editButton = newElement({
     type: "button",
     id: editId,
-    class: ["align-self-start", "toggle-button", "btn", "note-button"],
+    class: [
+      "align-self-start",
+      "toggle-button",
+      "btn",
+      "note-button",
+      retrieveTheme() === "dark" ? "text-light" : "text-dark",
+    ],
     eventListener: {
       eventType: "click",
       listener: (evt) => {

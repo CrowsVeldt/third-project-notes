@@ -84,6 +84,12 @@ type ThemeColor = {
 
 type ThemeColorsArray = ThemeColor[];
 
+type ThemeClassList = string[];
+type ThemeListObject = {
+  dark: ThemeClassList;
+  light: ThemeClassList;
+};
+
 export type {
   colorObject,
   ElementParams,
@@ -98,4 +104,6 @@ export type {
   l10nConfirmation,
   ThemeName,
   ThemeColorsArray,
+  ThemeClassList,
+  ThemeListObject,
 };

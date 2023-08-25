@@ -2,7 +2,6 @@ import { createLabel } from "../labelAndInput";
 import newElement from "../../utils/newElement";
 import { retrieveTheme, setTheme } from "../../utils/theme";
 import { setToggle, toggle, toggleContainer } from "./toggle";
-import { populateNoteContainer } from "../noteContainer";
 
 const themeToggleContainer = newElement({
   type: "div",
@@ -23,14 +22,21 @@ const themeToggleContainer = newElement({
 const themeToggleLabel1 = createLabel(
   "Light",
   "theme-toggle-light",
-  ["settings", "settings-child", "form-check-label", "order-1", 'w-25'],
+  ["settings", "settings-child", "form-check-label", "order-1", "w-25"],
   "theme-toggle"
 ) as HTMLLabelElement;
 
 const themeToggleLabel2 = createLabel(
   "Dark",
   "theme-toggle-dark",
-  ["settings", "settings-child", "form-check-label", "order-3", 'w-25', 'text-end'],
+  [
+    "settings",
+    "settings-child",
+    "form-check-label",
+    "order-3",
+    "w-25",
+    "text-end",
+  ],
   "theme-toggle"
 ) as HTMLLabelElement;
 
@@ -65,7 +71,6 @@ function changeTheme(): void {
       setToggle("theme-toggle", "left");
     }
   }
-  populateNoteContainer()
 }
 
 const initialTheme: string = retrieveTheme() === "dark" ? "right" : "left";

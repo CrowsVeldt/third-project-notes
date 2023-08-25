@@ -41,6 +41,8 @@
 
 ## Not planning to implement
 
+- standardize how styles are applied to elements, not just css/bootstrap classes, but - for example - how bootstrap classes are used to change
+border color on notes vs. the settings window
 - standardize tabIndex behavior over all elements
 - search: if I've added to the search bar until the results are empty, sometimes adding another character will again return a result (this has to do with Fuze.js' fuzzy search. It can probably sorted with the search options)
 - UI: get the plus icon to be centered in all browsers has proven beyond my limited knowledge and patience for now, I've settled for good enought on the browsers I use most.
