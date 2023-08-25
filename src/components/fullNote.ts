@@ -39,7 +39,8 @@ function populateFullNote(id: string): void {
 
   if (note) {
     title.innerText = note.title;
-    title.style.backgroundColor = note.color === 0 ? "white" : getColor(retrieveTheme(), note.color);
+    noteHead.style.backgroundColor =
+      note.color === 0 ? "" : getColor(retrieveTheme(), note.color);
     body.innerText = note.body;
     created.innerText =
       l10n.getTextContent(
@@ -90,6 +91,12 @@ const fullNote = newElement({
   class: [...hideClasses, "full-note-child", "justify-content-between"],
 }) as HTMLDivElement;
 
+const noteHead = newElement({
+  type: "div",
+  id: 'full-note-head',
+  class: ["px-5", "border-bottom"]
+}) as HTMLDivElement
+
 const noteTitle = newElement({
   type: "h2",
   id: "full-note-title",
@@ -97,10 +104,10 @@ const noteTitle = newElement({
     "form-label",
     "text-center",
     "lh-lg",
-    "border-bottom",
     "w-100",
     "full-note-child",
-    "text-break"
+    "text-break",
+    "align-self-start",
   ],
 }) as HTMLHeadingElement;
 
@@ -141,8 +148,9 @@ const noteTarget = newElement({
   class: ["px-3", "mb-0", "full-note-child"],
 }) as HTMLParagraphElement;
 
-fullNote.append(noteTitle, xButton, noteBackground);
-noteBackground.append(noteBody, dateContainer);
+noteHead.append(noteTitle)
 dateContainer.append(noteCreated, noteTarget);
+noteBackground.append(noteBody, dateContainer);
+fullNote.append(noteHead, xButton, noteBackground);
 
 export { fullNote, noteIsOpen, toggleFullNote };

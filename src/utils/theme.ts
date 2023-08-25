@@ -25,15 +25,12 @@ const themeElements: string[] = [
   "full-note",
   "search-bar",
   "sort-select",
-  "footer",
-  "page-head",
   "note-container",
   "body-input",
   "title-input",
   "tDate-input",
   "color-select",
   "form-button",
-  "full-note-title",
 ];
 
 function setTheme(theme: ThemeName): void {
