@@ -26,23 +26,6 @@ const main = newElement({
   class: ["flex-grow-1"],
 }) as HTMLDivElement;
 
-// footer
-const foot = newElement({
-  type: "footer",
-  id: "footer",
-  class: ["container-fluid", "text-center", "border"],
-}) as HTMLElement;
-
-const footTitle = newElement({
-  type: "h2",
-  id: "page-foot-title",
-  content: l10n.getTextContent(
-    getCurrentLanguage() as l10nLangOption,
-    "page-foot-title"
-  ),
-}) as HTMLHeadingElement;
-
 head.append(headTitle);
-foot.append(footTitle);
 
-export { foot, head, main };
+export { head, main };

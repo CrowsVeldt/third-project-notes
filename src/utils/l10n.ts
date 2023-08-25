@@ -55,7 +55,6 @@ const l10n = {
       "form-button:update": "Update note",
 
       "page-title": "Notes",
-      "page-foot-title": "Footer",
 
       "full-note-created": "Created on: ",
       "full-note-target": "Target Date: ",
@@ -64,6 +63,7 @@ const l10n = {
       "note-body-label": "Note Body *",
       "note-target-date-label": "Target Date",
       "note-color-label": "Color",
+
       "wipe-button": "Delete all",
       "settings-title": "Settings",
       "note-target-date": "Target date - ",
@@ -100,18 +100,22 @@ const l10n = {
     },
     textContent: {
       "search-bar": "חיפוש",
+
       "page-title": "פתקים",
-      "page-foot-title": "פוטר",
+
       "full-note-created": "תאריך יצירה: ",
       "full-note-target": "תאריך יעד: ",
+
       "form-heading:add": "פתק חדש",
       "form-heading:update": "עריכה",
       "form-button:add": "הוסף פתק",
       "form-button:update": "עדכן פתק",
+
       "note-title-label": "כותרת *",
       "note-body-label": "תוכן *",
       "note-target-date-label": "תאריך יעד",
       "note-color-label": "צבע",
+
       "wipe-button": "מחק הכל",
       "settings-title": "הגדרות",
       "note-target-date": "תאריך יעד - ",

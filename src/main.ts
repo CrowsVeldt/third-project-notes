@@ -1,5 +1,5 @@
 import "./style.css";
-import { foot, head, main } from "./components/pageLayout";
+import { head, main } from "./components/pageLayout";
 import noteDisplayControls from "./components/controls/searchAndSort";
 import plusButton from "./components/controls/plusButton";
 import {
@@ -35,7 +35,7 @@ tooltipTriggerList.map(function (tooltipTriggerEl) {
 
 main.append(settings, noteContainer, formElement, fullNote);
 
-app.append(head, plusButton, noteDisplayControls, main, foot);
+app.append(head, plusButton, noteDisplayControls, main);
 app.addEventListener("mousedown", handleTouchEventsForm);
 app.addEventListener("mousedown", handleTouchEventsNote);
 app.addEventListener("mousedown", handleTouchEventsSettings);
