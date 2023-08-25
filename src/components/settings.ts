@@ -22,7 +22,7 @@ const settings = newElement({
     "justify-content-end",
     "align-items-center",
     "settings",
-    'bg-light'
+    "bg-light",
   ],
 }) as HTMLDivElement;
 
@@ -33,7 +33,13 @@ const settingsTitle = newElement({
     getCurrentLanguage() as l10nLangOption,
     "settings-title"
   ),
-  class: ["border-bottom", "border-dark", "settings", "settings-child", 'flex-grow-1'],
+  class: [
+    "border-bottom",
+    "border-dark",
+    "settings",
+    "settings-child",
+    "flex-grow-1",
+  ],
 }) as HTMLHeadingElement;
 
 const toggleButton = newElement({

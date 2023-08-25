@@ -93,9 +93,9 @@ const fullNote = newElement({
 
 const noteHead = newElement({
   type: "div",
-  id: 'full-note-head',
-  class: ["px-5", "border-bottom"]
-}) as HTMLDivElement
+  id: "full-note-head",
+  class: ["px-5", "border-bottom"],
+}) as HTMLDivElement;
 
 const noteTitle = newElement({
   type: "h2",
@@ -148,7 +148,7 @@ const noteTarget = newElement({
   class: ["px-3", "mb-0", "full-note-child"],
 }) as HTMLParagraphElement;
 
-noteHead.append( xButton,noteTitle)
+noteHead.append(xButton, noteTitle);
 dateContainer.append(noteCreated, noteTarget);
 noteBackground.append(noteBody, dateContainer);
 fullNote.append(noteHead, noteBackground);

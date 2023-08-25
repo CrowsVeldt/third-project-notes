@@ -5,7 +5,7 @@ import selectContainer from "./sortSelector";
 const noteDisplayControls = newElement({
   type: "div",
   id: "search-and-sort",
-  class: ["container", "d-flex", "pb-2", 'mb-2', "pt-2", "no-select"],
+  class: ["container", "d-flex", "pb-2", "mb-2", "pt-2", "no-select"],
 }) as HTMLDivElement;
 
 noteDisplayControls.append(selectContainer, searchBarContainer);
