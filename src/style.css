@@ -24,8 +24,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, max-content));
   justify-content: center;
-  column-gap: 5px;
-  row-gap: 10px;
+  column-gap: 7px;
+  row-gap: 16px;
 }
 
 .hideable {
@@ -42,15 +42,15 @@
 }
 
 .note:hover {
-  box-shadow: 5px 5px rgba(0, 0, 255, 0.2);
+  box-shadow: 0px 5px rgba(0, 0, 255, 0.2);
   transition: box-shadow 0.1s, translate 0.1s;
-  transition-timing-function: ease-out;
-  transform: translate(-2px, -2px);
+  transition-timing-function: ease-in-out;
+  transform: translate(0px, -10px);
 }
 
 .note:active {
-  box-shadow: 2.5px 2.5px rgba(0, 0, 255, 0.2);
-  transform: translate(-1px, -1px);
+  box-shadow: 0px 2.5px rgba(0, 0, 255, 0.2);
+  transform: translate(-0px, -5px);
 }
 
 .note-body {

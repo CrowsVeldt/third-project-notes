@@ -193,6 +193,14 @@ function newNote(n: Note | undefined): HTMLDivElement {
     }
   });
 
+  noteDiv.addEventListener('mouseenter', () => {
+    noteDiv.classList.add('border-2')
+  })
+
+  noteDiv.addEventListener('mouseleave', () => {
+    noteDiv.classList.remove('border-2')
+  })
+
   return noteDiv;
 }
 
