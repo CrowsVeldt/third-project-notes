@@ -19,8 +19,8 @@
 
 ## TODO
 
+- UI: make full note title wrap around xButton
 - UX: if new note form is closed while partially finished, save details
-- UI: full note title will underflow xButton when long enough
 - UX/BUG: make sure all elements have the same visual indication of tab focus
 - UI: add message that required elements have a \*
 - TODO: properly acknowledge fuse.js

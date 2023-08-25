@@ -33,6 +33,7 @@ const themeElements: string[] = [
   "tDate-input",
   "color-select",
   "form-button",
+  "full-note-title",
 ];
 
 function setTheme(theme: ThemeName): void {
