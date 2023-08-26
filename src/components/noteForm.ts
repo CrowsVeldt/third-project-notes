@@ -27,9 +27,10 @@ const form: FormObject = new FormObject(
   l10n.getTextContent(getCurrentLanguage() as L10nLangOption, "form-button:add")
 );
 
-function formIsOpen(): boolean | void {
+function formIsOpen(): boolean {
   const form: HTMLElement | null = document.getElementById("input-form");
   if (form && form.classList.contains("d-flex")) return true;
+  return false;
 }
 
 function accessFormElement(): FormElement {
@@ -70,10 +71,9 @@ function resetForm(): void {
 }
 
 function editNote(noteId: string): void {
-  const note: Note | void = getNote(noteId);
+  const note = getNote(noteId) as Note;
 
   if (note) {
-    console.log(typeof note.color, note.color);
     form.setAll(
       l10n.getTextContent(
         getCurrentLanguage() as L10nLangOption,
@@ -95,7 +95,7 @@ function editNote(noteId: string): void {
 }
 
 function openForm(): void {
-  const form = document.getElementById("input-form");
+  const form = document.getElementById("input-form") as HTMLDivElement;
   tih.removeTabIndexes();
   if (form !== null) {
     form.classList.add("d-flex");
@@ -103,7 +103,7 @@ function openForm(): void {
 }
 
 function closeForm(): void {
-  const form = document.getElementById("input-form");
+  const form = document.getElementById("input-form") as HTMLDivElement;
   tih.resetTabIndexes();
   if (form !== null) {
     form.classList.remove("d-flex");
@@ -116,8 +116,10 @@ function formHandler(): void;
 function formHandler(evt: Event): void;
 function formHandler(evt: Event, id: string): void;
 function formHandler(evt: Event | void, id: string | void): void {
-  const inputForm: HTMLElement | null = document.getElementById("input-form");
-  const formTitle: HTMLElement | null = document.getElementById("form-heading");
+  const inputForm = document.getElementById("input-form") as HTMLDivElement;
+  const formTitle = document.getElementById(
+    "form-heading"
+  ) as HTMLHeadingElement;
   if (arguments.length === 0 && inputForm) {
     closeForm();
     return;
@@ -218,6 +220,7 @@ const bodyLabel: HTMLLabelElement = createLabel(
   ["form-label", "form-child"],
   "body-input"
 );
+
 const bodyInput = newElement({
   type: "textarea",
   id: "body-input",
@@ -230,7 +233,6 @@ const bodyInput = newElement({
 }) as HTMLTextAreaElement;
 
 const bodyCount: HTMLParagraphElement = textCounter(bodyInput);
-bodyCount.classList.add("form-child");
 
 const dateAndColorContainer = newElement({
   type: "div",

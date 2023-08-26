@@ -23,7 +23,6 @@ function makeXButton(id: string, eventHandler: () => void): HTMLDivElement {
   }) as HTMLButtonElement;
 
   buttonContainer.append(xButton);
-
   return buttonContainer;
 }
 

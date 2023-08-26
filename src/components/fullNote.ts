@@ -35,7 +35,7 @@ function getFullNoteElements(): {
 function populateFullNote(id: string): void {
   const { title, body, created, target } = getFullNoteElements();
 
-  const note: Note | void = getNote(id);
+  const note = getNote(id) as Note;
 
   if (note) {
     title.innerText = note.title;
@@ -62,16 +62,15 @@ function populateFullNote(id: string): void {
 }
 
 function noteIsOpen(): boolean {
-  const fullNote: HTMLElement | null = document.getElementById("full-note");
+  const fullNote = document.getElementById("full-note") as HTMLDivElement;
   if (fullNote && fullNote.classList.contains("d-flex")) return true;
-
   return false;
 }
 
 function toggleFullNote(): void;
 function toggleFullNote(id: string): void;
 function toggleFullNote(id: string | void): void {
-  const fullNote: HTMLElement | null = document.getElementById("full-note");
+  const fullNote = document.getElementById("full-note") as HTMLDivElement;
 
   if (fullNote) {
     if (!noteIsOpen()) {
@@ -111,7 +110,7 @@ const noteTitle = newElement({
   ],
 }) as HTMLHeadingElement;
 
-const xButton = makeXButton("close-button", toggleFullNote);
+const xButton: HTMLDivElement = makeXButton("close-button", toggleFullNote);
 
 const noteBackground = newElement({
   type: "div",

@@ -36,10 +36,8 @@ const toggle = (id: string, initialDirection: string) =>
 function setToggle(id: string): void;
 function setToggle(id: string, direction: string): void;
 function setToggle(id: string, direction: string | void): void {
-  const toggle: HTMLElement | null = document.getElementById(id);
-  const toggleSwitch: HTMLElement | null = document.getElementById(
-    id + "-switch"
-  );
+  const toggle = document.getElementById(id) as HTMLDivElement;
+  const toggleSwitch = document.getElementById(id + "-switch") as HTMLElement;
 
   if (toggle !== null && toggleSwitch !== null) {
     if (direction) {

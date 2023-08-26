@@ -154,24 +154,24 @@ function newNote(n: Note | undefined): HTMLDivElement {
   editButton.addEventListener("mouseenter", toggleEditIcon);
   editButton.addEventListener("mouseleave", toggleEditIcon);
 
-  function toggleDeleteIcon() {
-    const button = deleteIcon;
-    button?.classList.toggle("bi-trash");
-    button?.classList.toggle("bi-trash-fill");
+  function toggleDeleteIcon(): void {
+    const button: HTMLElement = deleteIcon;
+    button.classList.toggle("bi-trash");
+    button.classList.toggle("bi-trash-fill");
   }
 
-  function toggleEditIcon() {
-    const button = editIcon;
-    button?.classList.toggle("bi-pencil");
-    button?.classList.toggle("bi-pencil-fill");
+  function toggleEditIcon(): void {
+    const button: HTMLElement = editIcon;
+    button.classList.toggle("bi-pencil");
+    button.classList.toggle("bi-pencil-fill");
   }
 
   const deleteIcon = newElement({
     type: "i",
     class: ["bi", "bi-trash"],
   }) as HTMLElement;
-
   deleteButton.append(deleteIcon);
+
   const editIcon = newElement({
     type: "i",
     class: ["bi-pencil"],
@@ -179,15 +179,12 @@ function newNote(n: Note | undefined): HTMLDivElement {
   editButton.append(editIcon);
 
   noteHead.append(noteTitle, editButton);
-
   noteDatesContainer.append(noteTDate, noteCDate);
   noteFoot.append(noteDatesContainer, deleteButton);
-
   noteDiv.append(noteHead, noteBody, noteFoot);
 
   noteDiv.addEventListener("dblclick", (evt) => {
     const target = evt.target as HTMLElement;
-
     if (target && target.id !== deleteId && target.id !== editId) {
       toggleFullNote(note.getId());
     }

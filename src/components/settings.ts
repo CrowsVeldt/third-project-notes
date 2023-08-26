@@ -1,6 +1,6 @@
 import { getCurrentLanguage } from "../utils/languageFunctions";
 import l10n from "../utils/l10n";
-import { l10nLangOption } from "../utils/types";
+import { L10nLangOption } from "../utils/types";
 import languageToggle from "./controls/languageToggle";
 import newElement from "../utils/newElement";
 import wipeButton from "./controls/wipeButton";
@@ -30,7 +30,7 @@ const settingsTitle = newElement({
   type: "h3",
   id: "settings-title",
   content: l10n.getTextContent(
-    getCurrentLanguage() as l10nLangOption,
+    getCurrentLanguage() as L10nLangOption,
     "settings-title"
   ),
   class: [

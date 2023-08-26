@@ -22,11 +22,6 @@ const sortSelect = newElement({
 
 const sortToggle: HTMLDivElement = directionToggle;
 
-sortSelect.addEventListener("change", sortEventListener);
-sortToggle.addEventListener("click", sortEventListener);
-
-selectContainer.append(sortSelect, sortToggle);
-
 function sortEventListener() {
   const target = document.getElementById("sort-select") as HTMLSelectElement;
   const displayedNotes: Note[] = getDisplayedNotes();
@@ -36,5 +31,10 @@ function sortEventListener() {
     resetNoteContainer(notes);
   }
 }
+
+sortSelect.addEventListener("change", sortEventListener);
+sortToggle.addEventListener("click", sortEventListener);
+
+selectContainer.append(sortSelect, sortToggle);
 
 export default selectContainer;

@@ -1,6 +1,5 @@
 import { SortMethodType } from "../utils/types";
 
-// TODO: refactor to use newElement?
 function sortOption(option: SortMethodType): HTMLOptionElement {
   const o: HTMLOptionElement = document.createElement("option");
   o.innerText = option.method;

@@ -30,6 +30,7 @@ function textCounter(target: CounterTarget): HTMLParagraphElement {
   const counter = newElement({
     type: "p",
     id: `${target.id}-counter`,
+    class: ['form-child'],
     content: countFormula(target),
   }) as HTMLParagraphElement;
 

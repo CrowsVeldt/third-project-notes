@@ -1,14 +1,14 @@
 import { L10nLangOption } from "./types.ts";
 import { storageExists } from "./util.ts";
 
-const langStored = (): boolean => {
+function langStored(): boolean {
   if (storageExists()) {
     if (localStorage.getItem("lang")) return true;
   }
   return false;
 };
 
-function initialLanguageCheck() {
+function initialLanguageCheck(): void {
   if (getLanguage() === undefined) {
     setLanguage(navigator.language as L10nLangOption);
   }
@@ -16,7 +16,7 @@ function initialLanguageCheck() {
 
 function setLanguage(lang: any): boolean {
   if (lang !== undefined) {
-    const langString = `{"language": "${lang}"}`;
+    const langString: string = `{"language": "${lang}"}`;
     localStorage.setItem("lang", langString);
   }
   return true;
@@ -38,24 +38,22 @@ function getBrowserDefaultLanguage(): L10nLangOption {
 }
 
 function getCurrentLanguage(): L10nLangOption {
-  const html: HTMLHtmlElement | null = document.querySelector("html");
+  const html = document.querySelector("html") as HTMLHtmlElement;
   const lang: L10nLangOption | void = langStored()
     ? getLanguage()
     : getBrowserDefaultLanguage();
 
-  if (html !== null) {
-    if (lang === "he") {
-      html.dir = "rtl";
-    } else {
-      html.dir = "ltr";
-    }
+  if (lang === "he") {
+    html.dir = "rtl";
+  } else {
+    html.dir = "ltr";
   }
-  return lang!;
+  return lang as L10nLangOption;
 }
 
-const langOptions: string[] = ["en-US", "he"];
+const langOptions: L10nLangOption[] = ["en-US", "he"];
 
-function replaceLangOption(val: string): L10nLangOption {
+function replaceLangOption(val: L10nLangOption): L10nLangOption {
   if (langOptions.includes(val)) return val as L10nLangOption;
   return "en-US" as L10nLangOption;
 }

@@ -1,5 +1,5 @@
 import { createInput } from "../labelAndInput";
-import { l10nLangOption, Note } from "../../utils/types";
+import { L10nLangOption, Note } from "../../utils/types";
 import { resetNoteContainer, wipeNoteContainer } from "../noteContainer";
 import { searchNotes } from "../../utils/noteStorage";
 import l10n from "../../utils/l10n";
@@ -10,7 +10,7 @@ const searchBarContainer: HTMLDivElement = document.createElement("div");
 const searchBar = createInput("text", "search-bar", ["form-control"], false, [
   [
     "placeholder",
-    l10n.getTextContent(getCurrentLanguage() as l10nLangOption, "search-bar"),
+    l10n.getTextContent(getCurrentLanguage() as L10nLangOption, "search-bar"),
   ],
   ["tabindex", "3"],
 ]) as HTMLInputElement;

@@ -5,8 +5,10 @@ import { getCurrentLanguage } from "./languageFunctions";
 import { SortMethodType } from "./types";
 import { populateNoteContainer } from "../components/noteContainer";
 
-function setSortMethods() {
-  const sortSelect = document.getElementById("sort-select")!;
+function setSortMethods(): void {
+  const sortSelect = document.getElementById(
+    "sort-select"
+  ) as HTMLSelectElement;
   sortSelect.innerHTML = "";
   l10n
     .getSortMethods(getCurrentLanguage())
@@ -15,35 +17,43 @@ function setSortMethods() {
     });
 }
 
-function setColors() {
-  const colorSelect = document.getElementById("color-select")!;
+function setColors(): void {
+  const colorSelect = document.getElementById(
+    "color-select"
+  ) as HTMLSelectElement;
   colorSelect.innerHTML = "";
   l10n.getColors(getCurrentLanguage()).forEach((color: any) => {
     colorSelect.append(colorOption(color));
   });
 }
 
-function setToolTips() {
-  const targets = l10n.getToolTips(getCurrentLanguage());
-  for (let key in targets) {
-    document.getElementById(key)?.setAttribute("title", targets[key]);
-  }
+function setToolTips(): void {
+  const targets: { [index: string]: string } = l10n.getToolTips(
+    getCurrentLanguage()
+  );
+    for (let key in targets) {
+      const target = document.getElementById(key) as HTMLElement;
+      if (target !== null) target.setAttribute("title", targets[key]);
+    }
 }
 
-function setTextContent() {
-  const targets = l10n.getAllTextContents(getCurrentLanguage());
-  const id = (a: string) => document.getElementById(a)!;
+function setTextContent(): void {
+  const targets: { [index: string]: string } = l10n.getAllTextContents(
+    getCurrentLanguage()
+  );
+  const getId: (a: string) => HTMLElement = (a: string) =>
+    document.getElementById(a) as HTMLElement;
   for (let key in targets) {
     if (key === "search-bar") {
-      id(key).setAttribute("placeholder", targets[key]);
+      getId(key).setAttribute("placeholder", targets[key]);
     } else if (key === "form-heading:add" || key === "form-heading:update") {
-      id("form-heading").textContent = targets["form-heading:add"];
+      getId("form-heading").textContent = targets["form-heading:add"];
     } else if (key === "form-button:add" || key === "form-button:update") {
-      id("form-button").textContent = targets["form-button:add"];
+      getId("form-button").textContent = targets["form-button:add"];
     } else if (key === "note-target-date" || key === "note-create-date") {
       populateNoteContainer();
     } else {
-      id(key).textContent = targets[key];
+      getId(key).textContent = targets[key];
     }
   }
 }

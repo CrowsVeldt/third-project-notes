@@ -1,7 +1,7 @@
 import l10n from "../utils/l10n";
 import { getCurrentLanguage } from "../utils/languageFunctions";
 import newElement from "../utils/newElement";
-import { l10nLangOption } from "../utils/types";
+import { L10nLangOption } from "../utils/types";
 
 // header
 const head = newElement({
@@ -14,7 +14,7 @@ const headTitle = newElement({
   type: "h1",
   id: "page-title",
   content: l10n.getTextContent(
-    getCurrentLanguage() as l10nLangOption,
+    getCurrentLanguage() as L10nLangOption,
     "page-title"
   ),
 }) as HTMLHeadElement;

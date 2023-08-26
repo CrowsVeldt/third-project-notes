@@ -63,7 +63,7 @@ languageToggle.addEventListener("click", () => {
 });
 
 // get current language: stored language if there is one, else get from languagetoggle directly
-function currentLanguage() {
+function currentLanguage(): string | void | null {
   return langStored()
     ? getLanguage()
     : languageToggle.getAttribute("data-language");

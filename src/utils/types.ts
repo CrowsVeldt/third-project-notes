@@ -72,8 +72,7 @@ type L10nTextContent =
   | "note-target-date"
   | "note-create-date"
   | "theme-toggle-light"
-  | "theme-toggle-dark"
-  ;
+  | "theme-toggle-dark";
 
 type L10nConfirmation = "wipe-button" | "note-delete-button";
 
@@ -87,59 +86,27 @@ type L10nObject = {
   "en-US": {
     colors: colorObject[];
     sortMethods: SortMethodType[];
-    tooltips: {};
+    tooltips: {
+      [index: string]: string;
+    };
     confirmations: {
-      "wipe-button": string;
-      "note-delete-button": string;
+      [index: string]: string;
     };
     textContent: {
-      "search-bar": string;
-      "page-title": string;
-      "full-note-created": string;
-      "full-note-target": string;
-      "form-heading:add": string;
-      "form-heading:update": string;
-      "form-button:add": string;
-      "form-button:update": string;
-      "note-title-label": string;
-      "note-body-label": string;
-      "note-target-date-label": string;
-      "note-color-label": string;
-      "wipe-button": string;
-      "settings-title": string;
-      "note-target-date": string;
-      "note-create-date": string;
-      "theme-toggle-light": string;
-      "theme-toggle-dark": string;
+      [index: string]: string;
     };
   };
   he: {
     colors: colorObject[];
     sortMethods: SortMethodType[];
-    tooltips: {};
+    tooltips: {
+      [index: string]: string;
+    };
     confirmations: {
-      "wipe-button": string;
-      "note-delete-button": string;
+      [index: string]: string;
     };
     textContent: {
-      "search-bar": string;
-      "page-title": string;
-      "full-note-created": string;
-      "full-note-target": string;
-      "form-heading:add": string;
-      "form-heading:update": string;
-      "form-button:add": string;
-      "form-button:update": string;
-      "note-title-label": string;
-      "note-body-label": string;
-      "note-target-date-label": string;
-      "note-color-label": string;
-      "wipe-button": string;
-      "settings-title": string;
-      "note-target-date": string;
-      "note-create-date": string;
-      "theme-toggle-light": string;
-      "theme-toggle-dark": string;
+      [index: string]: string;
     };
   };
 };
@@ -173,5 +140,5 @@ export type {
   ThemeName,
   ThemeColorsArray,
   ThemeListObject,
-  L10nObject
+  L10nObject,
 };

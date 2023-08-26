@@ -75,7 +75,7 @@ function changeTheme(): void {
 
 const initialTheme: string = retrieveTheme() === "dark" ? "right" : "left";
 
-themeToggle.append(toggle("theme-toggle-switch", initialTheme));
+themeToggle.append(toggle("theme-toggle-switch", initialTheme) as HTMLDivElement);
 themeToggleContainer.append(themeToggleLabel1, themeToggle, themeToggleLabel2);
 
 export default themeToggleContainer;

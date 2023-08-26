@@ -34,24 +34,22 @@ function populateNoteContainer(noteArray?: Note[]): void {
 }
 
 function addNoteToContainer(note: Note): void {
-  const container: HTMLElement | null =
-    document.getElementById("note-container");
-  if (container) {
+  const container = document.getElementById("note-container") as HTMLDivElement;
+  if (container !== null) {
     container.append(newNote(note));
   }
 }
 
 function wipeNoteContainer(): void {
-  const container: HTMLElement | null =
-    document.getElementById("note-container");
-  if (container) {
+  const container = document.getElementById("note-container") as HTMLDivElement;
+  if (container !== null) {
     container.innerHTML = "";
   }
 }
 
 function resetNoteContainer(notes: Note[] | void): void {
   wipeNoteContainer();
-  const page: HTMLElement | null = document.getElementById("main-page");
+  const page = document.getElementById("main-page") as HTMLDivElement;
   if (page && notes) {
     populateNoteContainer(notes);
   } else if (page) {
@@ -66,7 +64,7 @@ function getDisplayedNotes(): Note[] {
   if (childNodes) {
     for (let node in childNodes) {
       const noteId: string = childNodes[node].id;
-      const note: Note | void = getNote(noteId);
+      const note = getNote(noteId) as Note;
       if (note) {
         noteArray.push(note);
       }
