@@ -27,6 +27,7 @@ class TabIndexHandler {
     const elements = document.querySelectorAll(
       ":not(.form-child)"
     ) as NodeListOf<HTMLElement>;
+
     for (let node in elements) {
       if (elements[node].tabIndex >= 0) {
         indexes.push({

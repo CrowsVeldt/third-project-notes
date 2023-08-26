@@ -116,9 +116,19 @@ html[dir="rtl"] #full-note-bg {
   position: relative;
   left: -1px;
   top: 0.5px;
-  border: solid black;
-  border-width: 3px 3px 0px 0px;
   transform: rotate(-225deg);
+}
+
+html[dir="rtl"] #direction-arrow {
+  left: 1px;
+}
+
+#sort-select {
+  width: 8em;
+}
+
+#sort-select-container {
+  width: 11em;
 }
 
 #settings {
@@ -234,10 +244,6 @@ html[dir="rtl"] .x-button-container {
 
   #search-bar {
     width: 33vw;
-  }
-
-  #sort-select {
-    width: 8em;
   }
 
   #settings {

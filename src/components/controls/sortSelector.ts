@@ -7,13 +7,13 @@ import sortNotes from "../../utils/sort";
 const selectContainer = newElement({
   type: "div",
   id: "sort-select-container",
-  class: ["me-3", "d-flex", "align-items-center"],
+  class: ["d-flex", "align-items-center", "justify-content-between"],
 }) as HTMLDivElement;
 
 const sortSelect = newElement({
   type: "select",
   id: "sort-select",
-  class: ["me-1", "button-color", "form-control", "text-center"],
+  class: ["button-color", "form-control", "text-center"],
   props: [
     ["ariaLabel", "Default select element"],
     ["tabindex", "1"],

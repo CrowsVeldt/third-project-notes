@@ -14,6 +14,8 @@ const themeElements: string[] = [
   "tDate-input",
   "color-select",
   "form-button",
+  "direction",
+  "direction-arrow"
 ];
 
 const themes = {

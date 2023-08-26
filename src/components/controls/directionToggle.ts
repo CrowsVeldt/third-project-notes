@@ -16,6 +16,7 @@ const directionToggle = newElement({
 const arrow = newElement({
   type: "div",
   id: "direction-arrow",
+  class: ["border", "border-2", "border-start-0", "border-bottom-0"],
 }) as HTMLDivElement;
 
 directionToggle.appendChild(arrow);
