@@ -1,23 +1,28 @@
 import { replaceLangOption } from "./languageFunctions";
-import { l10nLangOption, l10nTextContent, l10nConfirmation } from "./types";
+import {
+  L10nLangOption,
+  L10nTextContent,
+  L10nConfirmation,
+  L10nObject
+} from "./types";
 
-const l10n = {
-  getColors(lang: l10nLangOption): any {
+const l10n: L10nObject = {
+  getColors(lang: L10nLangOption): any {
     return this[replaceLangOption(lang)].colors;
   },
-  getSortMethods(lang: l10nLangOption): any {
+  getSortMethods(lang: L10nLangOption): any {
     return this[replaceLangOption(lang)].sortMethods;
   },
-  getToolTips(lang: l10nLangOption): any {
+  getToolTips(lang: L10nLangOption): any {
     return this[replaceLangOption(lang)].tooltips;
   },
-  getConfirmation(lang: l10nLangOption, key: l10nConfirmation): any {
+  getConfirmation(lang: L10nLangOption, key: L10nConfirmation): any {
     return this[replaceLangOption(lang)].confirmations[key];
   },
-  getTextContent(lang: l10nLangOption, key: l10nTextContent): any {
+  getTextContent(lang: L10nLangOption, key: L10nTextContent): any {
     return this[replaceLangOption(lang)].textContent[key];
   },
-  getTextContents(lang: l10nLangOption): any {
+  getAllTextContents(lang: L10nLangOption): any {
     return this[replaceLangOption(lang)].textContent;
   },
   "en-US": {

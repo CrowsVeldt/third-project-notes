@@ -52,9 +52,9 @@ type TabIndexObject = {
 
 type CounterTarget = HTMLInputElement | HTMLTextAreaElement;
 
-type l10nLangOption = "en-US" | "he";
+type L10nLangOption = "en-US" | "he";
 
-type l10nTextContent =
+type L10nTextContent =
   | "search-bar"
   | "page-title"
   | "full-note-created"
@@ -70,9 +70,79 @@ type l10nTextContent =
   | "wipe-button"
   | "settings-title"
   | "note-target-date"
-  | "note-create-date";
+  | "note-create-date"
+  | "theme-toggle-light"
+  | "theme-toggle-dark"
+  ;
 
-type l10nConfirmation = "wipe-button" | "note-delete-button";
+type L10nConfirmation = "wipe-button" | "note-delete-button";
+
+type L10nObject = {
+  getColors: (lang: L10nLangOption) => any;
+  getSortMethods: (lang: L10nLangOption) => any;
+  getToolTips: (lang: L10nLangOption) => any;
+  getConfirmation: (lang: L10nLangOption, key: L10nConfirmation) => any;
+  getTextContent: (lang: L10nLangOption, key: L10nTextContent) => any;
+  getAllTextContents: (lang: L10nLangOption) => any;
+  "en-US": {
+    colors: colorObject[];
+    sortMethods: SortMethodType[];
+    tooltips: {};
+    confirmations: {
+      "wipe-button": string;
+      "note-delete-button": string;
+    };
+    textContent: {
+      "search-bar": string;
+      "page-title": string;
+      "full-note-created": string;
+      "full-note-target": string;
+      "form-heading:add": string;
+      "form-heading:update": string;
+      "form-button:add": string;
+      "form-button:update": string;
+      "note-title-label": string;
+      "note-body-label": string;
+      "note-target-date-label": string;
+      "note-color-label": string;
+      "wipe-button": string;
+      "settings-title": string;
+      "note-target-date": string;
+      "note-create-date": string;
+      "theme-toggle-light": string;
+      "theme-toggle-dark": string;
+    };
+  };
+  he: {
+    colors: colorObject[];
+    sortMethods: SortMethodType[];
+    tooltips: {};
+    confirmations: {
+      "wipe-button": string;
+      "note-delete-button": string;
+    };
+    textContent: {
+      "search-bar": string;
+      "page-title": string;
+      "full-note-created": string;
+      "full-note-target": string;
+      "form-heading:add": string;
+      "form-heading:update": string;
+      "form-button:add": string;
+      "form-button:update": string;
+      "note-title-label": string;
+      "note-body-label": string;
+      "note-target-date-label": string;
+      "note-color-label": string;
+      "wipe-button": string;
+      "settings-title": string;
+      "note-target-date": string;
+      "note-create-date": string;
+      "theme-toggle-light": string;
+      "theme-toggle-dark": string;
+    };
+  };
+};
 
 type ThemeName = "dark" | "light";
 
@@ -83,10 +153,9 @@ type ThemeColor = {
 
 type ThemeColorsArray = ThemeColor[];
 
-type ThemeClassList = string[];
 type ThemeListObject = {
-  dark: ThemeClassList;
-  light: ThemeClassList;
+  dark: string[];
+  light: string[];
 };
 
 export type {
@@ -98,11 +167,11 @@ export type {
   SortMethodType,
   TabIndexObject,
   CounterTarget,
-  l10nLangOption,
-  l10nTextContent,
-  l10nConfirmation,
+  L10nLangOption,
+  L10nTextContent,
+  L10nConfirmation,
   ThemeName,
   ThemeColorsArray,
-  ThemeClassList,
   ThemeListObject,
+  L10nObject
 };

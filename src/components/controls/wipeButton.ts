@@ -4,13 +4,13 @@ import { storageExists, wipeStoredNotes } from "../../utils/noteStorage";
 import { toggleSettings } from "../settings";
 import l10n from "../../utils/l10n";
 import { getCurrentLanguage } from "../../utils/languageFunctions";
-import { l10nLangOption } from "../../utils/types";
+import { L10nLangOption } from "../../utils/types";
 
 const wipeButton: HTMLButtonElement = newElement({
   type: "button",
   id: "wipe-button",
   content: l10n.getTextContent(
-    getCurrentLanguage() as l10nLangOption,
+    getCurrentLanguage() as L10nLangOption,
     "wipe-button"
   ),
   class: [
@@ -31,7 +31,7 @@ const wipeButton: HTMLButtonElement = newElement({
         storageExists() &&
         confirm(
           l10n.getConfirmation(
-            getCurrentLanguage() as l10nLangOption,
+            getCurrentLanguage() as L10nLangOption,
             "wipe-button"
           )
         )

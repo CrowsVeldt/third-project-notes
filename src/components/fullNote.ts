@@ -1,7 +1,7 @@
 import { formatDate, hideClasses } from "../utils/util";
 import { getNote } from "../utils/noteStorage";
 import newElement from "../utils/newElement";
-import { l10nLangOption, Note } from "../utils/types";
+import { L10nLangOption, Note } from "../utils/types";
 import makeXButton from "./controls/xButton";
 import l10n from "../utils/l10n";
 import { getCurrentLanguage } from "../utils/languageFunctions";
@@ -44,14 +44,14 @@ function populateFullNote(id: string): void {
     body.innerText = note.body;
     created.innerText =
       l10n.getTextContent(
-        getCurrentLanguage() as l10nLangOption,
+        getCurrentLanguage() as L10nLangOption,
         "full-note-created"
       ) + note.createDate;
     if (note.targetDate) {
       target.style.display = "inline-block";
       target.innerText =
         l10n.getTextContent(
-          getCurrentLanguage() as l10nLangOption,
+          getCurrentLanguage() as L10nLangOption,
           "full-note-target"
         ) + formatDate(note.targetDate);
     } else {

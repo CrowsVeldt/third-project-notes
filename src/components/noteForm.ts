@@ -1,6 +1,6 @@
 import colorSelect from "./controls/colorSelector";
 import { createInput, createLabel } from "./labelAndInput";
-import { FormElement, l10nLangOption, Note } from "../utils/types";
+import { FormElement, L10nLangOption, Note } from "../utils/types";
 import FormObject from "../classes/InputForm";
 import { getNote, updateNote } from "../utils/noteStorage";
 import { hideClasses, notesDifferent, removeTag } from "../utils/util";
@@ -17,14 +17,14 @@ import { getCurrentLanguage } from "../utils/languageFunctions";
 
 const form: FormObject = new FormObject(
   l10n.getTextContent(
-    getCurrentLanguage() as l10nLangOption,
+    getCurrentLanguage() as L10nLangOption,
     "form-heading:add"
   ),
   "",
   "",
   "",
   0,
-  l10n.getTextContent(getCurrentLanguage() as l10nLangOption, "form-button:add")
+  l10n.getTextContent(getCurrentLanguage() as L10nLangOption, "form-button:add")
 );
 
 function formIsOpen(): boolean | void {
@@ -76,7 +76,7 @@ function editNote(noteId: string): void {
     console.log(typeof note.color, note.color);
     form.setAll(
       l10n.getTextContent(
-        getCurrentLanguage() as l10nLangOption,
+        getCurrentLanguage() as L10nLangOption,
         "form-heading:update"
       ),
       note.title,
@@ -84,7 +84,7 @@ function editNote(noteId: string): void {
       note.targetDate ? note.targetDate : "",
       note.color,
       l10n.getTextContent(
-        getCurrentLanguage() as l10nLangOption,
+        getCurrentLanguage() as L10nLangOption,
         "form-button:update"
       ),
       "edit-" + note.id
@@ -131,7 +131,7 @@ function formHandler(evt: Event | void, id: string | void): void {
       const isFormNewNote: boolean =
         formTitle.textContent ===
         l10n.getTextContent(
-          getCurrentLanguage() as l10nLangOption,
+          getCurrentLanguage() as L10nLangOption,
           "form-heading:add"
         );
       if (callerId === "plus-button") {
@@ -188,7 +188,7 @@ const closeFormButton = makeXButton("close-form-button", closeForm);
 
 const titleLabel: HTMLLabelElement = createLabel(
   l10n.getTextContent(
-    getCurrentLanguage() as l10nLangOption,
+    getCurrentLanguage() as L10nLangOption,
     "note-title-label"
   ),
   "note-title-label",
@@ -211,7 +211,7 @@ titleCount.classList.add("form-child");
 
 const bodyLabel: HTMLLabelElement = createLabel(
   l10n.getTextContent(
-    getCurrentLanguage() as l10nLangOption,
+    getCurrentLanguage() as L10nLangOption,
     "note-body-label"
   ),
   "note-body-label",
@@ -252,7 +252,7 @@ const colorContainer = newElement({
 
 const tDateLabel: HTMLLabelElement = createLabel(
   l10n.getTextContent(
-    getCurrentLanguage() as l10nLangOption,
+    getCurrentLanguage() as L10nLangOption,
     "note-target-date-label"
   ),
   "note-target-date-label",
@@ -265,7 +265,7 @@ const dateError = errorMessage;
 
 const colorLabel = createLabel(
   l10n.getTextContent(
-    getCurrentLanguage() as l10nLangOption,
+    getCurrentLanguage() as L10nLangOption,
     "note-color-label"
   ),
   "note-color-label",

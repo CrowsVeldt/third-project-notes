@@ -2,7 +2,7 @@ import { deleteNote } from "../utils/noteStorage";
 import { formatDate } from "../utils/util";
 import { formHandler } from "./noteForm";
 import newElement from "../utils/newElement";
-import { l10nLangOption, Note } from "../utils/types";
+import { L10nLangOption, Note } from "../utils/types";
 import NoteObj from "../classes/Note";
 import { toggleFullNote } from "./fullNote";
 import l10n from "../utils/l10n";
@@ -85,7 +85,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
     class: ["mb-0", "note-create-date", "align-self-start"],
     content:
       l10n.getTextContent(
-        getCurrentLanguage() as l10nLangOption,
+        getCurrentLanguage() as L10nLangOption,
         "note-create-date"
       ) + note.getCreateDate(),
   }) as HTMLParagraphElement;
@@ -95,7 +95,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
     class: ["mb-0", "note-target-date", "align-self-start"],
     content: note.getTargetDate()
       ? l10n.getTextContent(
-          getCurrentLanguage() as l10nLangOption,
+          getCurrentLanguage() as L10nLangOption,
           "note-target-date"
         ) + formatDate(note.getTargetDate())
       : "-",
@@ -119,7 +119,7 @@ function newNote(n: Note | undefined): HTMLDivElement {
         if (
           confirm(
             l10n.getConfirmation(
-              getCurrentLanguage() as l10nLangOption,
+              getCurrentLanguage() as L10nLangOption,
               "note-delete-button"
             )
           )
