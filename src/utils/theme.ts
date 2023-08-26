@@ -1,6 +1,26 @@
 import { populateNoteContainer } from "../components/noteContainer";
 import { ThemeName } from "./types";
 
+const themeElements: string[] = [
+  "app",
+  "settings",
+  "input-form",
+  "full-note",
+  "search-bar",
+  "sort-select",
+  "note-container",
+  "body-input",
+  "title-input",
+  "tDate-input",
+  "color-select",
+  "form-button",
+];
+
+const themes = {
+  dark: ["bg-dark", "text-light", "border-light"],
+  light: ["bg-light", "text-dark", "border-dark"],
+};
+
 function themeStored(): boolean {
   if (localStorage.getItem("themePref")) return true;
   return false;
@@ -17,21 +37,6 @@ function retrieveTheme(): ThemeName {
   }
   return "light";
 }
-
-const themeElements: string[] = [
-  "app",
-  "settings",
-  "input-form",
-  "full-note",
-  "search-bar",
-  "sort-select",
-  "note-container",
-  "body-input",
-  "title-input",
-  "tDate-input",
-  "color-select",
-  "form-button",
-];
 
 function setTheme(theme: ThemeName): void {
   themeElements.forEach((id) => {
@@ -51,10 +56,5 @@ function setTheme(theme: ThemeName): void {
   });
   populateNoteContainer();
 }
-
-const themes = {
-  dark: ["bg-dark", "text-light", "border-light"],
-  light: ["bg-light", "text-dark", "border-dark"],
-};
 
 export { setTheme, retrieveTheme };

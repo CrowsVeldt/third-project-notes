@@ -1,6 +1,6 @@
 import newElement from "../../utils/newElement";
 import { resetNoteContainer } from "../noteContainer";
-import { storageExists, wipeStorage } from "../../utils/noteStorage";
+import { storageExists, wipeStoredNotes } from "../../utils/noteStorage";
 import { toggleSettings } from "../settings";
 import l10n from "../../utils/l10n";
 import { getCurrentLanguage } from "../../utils/languageFunctions";
@@ -36,7 +36,7 @@ const wipeButton: HTMLButtonElement = newElement({
           )
         )
       ) {
-        wipeStorage();
+        wipeStoredNotes();
         resetNoteContainer();
         toggleSettings();
       }

@@ -45,7 +45,7 @@ function deleteNote(noteId: string): void {
   });
 }
 
-function wipeStorage(): void {
+function wipeStoredNotes(): void {
   if (storageExists()) localStorage.clear();
 }
 
@@ -83,5 +83,5 @@ export {
   getStoredNotes,
   storageExists,
   updateNote,
-  wipeStorage,
+  wipeStoredNotes,
 };

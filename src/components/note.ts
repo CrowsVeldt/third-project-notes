@@ -7,7 +7,7 @@ import NoteObj from "../classes/Note";
 import { toggleFullNote } from "./fullNote";
 import l10n from "../utils/l10n";
 import { getCurrentLanguage } from "../utils/languageFunctions";
-import { getColor } from "../utils/colors";
+import getColor from "../utils/colors";
 import { retrieveTheme } from "../utils/theme";
 
 function newNote(n: Note | undefined): HTMLDivElement {

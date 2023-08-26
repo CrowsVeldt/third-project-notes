@@ -5,7 +5,7 @@ import { l10nLangOption, Note } from "../utils/types";
 import makeXButton from "./controls/xButton";
 import l10n from "../utils/l10n";
 import { getCurrentLanguage } from "../utils/languageFunctions";
-import { getColor } from "../utils/colors";
+import getColor from "../utils/colors";
 import { retrieveTheme } from "../utils/theme";
 
 function getFullNoteElements(): {

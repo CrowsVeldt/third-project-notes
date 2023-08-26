@@ -24,4 +24,4 @@ function getColor(theme: string, index: number): string {
   return result;
 }
 
-export { getColor };
+export default getColor;

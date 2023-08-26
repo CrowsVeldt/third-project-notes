@@ -31,7 +31,7 @@ function setToolTips() {
 }
 
 function setTextContent() {
-  const targets = l10n.getTextContents(getCurrentLanguage());
+  const targets = l10n.getAllTextContents(getCurrentLanguage());
   const id = (a: string) => document.getElementById(a)!;
   for (let key in targets) {
     if (key === "search-bar") {
