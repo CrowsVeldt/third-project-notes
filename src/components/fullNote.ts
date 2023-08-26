@@ -103,7 +103,7 @@ const noteTitle = newElement({
   class: [
     "form-label",
     "text-center",
-    "lh-lg",
+    "lh-md",
     "w-100",
     "full-note-child",
     "text-break",
