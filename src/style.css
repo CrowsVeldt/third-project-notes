@@ -92,12 +92,8 @@ html[dir="rtl"] #full-note-bg {
   justify-content: space-around;
 }
 
-#search-bar.bg-dark::placeholder {
-  color: white;
-}
-
-#search-bar.bg-light::placeholder {
-  color: black;
+#search-bar::placeholder {
+  color: gray;
 }
 
 #direction {

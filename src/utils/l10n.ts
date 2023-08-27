@@ -52,7 +52,7 @@ const l10n: L10nObject = {
       "note-delete-button": "Delete note?",
     },
     textContent: {
-      "search-bar": "Search",
+      "search-bar": "Search...",
 
       "form-heading:add": "New Note",
       "form-heading:update": "Edit Note",
@@ -104,7 +104,7 @@ const l10n: L10nObject = {
       "note-delete-button": "למחוק את הפתק?",
     },
     textContent: {
-      "search-bar": "חיפוש",
+      "search-bar": "חיפוש...",
 
       "page-title": "פתקים",
 
