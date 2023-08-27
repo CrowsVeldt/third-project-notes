@@ -16,7 +16,9 @@ function reqLabel(id: string, target: string): HTMLSpanElement {
       getCurrentLanguage() as L10nLangOption,
       id as L10nTextContent
     ),
-    class: ["form-label", "form-child", "me-1"],
+    class: ["form-label", "form-child", 
+    // "me-1"
+  ],
     props: [["for", target]],
   });
 
@@ -24,7 +26,7 @@ function reqLabel(id: string, target: string): HTMLSpanElement {
   const reqP = newElement({
     type: "p",
     id: id + "-req",
-    class: ["form-child"],
+    class: ["form-child", 'ms-1', 'me-1'],
     props: [["style", "font-size:small;"]],
   }) as HTMLParagraphElement;
 

@@ -64,9 +64,9 @@ const l10n: L10nObject = {
       "full-note-created": "Created on: ",
       "full-note-target": "Target Date: ",
 
-      "note-title-label": "Note Title ",
+      "note-title-label": "Note Title",
       "note-title-label-req": "(Required)",
-      "note-body-label": "Note Body ",
+      "note-body-label": "Note Body",
       "note-body-label-req": "(Required)",
       "note-target-date-label": "Target Date",
       "note-color-label": "Color",
