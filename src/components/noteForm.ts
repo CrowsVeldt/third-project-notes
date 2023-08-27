@@ -14,6 +14,7 @@ import targetDateInput from "./controls/targetDateInput";
 import { errorMessage, updateErrorMessage } from "./errorMessage";
 import l10n from "../utils/l10n";
 import { getCurrentLanguage } from "../utils/languageFunctions";
+import reqMessage from "./label";
 
 const form: FormObject = new FormObject(
   l10n.getTextContent(
@@ -179,24 +180,19 @@ const formHead = newElement({
   ],
 }) as HTMLDivElement;
 
-const formheading = newElement({
+const formHeading = newElement({
   type: "h2",
   id: "form-heading",
   class: ["form-label", "form-child", "mb-2", "mt-2"],
   content: form.getHead(),
 }) as HTMLHeadingElement;
 
-const closeFormButton = makeXButton("close-form-button", closeForm);
+const closeFormButton = makeXButton(
+  "close-form-button",
+  closeForm
+) as HTMLDivElement;
 
-const titleLabel: HTMLLabelElement = createLabel(
-  l10n.getTextContent(
-    getCurrentLanguage() as L10nLangOption,
-    "note-title-label"
-  ),
-  "note-title-label",
-  ["form-label", "form-child"],
-  "title-input"
-);
+const titleLabel = reqMessage("note-title-label", "title-input");
 const titleInput: HTMLInputElement = createInput(
   "text",
   "title-input",
@@ -211,16 +207,7 @@ const titleInput: HTMLInputElement = createInput(
 const titleCount: HTMLParagraphElement = textCounter(titleInput);
 titleCount.classList.add("form-child");
 
-const bodyLabel: HTMLLabelElement = createLabel(
-  l10n.getTextContent(
-    getCurrentLanguage() as L10nLangOption,
-    "note-body-label"
-  ),
-  "note-body-label",
-  ["form-label", "form-child"],
-  "body-input"
-);
-
+const bodyLabel = reqMessage("note-body-label", "body-input");
 const bodyInput = newElement({
   type: "textarea",
   id: "body-input",
@@ -352,7 +339,7 @@ const actionButton: HTMLButtonElement = newElement({
   },
 }) as HTMLButtonElement;
 
-formHead.append(formheading, closeFormButton);
+formHead.append(formHeading, closeFormButton);
 dateContainer.append(tDateLabel, tDateInput, dateError);
 colorContainer.append(colorLabel, cSelect);
 dateAndColorContainer.append(dateContainer, colorContainer);
