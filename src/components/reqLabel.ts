@@ -3,7 +3,7 @@ import { getCurrentLanguage } from "../utils/languageFunctions";
 import newElement from "../utils/newElement";
 import { L10nLangOption, L10nTextContent } from "../utils/types";
 
-function label(id: string, target: string): HTMLSpanElement {
+function reqLabel(id: string, target: string): HTMLSpanElement {
   const container = newElement({
     type: "div",
     class: ["d-flex", "form-child"],
@@ -34,4 +34,4 @@ function label(id: string, target: string): HTMLSpanElement {
   return container;
 }
 
-export default label;
+export default reqLabel;

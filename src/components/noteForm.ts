@@ -14,7 +14,7 @@ import targetDateInput from "./controls/targetDateInput";
 import { errorMessage, updateErrorMessage } from "./errorMessage";
 import l10n from "../utils/l10n";
 import { getCurrentLanguage } from "../utils/languageFunctions";
-import reqMessage from "./label";
+import reqLabel from "./reqLabel";
 
 const form: FormObject = new FormObject(
   l10n.getTextContent(
@@ -192,7 +192,7 @@ const closeFormButton = makeXButton(
   closeForm
 ) as HTMLDivElement;
 
-const titleLabel = reqMessage("note-title-label", "title-input");
+const titleLabel = reqLabel("note-title-label", "title-input");
 const titleInput: HTMLInputElement = createInput(
   "text",
   "title-input",
@@ -207,7 +207,7 @@ const titleInput: HTMLInputElement = createInput(
 const titleCount: HTMLParagraphElement = textCounter(titleInput);
 titleCount.classList.add("form-child");
 
-const bodyLabel = reqMessage("note-body-label", "body-input");
+const bodyLabel = reqLabel("note-body-label", "body-input");
 const bodyInput = newElement({
   type: "textarea",
   id: "body-input",
