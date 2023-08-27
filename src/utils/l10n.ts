@@ -3,7 +3,7 @@ import {
   L10nLangOption,
   L10nTextContent,
   L10nConfirmation,
-  L10nObject
+  L10nObject,
 } from "./types";
 
 const l10n: L10nObject = {
@@ -64,8 +64,10 @@ const l10n: L10nObject = {
       "full-note-created": "Created on: ",
       "full-note-target": "Target Date: ",
 
-      "note-title-label": "Note Title *",
-      "note-body-label": "Note Body *",
+      "note-title-label": "Note Title ",
+      "note-title-label-req": "(Required)",
+      "note-body-label": "Note Body ",
+      "note-body-label-req": "(Required)",
       "note-target-date-label": "Target Date",
       "note-color-label": "Color",
 
@@ -116,8 +118,10 @@ const l10n: L10nObject = {
       "form-button:add": "הוסף פתק",
       "form-button:update": "עדכן פתק",
 
-      "note-title-label": "כותרת *",
-      "note-body-label": "תוכן *",
+      "note-title-label": "כותרת",
+      "note-title-label-req": "(נדרש)",
+      "note-body-label": "תוכן",
+      "note-body-label-req": "(נדרש)",
       "note-target-date-label": "תאריך יעד",
       "note-color-label": "צבע",
 
